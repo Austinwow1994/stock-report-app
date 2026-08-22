@@ -1,0 +1,3288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究報告 App</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+  :root{
+    /* 薩爾達（羊皮紙／森林綠／墨棕）打底＋神奇寶貝（紅／藍／皮卡丘黃）點綴強調色 */
+    --navy:#1f4d2e;
+    --navy-2:#2a3aa0;
+    --red:#ee1515;
+    --red-bg:#ffd9d3;
+    --green:#2f7d44;
+    --green-bg:#d3f0dc;
+    --amber:#8a5a10;
+    --amber-bg:#ffe8a8;
+    --paper:#e9dcbd;
+    --card:#f8f1dc;
+    --line:#3d2b1a;
+    --line-soft:#c9b98c;
+    --ink:#2a1c10;
+    --ink-soft:#5a4a30;
+    --gold:#ffcb05;
+    --px:'Press Start 2P',ui-monospace,monospace;
+    --shadow:5px 5px 0 var(--line);
+    --shadow-sm:3px 3px 0 var(--line);
+    --shadow-xs:2px 2px 0 var(--line);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  *,*::before,*::after{border-radius:0!important;}
+  ::selection{background:var(--gold);color:#14162a;}
+  ::-webkit-scrollbar{width:14px;height:14px;}
+  ::-webkit-scrollbar-track{background:var(--paper);border-left:2px solid var(--line);}
+  ::-webkit-scrollbar-thumb{background:var(--navy-2);border:2px solid var(--line);}
+  body{
+    margin:0;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans TC","PingFang TC","Microsoft JhengHei",monospace;
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(rgba(20,22,42,.07) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,22,42,.07) 1px,transparent 1px);
+    background-size:16px 16px;
+    color:var(--ink);
+    line-height:1.75;
+    image-rendering:pixelated;
+  }
+  button{
+    font-family:var(--px);
+    letter-spacing:.5px;
+    box-shadow:var(--shadow-sm);
+    cursor:pointer;
+    transition:transform .05s steps(1),box-shadow .05s steps(1);
+  }
+  button:active{transform:translate(3px,3px);box-shadow:none;}
+  header.top{
+    background:var(--navy);
+    background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 2px,transparent 2px,transparent 4px);
+    color:#fff;
+    padding:28px 20px 34px;
+    border-bottom:6px solid var(--gold);
+    box-shadow:0 5px 0 var(--navy-2);
+  }
+  .top-inner{max-width:1440px;margin:0 auto;}
+  .top-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand h1{font-family:var(--px);font-size:16px;margin:0;font-weight:400;letter-spacing:1px;line-height:1.6;text-shadow:2px 2px 0 var(--navy-2);}
+  .brand .tag{font-family:var(--px);font-size:9px;color:#0d0f1c;background:var(--gold);border:2px solid #0d0f1c;padding:3px 8px;cursor:help;}
+  .top-sub{margin:10px 0 20px;font-size:13px;color:#cfe0c9;}
+
+  .demo-tag-wrap{position:relative;display:inline-block;}
+  .demo-tag-popover{
+    display:none;position:absolute;top:calc(100% + 10px);left:0;z-index:90;width:min(420px,85vw);
+    background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);padding:14px 16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans TC","PingFang TC",monospace;
+    font-size:12.5px;line-height:1.7;color:var(--ink);cursor:default;
+  }
+  .demo-tag-wrap:hover .demo-tag-popover,.demo-tag-wrap:focus-within .demo-tag-popover{display:block;}
+  .demo-tag-popover::before{
+    content:"";position:absolute;top:-9px;left:16px;width:0;height:0;
+    border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid var(--line);
+  }
+  .demo-tag-popover b{color:var(--navy-2);}
+
+  .header-stats{
+    display:flex;align-items:stretch;gap:14px;flex-shrink:0;
+    background:var(--card);border:2.5px solid var(--line);box-shadow:var(--shadow-xs);
+    padding:8px 16px;
+  }
+  .hstat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+  .hstat-value{font-family:var(--px);font-size:15px;font-weight:400;color:var(--navy);white-space:nowrap;}
+  .hstat-label{font-size:10px;color:var(--ink-soft);white-space:nowrap;}
+  @media (max-width:640px){
+    .header-stats{padding:7px 12px;gap:10px;}
+    .hstat-value{font-size:12px;}
+  }
+  .search-row{display:flex;gap:10px;max-width:760px;}
+  .search-input-wrap{position:relative;flex:1;}
+  .search-row input{
+    width:100%;padding:13px 16px;border:3px solid var(--line);font-size:15px;
+    background:#fff;color:var(--ink);box-shadow:var(--shadow-sm);
+    font-family:inherit;
+  }
+  .search-row input:focus{outline:none;box-shadow:3px 3px 0 var(--gold);}
+  .search-row button{
+    padding:13px 18px;border:3px solid var(--line);background:var(--gold);color:#231a06;
+    font-size:11px;text-transform:uppercase;flex-shrink:0;
+  }
+  .search-row button:hover{background:#ffcc33;}
+  .search-row button#homeBtnHeader{background:transparent;color:#fff;border-color:#cfe0c9;}
+  .search-row button#homeBtnHeader:hover{background:rgba(255,255,255,.12);border-color:var(--gold);}
+  .search-suggestions{
+    display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:50;
+    background:#fff;border:3px solid var(--line);box-shadow:var(--shadow);overflow:hidden;
+  }
+  .search-suggestions.show{display:block;}
+  .search-suggestion-item{
+    padding:10px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;
+    border-bottom:2px solid var(--paper);font-size:13.5px;color:var(--ink);
+  }
+  .search-suggestion-item:last-child{border-bottom:none;}
+  .search-suggestion-item:hover,.search-suggestion-item.active{background:#fdf0c2;}
+  .search-suggestion-item .ssi-name{font-weight:700;}
+  .search-suggestion-item .ssi-code{color:var(--ink-soft);font-size:12px;font-family:var(--px);}
+  .ssi-market-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:2px;vertical-align:middle;}
+  .ssi-market-dot.tw{background:var(--red);}
+  .ssi-market-dot.us{background:var(--green);}
+  .search-suggestion-item .ssi-industry{margin-left:auto;font-size:9px;font-family:var(--px);color:var(--navy-2);background:#eef1f5;border:1.5px solid var(--line);padding:3px 8px;white-space:nowrap;}
+  .search-suggestion-group-label{
+    padding:7px 16px;font-size:9.5px;font-family:var(--px);color:var(--ink-soft);
+    background:#e4e0cb;border-bottom:2px solid var(--line);
+  }
+  .search-suggestion-item.content-match{align-items:flex-start;}
+  .ssi-snippet{font-size:11.5px;color:var(--ink-soft);margin-top:2px;line-height:1.5;}
+  .chain-map{margin-top:16px;}
+  .concept-guide{margin-top:16px;}
+  .concept-guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-top:14px;}
+  .concept-card{background:#fff;border:2.5px solid var(--line);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;}
+  .concept-card-icon{flex:0 0 auto;width:44px;height:44px;background:var(--paper);border:2px solid var(--line);padding:4px;image-rendering:pixelated;}
+  .concept-card-icon svg{width:100%;height:100%;display:block;image-rendering:pixelated;}
+  .concept-card-body{flex:1;min-width:0;}
+  .concept-card-title{font-family:var(--px);font-size:10px;color:var(--navy);margin-bottom:6px;line-height:1.5;}
+  .concept-card-desc{font-size:11.5px;color:var(--ink-soft);margin-bottom:9px;line-height:1.55;}
+  .concept-card-chips{display:flex;flex-wrap:wrap;gap:5px;}
+  .chain-flow{display:flex;flex-direction:column;}
+  .chain-node{
+    background:#fff;border:2.5px solid var(--line);
+    padding:12px 16px;transition:box-shadow .1s steps(1);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  }
+  .chain-node-body{flex:1 1 auto;min-width:0;}
+  .stage-icon{
+    flex:0 0 auto;width:50px;height:50px;background:var(--paper);border:2.5px solid var(--line);
+    padding:5px;image-rendering:pixelated;
+  }
+  .stage-icon svg{width:100%;height:100%;display:block;image-rendering:pixelated;}
+  @media (max-width:520px){ .stage-icon{width:38px;height:38px;padding:4px;} }
+  .chain-node-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+  .chain-node-num{
+    display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+    width:20px;height:20px;background:var(--navy-2);color:#fff;border:2px solid var(--line);
+    font-family:var(--px);font-size:9px;
+  }
+  .chain-node-title{font-family:var(--px);font-size:11px;font-weight:400;color:var(--navy-2);}
+  .chain-node-desc{font-size:12px;color:var(--ink-soft);margin-bottom:8px;}
+  .chain-connector{
+    display:flex;justify-content:center;align-items:center;height:22px;
+    color:var(--gold);font-size:15px;font-weight:700;line-height:1;
+    text-shadow:1px 1px 0 var(--navy);
+  }
+  .chain-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chain-chip{
+    font-size:11px;font-family:var(--px);color:var(--navy-2);background:var(--paper);
+    border:2px solid var(--line);border-left-width:5px;padding:5px 10px;cursor:pointer;
+  }
+  .chain-chip:hover{background:#fdf0c2;border-color:var(--gold);}
+  .chain-chip.market-tw{border-left-color:var(--red);}
+  .chain-chip.market-us{border-left-color:var(--green);}
+  .chain-chip.me{background:var(--gold);color:#231a06;border-color:var(--line);border-left-color:var(--line);font-weight:400;cursor:default;}
+  /* 自帶實色背景的小徽章，不依賴繼承父層顏色，chip本身不管在預設/hover/me
+     哪個狀態下文字都維持清楚可讀（同一套修法之前也用在本頁導覽的數字上）。 */
+  .chip-new-tag{
+    display:inline-block;font-size:8px;font-weight:700;background:var(--gold);color:#231a06;
+    padding:1px 4px;margin-right:4px;border-radius:2px;vertical-align:middle;
+  }
+  .chain-other-divider{margin:18px 0 10px;padding-top:14px;border-top:2px dashed var(--line-soft);font-size:11px;font-family:var(--px);color:var(--ink-soft);display:flex;align-items:center;flex-wrap:wrap;}
+  .chain-node.other{margin-bottom:10px;}
+  .chain-node.other:last-child{margin-bottom:0;}
+  .chain-node.other .chain-chip{color:var(--ink-soft);}
+
+  .chain-map-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+
+  .market-filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .market-filter-label{font-size:12px;color:var(--ink-soft);font-family:var(--px);}
+  .market-filter-btn{
+    padding:6px 14px;border:2px solid var(--line);background:var(--card);color:var(--ink-soft);
+    font-family:var(--px);font-size:10px;cursor:pointer;
+  }
+  .market-filter-btn:hover{background:#fdf0c2;border-color:var(--gold);}
+  .market-filter-btn.active{color:#fff;border-color:var(--line);}
+  .market-filter-btn.active[data-market="all"]{background:var(--navy-2);}
+  .market-filter-btn.active[data-market="new"]{background:var(--gold);color:#231a06;}
+  .market-filter-btn.active[data-market="TW"]{background:var(--red);}
+  .market-filter-btn.active[data-market="US"]{background:var(--green);}
+
+  .floating-research-widgets{
+    position:fixed;bottom:16px;right:16px;z-index:600;
+    display:flex;flex-direction:column-reverse;gap:10px;
+    width:300px;max-width:calc(100vw - 32px);max-height:80vh;overflow-y:auto;
+  }
+  .floating-widget{
+    background:var(--card);border:2.5px solid var(--line);box-shadow:var(--shadow-sm);
+    padding:10px 12px;
+  }
+  .floating-widget-head{display:flex;align-items:center;gap:6px;}
+  .floating-widget-head b{font-family:var(--px);font-size:11px;color:var(--navy);}
+  .floating-widget-status{color:var(--ink-soft);font-size:11px;margin-left:auto;}
+  .floating-widget-close{
+    border:none;background:transparent;color:var(--ink-soft);cursor:pointer;font-size:13px;
+    padding:0 2px;line-height:1;margin-left:auto;
+  }
+  .floating-widget-close:hover{color:var(--red);}
+
+  .compare-bar{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    margin-top:12px;padding:10px 14px;background:#fdf0c2;border:2px solid var(--gold);
+    font-size:13px;color:var(--navy-2);
+  }
+  #chainMapGroups.compare-mode .chain-chip{border-style:dashed;}
+  .chain-chip.compare-selected{background:var(--navy-2);color:#fff;border-color:var(--line);font-weight:400;}
+
+  main{max-width:1440px;margin:0 auto;padding:24px 24px 80px;}
+
+  .toc-bar{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow-sm);
+    padding:14px 18px;margin:20px 0;
+  }
+  .toc-bar-label{font-family:var(--px);font-size:10px;color:var(--navy);flex-shrink:0;margin-right:4px;}
+  .toc-pill{
+    display:inline-flex;align-items:baseline;gap:6px;font-size:12px;color:var(--navy-2);
+    background:var(--paper);border:2px solid var(--line);padding:6px 12px;text-decoration:none;white-space:nowrap;
+  }
+  /* 原本數字直接用--gold文字色，在.toc-pill的米色底(--paper)上對比就偏弱，
+     hover時背景又剛好也換成--gold，數字直接融進背景裡消失——改成給數字自己
+     一個實色小徽章（深藍底、白字），不依賴繼承父層顏色，預設與hover狀態都
+     維持清楚可讀。 */
+  .toc-pill b{font-family:var(--px);font-size:9px;color:#fff;background:var(--navy-2);padding:2px 5px;border-radius:2px;}
+  .toc-pill:hover{background:var(--gold);color:#231a06;}
+
+  .report-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-top:20px;}
+  .report-col{min-width:0;display:flex;flex-direction:column;gap:20px;}
+  .report-col > section.block{margin-bottom:0;}
+  @media (max-width:900px){ .report-cols{grid-template-columns:1fr;} }
+  .section-anchor{scroll-margin-top:16px;}
+
+  .hint-box{
+    background:var(--card);border:2.5px solid var(--line);box-shadow:var(--shadow-sm);
+    padding:18px 20px;font-size:14px;color:var(--ink-soft);
+  }
+  .hint-box b{color:var(--ink);}
+
+  .notfound{
+    background:#fff;border:3px dashed var(--line);padding:22px;text-align:center;
+  }
+  .notfound h3{margin-top:0;font-family:var(--px);font-size:14px;color:var(--navy);}
+
+  .report{display:none;}
+  .report.active{display:block;}
+
+  .report-head{
+    background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);
+    padding:22px 24px;margin-bottom:20px;
+  }
+  .rh-btn{
+    padding:7px 14px;border:2.5px solid var(--line);background:transparent;
+    color:var(--navy-2);font-size:10px;font-weight:400;text-transform:uppercase;
+  }
+  .rh-btn:hover{background:var(--paper);border-color:var(--gold);}
+  .rh-btn.urgent{border-color:var(--red);color:var(--red);background:var(--red-bg);}
+  .rh-btn.urgent:hover{background:var(--red);color:#fff;}
+  .rh-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .company-icon{
+    flex:0 0 auto;width:38px;height:38px;background:var(--paper);border:2.5px solid var(--line);
+    box-shadow:var(--shadow-xs);padding:4px;image-rendering:pixelated;
+  }
+  .company-icon svg{width:100%;height:100%;image-rendering:pixelated;display:block;}
+  .report-head .rh-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .report-head h2{margin:0;font-family:var(--px);font-size:18px;font-weight:400;color:var(--navy);}
+  .code-badge{
+    background:var(--navy);color:#fff;font-family:var(--px);font-size:11px;padding:5px 10px;font-weight:400;border:2px solid var(--line);
+  }
+  .industry-badge{
+    background:#eef1f5;color:var(--navy-2);font-family:var(--px);font-size:9px;padding:5px 10px;border:1.5px solid var(--line);
+  }
+  /* 台股／美股一律用綠／紅區分（神奇寶貝紅版／綠版配色），跟現有--red/--green
+     沿用同一組色票，維持整體像素風格一致。 */
+  .market-badge{
+    font-family:var(--px);font-size:9px;padding:5px 10px;font-weight:400;border:1.5px solid var(--line);
+  }
+  .market-badge.tw{background:var(--red-bg);color:var(--red);border-color:var(--red);}
+  .market-badge.us{background:var(--green-bg);color:var(--green);border-color:var(--green);}
+  .date-badge{
+    color:var(--ink-soft);font-size:12px;padding:3px 2px;
+  }
+  .freshness-badge{
+    font-family:var(--px);font-size:9px;padding:5px 10px;font-weight:400;border:1.5px solid var(--line);
+  }
+  .freshness-badge.aging{background:var(--amber-bg);color:var(--amber);}
+  .freshness-badge.stale{background:var(--red-bg);color:var(--red);}
+  .freshness-badge.new{background:var(--gold);color:#231a06;}
+  .moat-line{
+    margin:16px 0 0;padding:12px 16px;border-left:5px solid var(--gold);border:2px solid var(--line);border-left-width:6px;
+    background:#fdf0c2;
+    font-size:15px;font-weight:700;color:var(--navy-2);line-height:1.6;
+  }
+  .kv-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;margin-top:16px;
+  }
+  .kv{background:var(--paper);border:2px solid var(--line);padding:9px 12px;}
+  .kv .k{font-size:9.5px;font-family:var(--px);color:var(--ink-soft);}
+  .kv .v{font-size:15px;font-family:var(--px);font-weight:400;color:var(--navy);margin-top:6px;}
+
+  section.block{
+    background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);
+    padding:22px 24px;margin-bottom:20px;
+  }
+  section.block h3{
+    margin:0 0 16px;font-family:var(--px);font-size:12.5px;font-weight:400;color:var(--navy);
+    border-left:6px solid var(--gold);padding-left:12px;line-height:1.8;
+  }
+  .lead-p{margin:10px 0;font-size:14.5px;}
+  .lead-p b{color:var(--navy-2);}
+
+  .chain-step{
+    background:var(--paper);border:2px solid var(--line);border-left:5px solid var(--navy-2);
+    padding:12px 14px;margin:10px 0;font-size:14px;
+  }
+  .chain-step .lbl{font-size:10px;font-family:var(--px);font-weight:400;color:var(--navy-2);margin-bottom:6px;}
+  .chain-step.risk{border-left-color:var(--amber);background:var(--amber-bg);}
+  .chain-step.risk .lbl{color:var(--amber);}
+
+  table.fin{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;margin:14px 0;border:2px solid var(--line);}
+  table.fin th,table.fin td{padding:9px 10px;text-align:center;border-bottom:2px solid var(--line);border-right:2px solid var(--line);}
+  table.fin th:last-child,table.fin td:last-child{border-right:none;}
+  table.fin tr:last-child td{border-bottom:none;}
+  table.fin th{background:var(--navy);color:#fff;font-weight:400;font-family:var(--px);font-size:9.5px;}
+  table.fin td:first-child,table.fin th:first-child{text-align:left;}
+  table.fin tr:last-child td{font-weight:700;background:#f2eed7;}
+
+  .narrative{margin:16px 0;padding:14px 16px;background:var(--paper);border:2px solid var(--line);}
+  .narrative .tag-line{display:inline-block;font-size:9.5px;font-family:var(--px);font-weight:400;color:#fff;background:var(--navy-2);padding:5px 9px;margin-bottom:10px;border:1.5px solid var(--line);}
+  .narrative p{margin:6px 0;font-size:14px;}
+  .narrative .note{font-size:12.5px;color:var(--ink-soft);font-style:italic;}
+
+  .val-disclaimer{
+    font-size:12.5px;color:var(--amber);background:var(--amber-bg);border:2px solid var(--line);
+    padding:10px 14px;margin-bottom:16px;line-height:1.6;
+  }
+  .val-price-row{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;
+    padding-bottom:12px;border-bottom:2px dashed var(--line-soft);
+  }
+  .val-price-row .cp-label{font-size:12.5px;color:var(--ink-soft);}
+  .val-price-cluster{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .val-price-row .cp-value{font-family:var(--px);font-size:18px;font-weight:400;color:var(--navy);}
+  .val-price-row .cp-value.live{color:var(--green);}
+  .cp-live-tag{font-family:var(--px);font-size:8px;padding:3px 7px;border:1.5px solid var(--green);background:var(--green-bg);color:var(--green);}
+
+  .twse-verify{position:relative;display:inline-block;}
+  .twse-verify-btn{
+    font-family:var(--px);font-size:9px;padding:6px 10px;border:2px solid var(--line);
+    background:var(--navy-2);color:#fff;cursor:pointer;
+  }
+  .twse-verify-btn:hover{background:var(--navy);}
+  .twse-verify-btn[disabled]{cursor:progress;opacity:.7;}
+  .twse-verify-btn.done{background:var(--card);color:var(--navy-2);}
+  .twse-verify-btn.error{background:var(--red-bg);color:var(--red);border-color:var(--red);}
+  .twse-popover{
+    display:none;position:absolute;top:calc(100% + 9px);right:0;z-index:80;width:min(360px,80vw);
+    background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);padding:14px 16px;cursor:default;
+  }
+  .twse-verify:hover .twse-popover,.twse-verify:focus-within .twse-popover{display:block;}
+  .twse-popover::before{
+    content:"";position:absolute;top:-9px;right:16px;width:0;height:0;
+    border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid var(--line);
+  }
+  .twse-popover-title{font-family:var(--px);font-size:9px;color:var(--navy);margin-bottom:10px;}
+  .twse-popover table.fin{margin:0;font-size:12px;}
+  .twse-popover table.fin td{padding:6px 8px;}
+
+  .price-stats{display:inline-flex;}
+  .price-stats-trigger{
+    font-family:var(--px);font-size:9px;padding:6px 10px;border:2px solid var(--line);
+    background:var(--paper);color:var(--navy-2);cursor:pointer;
+  }
+  .price-stats-trigger:hover{background:var(--gold);color:#231a06;}
+  .price-stats-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .pstat{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--paper);border:2px solid var(--line);padding:5px 9px;}
+  .pstat.pstat-latest{background:var(--gold);}
+  .pstat-k{font-size:8.5px;color:var(--ink-soft);}
+  .pstat.pstat-latest .pstat-k{color:#3a2a06;}
+  .pstat-v{font-family:var(--px);font-size:11px;color:var(--navy);}
+  .pstat.pstat-latest .pstat-v{color:#231a06;}
+  .price-stats-asof{font-size:11px;color:var(--ink-soft);}
+  .ff-row{margin:14px 0;}
+  .ff-row .ff-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+  .ff-row .ff-model{font-weight:600;color:var(--navy-2);}
+  .ff-row .ff-price{font-weight:700;font-family:var(--px);font-size:11px;color:var(--navy);}
+  .ff-row .ff-upside{font-size:9.5px;font-family:var(--px);padding:3px 8px;border:1.5px solid var(--line);}
+  .ff-row .ff-upside.up{background:var(--red-bg);color:var(--red);}
+  .ff-row .ff-upside.down{background:var(--green-bg);color:var(--green);}
+  .ff-bar-track{position:relative;height:14px;background:var(--paper);border:2px solid var(--line);overflow:visible;}
+  .ff-bar-fill{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(90deg,var(--gold) 0 6px,#d99a00 6px 12px);}
+  .ff-bar-marker{position:absolute;top:-5px;width:3px;height:24px;background:var(--navy);}
+  .ff-summary-line{font-size:13px;color:var(--ink-soft);margin-top:12px;}
+  .val-assumptions{list-style:none;margin:0;padding:0;}
+  .val-assumptions li{
+    font-size:13.5px;padding:9px 0 9px 20px;border-bottom:1.5px solid var(--line-soft);position:relative;line-height:1.6;
+  }
+  .val-assumptions li:last-child{border-bottom:none;}
+  .val-assumptions li::before{content:"▸";position:absolute;left:0;color:var(--gold);font-weight:700;}
+  table.sens{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;margin:12px 0;border:2px solid var(--line);}
+  table.sens th,table.sens td{padding:6px 7px;text-align:center;border:1.5px solid var(--line);}
+  table.sens th{background:var(--navy-2);color:#fff;font-weight:400;font-family:var(--px);font-size:8.5px;}
+  table.sens td:first-child,table.sens th:first-child{background:#eef1f5;font-weight:700;color:var(--navy-2);}
+  table.sens td.center-cell{background:#fdf0c2;font-weight:700;color:var(--navy);}
+  .risk-list{margin:0;padding:0;list-style:none;}
+  .risk-list li{
+    background:var(--amber-bg);border:1.5px solid var(--line);border-left:5px solid var(--amber);
+    padding:10px 12px;margin:8px 0;font-size:13.5px;line-height:1.6;
+  }
+  .val-subhead{font-size:10.5px;font-family:var(--px);font-weight:400;color:var(--navy-2);margin:20px 0 10px;display:flex;align-items:center;gap:8px;}
+  .info-icon{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:17px;height:17px;background:#eef1f5;color:var(--navy-2);border:1.5px solid var(--line);
+    font-size:10px;font-weight:700;font-style:normal;cursor:pointer;flex-shrink:0;
+  }
+  .info-icon:hover{background:var(--gold);color:#231a06;}
+
+  .peer-hint{
+    font-size:12.5px;color:var(--ink-soft);background:#e4e0cb;border:2px solid var(--line);
+    padding:8px 12px;margin-bottom:14px;
+  }
+  table.peer{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;margin:12px 0;border:2px solid var(--line);}
+  /* min-width逼表格在欄位多時「真的」超出容器寬度，配合外層.peer-table-wrap的
+     overflow:auto，讓它變成橫向捲動，而不是每個欄位被硬擠到只剩窄窄一條、
+     文字瘋狂換行——原本只有overflow-x:auto、table卻是width:100%，兩者疊在一起
+     其實從來沒有機會真的觸發捲動，欄位一樣會被壓扁。 */
+  table.peer th,table.peer td{padding:10px 11px;text-align:left;border:1.5px solid var(--line);vertical-align:top;line-height:1.6;min-width:130px;}
+  .peer-table-wrap{
+    overflow:auto;resize:both;max-width:100%;min-width:280px;min-height:160px;max-height:900px;
+    border:1.5px solid var(--line-soft);padding:2px;
+  }
+  .peer-resize-hint{font-size:11px;color:var(--ink-soft);margin:6px 0 0;}
+
+  /* 多空觀點：沿用這個App既有的漲跌配色慣例（K線／同儕比較的price upside
+     已經是紅漲綠跌，跟台股市場習慣一致），多方＝紅、空方＝綠，不是這次
+     另外新創的顏色系統。 */
+  .bullbear-group{margin-bottom:14px;}
+  .bullbear-group:last-child{margin-bottom:0;}
+  .bullbear-label{font-family:var(--px);font-size:10px;padding:5px 10px;display:inline-block;margin-bottom:8px;border:1.5px solid var(--line);}
+  .bullbear-label.bull{background:var(--red-bg);color:var(--red);border-color:var(--red);}
+  .bullbear-label.bear{background:var(--green-bg);color:var(--green);border-color:var(--green);}
+  .bullbear-source{margin-top:6px;font-size:11.5px;color:var(--ink-soft);}
+  table.peer th{background:var(--navy);color:#fff;font-weight:400;font-family:var(--px);font-size:9px;}
+  table.peer th.self-col{background:var(--gold);color:#231a06;}
+  table.peer td.self-col{background:#fdf0c2;font-weight:600;}
+  table.peer td:first-child{background:#eef1f5;font-weight:700;color:var(--navy-2);white-space:nowrap;}
+  .peer-takeaway{
+    margin-top:14px;padding:14px 16px;background:var(--paper);border:2px solid var(--line);border-left:5px solid var(--navy-2);
+    font-size:14px;line-height:1.7;
+  }
+  .peer-takeaway .lbl{display:block;font-size:9.5px;font-family:var(--px);font-weight:400;color:var(--navy-2);margin-bottom:8px;}
+
+  .glossary-hint{
+    font-size:12.5px;color:var(--ink-soft);background:#e4e0cb;border:2px solid var(--line);
+    padding:8px 12px;margin-bottom:14px;
+  }
+  .term-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .term-chip{
+    background:#eef1f5;color:var(--navy-2);font-size:11px;font-family:var(--px);padding:6px 10px;cursor:pointer;
+    border:1.5px solid var(--line);
+  }
+  .term-chip:hover{background:var(--navy-2);color:#fff;}
+
+  .sources{font-size:12.5px;color:var(--ink-soft);}
+  .disclaimer{
+    margin-top:10px;font-size:12px;color:var(--ink-soft);background:var(--paper);
+    border:2px solid var(--line);padding:10px 12px;
+  }
+
+  #popup{
+    position:absolute;z-index:999;max-width:320px;background:#14162a;color:#f2efe6;
+    border:3px solid var(--gold);padding:14px 16px;font-size:13px;box-shadow:5px 5px 0 rgba(0,0,0,.4);
+    display:none;
+  }
+  #popup .pt{font-family:var(--px);font-weight:400;color:var(--gold);margin-bottom:10px;font-size:10.5px;}
+  #popup .pl{margin:0 0 8px;}
+  #popup .pl b{color:#9fd3ff;font-size:11px;}
+  #popup .pa{margin:0;color:#c9cdd6;}
+  #popup .pa b{color:#c9a86b;font-size:11px;}
+  #popup .close{position:absolute;top:8px;right:10px;cursor:pointer;color:#8b909c;font-size:14px;}
+
+  #lookupPopup{
+    position:absolute;z-index:999;max-width:280px;background:#14162a;color:#f2efe6;
+    border:3px solid var(--gold);padding:14px 16px;font-size:12.5px;box-shadow:5px 5px 0 rgba(0,0,0,.4);
+    display:none;
+  }
+  #lookupPopup .close{position:absolute;top:8px;right:10px;cursor:pointer;color:#8b909c;font-size:14px;}
+
+  footer.app-foot{max-width:1440px;margin:0 auto;padding:0 24px 40px;font-size:12px;color:var(--ink-soft);text-align:center;}
+  mark.hl{background:var(--gold);color:#14162a;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="top-row">
+      <div class="brand">
+        <h1>研究報告 App</h1>
+        <div class="demo-tag-wrap" tabindex="0">
+          <span class="tag">Prototype Demo</span>
+          <div class="demo-tag-popover">
+            這是產品原型 demo（可在上方「概念股圖鑑」或「AI伺服器供應鏈地圖」點選公司名稱查看報告），報告依循 <b>tw-stock-research-report skill</b> 的研究方法與固定結構撰寫，估值模型依循 <b>stock-valuation-model skill</b> 計算，同儕比較整理各公司主要競爭對手在產品類別、客戶分布等構面的差異。
+            <br><br>
+            <b>新功能</b>：報告內「股價推算模型」區塊可即時向TWSE／TPEx查證最新公司登記資料、單季財務與均價，並自動算出5/10/20/150日均線，免設置免安裝、點一下就查。
+            <br><br>
+            小技巧：在報告內文中<b>反白選取</b>任何專有名詞（如 HVDC、CoWoS、本益比），會彈出白話＋進階解釋卡片；如果小百科裡還沒有這個詞，會改成跳出「查詢並加入」按鈕，背景呼叫本機Claude Code即時查詢，查完提醒重新整理頁面即可看到解釋。
+          </div>
+        </div>
+      </div>
+      <div class="header-stats" id="headerStats">
+        <div class="hstat">
+          <div class="hstat-value"><span id="stockCount">32</span>檔</div>
+          <div class="hstat-label">收錄股票</div>
+        </div>
+      </div>
+    </div>
+    <div class="top-sub">輸入股票代碼或公司名稱，查看研究報告 — 見解導向財務敘事 × 產業鏈定位 × 反白查名詞小百科</div>
+    <div class="search-row">
+      <div class="search-input-wrap">
+        <input id="searchInput" type="text" placeholder="輸入股票代碼或公司名稱，例如 2330 或 台積電" autocomplete="off">
+        <div id="searchSuggestions" class="search-suggestions"></div>
+      </div>
+      <button id="searchBtn">查詢</button>
+      <button id="homeBtnHeader" onclick="goHome()" style="display:none;">← 回主頁</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="marketFilterBar" class="market-filter-bar">
+    <span class="market-filter-label">顯示：</span>
+    <button class="market-filter-btn active" data-market="all" onclick="setMarketFilter('all')">全部</button>
+    <button class="market-filter-btn" data-market="new" onclick="setMarketFilter('new')">🆕 新增</button>
+    <button class="market-filter-btn" data-market="TW" onclick="setMarketFilter('TW')">台股</button>
+    <button class="market-filter-btn" data-market="US" onclick="setMarketFilter('US')">美股</button>
+  </div>
+
+  <div id="conceptGuideBox" class="hint-box concept-guide">
+    <div class="chain-map-head">
+      <div><b>📖 概念股圖鑑</b>　<span style="color:var(--ink-soft);font-size:12.5px;">不確定一家公司屬於哪個概念股題材？從這裡查——每張圖鑑卡是一種概念股，點公司名稱可直接看報告。</span></div>
+      <button id="conceptGuideToggleBtn" class="rh-btn" onclick="toggleConceptGuide()">▾ 展開圖鑑</button>
+    </div>
+    <div id="conceptGuideGrid" class="concept-guide-grid" style="display:none;"></div>
+  </div>
+
+  <div id="chainMapBox" class="hint-box chain-map">
+    <div class="chain-map-head">
+      <div><b>AI伺服器供應鏈地圖</b>　<span style="color:var(--ink-soft);font-size:12.5px;">依公司在AI伺服器供應鏈裡的角色分類，點擊公司名稱可直接查看報告（分類為概略歸納，部分公司業務橫跨多個環節，僅取其最主要角色歸類）</span></div>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button id="chainMapToggleBtn" class="rh-btn" onclick="toggleChainMap()">▴ 收合地圖</button>
+        <button id="compareToggleBtn" class="rh-btn" onclick="toggleCompareMode()">🔍 比較公司</button>
+      </div>
+    </div>
+    <div id="compareBar" class="compare-bar" style="display:none;">
+      <span id="compareBarList">點選最多3家公司來比較</span>
+      <button onclick="runCompare()" id="compareBarBtn" class="rh-btn" disabled>開始比較</button>
+      <button onclick="clearCompareSelection()" class="rh-btn">清除</button>
+    </div>
+    <div id="chainMapGroups" style="margin-top:14px;"></div>
+  </div>
+
+  <div id="notFound" class="notfound" style="display:none;">
+    <h3>目前資料庫尚未收錄這檔股票</h3>
+    <p style="color:var(--ink-soft);font-size:14px;">Demo 版本固定收錄股票（可在下方「AI伺服器供應鏈地圖」點選查看），如果你輸入的是台股代碼（4-6碼數字，例如2330）或美股ticker（1-6碼英文字母，例如NVDA、GM），可以按「研究並加入」讓本機的Claude Code背景研究並直接寫入資料庫；台股代碼另外可以快速向TWSE官方OpenAPI核對原始資料。</p>
+    <div id="notFoundUsVerify" style="margin-top:14px;"></div>
+    <div id="notFoundGenerate" style="margin-top:14px;"></div>
+    <div id="notFoundTwse" style="margin-top:14px;"></div>
+  </div>
+
+  <div id="reportsRoot"></div>
+</main>
+
+<!-- 常駐在viewport右下角、跨頁面導覽不會被清掉的背景研究進度小視窗（見
+     ensureFloatingWidget／renderResearchTargets）——特地放在main外面，
+     這樣goHome()/showReport()重建reportsRoot的innerHTML時不會波及到這裡。 -->
+<div id="floatingResearchWidgets" class="floating-research-widgets"></div>
+
+<footer class="app-foot">
+  本App所有報告內容基於公開資料整理與分析撰寫，可能包含推論與待驗證的假設，僅供產品功能展示參考，不構成任何投資建議。投資人應自行查證並判斷，並自負投資風險。
+</footer>
+
+<div id="popup">
+  <span class="close" onclick="closePopup()">✕</span>
+  <div class="pt" id="popTitle"></div>
+  <p class="pl"><b>白話　</b><br><span id="popPlain"></span></p>
+  <p class="pa"><b>進階　</b><br><span id="popAdv"></span></p>
+</div>
+
+<!-- 反白選取到「名詞小百科裡沒有」的詞彙時顯示：查詢中/完成/失敗都在
+     這個popup裡切換內容，見renderLookupPopup。 -->
+<div id="lookupPopup">
+  <span class="close" onclick="closeLookupPopup()">✕</span>
+  <div id="lookupPopupBody"></div>
+</div>
+
+<script>window.REPORTS = {}; window.VALUATIONS = {};</script>
+<script src="data/glossary.js"></script>
+<!-- STOCK_DATA:BEGIN 新股票研究完成後，把新的兩行<script src>加在 STOCK_DATA:END 這一行的正上方 -->
+<script src="data/reports/2027.js"></script>
+<script src="data/valuations/2027.js"></script>
+<script src="data/reports/2301.js"></script>
+<script src="data/valuations/2301.js"></script>
+<script src="data/reports/2308.js"></script>
+<script src="data/valuations/2308.js"></script>
+<script src="data/reports/2317.js"></script>
+<script src="data/valuations/2317.js"></script>
+<script src="data/reports/2330.js"></script>
+<script src="data/valuations/2330.js"></script>
+<script src="data/reports/2345.js"></script>
+<script src="data/valuations/2345.js"></script>
+<script src="data/reports/2382.js"></script>
+<script src="data/valuations/2382.js"></script>
+<script src="data/reports/2383.js"></script>
+<script src="data/valuations/2383.js"></script>
+<script src="data/reports/2412.js"></script>
+<script src="data/valuations/2412.js"></script>
+<script src="data/reports/2449.js"></script>
+<script src="data/valuations/2449.js"></script>
+<script src="data/reports/2454.js"></script>
+<script src="data/valuations/2454.js"></script>
+<script src="data/reports/2467.js"></script>
+<script src="data/valuations/2467.js"></script>
+<script src="data/reports/2546.js"></script>
+<script src="data/valuations/2546.js"></script>
+<script src="data/reports/2707.js"></script>
+<script src="data/valuations/2707.js"></script>
+<script src="data/reports/2881.js"></script>
+<script src="data/valuations/2881.js"></script>
+<script src="data/reports/3030.js"></script>
+<script src="data/valuations/3030.js"></script>
+<script src="data/reports/3034.js"></script>
+<script src="data/valuations/3034.js"></script>
+<script src="data/reports/3105.js"></script>
+<script src="data/valuations/3105.js"></script>
+<script src="data/reports/3147.js"></script>
+<script src="data/valuations/3147.js"></script>
+<script src="data/reports/3587.js"></script>
+<script src="data/valuations/3587.js"></script>
+<script src="data/reports/3711.js"></script>
+<script src="data/valuations/3711.js"></script>
+<script src="data/reports/4991.js"></script>
+<script src="data/valuations/4991.js"></script>
+<script src="data/reports/6138.js"></script>
+<script src="data/valuations/6138.js"></script>
+<script src="data/reports/6196.js"></script>
+<script src="data/valuations/6196.js"></script>
+<script src="data/reports/6197.js"></script>
+<script src="data/valuations/6197.js"></script>
+<script src="data/reports/6257.js"></script>
+<script src="data/valuations/6257.js"></script>
+<script src="data/reports/6664.js"></script>
+<script src="data/valuations/6664.js"></script>
+<script src="data/reports/6667.js"></script>
+<script src="data/valuations/6667.js"></script>
+<script src="data/reports/6719.js"></script>
+<script src="data/valuations/6719.js"></script>
+<script src="data/reports/7788.js"></script>
+<script src="data/valuations/7788.js"></script>
+<script src="data/reports/8039.js"></script>
+<script src="data/valuations/8039.js"></script>
+<script src="data/reports/8043.js"></script>
+<script src="data/valuations/8043.js"></script>
+<script src="data/reports/8150.js"></script>
+<script src="data/valuations/8150.js"></script>
+<script src="data/reports/8155.js"></script>
+<script src="data/valuations/8155.js"></script>
+<script src="data/reports/5536.js"></script>
+<script src="data/valuations/5536.js"></script>
+<script src="data/reports/3450.js"></script>
+  <script src="data/valuations/3450.js"></script>
+  <script src="data/reports/2337.js"></script>
+    <script src="data/valuations/2337.js"></script>
+    <script src="data/reports/2316.js"></script>
+    <script src="data/valuations/2316.js"></script>
+    <script src="data/reports/2455.js"></script>
+    <script src="data/valuations/2455.js"></script>
+    <script src="data/reports/4971.js"></script>
+    <script src="data/valuations/4971.js"></script>
+    <script src="data/reports/2049.js"></script>
+    <script src="data/valuations/2049.js"></script>
+    <script src="data/reports/1597.js"></script>
+    <script src="data/valuations/1597.js"></script>
+    <script src="data/reports/1605.js"></script>
+    <script src="data/valuations/1605.js"></script>
+    <script src="data/reports/8358.js"></script>
+    <script src="data/valuations/8358.js"></script>
+    <script src="data/reports/3167.js"></script>
+    <script src="data/valuations/3167.js"></script>
+    <script src="data/reports/2421.js"></script>
+    <script src="data/valuations/2421.js"></script>
+    <script src="data/reports/3006.js"></script>
+    <script src="data/valuations/3006.js"></script>
+    <script src="data/reports/6214.js"></script>
+<script src="data/valuations/6214.js"></script>
+<script src="data/reports/6829.js"></script>
+    <script src="data/valuations/6829.js"></script>
+    <script src="data/reports/6753.js"></script>
+    <script src="data/valuations/6753.js"></script>
+    <script src="data/reports/4576.js"></script>
+    <script src="data/valuations/4576.js"></script>
+    <script src="data/reports/2344.js"></script>
+<script src="data/valuations/2344.js"></script>
+<script src="data/reports/2360.js"></script>
+<script src="data/valuations/2360.js"></script>
+<script src="data/reports/6223.js"></script>
+    <script src="data/valuations/6223.js"></script>
+    <script src="data/reports/3264.js"></script>
+    <script src="data/valuations/3264.js"></script>
+    <script src="data/reports/5475.js"></script>
+    <script src="data/valuations/5475.js"></script>
+    <script src="data/reports/1802.js"></script>
+    <script src="data/valuations/1802.js"></script>
+    <script src="data/reports/5371.js"></script>
+    <script src="data/valuations/5371.js"></script>
+    <script src="data/reports/3532.js"></script>
+    <script src="data/valuations/3532.js"></script>
+      <script src="data/reports/1815.js"></script>
+  <script src="data/valuations/1815.js"></script>
+<script src="data/reports/3211.js"></script>
+<script src="data/valuations/3211.js"></script>
+<script src="data/reports/8299.js"></script>
+<script src="data/valuations/8299.js"></script>
+<script src="data/reports/4931.js"></script>
+<script src="data/valuations/4931.js"></script>
+<script src="data/reports/6584.js"></script>
+<script src="data/valuations/6584.js"></script>
+<script src="data/reports/NVDA.js"></script>
+<script src="data/valuations/NVDA.js"></script>
+<script src="data/reports/VSH.js"></script>
+    <script src="data/valuations/VSH.js"></script>
+<script src="data/reports/1215.js"></script>
+<script src="data/valuations/1215.js"></script>
+<script src="data/reports/6691.js"></script>
+<script src="data/valuations/6691.js"></script>
+<script src="data/reports/2451.js"></script>
+<script src="data/valuations/2451.js"></script>
+<script src="data/reports/MDT.js"></script>
+<script src="data/valuations/MDT.js"></script>
+<script src="data/reports/3265.js"></script>
+<script src="data/valuations/3265.js"></script>
+<script src="data/reports/8046.js"></script>
+<script src="data/valuations/8046.js"></script>
+<script src="data/reports/3189.js"></script>
+<script src="data/valuations/3189.js"></script>
+<script src="data/reports/3362.js"></script>
+    <script src="data/valuations/3362.js"></script>
+    <script src="data/reports/3653.js"></script>
+    <script src="data/valuations/3653.js"></script>
+    <script src="data/reports/3234.js"></script>
+    <script src="data/valuations/3234.js"></script>
+    <script src="data/reports/1583.js"></script>
+    <script src="data/valuations/1583.js"></script>
+    <script src="data/reports/1519.js"></script>
+    <script src="data/valuations/1519.js"></script>
+    <script src="data/reports/3558.js"></script>
+    <script src="data/valuations/3558.js"></script>
+    <script src="data/reports/3260.js"></script>
+    <script src="data/valuations/3260.js"></script>
+    <script src="data/reports/8111.js"></script>
+    <script src="data/valuations/8111.js"></script>
+    <script src="data/reports/5403.js"></script>
+    <script src="data/valuations/5403.js"></script>
+    <script src="data/reports/3665.js"></script>
+    <script src="data/valuations/3665.js"></script>
+    <script src="data/reports/4942.js"></script>
+    <script src="data/valuations/4942.js"></script>
+    <!-- STOCK_DATA:END -->
+<script>
+
+/* =========================================================
+   渲染
+========================================================= */
+const root = document.getElementById('reportsRoot');
+const notFound = document.getElementById('notFound');
+
+function fmtChain(step){
+  return `<div class="chain-step${step.risk?' risk':''}"><div class="lbl">${step.lbl}</div>${step.text}</div>`;
+}
+
+// generatedAt是伺服器在研究完成當下蓋章寫入的ISO時間（見claude-code-research-server
+// 的stampGeneratedAt），這裡固定轉成台灣時間顯示，不受使用者瀏覽器所在時區影響。
+function fmtGeneratedAt(iso){
+  if(!iso) return '';
+  try{
+    const d = new Date(iso);
+    if(Number.isNaN(d.getTime())) return '';
+    return new Intl.DateTimeFormat('zh-TW', {
+      timeZone:'Asia/Taipei', year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hour12:false
+    }).format(d);
+  }catch(e){ return ''; }
+}
+
+// 資料新鮮度提醒：台股財報通常每季（約90天）更新一次，用「距離上次生成過了幾天」
+// 概略判斷這份報告的數字可能有多過時。門檻本身是概略經驗值，不是精確的財報公告日，
+// 純粹用來提醒「該去按重新研究了」，不是嚴謹的資料異動偵測。
+const FRESHNESS_AGING_DAYS = 45;
+const FRESHNESS_STALE_DAYS = 90;
+
+function daysSinceGenerated(iso){
+  if(!iso) return null;
+  const d = new Date(iso);
+  if(Number.isNaN(d.getTime())) return null;
+  return Math.floor((Date.now() - d.getTime()) / 86400000);
+}
+
+function freshnessBadgeHtml(iso){
+  const days = daysSinceGenerated(iso);
+  if(days === null || days < FRESHNESS_AGING_DAYS) return '';
+  if(days < FRESHNESS_STALE_DAYS){
+    return `<span class="freshness-badge aging">⚠️ 已 ${days} 天未更新，可能有較新的財報或股價</span>`;
+  }
+  return `<span class="freshness-badge stale">⚠️ 已超過3個月未更新（${days}天），數字可能已過時，建議按下方「重新研究」更新</span>`;
+}
+
+function isStale(iso){
+  const days = daysSinceGenerated(iso);
+  return days !== null && days >= FRESHNESS_STALE_DAYS;
+}
+
+// 「NEW」標記：generatedAt在過去12小時內都算——這個欄位無論是全新股票的
+// 首次生成、還是既有股票按「重新研究並更新」，伺服器都會蓋上最新時間戳記
+// （見server.js的stampGeneratedAt），所以剛更新過的舊報告也會一併標成NEW，
+// 這是預期行為，不只是全新股票才算。
+const RECENT_HOURS = 12;
+function hoursSinceGenerated(iso){
+  if(!iso) return null;
+  const d = new Date(iso);
+  if(Number.isNaN(d.getTime())) return null;
+  return (Date.now() - d.getTime()) / 3600000;
+}
+function isRecentlyGenerated(iso){
+  const h = hoursSinceGenerated(iso);
+  return h !== null && h < RECENT_HOURS;
+}
+
+function fmtNarrative(n){
+  return `<div class="narrative"><span class="tag-line">${n.tag}</span><p>${n.text}</p></div>`;
+}
+
+// market缺省一律視為"TW"（向下相容沒有這個欄位的舊報告）。
+function currencyUnit(market){
+  return market === 'US' ? 'USD' : '元';
+}
+
+// 美股公司名稱buildPrompt／skill抓的是正式全名（NVIDIA Corporation），台股
+// r.name一直以來寫的就是「大家平常怎麼稱呼」的簡稱（台積電，不是台灣積體
+// 電路製造股份有限公司）——這裡讓美股顯示時也去掉常見的公司法律字尾，比照
+// 辦理。只影響顯示，r.name本身（含完整法定名稱）不變。
+function shortenUsName(name){
+  if(!name) return name;
+  const stripped = name.replace(/,?\s+(Corporation|Corp\.?|Incorporated|Inc\.?|Company|Co\.?|Holdings?|Limited|Ltd\.?|plc|PLC|LLC|L\.L\.C\.|Group)\.?\s*$/i, '').trim();
+  return stripped || name;
+}
+
+function displayCompanyName(r){
+  if(!r) return '';
+  return r.market === 'US' ? shortenUsName(r.name) : r.name;
+}
+
+// 台股／美股一律用綠／紅區分（神奇寶貝紅版／綠版配色）。
+function marketBadgeHtml(market){
+  const isUS = market === 'US';
+  return `<span class="market-badge ${isUS?'us':'tw'}">${isUS?'US':'TW'}</span>`;
+}
+
+function fmtGrowthDriverItem(item){
+  return `<div class="chain-step"><div class="lbl">${item.driver}</div><p class="lead-p"><b>公司怎麼說：</b>${item.why}</p><p class="lead-p"><b>目前進展：</b>${item.progress}</p></div>`;
+}
+
+function fmtTechnical(t){
+  return `<div class="narrative"><span class="tag-line">${t.pattern}</span><p>${t.tendency}</p><p class="note">${t.note}</p></div>`;
+}
+
+function fmtBullBearItem(item){
+  return `<div class="chain-step"><p class="lead-p" style="margin:0;">${item.point}</p>${item.source ? `<div class="bullbear-source">來源：${item.source}</div>` : ''}</div>`;
+}
+
+function fmtValuationSection(code, market){
+  const v = VALUATIONS[code];
+  if(!v) return '';
+  const unit = currencyUnit(market);
+  const isUS = market === 'US';
+
+  const allVals = v.summary.map(s=>s.price).concat([v.currentPrice]);
+  const lo = Math.min(...allVals) * 0.95;
+  const hi = Math.max(...allVals) * 1.05;
+  const span = hi - lo;
+  const pct = (x)=> ((x - lo) / span) * 100;
+
+  const ffRows = v.summary.map((s,i)=>{
+    const upClass = s.upside >= 0 ? 'up' : 'down';
+    const barLeft = 0;
+    const barWidth = pct(s.price);
+    const markerLeft = pct(v.currentPrice);
+    return `
+    <div class="ff-row">
+      <div class="ff-top">
+        <span class="ff-model">${s.model}</span>
+        <span class="ff-price">${s.price.toLocaleString()} ${unit} <span class="ff-upside ${upClass}" id="ffUpside-${code}-${i}">相對現價 ${s.upside>0?'+':''}${s.upside}%</span></span>
+      </div>
+      <div class="ff-bar-track">
+        <div class="ff-bar-fill" style="left:${barLeft}%;width:${barWidth}%;"></div>
+        <div class="ff-bar-marker" id="ffMarker-${code}-${i}" style="left:${markerLeft}%;" title="目前市價 ${v.currentPrice}"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const notes = v.notes.map(n=>`<li>${n}</li>`).join('');
+  const risks = v.risks.map(r=>`<li>${r}</li>`).join('');
+
+  let sensHtml = '';
+  if(v.sensitivity){
+    const headerRow = `<th>WACC ＼ 終值成長率</th>` + v.sensitivity.gLabels.map(g=>`<th>${g}</th>`).join('');
+    const bodyRows = v.sensitivity.rows.map(row=>{
+      const midIdx = Math.floor(row.vals.length/2);
+      const cells = row.vals.map((val,i)=>`<td class="${i===midIdx?'center-cell':''}">${(val===null||val===undefined||Number.isNaN(val))?'—':val.toLocaleString()}</td>`).join('');
+      return `<tr><td>${row.wacc}</td>${cells}</tr>`;
+    }).join('');
+    sensHtml = `
+      <div class="val-subhead">DCF 敏感度分析（WACC × 終值成長率）<span class="info-icon" onclick="showSensitivityInfo(event)" title="這個表格該怎麼看">ⓘ</span></div>
+      <div style="overflow-x:auto;"><table class="sens"><thead><tr>${headerRow}</tr></thead><tbody>${bodyRows}</tbody></table></div>`;
+  }
+
+  return `
+    <section class="block">
+      <h3>股價推算模型（DCF／DDM／可比乘數法）</h3>
+      <div class="val-disclaimer">本估值分析基於公開資料與模型假設進行試算，所有結果高度依賴輸入假設（成長率、折現率、可比公司選擇等），假設的微小變動可能導致估值結果大幅變化。多個模型之間的差異本身即反映市場對該公司不同面向的定價邏輯，不代表其中某一個模型「更正確」。本分析僅為方法論展示與參考，不構成任何投資建議、目標價或買賣建議，不保證任何模型假設的準確性或未來實現性。投資人應自行查證所有假設、並諮詢專業意見後自行判斷。</div>
+
+      <div class="val-price-row">
+        <span class="cp-label">目前市價（分析基準）</span>
+        <div class="val-price-cluster">
+          <span class="cp-value" id="cpValue-${code}">${v.currentPrice.toLocaleString()} ${unit}</span>
+          ${isUS ? '' : `<span class="cp-live-tag" id="cpLiveTag-${code}" style="display:none;">TWSE已驗證</span>
+          <div class="twse-verify">
+            <button class="twse-verify-btn" id="twseVerifyBtn-${code}" onclick="verifyTwseAndSync('${code}')">🔍 立即向TWSE查證</button>
+            <div class="twse-popover">
+              <div class="twse-popover-title">官方數據速覽（TWSE即時查證）</div>
+              <div id="twsePopoverBody-${code}" style="color:var(--ink-soft);font-size:12.5px;">點擊左側按鈕查詢，查詢完成後滑鼠移到按鈕上即可看到明細（公司登記資料、單季財務、均價）。</div>
+            </div>
+          </div>`}
+        </div>
+      </div>
+
+      <div class="val-subhead">估值結果彙總（Football Field）</div>
+      ${ffRows}
+      <div class="ff-summary-line">各模型範圍：${v.range[0].toLocaleString()} ~ ${v.range[1].toLocaleString()} ${unit}　｜　各模型平均：${v.avg.toLocaleString()} ${unit}　｜　深色直線＝目前市價</div>
+
+      <div class="val-subhead">假設清單（透明度是這份分析的核心價值）</div>
+      <ul class="val-assumptions">${notes}</ul>
+
+      ${sensHtml}
+
+      <div class="val-subhead">這個估值的主要風險與限制</div>
+      <ul class="risk-list">${risks}</ul>
+    </section>`;
+}
+
+function fmtPeersSection(r){
+  const p = r.peers;
+  if(!p) return '';
+
+  const headerCells = p.companies.map((c,i)=>{
+    const label = c.isSelf ? `${c.name}（本公司）` : `${c.name}${c.code?'（'+c.code+'）':''}`;
+    return `<th class="${c.isSelf?'self-col':''}">${label}</th>`;
+  }).join('');
+
+  const bodyRows = p.rows.map(row=>{
+    const cells = row.values.map((v,i)=>`<td class="${p.companies[i].isSelf?'self-col':''}">${v}</td>`).join('');
+    return `<tr><td>${row.dimension}</td>${cells}</tr>`;
+  }).join('');
+
+  return `
+    <section class="block">
+      <h3>同儕比較：${r.name} vs. ${p.companies.filter(c=>!c.isSelf).map(c=>c.name).join('、')}</h3>
+      <div class="peer-hint">同產業、常被市場放在一起比較的公司，逐項拆解產品類別、客戶分布等構面的差異，而不只是「誰比較好」。</div>
+      <div class="peer-table-wrap">
+        <table class="peer">
+          <thead><tr><th>比較構面</th>${headerCells}</tr></thead>
+          <tbody>${bodyRows}</tbody>
+        </table>
+      </div>
+      <div class="peer-resize-hint">↘ 拖曳表格右下角可調整顯示區域大小，欄位較多時也可以直接在表格內橫向捲動</div>
+      <div class="peer-takeaway"><span class="lbl">差異化定位怎麼看</span>${p.takeaway}</div>
+    </section>`;
+}
+
+/* =========================================================
+   TWSE 官方資料即時查證（透過公開reader-proxy繞過CORS限制，免設置）
+   本App仍然是純前端靜態頁面，資料庫（REPORTS/VALUATIONS）維持人工彙整、
+   不會被下面這段動態覆蓋——這個區塊純粹是「額外查證」用途：向證交所官方
+   OpenAPI即時拉一筆最新資料，讓使用者可以跟報告裡的數字互相對照。
+
+   TWSE OpenAPI本身不支援瀏覽器直接呼叫（實測會CORS失敗：openapi.twse.com.tw
+   沒有回傳Access-Control-Allow-Origin header）。原本用自架的輕量代理伺服器
+   （twse-proxy-server/）繞過這個限制，但需要使用者自行在終端機啟動node
+   server.js，造成額外的設置負擔。改用公開的reader-proxy服務（r.jina.ai）
+   直接在瀏覽器端轉發請求，不需要使用者做任何設置——實測確認：對
+   https://r.jina.ai/<TWSE網址> 加上「X-Return-Format: text」header送出
+   請求，會回傳TWSE原始JSON內容（無CORS阻擋），已在真實瀏覽器環境驗證過。
+
+   權衡：資料會經過第三方服務（r.jina.ai）中轉，穩定性與延遲不像自架伺服器
+   那樣可控，且該服務可能調整免費額度或行為。若日後不穩定，可考慮換回
+   twse-proxy-server/（原始碼仍保留在專案內）或改用其他代理服務。
+========================================================= */
+window.TWSE_READER_PROXY = window.TWSE_READER_PROXY || 'https://r.jina.ai/';
+const TWSE_DATASETS = {
+  company:    'https://openapi.twse.com.tw/v1/opendata/t187ap03_L',
+  financials: 'https://openapi.twse.com.tw/v1/opendata/t187ap14_L',
+  price:      'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_AVG_ALL',
+};
+const TWSE_CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6小時快取，減少重複打公開代理服務
+const twseDatasetCache = {};
+
+async function fetchTwseDataset(key){
+  const cached = twseDatasetCache[key];
+  if(cached && (Date.now() - cached.savedAt) < TWSE_CACHE_TTL_MS){
+    return cached.data;
+  }
+  const target = TWSE_DATASETS[key];
+  const url = window.TWSE_READER_PROXY + target;
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 15000);
+  let res;
+  try {
+    res = await fetch(url, { headers: { 'X-Return-Format': 'text' }, signal: controller.signal });
+  } catch(e) {
+    throw new Error(`連線公開代理服務逾時或失敗：${e.message}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+  if(!res.ok){
+    throw new Error(`代理服務回傳錯誤（HTTP ${res.status}）`);
+  }
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch(e) {
+    throw new Error('TWSE資料格式無法解析（代理服務可能暫時異常，請稍後再試）');
+  }
+  twseDatasetCache[key] = { savedAt: Date.now(), data };
+  return data;
+}
+
+/* =========================================================
+   美股ticker核對——使用者在「查無資料」頁面輸入疑似美股代碼時，即時比對
+   SEC EDGAR公開、免金鑰的公司代號對照表（ticker→CIK→公司全名，涵蓋所有
+   SEC掛牌公司），避免使用者打錯代碼卻還是花十幾分鐘真的觸發一次背景研究
+   才發現查無此股。SEC.gov同樣不支援瀏覽器直接CORS呼叫，沿用上面TWSE的
+   做法，走同一組r.jina.ai reader-proxy。
+========================================================= */
+const SEC_TICKERS_URL = 'https://www.sec.gov/files/company_tickers.json';
+const SEC_TICKERS_CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 公司代號名單變動不頻繁，快取一天即可
+let secTickerCache = null; // { savedAt, list }
+let secTickerLoadPromise = null; // 避免同時多次觸發下載
+
+async function loadSecTickerList(){
+  if(secTickerCache && (Date.now() - secTickerCache.savedAt) < SEC_TICKERS_CACHE_TTL_MS){
+    return secTickerCache.list;
+  }
+  if(secTickerLoadPromise) return secTickerLoadPromise;
+  secTickerLoadPromise = (async () => {
+    const url = window.TWSE_READER_PROXY + SEC_TICKERS_URL;
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(), 20000);
+    let res;
+    try{
+      res = await fetch(url, { headers: { 'X-Return-Format': 'text' }, signal: controller.signal });
+    }catch(e){
+      throw new Error(`連線公開代理服務逾時或失敗：${e.message}`);
+    }finally{
+      clearTimeout(timeout);
+    }
+    if(!res.ok) throw new Error(`代理服務回傳錯誤（HTTP ${res.status}）`);
+    const raw = JSON.parse(await res.text());
+    const list = Object.values(raw).map(e => ({ ticker: String(e.ticker).toUpperCase(), name: e.title, cik: e.cik_str }));
+    secTickerCache = { savedAt: Date.now(), list };
+    return list;
+  })();
+  try{
+    return await secTickerLoadPromise;
+  }finally{
+    secTickerLoadPromise = null;
+  }
+}
+
+function levenshteinDistance(a, b){
+  const dp = [];
+  for(let i=0;i<=a.length;i++) dp.push([i, ...new Array(b.length).fill(0)]);
+  for(let j=0;j<=b.length;j++) dp[0][j] = j;
+  for(let i=1;i<=a.length;i++){
+    for(let j=1;j<=b.length;j++){
+      dp[i][j] = a[i-1]===b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+// 沒有精確符合時，依「代碼前綴相符」＞「公司名稱包含這串文字」＞「代碼編輯
+// 距離很近（很可能是打錯字，例如AAPL打成APPL）」的優先順序找候選建議，
+// 只取分數最好的前6筆，避免建議清單太長反而沒有參考價值。
+// 分層排序，不是單純比對「有沒有符合」就好——早期版本只分「前綴相符」/
+// 「名稱包含」/「編輯距離」三種各自獨立判斷，實測發現像「APPL」（想找AAPL，
+// 只是打錯字，編輯距離僅1）這種最明顯的打字錯誤，會被大量「名稱剛好包含
+// APPL這4個字」的不相干公司（例如很多名稱裡有Applied、AppLovin的公司）
+// 洗掉，導致真正想找的AAPL根本擠不進前6筆建議。改成明確分層：代碼編輯
+// 距離≤1（幾乎可以確定是打錯字）最優先，其次是代碼前綴相符，再來才是
+// 編輯距離2、最後才輪到公司名稱包含這串文字（訊號最弱、最容易有雜訊）。
+function findTickerSuggestions(rawInput, list){
+  const q = rawInput.trim().toUpperCase();
+  const qLower = q.toLowerCase();
+  const scored = list.map(e => {
+    const dist = levenshteinDistance(e.ticker, q);
+    const isPrefix = e.ticker.startsWith(q) || q.startsWith(e.ticker);
+    let tier = null;
+    if(dist <= 1) tier = 0;
+    else if(isPrefix) tier = 1;
+    else if(dist === 2) tier = 2;
+    else if(e.name.toLowerCase().includes(qLower)) tier = 3;
+    return tier === null ? null : Object.assign({}, e, { tier, dist });
+  }).filter(Boolean);
+  scored.sort((a,b) => a.tier - b.tier || a.dist - b.dist || a.ticker.length - b.ticker.length || a.ticker.localeCompare(b.ticker));
+  return scored.slice(0, 6);
+}
+
+async function verifyUsTicker(rawCode, containerId){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  const code = String(rawCode).trim().toUpperCase();
+  el.innerHTML = `<div style="color:var(--ink-soft);font-size:12.5px;">🔍 正在向SEC EDGAR核對「${escHtml(code)}」是否為真實掛牌代碼…</div>`;
+  try{
+    const list = await loadSecTickerList();
+    const exact = list.find(e => e.ticker === code);
+    if(exact){
+      el.innerHTML = `<div style="padding:10px 12px;border:1.5px solid var(--green);background:var(--green-bg);border-radius:8px;">
+        <div style="color:var(--green);font-weight:600;font-size:13px;">✓ 代碼正確：${escHtml(exact.name)}（CIK ${exact.cik}）</div>
+        <div style="color:var(--ink-soft);font-size:12px;margin-top:4px;">SEC EDGAR確實收錄這個代碼，可以放心按下方「研究並加入資料庫」開始生成。</div>
+      </div>`;
+      return;
+    }
+    const suggestions = findTickerSuggestions(code, list);
+    if(!suggestions.length){
+      el.innerHTML = `<div style="padding:10px 12px;border:1.5px solid var(--red);background:var(--red-bg);border-radius:8px;">
+        <div style="color:var(--red);font-weight:600;font-size:13px;">⚠️ SEC EDGAR查無「${escHtml(code)}」這個代碼</div>
+        <div style="color:var(--ink-soft);font-size:12px;margin-top:4px;">SEC EDGAR只收錄有在美國申報／掛牌的公司，查不到不一定代表你打錯了，也可能是這家公司未在SEC掛牌（例如只在其他國家交易所上市）。確定代碼沒錯的話，仍然可以直接按下方按鈕嘗試生成。</div>
+      </div>`;
+      return;
+    }
+    const items = suggestions.map(s => `
+      <button onclick="selectVerifiedTicker('${s.ticker}')" style="display:block;width:100%;text-align:left;padding:6px 10px;margin-top:4px;border:1px solid var(--line);background:var(--card);border-radius:6px;cursor:pointer;font-size:12.5px;color:var(--ink);">
+        <b style="font-family:var(--px);font-size:11px;color:var(--navy-2);">${s.ticker}</b>　${escHtml(s.name)}
+      </button>`).join('');
+    el.innerHTML = `<div style="padding:10px 12px;border:1.5px solid var(--amber);background:var(--amber-bg);border-radius:8px;">
+      <div style="color:var(--amber);font-weight:600;font-size:13px;">⚠️ SEC EDGAR查無「${escHtml(code)}」這個代碼，你是不是要找：</div>
+      ${items}
+      <div style="color:var(--ink-soft);font-size:11px;margin-top:6px;">點選上面任一個會直接帶你去搜尋那個代碼。</div>
+    </div>`;
+  }catch(e){
+    el.innerHTML = `<div style="color:var(--ink-soft);font-size:12px;">核對失敗：${escHtml(e.message)}（不影響直接生成，可以先自行確認代碼無誤後再按下方按鈕）</div>`;
+  }
+}
+
+function selectVerifiedTicker(ticker){
+  document.getElementById('searchInput').value = ticker;
+  showReport(ticker);
+}
+
+async function fetchTwseLive(code){
+  code = String(code || '').trim().toUpperCase();
+  if(!/^[0-9A-Za-z]{4,6}$/.test(code)){
+    throw new Error(`股票代碼格式不正確：${code}`);
+  }
+  const [basicRes, finRes, priceRes] = await Promise.allSettled([
+    fetchTwseDataset('company'),
+    fetchTwseDataset('financials'),
+    fetchTwseDataset('price'),
+  ]);
+  const basic = basicRes.status === 'fulfilled'
+    ? basicRes.value.find(row => row['公司代號'] === code)
+    : null;
+  const financials = finRes.status === 'fulfilled'
+    ? finRes.value
+        .filter(row => row['公司代號'] === code)
+        .sort((a,b) => {
+          const ay = parseInt(a['年度'],10), aq = parseInt(a['季別'],10);
+          const by = parseInt(b['年度'],10), bq = parseInt(b['季別'],10);
+          return ay !== by ? ay - by : aq - bq;
+        })
+    : [];
+  const price = priceRes.status === 'fulfilled'
+    ? priceRes.value.find(row => row['Code'] === code)
+    : null;
+
+  if(!basic && financials.length === 0 && !price){
+    if(basicRes.status === 'rejected' && finRes.status === 'rejected' && priceRes.status === 'rejected'){
+      throw new Error(basicRes.reason?.message || '查詢失敗，請稍後再試。');
+    }
+    const err = new Error(`TWSE查無代碼 ${code}。若這是上櫃(TPEx)公司，目前僅支援上市(TWSE)公司查詢，TPEx部分尚待補齊。`);
+    err.notFound = true;
+    throw err;
+  }
+  return {
+    code,
+    basic: basic || null,
+    financials,
+    price: price || null,
+    source: 'TWSE OpenAPI（上市，T-1資料，非即時，經公開代理服務轉發）',
+    fetchedAt: new Date().toISOString(),
+  };
+}
+
+function fmtTwseLiveResult(data){
+  const b = data.basic;
+  const latestFin = data.financials && data.financials.length ? data.financials[data.financials.length-1] : null;
+  const p = data.price;
+  const rows = [];
+  if(b) {
+    rows.push(['公司名稱', b['公司名稱'] || '—']);
+    rows.push(['董事長', b['董事長'] || '—']);
+    rows.push(['實收資本額', b['實收資本額'] ? Number(b['實收資本額']).toLocaleString() + ' 元' : '—']);
+  }
+  if(latestFin){
+    rows.push([`最新單季營收（${latestFin['年度']}年Q${latestFin['季別']}）`, latestFin['營業收入'] ? Number(latestFin['營業收入']).toLocaleString() + ' 千元' : '—']);
+    rows.push(['基本每股盈餘(EPS)', latestFin['基本每股盈餘(元)'] || '—']);
+  }
+  if(p){
+    rows.push(['最近交易日收盤價(T-1)', p['ClosingPrice'] ? `${p['ClosingPrice']} 元` : '—']);
+    rows.push(['當月平均價', p['MonthlyAveragePrice'] ? `${p['MonthlyAveragePrice']} 元` : '—']);
+  }
+  if(!rows.length) return '<div style="color:var(--ink-soft);font-size:13px;">查無可顯示的官方資料欄位。</div>';
+  const finNote = !latestFin
+    ? '<div style="color:var(--ink-soft);font-size:12px;margin-top:6px;">註：TWSE單季財務數據集僅涵蓋「近期已公告」的公司名單，並非每檔股票隨時都查得到，查無財務數據不代表資料有誤。</div>'
+    : '';
+  return `<table class="fin"><tbody>${rows.map(([k,v])=>`<tr><td style="font-weight:600;width:40%;">${k}</td><td>${v}</td></tr>`).join('')}</tbody></table>
+    ${finNote}
+    <div style="color:var(--ink-soft);font-size:12px;margin-top:8px;">來源：${data.source || 'TWSE OpenAPI'}　查詢時間：${new Date(data.fetchedAt).toLocaleString('zh-TW')}</div>`;
+}
+
+/* =========================================================
+   TPEx（證券櫃檯買賣中心）官方資料查證——上櫃公司的對應資料
+   TWSE OpenAPI只涵蓋「上市」公司，之前上櫃(TPEx)公司（例如環宇通訊半導體控股
+   4991）查證一律失敗、顯示「TPEx部分尚待補齊」。這裡補上TPEx OpenAPI的對應
+   資料集：公司基本資料(mopsfin_t187ap03_O)、收盤行情(tpex_mainboard_quotes)，
+   財務資訊則因為TPEx把財報拆成金融/證券期貨/金控/保險/一般/異業六種產業別各自
+   一張表、沒有像TWSE t187ap14_L那樣的單一彙總表，這裡先只嘗試「一般業」
+   (t187ap06_O_ciA)——這組App收錄的公司多屬製造/科技業，屬於這個類別；其餘
+   五種產業別的上櫃公司財務數據暫不支援，查無財務數據不代表資料有誤。
+   同樣沒有CORS，走同一組r.jina.ai代理。
+========================================================= */
+const TPEX_DATASETS = {
+  company:    'https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O',
+  financials: 'https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap06_O_ciA',
+  price:      'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes',
+};
+const tpexDatasetCache = {};
+
+async function fetchTpexDataset(key){
+  const cached = tpexDatasetCache[key];
+  if(cached && (Date.now() - cached.savedAt) < TWSE_CACHE_TTL_MS){
+    return cached.data;
+  }
+  const target = TPEX_DATASETS[key];
+  const url = window.TWSE_READER_PROXY + target;
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 15000);
+  let res;
+  try {
+    res = await fetch(url, { headers: { 'X-Return-Format': 'text' }, signal: controller.signal });
+  } catch(e) {
+    throw new Error(`連線公開代理服務逾時或失敗：${e.message}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+  if(!res.ok) throw new Error(`代理服務回傳錯誤（HTTP ${res.status}）`);
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch(e) {
+    throw new Error('TPEx資料格式無法解析（代理服務可能暫時異常，請稍後再試）');
+  }
+  tpexDatasetCache[key] = { savedAt: Date.now(), data };
+  return data;
+}
+
+async function fetchTpexLive(code){
+  code = String(code || '').trim().toUpperCase();
+  const [basicRes, finRes, priceRes] = await Promise.allSettled([
+    fetchTpexDataset('company'),
+    fetchTpexDataset('financials'),
+    fetchTpexDataset('price'),
+  ]);
+  const basic = basicRes.status === 'fulfilled'
+    ? basicRes.value.find(row => row['SecuritiesCompanyCode'] === code)
+    : null;
+  const financials = finRes.status === 'fulfilled'
+    ? finRes.value
+        .filter(row => row['公司代號'] === code)
+        .sort((a,b) => {
+          const ay = parseInt(a['年度'],10), aq = parseInt(a['季別'],10);
+          const by = parseInt(b['年度'],10), bq = parseInt(b['季別'],10);
+          return ay !== by ? ay - by : aq - bq;
+        })
+    : [];
+  const price = priceRes.status === 'fulfilled'
+    ? priceRes.value.find(row => row['SecuritiesCompanyCode'] === code)
+    : null;
+
+  if(!basic && financials.length === 0 && !price){
+    if(basicRes.status === 'rejected' && finRes.status === 'rejected' && priceRes.status === 'rejected'){
+      throw new Error(basicRes.reason?.message || '查詢失敗，請稍後再試。');
+    }
+    const err = new Error(`TPEx查無代碼 ${code}，可能是興櫃、已下市，或代碼有誤。`);
+    err.notFound = true;
+    throw err;
+  }
+  return {
+    code,
+    basic: basic || null,
+    financials,
+    price: price || null,
+    source: 'TPEx OpenAPI（上櫃，T-1資料，非即時，經公開代理服務轉發）',
+    fetchedAt: new Date().toISOString(),
+  };
+}
+
+function fmtTpexLiveResult(data){
+  const b = data.basic;
+  const latestFin = data.financials && data.financials.length ? data.financials[data.financials.length-1] : null;
+  const p = data.price;
+  const rows = [];
+  if(b) {
+    rows.push(['公司名稱', b['CompanyName'] || '—']);
+    rows.push(['董事長', b['Chairman'] || '—']);
+    const capital = b['Paidin.Capital.NTDollars'];
+    rows.push(['實收資本額', capital ? Number(capital).toLocaleString() + ' 元' : '—']);
+  }
+  if(latestFin){
+    rows.push([`最新單季營收（${latestFin['年度']}年Q${latestFin['季別']}）`, latestFin['營業收入'] ? Number(latestFin['營業收入']).toLocaleString() + ' 千元' : '—']);
+    rows.push(['基本每股盈餘(EPS)', latestFin['基本每股盈餘（元）'] || '—']);
+  }
+  if(p){
+    rows.push(['最近交易日收盤價(T-1)', p['Close'] ? `${p['Close']} 元` : '—']);
+  }
+  if(!rows.length) return '<div style="color:var(--ink-soft);font-size:13px;">查無可顯示的官方資料欄位。</div>';
+  const finNote = !latestFin
+    ? '<div style="color:var(--ink-soft);font-size:12px;margin-top:6px;">註：目前只嘗試查詢「一般業」財報，金融／證券期貨／金控／保險／異業類別的上櫃公司財務數據暫不支援，查無財務數據不代表資料有誤。</div>'
+    : '';
+  return `<table class="fin"><tbody>${rows.map(([k,v])=>`<tr><td style="font-weight:600;width:40%;">${k}</td><td>${v}</td></tr>`).join('')}</tbody></table>
+    ${finNote}
+    <div style="color:var(--ink-soft);font-size:12px;margin-top:8px;">來源：${data.source}　查詢時間：${new Date(data.fetchedAt).toLocaleString('zh-TW')}</div>`;
+}
+
+// 統一入口：先試TWSE（上市），查無資料（notFound）才試TPEx（上櫃）——不用自己
+// 維護一份上市/上櫃分類清單，資料庫以後收錄新公司也不用跟著改這裡。網路/逾時
+// 之類的「非查無資料」錯誤不會觸發TPEx重試，直接往外丟原本的錯誤訊息。
+async function fetchExchangeLive(code){
+  if(!/^[0-9A-Za-z]{4,6}$/.test(String(code||'').trim())){
+    throw new Error(`股票代碼格式不正確：${code}`);
+  }
+  try{
+    const data = await fetchTwseLive(code);
+    return { data, exchange: 'TWSE', render: fmtTwseLiveResult };
+  }catch(twseErr){
+    if(!twseErr.notFound) throw twseErr;
+    try{
+      const data = await fetchTpexLive(code);
+      return { data, exchange: 'TPEx', render: fmtTpexLiveResult };
+    }catch(tpexErr){
+      const err = new Error(`TWSE與TPEx皆查無代碼 ${code}，可能是興櫃、已下市，或代碼有誤。`);
+      err.notFound = true;
+      throw err;
+    }
+  }
+}
+
+async function runTwseLookup(code, containerId){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML = '<div style="color:var(--ink-soft);font-size:13px;">查詢中…</div>';
+  try {
+    const { data, render } = await fetchExchangeLive(code);
+    el.innerHTML = render(data);
+  } catch(e) {
+    const hint = e.notFound
+      ? '若代碼確定沒錯，可能是興櫃公司或已下市，目前僅支援上市(TWSE)／上櫃(TPEx)公司查詢。'
+      : '公開代理服務可能暫時壅塞或異常，請稍等片刻再試一次。';
+    el.innerHTML = `<div style="color:var(--ink-soft);font-size:13px;">
+      查詢失敗：${e.message}
+      <br>${hint}
+    </div>`;
+  }
+}
+
+/* =========================================================
+   TWSE個股歷史股價 ＋ 移動平均線
+   TWSE OpenAPI的STOCK_DAY_AVG_ALL（上面fetchTwseLive用的資料集）只給「最近
+   交易日收盤價」跟「當月平均價」，沒有5/10/20/150日均線需要的每日歷史資料。
+   均線改用TWSE另一支「個股日成交資訊」API（www.twse.com.tw/rwd/.../STOCK_DAY，
+   同樣沒有CORS、走同一組r.jina.ai代理），這支API一次只回傳「一個月」的資料，
+   150個交易日大約需要7-8個日曆月，多抓幾個月當緩衝（實測8個月常常只湊到
+   148天，差一點不夠），所以預設平行發10個月份的請求再自己拼接、
+   排序、去重。用Promise.allSettled容錯：只要有抓到足夠天數的資料就能算出
+   對應的均線，抓不到150天historicaldata時150日均線就顯示「資料不足」，
+   不會讓整個查詢失敗。
+========================================================= */
+async function fetchStockDayMonth(code, yyyymmdd){
+  const target = `https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY?date=${yyyymmdd}&stockNo=${code}&response=json`;
+  const url = window.TWSE_READER_PROXY + target;
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 15000);
+  let res;
+  try {
+    res = await fetch(url, { headers: { 'X-Return-Format': 'text' }, signal: controller.signal });
+  } catch(e) {
+    throw new Error(`連線公開代理服務逾時或失敗：${e.message}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+  if(!res.ok) throw new Error(`代理服務回傳錯誤（HTTP ${res.status}）`);
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch(e) {
+    throw new Error('股價資料格式無法解析（代理服務可能暫時異常）');
+  }
+}
+
+// TPEx（上櫃）版本的「個股日成交資訊」，回傳格式跟TWSE的STOCK_DAY不同
+// （{tables:[{data:[...]}]} vs {stat,data:[...]}），但每一列欄位順序一樣
+// （日期在[0]、收盤價在[6]），下面extractCloses...兩個函式各自處理好。
+async function fetchStockDayMonthTpex(code, yyyymmdd){
+  const y = yyyymmdd.slice(0,4), m = yyyymmdd.slice(4,6), d = yyyymmdd.slice(6,8);
+  const target = `https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock?code=${code}&date=${y}/${m}/${d}&id=&response=json`;
+  const url = window.TWSE_READER_PROXY + target;
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 15000);
+  let res;
+  try {
+    res = await fetch(url, { headers: { 'X-Return-Format': 'text' }, signal: controller.signal });
+  } catch(e) {
+    throw new Error(`連線公開代理服務逾時或失敗：${e.message}`);
+  } finally {
+    clearTimeout(timeout);
+  }
+  if(!res.ok) throw new Error(`代理服務回傳錯誤（HTTP ${res.status}）`);
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch(e) {
+    throw new Error('股價資料格式無法解析（代理服務可能暫時異常）');
+  }
+}
+
+function extractClosesFromTwseMonth(json){
+  if(!(json && json.stat === 'OK' && Array.isArray(json.data))) return [];
+  return json.data
+    .map(cols => ({ rocDate: cols[0], close: parseFloat(String(cols[6]).replace(/,/g,'')) }))
+    .filter(r => !isNaN(r.close) && r.close > 0);
+}
+function extractClosesFromTpexMonth(json){
+  const rows = json && json.tables && json.tables[0] && json.tables[0].data;
+  if(!Array.isArray(rows)) return [];
+  return rows
+    .map(cols => ({ rocDate: cols[0], close: parseFloat(String(cols[6]).replace(/,/g,'')) }))
+    .filter(r => !isNaN(r.close) && r.close > 0);
+}
+
+// 抓最近monthsBack個月的個股日成交資訊，攤平成「由舊到新」排序、去重過的收盤價陣列。
+// 先平行試TWSE（上市）；如果整批都查不到（很可能是上櫃股票），再平行試TPEx（上櫃）——
+// 兩種交易所都試過還是查不到才真的算失敗，不用自己維護上市/上櫃分類清單。
+async function fetchStockDayHistory(code, monthsBack){
+  monthsBack = monthsBack || 10;
+  const now = new Date();
+  const monthTargets = [];
+  for(let i=0;i<monthsBack;i++){
+    const d = new Date(now.getFullYear(), now.getMonth()-i, 1);
+    monthTargets.push(`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}01`);
+  }
+
+  const twseResults = await Promise.allSettled(monthTargets.map(dt => fetchStockDayMonth(code, dt)));
+  let rows = [];
+  twseResults.forEach(r => { if(r.status === 'fulfilled') rows.push(...extractClosesFromTwseMonth(r.value)); });
+
+  let exchange = 'TWSE';
+  if(!rows.length){
+    exchange = 'TPEx';
+    const tpexResults = await Promise.allSettled(monthTargets.map(dt => fetchStockDayMonthTpex(code, dt)));
+    tpexResults.forEach(r => { if(r.status === 'fulfilled') rows.push(...extractClosesFromTpexMonth(r.value)); });
+  }
+
+  rows.sort((a,b)=> a.rocDate.localeCompare(b.rocDate));
+  const seen = new Set();
+  const uniq = rows.filter(r=>{
+    if(seen.has(r.rocDate)) return false;
+    seen.add(r.rocDate);
+    return true;
+  });
+  if(!uniq.length){
+    throw new Error('查無歷史股價資料（TWSE與TPEx皆查無），公開代理服務可能暫時壅塞，請稍後再試。');
+  }
+  return { closes: uniq, exchange }; // closes由舊到新
+}
+
+function rocToGregorianLabel(rocDate){
+  const m = String(rocDate).match(/^(\d+)\/(\d+)\/(\d+)$/);
+  if(!m) return rocDate;
+  return `${parseInt(m[1],10)+1911}/${m[2]}/${m[3]}`;
+}
+
+function computeMovingAverages(closesAsc, exchange){
+  const n = closesAsc.length;
+  const avg = k => n < k ? null : closesAsc.slice(n-k).reduce((s,c)=>s+c.close,0) / k;
+  const latestRow = closesAsc[n-1];
+  return {
+    latest: latestRow.close,
+    latestDateLabel: rocToGregorianLabel(latestRow.rocDate),
+    ma5: avg(5), ma10: avg(10), ma20: avg(20), ma150: avg(150),
+    sampleSize: n,
+    exchange: exchange || 'TWSE',
+  };
+}
+
+const twseMovingAvgCache = {};
+
+function fmtPriceStatsRow(stats){
+  const fmt = v => v==null ? '—' : v.toLocaleString(undefined,{maximumFractionDigits:1});
+  return `
+    <div class="price-stats-row">
+      <div class="pstat pstat-latest"><span class="pstat-k">最新</span><span class="pstat-v">${fmt(stats.latest)}</span></div>
+      <div class="pstat"><span class="pstat-k">5日均</span><span class="pstat-v">${fmt(stats.ma5)}</span></div>
+      <div class="pstat"><span class="pstat-k">10日均</span><span class="pstat-v">${fmt(stats.ma10)}</span></div>
+      <div class="pstat"><span class="pstat-k">20日均</span><span class="pstat-v">${fmt(stats.ma20)}</span></div>
+      <div class="pstat"><span class="pstat-k">150日均</span><span class="pstat-v">${stats.ma150==null?'資料不足':fmt(stats.ma150)}</span></div>
+      <span class="price-stats-asof">（至${stats.latestDateLabel}，來源${stats.exchange || 'TWSE'}）</span>
+    </div>`;
+}
+
+// 把即時股價同步進「目前市價」，並重新計算football field裡「目前市價」標記的位置
+// 與每個模型的「相對現價%」——長條本身寬度（模型估值）維持原本渲染時的座標範圍不變，
+// 只有跟現價相關的標記/文字更新，避免整組長條的比例尺跳動。
+function syncCurrentPriceToLive(code, livePrice, sourceLabel){
+  const v = VALUATIONS[code];
+  if(!v) return;
+  const cpEl = document.getElementById(`cpValue-${code}`);
+  if(cpEl){
+    cpEl.textContent = `${livePrice.toLocaleString()} 元`;
+    cpEl.classList.add('live');
+    cpEl.title = sourceLabel;
+  }
+  const tagEl = document.getElementById(`cpLiveTag-${code}`);
+  if(tagEl) tagEl.style.display = 'inline-block';
+
+  const allVals = v.summary.map(s=>s.price).concat([v.currentPrice]);
+  const lo = Math.min(...allVals) * 0.95;
+  const hi = Math.max(...allVals) * 1.05;
+  const span = hi - lo;
+  const pct = x => Math.max(0, Math.min(100, ((x - lo) / span) * 100));
+
+  v.summary.forEach((s,i)=>{
+    const upside = Math.round(((s.price - livePrice) / livePrice) * 1000) / 10;
+    const upsideEl = document.getElementById(`ffUpside-${code}-${i}`);
+    if(upsideEl){
+      upsideEl.textContent = `相對現價 ${upside>0?'+':''}${upside}%`;
+      upsideEl.classList.toggle('up', upside>=0);
+      upsideEl.classList.toggle('down', upside<0);
+    }
+    const markerEl = document.getElementById(`ffMarker-${code}-${i}`);
+    if(markerEl){
+      markerEl.style.left = pct(livePrice) + '%';
+      markerEl.title = `目前市價（官方查證）${livePrice.toLocaleString()}`;
+    }
+  });
+}
+
+// 個股頁「立即向TWSE查證」的統一入口：同時觸發官方資料快照（公司登記/財務/均價，
+// 結果放進hover popover）跟歷史股價（結果拿來算均線、同步目前市價），兩邊共用
+// 同一次查詢結果，避免重複打代理服務、也確保「目前市價」跟「最新價」兩處數字一致。
+async function verifyTwseAndSync(code){
+  const btn = document.getElementById(`twseVerifyBtn-${code}`);
+  const popoverBody = document.getElementById(`twsePopoverBody-${code}`);
+  const priceStatsEl = document.getElementById(`priceStats-${code}`);
+  if(btn){ btn.disabled = true; btn.textContent = '查詢中…'; btn.classList.remove('done','error'); }
+  if(priceStatsEl){ priceStatsEl.innerHTML = `<span class="price-stats-asof">查詢中…（需查詢近10個月歷史股價，可能需要幾秒鐘）</span>`; }
+
+  const [liveResult, historyResult] = await Promise.allSettled([
+    fetchExchangeLive(code),
+    (async ()=>{
+      const cached = twseMovingAvgCache[code];
+      if(cached && (Date.now()-cached.savedAt) < TWSE_CACHE_TTL_MS) return cached.data;
+      const { closes, exchange } = await fetchStockDayHistory(code);
+      const stats = computeMovingAverages(closes, exchange);
+      twseMovingAvgCache[code] = { savedAt: Date.now(), data: stats };
+      return stats;
+    })(),
+  ]);
+
+  if(popoverBody){
+    if(liveResult.status === 'fulfilled'){
+      popoverBody.innerHTML = liveResult.value.render(liveResult.value.data);
+    }else{
+      const e = liveResult.reason;
+      const hint = e && e.notFound ? '可能是興櫃公司或已下市，目前僅支援上市(TWSE)／上櫃(TPEx)公司查詢。' : '公開代理服務可能暫時壅塞或異常，請稍等片刻再試一次。';
+      popoverBody.innerHTML = `<div style="color:var(--ink-soft);font-size:13px;">查詢失敗：${e ? e.message : '未知錯誤'}<br>${hint}</div>`;
+    }
+  }
+
+  // 「目前市價」優先採用liveResult（單一請求打官方彙總資料集，例如TWSE的
+  // STOCK_DAY_AVG_ALL／TPEx的tpex_mainboard_quotes，跟popover顯示的T-1收盤價
+  // 同一份資料）。historyResult是為了算5/10/20/150日均線平行抓10個月歷史股價，
+  // 任一個月（尤其最新那個月）透過代理服務失敗時Promise.allSettled會靜默忽略，
+  // 導致「最後一筆」誤取到更早月份的收盤價——只在liveResult真的失敗時才退回用它。
+  let syncedPrice = null, syncedLabel = null;
+  if(liveResult.status === 'fulfilled' && liveResult.value.data && liveResult.value.data.price){
+    const p = liveResult.value.data.price;
+    const raw = p['ClosingPrice'] !== undefined ? p['ClosingPrice'] : p['Close'];
+    const parsed = parseFloat(String(raw).replace(/,/g,''));
+    if(!isNaN(parsed) && parsed > 0){
+      syncedPrice = parsed;
+      syncedLabel = `${liveResult.value.exchange}官方查證，最近交易日（T-1）收盤價`;
+    }
+  }
+  if(syncedPrice == null && historyResult.status === 'fulfilled' && historyResult.value){
+    syncedPrice = historyResult.value.latest;
+    syncedLabel = `${historyResult.value.exchange}官方查證，最近交易日（${historyResult.value.latestDateLabel}）收盤價`;
+  }
+  if(syncedPrice != null){
+    syncCurrentPriceToLive(code, syncedPrice, syncedLabel);
+  }
+
+  if(priceStatsEl){
+    if(historyResult.status === 'fulfilled' && historyResult.value){
+      priceStatsEl.innerHTML = fmtPriceStatsRow(historyResult.value);
+    }else{
+      const e = historyResult.reason;
+      priceStatsEl.innerHTML = `<span class="price-stats-asof">查詢失敗：${e ? e.message : '未知錯誤'}</span> <button class="price-stats-trigger" onclick="verifyTwseAndSync('${code}')">重試</button>`;
+    }
+  }
+
+  if(btn){
+    const bothFailed = liveResult.status === 'rejected' && historyResult.status === 'rejected';
+    const exchangeLabel = liveResult.status === 'fulfilled' ? liveResult.value.exchange
+      : (historyResult.status === 'fulfilled' ? historyResult.value.exchange : 'TWSE');
+    btn.disabled = false;
+    btn.classList.add(bothFailed ? 'error' : 'done');
+    btn.textContent = bothFailed ? '⚠ 查詢失敗，點此重試' : `✅ ${exchangeLabel}已查證（hover查看明細）`;
+  }
+}
+
+/* =========================================================
+   即時AI研究報告生成（透過本機Claude Code CLI）
+   輸入不在靜態資料庫（REPORTS/VALUATIONS）裡的股票代碼時，可以觸發
+   claude-code-research-server這支本機伺服器，讓它背景呼叫本機已安裝好
+   的 `claude` CLI（Claude Code）用headless模式（-p）非互動執行研究，
+   直接讀寫這個App.html檔案本身，把新資料寫進REPORTS/VALUATIONS/GLOSSARY。
+
+   跟先前試過的方案不同：這裡完全不需要Anthropic API金鑰，只要本機的
+   claude指令已經用Claude.ai帳號（Pro/Max訂閱）登入，用量就算在訂閱
+   額度內，不會另外產生API計費。
+
+   因為是Claude Code直接編輯磁碟上的檔案，目前瀏覽器分頁裡跑著的這份
+   App「看不到」剛寫入的新內容（靜態頁面不會自動重新讀取檔案）——生成
+   完成後需要重新整理頁面（F5），再次搜尋同一個代碼，才會看到新報告。
+
+   需要先啟動 claude-code-research-server（見專案README），預設監聽
+   http://localhost:3003。
+========================================================= */
+window.RESEARCH_BACKEND_BASE = window.RESEARCH_BACKEND_BASE || 'http://localhost:3003';
+
+const RESEARCH_POLL_INTERVAL_MS = 5000;
+const RESEARCH_ESTIMATED_MS = 4 * 60 * 1000; // 典型案例約3-5分鐘，僅用來畫預估進度條，非精確值
+// 逾時秒數不再寫死在前端（server.js改成兩段式：先問要不要延長，同意才繼續跑），
+// 避免兩邊常數各自維護卻忘記同步；實際逾時提醒改成needsExtension旗標驅動的
+// 通知卡片（見fmtResearchPanel），不是這裡的固定倒數文字。
+window._researchTimers = window._researchTimers || {}; // code -> interval id
+// code -> 頁面上「這次是哪個容器在追蹤這支股票」的containerId。改成用code當
+// 主鍵（而不是像以前那樣直接把containerId當唯一識別）是因為同一個code現在
+// 可能同時被兩個地方顯示：使用者當下所在頁面的容器（如果還在）、以及右下角
+// 常駐的小視窗（跨頁面導覽也不會消失）——兩邊要同步更新同一份進度。
+window._researchPageContainer = window._researchPageContainer || {};
+window._activeResearchCodes = window._activeResearchCodes || new Set();
+window._dismissedResearchCodes = window._dismissedResearchCodes || new Set();
+
+function escHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function clearResearchTimer(code){
+  if(window._researchTimers[code]){
+    clearInterval(window._researchTimers[code]);
+    delete window._researchTimers[code];
+  }
+}
+
+// 右下角常駐小視窗：跟reportsRoot是分開的DOM子樹，goHome()/showReport()
+// 換頁時整個innerHTML被清空重建也不會波及這裡，讓背景研究的進度可以跨頁面
+// 導覽持續顯示。使用者主動按✕關掉（見dismissFloatingWidget）之前都不會消失。
+function ensureFloatingWidget(code){
+  if(window._dismissedResearchCodes.has(code)) return null;
+  const wrap = document.getElementById('floatingResearchWidgets');
+  if(!wrap) return null;
+  let widget = document.getElementById(`floatWidget-${code}`);
+  if(!widget){
+    widget = document.createElement('div');
+    widget.id = `floatWidget-${code}`;
+    widget.className = 'floating-widget';
+    wrap.appendChild(widget);
+  }
+  return widget;
+}
+
+function dismissFloatingWidget(code){
+  // 只是關掉這個小視窗本身，不影響背景研究——伺服器那邊的任務繼續跑，只是
+  // 使用者不想再看到這個提醒了；之後如果重新整理頁面，已完成/失敗的任務
+  // 不會再出現（只有仍在running的任務會在載入時重新被偵測到，見restore邏輯）。
+  window._dismissedResearchCodes.add(code);
+  const widget = document.getElementById(`floatWidget-${code}`);
+  if(widget) widget.remove();
+}
+
+// 統一渲染入口：同一份內容同步更新到「頁面當下容器」（如果還在）跟「小視窗」
+// （只要沒被手動關掉）——取代過去只認單一containerId的做法。
+function renderResearchTargets(code, kind, opts){
+  opts = opts || {};
+  const pageContainerId = window._researchPageContainer[code];
+  if(pageContainerId){
+    const pageEl = document.getElementById(pageContainerId);
+    if(pageEl) pageEl.innerHTML = fmtResearchPanel(code, kind, opts);
+  }
+  const widget = ensureFloatingWidget(code);
+  if(widget) widget.innerHTML = fmtResearchPanel(code, kind, Object.assign({}, opts, { compact:true }));
+}
+
+function startResearchTicker(code, startedAtISO){
+  clearResearchTimer(code);
+  const startMs = new Date(startedAtISO).getTime();
+  function tick(){
+    // 兩個目標（頁面容器、小視窗）裡凡是還存在elapsed元素的都更新；兩個都不在了
+    // （面板已經被換成done/error，或使用者連小視窗都關掉了）就自行停止計時器。
+    const elapsedEls = document.querySelectorAll(`[data-elapsed-for="${code}"]`);
+    const barEls = document.querySelectorAll(`[data-progressbar-for="${code}"]`);
+    if(!elapsedEls.length){ clearResearchTimer(code); return; }
+    const elapsedMs = Date.now() - startMs;
+    const mm = Math.floor(elapsedMs/60000);
+    const ss = Math.floor((elapsedMs%60000)/1000).toString().padStart(2,'0');
+    const overTime = elapsedMs > RESEARCH_ESTIMATED_MS;
+    const fullText = `已執行 <b>${mm}:${ss}</b>　（預估約3-5分鐘；耗時較久的話，系統會主動跳出詢問是否延長等待）${overTime ? '　<span style="color:var(--amber);">已超過預估時間，仍可能是正常的，請再耐心等候</span>' : ''}`;
+    const shortText = `已執行 <b>${mm}:${ss}</b>`;
+    elapsedEls.forEach(el => { el.innerHTML = el.dataset.compact ? shortText : fullText; });
+    if(barEls.length){
+      // 沒有真正的完成百分比，只能用「經過時間 / 預估時間」畫一個會越來越慢逼近上限的估計進度條，讓使用者感覺得到在前進
+      const ratio = elapsedMs / RESEARCH_ESTIMATED_MS;
+      const pct = Math.min(94, ratio < 1 ? ratio * 80 : 80 + (1 - 1/(1 + (ratio-1))) * 14);
+      barEls.forEach(el => { el.style.width = pct + '%'; });
+    }
+  }
+  tick();
+  window._researchTimers[code] = setInterval(tick, 1000);
+}
+
+// diff是null代表這是全新股票（沒有「先前版本」可以比較，不用顯示這段）；
+// 是空陣列代表「重新研究並更新」跑完了，但關鍵數字跟分類都沒變化；
+// 有內容則列出伺服器比對出來的欄位級差異（見server.js的computeUpdateDiff）。
+function fmtDiffHtml(diff){
+  if(!diff) return '';
+  if(!diff.length){
+    return `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--ink-soft);">這次更新沒有偵測到明顯變化（數字與分類都跟先前版本一樣）。</div>`;
+  }
+  const rows = diff.map(d => d.from === null
+    ? `<li>${d.field}：${d.to}</li>`
+    : `<li>${d.field}：${d.from} → <b>${d.to}</b></li>`
+  ).join('');
+  return `
+    <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);">
+      <div style="font-size:12.5px;font-weight:700;color:var(--navy-2);margin-bottom:6px;">這次更新的變化：</div>
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--ink);">${rows}</ul>
+    </div>`;
+}
+
+function fmtResearchPanel(code, kind, opts){
+  opts = opts || {};
+  const extra = opts.message || '';
+  const compact = !!opts.compact;
+
+  if(kind === 'starting'){
+    return compact
+      ? `<div class="floating-widget-head"><b>${code}</b><span class="floating-widget-status">啟動中…</span></div>`
+      : `<div style="padding:16px;border:1px solid var(--line);border-radius:10px;">
+          <div style="font-weight:600;margin-bottom:6px;">正在啟動背景研究…</div>
+          <div style="color:var(--ink-soft);font-size:13px;">正在請本機的Claude Code開始研究「${code}」。</div>
+        </div>`;
+  }
+
+  if(kind === 'running'){
+    const activityLine = escHtml(opts.activity || '') || '⏳ 已連線，等待Claude Code開始第一個動作…';
+    // needsExtension是server.js兩段式逾時機制的訊號：SOFT_TIMEOUT過後還沒完成，
+    // 就會標記這個旗標並給一段grace期間——這裡跳出通知，讓使用者決定要不要
+    // 主動延長；不理會的話grace期間過後系統會照原本的行為判定逾時終止。
+    const extCount = `${opts.extensionsGranted||0}/${opts.maxExtensions ?? '?'}`;
+    const extensionNotice = opts.needsExtension ? (compact ? `
+      <div style="margin:8px 0;padding:8px 10px;border:1.5px solid var(--amber);background:var(--amber-bg);border-radius:8px;">
+        <div style="font-weight:600;color:var(--amber);font-size:11.5px;margin-bottom:4px;">⏱️ 需要更多時間嗎？</div>
+        <button onclick="extendResearch('${code}')" style="padding:4px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">延長 (${extCount})</button>
+      </div>` : `
+      <div style="margin:10px 0;padding:10px 12px;border:1.5px solid var(--amber);background:var(--amber-bg);border-radius:8px;">
+        <div style="font-weight:600;color:var(--amber);margin-bottom:4px;">⏱️ 這次研究比預期久，需要更多時間嗎？</div>
+        <div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;">仍在執行中、還沒有卡住，只是耗時比一般案例長（常見於海外ADR、資料較冷門的公司）。不理會這則通知的話，系統會在短時間內自動判定逾時終止；如果想繼續等，可以按下方按鈕延長（已延長 ${extCount} 次）。</div>
+        <button onclick="extendResearch('${code}')" style="padding:6px 14px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:12.5px;font-weight:600;">延長，繼續等待</button>
+      </div>`) : '';
+
+    if(compact){
+      return `
+        <div class="floating-widget-head">
+          <b>${code}</b>
+          <span class="floating-widget-status">背景研究中…</span>
+        </div>
+        <div data-elapsed-for="${code}" data-compact="1" style="font-size:11px;color:var(--ink-soft);margin-top:2px;"></div>
+        ${extensionNotice}
+        <div class="ff-bar-track" style="margin:8px 0 4px;height:6px;"><div class="ff-bar-fill" data-progressbar-for="${code}" style="width:0%;transition:width 1s linear;"></div></div>
+        <div style="margin-top:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${escHtml(opts.activity||'')}">${activityLine}</div>`;
+    }
+    return `<div style="padding:16px;border:1px solid var(--line);border-radius:10px;">
+      <div style="font-weight:600;margin-bottom:6px;">背景研究中…</div>
+      <div style="color:var(--ink-soft);font-size:13px;">Claude Code正在即時搜尋「${code}」的公開資料、撰寫研究報告與估值模型，並直接寫入新的資料檔案。過程中可以先關掉這個分頁去做別的事，或回主頁瀏覽其他報告——研究是在你電腦上背景執行，右下角會出現一個小視窗持續顯示進度，不受你目前在看哪一頁影響。${extra}</div>
+      ${extensionNotice}
+      <div class="ff-bar-track" style="margin:12px 0 6px;"><div class="ff-bar-fill" data-progressbar-for="${code}" style="width:0%;transition:width 1s linear;"></div></div>
+      <div data-elapsed-for="${code}" style="font-size:12px;color:var(--ink-soft);"></div>
+      <div style="margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Claude Code目前正在做的動作，證明它確實在執行中">${activityLine}</div>
+    </div>`;
+  }
+
+  if(kind === 'done'){
+    clearResearchTimer(code);
+    if(compact){
+      return `
+        <div class="floating-widget-head">
+          <b>${code}</b>
+          <span style="color:var(--green);font-size:11px;">✅ 完成</span>
+          <button onclick="dismissFloatingWidget('${code}')" class="floating-widget-close" title="關閉">✕</button>
+        </div>
+        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;">已寫入資料庫，重新整理頁面查看。</div>
+        <button onclick="location.reload()" style="margin-top:6px;padding:4px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">重新整理頁面</button>`;
+    }
+    return `<div style="padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--green-bg);">
+      <div style="font-weight:600;margin-bottom:6px;color:var(--green);">完成！「${code}」已寫入資料庫</div>
+      <div style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">請重新整理頁面後再次搜尋「${code}」查看完整報告。</div>
+      ${fmtDiffHtml(opts.diff)}
+      <button onclick="location.reload()" style="padding:6px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13px;font-weight:600;margin-top:12px;">重新整理頁面</button>
+    </div>`;
+  }
+
+  // error
+  clearResearchTimer(code);
+  if(compact){
+    return `
+      <div class="floating-widget-head">
+        <b>${code}</b>
+        <span style="color:var(--red);font-size:11px;">⚠️ 失敗</span>
+        <button onclick="dismissFloatingWidget('${code}')" class="floating-widget-close" title="關閉">✕</button>
+      </div>
+      <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;">${extra}</div>
+      <button onclick="startClaudeCodeResearch('${code}')" style="margin-top:6px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:11px;">重試</button>`;
+  }
+  return `<div style="padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--red-bg);">
+    <div style="font-weight:600;margin-bottom:6px;color:var(--red);">背景研究失敗</div>
+    <div style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">${extra}</div>
+    <button onclick="startClaudeCodeResearch('${code}')" style="padding:5px 14px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:12px;">重試</button>
+  </div>`;
+}
+
+async function pollResearchStatus(code){
+  // 只要頁面容器或小視窗任一個還存在，就繼續輪詢；兩個都不在了（使用者離開
+  // 該頁面、又把小視窗關掉）才真的停止，避免無限背景輪詢浪費資源。
+  const pageContainerId = window._researchPageContainer[code];
+  const pageEl = pageContainerId ? document.getElementById(pageContainerId) : null;
+  const widgetEl = document.getElementById(`floatWidget-${code}`);
+  if(!pageEl && !widgetEl){ clearResearchTimer(code); window._activeResearchCodes.delete(code); return; }
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}`);
+    const body = await res.json().catch(()=>({}));
+    if(!res.ok){
+      renderResearchTargets(code, 'error', { message: body.error || `查詢狀態失敗（HTTP ${res.status}）` });
+      return;
+    }
+    if(body.status === 'running'){
+      renderResearchTargets(code, 'running', {
+        activity: body.activity,
+        needsExtension: body.needsExtension, extensionsGranted: body.extensionsGranted, maxExtensions: body.maxExtensions,
+      });
+      startResearchTicker(code, body.startedAt);
+      setTimeout(()=>pollResearchStatus(code), RESEARCH_POLL_INTERVAL_MS);
+    }else if(body.status === 'done'){
+      renderResearchTargets(code, 'done', { diff: body.diff });
+      window._activeResearchCodes.delete(code);
+    }else{
+      renderResearchTargets(code, 'error', { message: body.error || '研究過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。' });
+      window._activeResearchCodes.delete(code);
+    }
+  }catch(e){
+    renderResearchTargets(code, 'error', { message: `無法連線到 claude-code-research-server（${window.RESEARCH_BACKEND_BASE}）：${e.message}` });
+  }
+}
+
+// 延長失敗時附註在兩個目標各自後面，不覆蓋掉原本畫面。
+function appendResearchNote(code, msg){
+  const pageContainerId = window._researchPageContainer[code];
+  const pageEl = pageContainerId ? document.getElementById(pageContainerId) : null;
+  if(pageEl) pageEl.insertAdjacentHTML('beforeend', `<div style="margin-top:8px;color:var(--red);font-size:12px;">延長失敗：${escHtml(msg)}</div>`);
+  const widgetEl = document.getElementById(`floatWidget-${code}`);
+  if(widgetEl) widgetEl.insertAdjacentHTML('beforeend', `<div style="margin-top:6px;color:var(--red);font-size:11px;">延長失敗：${escHtml(msg)}</div>`);
+}
+
+// 使用者在「要不要延長」的通知裡按下延長按鈕時呼叫——成功的話不用自己組
+// 畫面，直接重新輪詢一次即可（下一次pollResearchStatus會拿到needsExtension
+// 已經變false的最新狀態，自然把通知收掉）；失敗（例如剛好完成、或已用完
+// 延長次數）就在旁邊附註原因。
+async function extendResearch(code){
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}/extend`, { method: 'POST' });
+    const body = await res.json().catch(()=>({}));
+    if(!res.ok){
+      appendResearchNote(code, body.error || '未知原因（畫面會在下一次輪詢時自動反映最新狀態）');
+      return;
+    }
+    pollResearchStatus(code);
+  }catch(e){
+    appendResearchNote(code, e.message);
+  }
+}
+
+// containerId是選填的：有的話代表「這是使用者當下所在頁面裡的容器」，會被記錄下來
+// 持續同步更新；不管有沒有傳，一律都會在右下角建立/更新一個小視窗（見
+// renderResearchTargets），讓使用者換頁瀏覽其他報告時還是看得到這裡的進度。
+async function startClaudeCodeResearch(rawCode, containerId){
+  const code = String(rawCode).trim().toUpperCase();
+  if(containerId) window._researchPageContainer[code] = containerId;
+  window._dismissedResearchCodes.delete(code); // 重新觸發一次研究，之前關掉的小視窗要能再出現
+  window._activeResearchCodes.add(code);
+  renderResearchTargets(code, 'starting', {});
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    });
+    const body = await res.json().catch(()=>({}));
+    if(!res.ok){
+      renderResearchTargets(code, 'error', { message: body.error || `啟動失敗（HTTP ${res.status}）` });
+      return;
+    }
+    renderResearchTargets(code, 'running', { message: body.alreadyRunning ? '（偵測到已有一個進行中的研究任務，接續追蹤它的進度）' : '' });
+    startResearchTicker(code, body.startedAt);
+    setTimeout(()=>pollResearchStatus(code), RESEARCH_POLL_INTERVAL_MS);
+  }catch(e){
+    renderResearchTargets(code, 'error', { message: `無法連線到 claude-code-research-server（${window.RESEARCH_BACKEND_BASE}）：${e.message}<br>請確認已依照 claude-code-research-server/README.md 啟動這支伺服器。` });
+  }
+}
+
+// 頁面載入時（含重新整理）向伺服器要一次「目前還在跑的任務」清單，把小視窗
+// 重新建起來——不這樣做的話，使用者如果在研究還沒跑完時重新整理整個分頁，
+// 就會因為_activeResearchCodes這個純前端狀態被重置而徹底看不到進度，即使
+// 伺服器那邊其實還在繼續執行。
+async function restoreActiveResearchJobs(){
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`);
+    if(!res.ok) return;
+    const body = await res.json().catch(()=>({ jobs: [] }));
+    (body.jobs || []).forEach(j => {
+      window._activeResearchCodes.add(j.code);
+      renderResearchTargets(j.code, 'running', {
+        activity: j.activity, needsExtension: j.needsExtension,
+        extensionsGranted: j.extensionsGranted, maxExtensions: body.maxExtensions,
+      });
+      startResearchTicker(j.code, j.startedAt);
+      pollResearchStatus(j.code);
+    });
+  }catch(e){ /* claude-code-research-server可能還沒啟動，安靜略過，不影響其他功能 */ }
+}
+restoreActiveResearchJobs();
+
+// ---- 像素風公司圖像：依報告結論（護城河一句話／產業定位）具象化的角色圖示 ----
+const PX_GRID = 16;
+function pxKey(x,y){ return x+','+y; }
+function pxSet(map,x,y,role){ if(x<0||y<0||x>=PX_GRID||y>=PX_GRID) return; map.set(pxKey(x,y),role); }
+function pxRect(map,x,y,w,h,role){ for(let yy=y;yy<y+h;yy++) for(let xx=x;xx<x+w;xx++) pxSet(map,xx,yy,role); }
+function pxCircle(map,cx,cy,r,role){ for(let yy=0;yy<PX_GRID;yy++) for(let xx=0;xx<PX_GRID;xx++){ const dx=xx-cx+0.5, dy=yy-cy+0.5; if(dx*dx+dy*dy<=r*r) pxSet(map,xx,yy,role); } }
+function pxRing(map,cx,cy,rOut,rIn,role){ for(let yy=0;yy<PX_GRID;yy++) for(let xx=0;xx<PX_GRID;xx++){ const dx=xx-cx+0.5, dy=yy-cy+0.5; const d2=dx*dx+dy*dy; if(d2<=rOut*rOut && d2>=rIn*rIn) pxSet(map,xx,yy,role); } }
+function pxLine(map,x0,y0,x1,y1,role,thick){
+  thick = thick||1;
+  let dx=Math.abs(x1-x0), sx=x0<x1?1:-1, dy=-Math.abs(y1-y0), sy=y0<y1?1:-1, err=dx+dy, x=x0, y=y0;
+  while(true){
+    for(let t=0;t<thick;t++) pxSet(map,x,y+t,role);
+    if(x===x1 && y===y1) break;
+    const e2=2*err;
+    if(e2>=dy){ err+=dy; x+=sx; }
+    if(e2<=dx){ err+=dx; y+=sy; }
+  }
+}
+
+const ICON_LIB = {
+  chip(map){
+    pxRect(map,5,5,6,6,'F'); pxRect(map,6,6,2,2,'H');
+    pxRect(map,6,3,1,2,'F'); pxRect(map,9,3,1,2,'F');
+    pxRect(map,6,11,1,2,'F'); pxRect(map,9,11,1,2,'F');
+    pxRect(map,3,6,2,1,'F'); pxRect(map,3,9,2,1,'F');
+    pxRect(map,11,6,2,1,'F'); pxRect(map,11,9,2,1,'F');
+  },
+  wafer(map){
+    pxCircle(map,8,8,6,'F');
+    pxLine(map,8,2,8,14,'H',1);
+    pxLine(map,2,8,14,8,'H',1);
+    pxCircle(map,8,8,1,'W');
+  },
+  memory(map){
+    pxRect(map,3,10,10,3,'F');
+    pxRect(map,4,7,10,3,'F');
+    pxRect(map,5,4,10,3,'H');
+    pxRect(map,4,11,1,1,'W'); pxRect(map,5,8,1,1,'W'); pxRect(map,6,5,1,1,'W');
+  },
+  probe(map){
+    pxRect(map,3,7,6,6,'F'); pxRect(map,4,8,1,1,'H');
+    pxRing(map,11,5,3,2,'F'); pxCircle(map,11,5,1,'W');
+    pxLine(map,13,7,15,9,'F',1);
+  },
+  pcb(map){
+    pxRect(map,3,3,10,10,'F');
+    pxLine(map,5,5,5,11,'H',1); pxLine(map,8,3,8,7,'H',1); pxLine(map,11,5,11,11,'H',1); pxLine(map,5,11,11,11,'H',1);
+    pxRect(map,5,5,1,1,'W'); pxRect(map,8,7,1,1,'W'); pxRect(map,11,5,1,1,'W'); pxRect(map,11,11,1,1,'W');
+  },
+  power(map){
+    pxRect(map,3,3,10,10,'F');
+    [[9,3],[8,4],[8,5],[7,6],[9,6],[8,7],[8,8],[7,9]].forEach(([x,y])=>pxRect(map,x,y,1,1,'H'));
+  },
+  gear(map){
+    pxCircle(map,8,8,5,'F'); pxCircle(map,8,8,2,'W');
+    pxRect(map,7,1,2,2,'F'); pxRect(map,7,13,2,2,'F'); pxRect(map,1,7,2,2,'F'); pxRect(map,13,7,2,2,'F');
+    pxRect(map,3,3,2,2,'F'); pxRect(map,11,3,2,2,'F'); pxRect(map,3,11,2,2,'F'); pxRect(map,11,11,2,2,'F');
+  },
+  connector(map){
+    pxRect(map,4,3,8,6,'F'); pxRect(map,5,4,3,2,'H');
+    pxRect(map,5,9,1,4,'F'); pxRect(map,7,9,1,5,'F'); pxRect(map,9,9,1,4,'F'); pxRect(map,11,9,1,4,'F');
+  },
+  optic(map){
+    pxRing(map,6,6,4,3,'F'); pxCircle(map,6,6,2,'W');
+    pxLine(map,9,9,14,14,'H',1); pxLine(map,10,8,15,13,'H',1);
+  },
+  network(map){
+    pxRect(map,3,8,10,5,'F');
+    pxRect(map,5,9,2,1,'H'); pxRect(map,9,9,2,1,'H');
+    pxLine(map,5,8,4,3,'F',1); pxLine(map,11,8,12,3,'F',1);
+    pxRect(map,4,2,1,1,'H'); pxRect(map,12,2,1,1,'H');
+  },
+  tower(map){
+    pxLine(map,8,4,8,14,'F',1);
+    pxLine(map,5,7,11,7,'F',1); pxLine(map,6,10,10,10,'F',1);
+    pxLine(map,4,14,12,14,'F',1);
+    pxRect(map,6,3,1,1,'H'); pxRect(map,10,3,1,1,'H'); pxRect(map,4,2,1,1,'H'); pxRect(map,12,2,1,1,'H');
+  },
+  factory(map){
+    pxRect(map,3,7,10,7,'F'); pxRect(map,5,4,2,4,'F');
+    pxRect(map,5,9,2,2,'W'); pxRect(map,9,9,2,2,'W'); pxRect(map,7,11,2,3,'H');
+    pxRect(map,5,2,2,2,'H');
+  },
+  server(map){
+    pxRect(map,3,3,10,10,'F');
+    pxLine(map,4,6,12,6,'H',1); pxLine(map,4,9,12,9,'H',1);
+    pxRect(map,5,4,1,1,'W'); pxRect(map,7,4,1,1,'W'); pxRect(map,9,4,1,1,'W');
+  },
+  material_roll(map){
+    pxCircle(map,8,8,6,'F'); pxCircle(map,8,8,3,'W'); pxRing(map,8,8,6,5,'H');
+  },
+  construction(map){
+    pxLine(map,4,3,4,14,'F',1); pxLine(map,4,4,14,4,'F',1);
+    pxLine(map,13,4,13,9,'H',1); pxRect(map,12,9,2,2,'F');
+    pxRect(map,2,13,6,2,'F');
+  },
+  ship(map){
+    pxRect(map,3,9,10,3,'F');
+    pxLine(map,4,12,3,9,'F',1); pxLine(map,12,12,13,9,'F',1);
+    pxLine(map,8,3,8,9,'F',1); pxRect(map,8,4,5,3,'H');
+  },
+  coin(map){
+    pxCircle(map,8,8,6,'F'); pxRing(map,8,8,6,5,'H');
+    pxRect(map,7,5,2,6,'W'); pxRect(map,5,7,6,2,'W');
+  },
+  hotel(map){
+    pxRect(map,4,8,8,6,'F');
+    pxRect(map,6,4,4,1,'F'); pxRect(map,5,5,6,1,'F'); pxRect(map,4,6,8,2,'F');
+    pxRect(map,6,10,2,2,'W'); pxRect(map,9,10,2,2,'W'); pxRect(map,7,3,2,1,'H');
+  },
+  box(map){
+    pxRect(map,3,5,10,9,'F');
+    pxLine(map,3,5,13,5,'H',1); pxLine(map,8,5,8,14,'H',1); pxLine(map,3,9,13,9,'H',1);
+  },
+  thermal(map){
+    pxRing(map,8,8,5,4,'F');
+    pxLine(map,8,8,8,3,'H',2); pxLine(map,8,8,13,8,'H',2); pxLine(map,8,8,8,13,'H',2); pxLine(map,8,8,3,8,'H',2);
+    pxCircle(map,8,8,2,'W');
+  },
+  gadget(map){
+    pxRect(map,3,6,10,6,'F');
+    pxCircle(map,4,12,2,'F'); pxCircle(map,12,12,2,'F');
+    pxRect(map,5,8,3,1,'W'); pxRect(map,6,7,1,3,'W');
+    pxCircle(map,11,8,1,'H'); pxCircle(map,10,10,1,'H');
+  },
+  car(map){
+    pxRect(map,3,7,10,3,'F'); pxRect(map,5,4,6,3,'F');
+    pxRect(map,6,5,1,1,'W'); pxRect(map,9,5,1,1,'W');
+    pxCircle(map,5,10,1.5,'F'); pxCircle(map,11,10,1.5,'F');
+    pxRect(map,8,7,1,1,'H'); pxRect(map,7,8,1,1,'H'); pxRect(map,8,9,1,1,'H');
+  },
+  cloud(map){
+    pxCircle(map,5,9,3,'F'); pxCircle(map,9,7,4,'F'); pxCircle(map,12,9,3,'F'); pxRect(map,4,9,10,4,'F');
+    pxRect(map,6,8,3,2,'H');
+    pxRect(map,7,11,1,1,'W'); pxRect(map,10,11,1,1,'W');
+  },
+  robot(map){
+    pxRect(map,6,1,1,1,'H');
+    pxRect(map,6,2,4,4,'F');
+    pxRect(map,7,3,1,1,'W'); pxRect(map,9,3,1,1,'W');
+    pxRect(map,5,7,6,5,'F');
+    pxRect(map,7,9,2,2,'H');
+    pxRect(map,3,7,2,4,'F'); pxRect(map,11,7,2,4,'F');
+    pxRect(map,6,12,1,3,'F'); pxRect(map,9,12,1,3,'F');
+  },
+  food(map){
+    pxRect(map,4,6,8,8,'F');
+    pxLine(map,4,6,6,3,'F',1); pxLine(map,12,6,10,3,'F',1);
+    pxRect(map,7,3,2,2,'H');
+    pxRect(map,6,9,1,1,'W'); pxRect(map,9,9,1,1,'W'); pxRect(map,6,12,1,1,'W'); pxRect(map,9,12,1,1,'W');
+  },
+  medical(map){
+    pxCircle(map,8,8,6,'F');
+    pxRect(map,7,4,2,8,'W'); pxRect(map,4,7,8,2,'W');
+  },
+};
+
+const ICON_BASE_COLOR = {
+  chip:'#5b6bd6', wafer:'#2f9e8f', memory:'#8a4fd6', probe:'#e0863a', pcb:'#2f9e52',
+  power:'#e0432b', gear:'#5b6270', connector:'#a8690a', optic:'#22a6c9', network:'#c0392b',
+  tower:'#d6336c', factory:'#7d8a4a', server:'#3b4a6b', material_roll:'#9c6b30',
+  construction:'#6b6b6b', ship:'#1f5f8a', coin:'#c99a2e', hotel:'#c76b8a', box:'#8a7050',
+  thermal:'#2f8fb3', gadget:'#8a4fd6', car:'#1f8a4c', cloud:'#5b6bd6', robot:'#4a7fc9',
+  food:'#8a9c3a', medical:'#e0384f',
+};
+
+// AI伺服器供應鏈地圖每個「角色／環節」對應的示意圖像（依CHAIN_MAP的title比對）
+const STAGE_ICON_META = {
+  '晶片設計與晶圓代工':'chip',
+  '封裝測試與良率驗證':'probe',
+  '設備與廠務工程':'factory',
+  'PCB／載板與電路板材料':'pcb',
+  '連接器、線纜與被動元件':'connector',
+  '電源管理與散熱':'thermal',
+  '系統組裝、ODM與系統整合':'server',
+  '網路與資料中心基礎設施':'network',
+  '消費性電子與嵌入式應用':'gadget',
+  '車用與新能源':'car',
+  '鋼鐵與傳統原物料':'construction',
+  '電信服務':'tower',
+  '金融服務':'coin',
+  '觀光餐旅':'hotel',
+  '資訊服務與系統整合':'cloud',
+  '軍工':'ship',
+};
+function stageIconHtml(title){
+  const iconId = STAGE_ICON_META[title] || 'box';
+  const color = ICON_BASE_COLOR[iconId] || '#5b6bd6';
+  return `<div class="stage-icon" title="「${title}」環節示意圖像" aria-hidden="true">${renderIconSVG(iconId, color)}</div>`;
+}
+
+// 供應鏈地圖的公司chip改用簡稱省空間（拿掉科技/電子/工業/控股等通用字尾）；
+// 只收錄「有變化」的公司，其餘沿用原本全名，報告頁標題等其他地方不受影響。
+const SHORT_NAME = {
+  '2301':'光寶','2337':'旺宏','2383':'台光電','2449':'京元電','2467':'志聖','2546':'根基',
+  '3030':'德律','3034':'聯詠','3147':'大綜','3167':'大量','3264':'欣銓','3711':'日月光',
+  '4576':'大銀微','4991':'環宇','5536':'聖暉','6138':'茂達','6197':'佳必琪','6214':'精誠',
+  '6664':'群翊','6719':'力智','6753':'龍德','6829':'千附','7788':'松川','8039':'台虹',
+  '8043':'蜜望實','8155':'博智',
+};
+
+// 公司圖像改以「概念股」分類為準，而不是單純的產業/供應鏈角色——同一個概念股
+// 族群（例如機器人、軍工）裡的公司共用同一個圖像，方便一眼認出「這家公司屬於
+// 哪個概念股題材」。分類依據是每家公司「主要業務」欄位與moat段落實際描述的
+// 產品/題材，不是硬套產業代碼。完整的概念股分類說明見下面的CONCEPT_META，
+// 首頁「概念股圖鑑」就是直接從這份資料產生的。
+const ICON_META = {
+  // 機器人概念股
+  '1597':'robot', '2049':'robot', '4576':'robot', '6584':'robot',
+  // 晶圓代工與矽晶圓概念股
+  '2330':'wafer', '2455':'wafer', '3105':'wafer', '3532':'wafer', '4971':'wafer', '4991':'wafer',
+  // IC設計概念股
+  '2454':'chip', '3034':'chip', 'NVDA':'chip',
+  // 記憶體概念股
+  '2337':'memory', '2344':'memory', '3006':'memory', '2451':'memory', '8299':'memory',
+  // 半導體封測與檢測概念股
+  '2360':'probe', '2449':'probe', '3030':'probe', '3264':'probe', '3587':'probe',
+  '3711':'probe', '6223':'probe', '6257':'probe', '8150':'probe', '3265':'probe',
+  // 電源管理概念股
+  '2301':'power', '2308':'power', '6138':'power', '6719':'power', '7788':'power',
+  '3211':'power', '4931':'power',
+  // 散熱概念股
+  '2421':'thermal', '3653':'thermal',
+  // PCB／載板概念股
+  '2316':'pcb', '2383':'pcb', '3189':'pcb', '8039':'pcb', '8155':'pcb', '8046':'pcb',
+  // 電子材料概念股（玻纖布、銅箔等PCB/半導體上游材料）
+  '1802':'material_roll', '1815':'material_roll', '5475':'material_roll', '8358':'material_roll',
+  // 連接器概念股（含分立半導體與被動元件，跟連接器/線纜同屬終端應用被動料件）
+  '6197':'connector', 'VSH':'connector',
+  // 網通設備概念股
+  '2345':'network',
+  // 光學／光通訊概念股
+  '3450':'optic', '3362':'optic',
+  // 半導體設備與廠務工程概念股
+  '2467':'factory', '3167':'factory', '5536':'factory', '6196':'factory',
+  '6664':'factory', '6667':'factory', '6829':'factory', '6691':'factory',
+  // 系統組裝與ODM概念股
+  '2317':'server', '2382':'server',
+  // 資訊服務概念股
+  '3147':'cloud', '6214':'cloud',
+  // 食品飼料與肉品概念股
+  '1215':'food',
+  // 醫療器材概念股
+  'MDT':'medical',
+  // 電信概念股
+  '2412':'tower',
+  // 金融概念股
+  '2881':'coin',
+  // 觀光概念股
+  '2707':'hotel',
+  // 軍工概念股
+  '5371':'ship', '6753':'ship',
+  // 通路代理概念股
+  '8043':'box',
+  // 傳產營造與原物料概念股
+  '1605':'construction', '2027':'construction', '2546':'construction',
+};
+
+// 概念股圖鑑用的分類說明（圖像 → 概念股名稱／一句話說明），首頁「概念股圖鑑」
+// 直接依這份資料 + ICON_META 反查出每個概念股底下有哪些公司，兩邊資料只會
+// 有一份、不會兜不起來。
+const CONCEPT_META = {
+  robot:          { title:'機器人概念股',        desc:'精密傳動、運動控制與機器人系統核心零組件供應商' },
+  wafer:          { title:'晶圓代工與矽晶圓概念股', desc:'半導體晶圓代工廠，以及矽晶圓／化合物半導體磊晶材料供應商' },
+  chip:           { title:'IC設計概念股',        desc:'無晶圓廠IC設計公司（Fabless），設計晶片交由代工廠生產' },
+  memory:         { title:'記憶體概念股',        desc:'記憶體晶片設計與製造，含NOR Flash、利基型儲存等產品' },
+  probe:          { title:'半導體封測與檢測概念股', desc:'IC封裝測試代工（OSAT）、檢測分析服務與自動測試設備（ATE）' },
+  power:          { title:'電源管理概念股',       desc:'電源管理IC、功率半導體與電源轉換方案供應商' },
+  thermal:        { title:'散熱概念股',          desc:'散熱風扇、液冷與熱管理零組件供應商' },
+  pcb:            { title:'PCB／載板概念股',      desc:'印刷電路板、IC載板與軟硬板材料製造商' },
+  material_roll:  { title:'電子材料概念股',       desc:'玻璃纖維布、銅箔等PCB與半導體上游關鍵材料供應商' },
+  connector:      { title:'連接器概念股',        desc:'連接器、線纜模組與精密電子零組件製造商' },
+  car:            { title:'車用與新能源概念股',    desc:'車用電子、儲能與電動車相關零組件供應商' },
+  network:        { title:'網通設備概念股',       desc:'網路交換器與通訊設備製造商' },
+  optic:          { title:'光學／光通訊概念股',    desc:'光通訊零組件、雷射二極體封裝與光學鏡頭供應商' },
+  factory:        { title:'半導體設備與廠務工程概念股', desc:'半導體廠務工程、無塵室機電統包與製程設備供應商' },
+  server:         { title:'系統組裝與ODM概念股',   desc:'伺服器／電腦系統組裝代工（EMS/ODM）廠商' },
+  cloud:          { title:'資訊服務概念股',       desc:'系統整合、IT委外與雲端解決方案服務商' },
+  tower:          { title:'電信概念股',          desc:'電信網路服務供應商' },
+  coin:           { title:'金融概念股',          desc:'銀行、保險、證券等金融控股集團' },
+  hotel:          { title:'觀光概念股',          desc:'國際觀光旅館與餐飲品牌授權業者' },
+  ship:           { title:'軍工概念股',          desc:'國防艦艇、無人載具與國防電子系統供應商' },
+  box:            { title:'通路代理概念股',       desc:'關鍵電子零組件代理經銷商' },
+  construction:   { title:'傳產營造與原物料概念股', desc:'營造工程承攬與傳統金屬原物料製造商' },
+  food:           { title:'食品飼料與肉品概念股',   desc:'禽畜飼料、屠宰與食品加工一貫化業者' },
+  medical:        { title:'醫療器材概念股',        desc:'醫療設備、手術器械與健康科技相關產品供應商' },
+};
+
+function pxLighten(hex, amt){
+  const c = hex.replace('#','');
+  const num = parseInt(c,16);
+  let r=(num>>16)+amt, g=((num>>8)&0xff)+amt, b=(num&0xff)+amt;
+  r=Math.min(255,Math.max(0,r)); g=Math.min(255,Math.max(0,g)); b=Math.min(255,Math.max(0,b));
+  return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+function pxJitter(hex, code){
+  let hash=0; for(let i=0;i<code.length;i++) hash=(hash*31+code.charCodeAt(i))>>>0;
+  const amt=(hash%21)-10;
+  return pxLighten(hex, amt);
+}
+function pxOutline(map){
+  const outline=new Set();
+  map.forEach((_,key)=>{
+    const [x,y]=key.split(',').map(Number);
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{
+      const nx=x+dx, ny=y+dy, nk=pxKey(nx,ny);
+      if(nx>=0 && ny>=0 && nx<PX_GRID && ny<PX_GRID && !map.has(nk)) outline.add(nk);
+    });
+  });
+  return outline;
+}
+function renderIconSVG(iconId, accentHex){
+  const def = ICON_LIB[iconId] || ICON_LIB.chip;
+  const map = new Map();
+  def(map);
+  const outline = pxOutline(map);
+  const ink = '#3d2b1a';
+  const hi = pxLighten(accentHex, 40);
+  const roleColor = { F:accentHex, H:hi, W:'#fffdf5' };
+  let rects = '';
+  outline.forEach(k=>{ const [x,y]=k.split(',').map(Number); rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="${ink}"/>`; });
+  map.forEach((role,k)=>{ const [x,y]=k.split(',').map(Number); rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="${roleColor[role]||accentHex}"/>`; });
+  return `<svg viewBox="0 0 ${PX_GRID} ${PX_GRID}" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">${rects}</svg>`;
+}
+function companyIconHtml(code){
+  const iconId = ICON_META[code] || 'chip';
+  const base = ICON_BASE_COLOR[iconId] || '#5b6bd6';
+  const color = pxJitter(base, String(code));
+  return `<div class="company-icon" title="依報告結論具象化的像素圖像" aria-hidden="true">${renderIconSVG(iconId, color)}</div>`;
+}
+
+function renderReport(r){
+  const chain = r.chain.map(fmtChain).join('');
+  const rows = r.finTable.rows.map(row=>`<tr>${row.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+  const headers = r.finTable.headers.map(h=>`<th>${h}</th>`).join('');
+  const narrative = r.narrative.map(fmtNarrative).join('');
+  const extra = r.extraNarrative ? `<h3 style="font-size:14.5px;color:var(--navy-2);margin:18px 0 8px;">${r.extraNarrative.heading}</h3><p class="lead-p">${r.extraNarrative.text}</p>` : '';
+  const terms = r.terms.map(t=>`<span class="term-chip" onclick="showTermPopupByClick(event,'${t.replace(/'/g,"\\'")}')">${t}</span>`).join('');
+  const sources = r.sources.map(s=>`<div>・${s}</div>`).join('');
+
+  const chainMainHtml = `<section class="block"><h3>產業鏈定位：${r.chainTitle}</h3>${chain}</section>`;
+  const finHtml = `<section class="block" id="fincontent-${r.code}"><h3>財務健診：${r.finTitle}</h3><div style="overflow-x:auto;"><table class="fin"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div>${narrative}${extra}</section>`;
+  const valHtml = fmtValuationSection(r.code, r.market);
+  const peersHtml = fmtPeersSection(r);
+  // growthDriver／technical是舊資料（重新研究前產生的報告）沒有的新欄位，
+  // 缺欄位時整段跳過渲染，不放進tocPills，不讓舊報告因為缺欄位而報錯或版面跑掉。
+  const growthDriverHtml = (r.growthDriver && r.growthDriver.length)
+    ? `<section class="block"><h3>主要成長動能${r.growthDriverTitle ? '：'+r.growthDriverTitle : ''}</h3>${r.growthDriver.map(fmtGrowthDriverItem).join('')}</section>`
+    : '';
+  const technicalHtml = r.technical
+    ? `<section class="block"><h3>技術面觀察（K線型態）</h3>${fmtTechnical(r.technical)}</section>`
+    : '';
+  const bullBearHtml = (r.bullBear && ((r.bullBear.bull && r.bullBear.bull.length) || (r.bullBear.bear && r.bullBear.bear.length)))
+    ? `<section class="block"><h3>多空觀點${r.bullBearTitle ? '：'+r.bullBearTitle : ''}</h3>
+        ${r.bullBear.bull && r.bullBear.bull.length ? `<div class="bullbear-group"><span class="bullbear-label bull">多方觀點</span>${r.bullBear.bull.map(fmtBullBearItem).join('')}</div>` : ''}
+        ${r.bullBear.bear && r.bullBear.bear.length ? `<div class="bullbear-group"><span class="bullbear-label bear">空方觀點</span>${r.bullBear.bear.map(fmtBullBearItem).join('')}</div>` : ''}
+      </section>`
+    : '';
+  const glossaryHtml = `
+    <section class="block">
+      <h3>名詞小百科</h3>
+      <div class="glossary-hint">在報告內文中反白選取專有名詞可直接彈出解釋卡片（小百科裡還沒有的詞會改成跳出「查詢並加入」按鈕）；也可以點選下方任一詞彙快速查看。</div>
+      <div class="term-list">${terms}</div>
+    </section>`;
+  const sourcesHtml = `
+    <section class="block">
+      <h3>資料來源與免責聲明</h3>
+      <div class="sources">${sources}</div>
+      <div class="disclaimer">本報告內容基於公開資料整理與分析撰寫，可能包含推論與待驗證的假設，僅供參考，不構成任何投資建議。投資人應自行查證並判斷，並自負投資風險。</div>
+    </section>`;
+
+  // 左欄：敘事／市場觀點路線（產業鏈定位 → 主要成長動能 → 多空觀點 → 技術面觀察 → 同儕比較）
+  // 右欄：數字／估值路線（財務健診 → 股價推算模型，官方數據速覽已併入股價推算模型的「目前市價」旁）
+  // 名詞小百科／資料來源與免責聲明：不分左右欄，全寬、放在同一個相對位置（欄位下方）
+  const leftItems = [
+    { id:`sec-chain-${r.code}`, label:'產業鏈定位', html:chainMainHtml },
+    growthDriverHtml ? { id:`sec-growth-${r.code}`, label:'主要成長動能', html:growthDriverHtml } : null,
+    bullBearHtml ? { id:`sec-bullbear-${r.code}`, label:'多空觀點', html:bullBearHtml } : null,
+    technicalHtml ? { id:`sec-technical-${r.code}`, label:'技術面觀察', html:technicalHtml } : null,
+    peersHtml ? { id:`sec-peers-${r.code}`, label:'同儕比較', html:peersHtml } : null,
+  ].filter(Boolean);
+  const rightItems = [
+    { id:`sec-fin-${r.code}`, label:'財務健診', html:finHtml },
+    valHtml ? { id:`sec-val-${r.code}`, label:'股價推算模型', html:valHtml } : null,
+  ].filter(Boolean);
+  const fullWidthItems = [
+    { id:`sec-glossary-${r.code}`, label:'名詞小百科', html:glossaryHtml },
+  ];
+
+  const colHtml = items => items.map(item=>`<div id="${item.id}" class="section-anchor">${item.html}</div>`).join('');
+  const fullWidthHtml = colHtml(fullWidthItems);
+  const tocPillsHtml = [...leftItems, ...rightItems, ...fullWidthItems]
+    .map((item,i)=>`<a href="#${item.id}" class="toc-pill"><b>${i+1}</b>${item.label}</a>`).join('');
+
+  return `
+  <article class="report active" id="report-${r.code}">
+    <nav class="toc-bar">
+      <span class="toc-bar-label">📑 本頁導覽</span>
+      ${tocPillsHtml}
+    </nav>
+
+    <div class="report-head">
+      <div class="rh-name-row">
+        ${companyIconHtml(r.code)}
+        <h2>${displayCompanyName(r)}</h2>
+        <div class="price-stats" id="priceStats-${r.code}">
+          ${r.market === 'US' ? '' : `<button class="price-stats-trigger" onclick="verifyTwseAndSync('${r.code}')">📈 查詢TWSE最新股價與均線</button>`}
+        </div>
+      </div>
+      <div class="rh-top">
+        <span class="code-badge">${r.code}</span>
+        ${marketBadgeHtml(r.market)}
+        <span class="industry-badge">${r.industry}</span>
+        ${isRecentlyGenerated(r.generatedAt) ? `<span class="freshness-badge new">🆕 過去12小時內剛更新</span>` : ''}
+        ${freshnessBadgeHtml(r.generatedAt)}
+        ${r.generatedAt ? `<span class="date-badge">🕐 報告生成於 ${fmtGeneratedAt(r.generatedAt)}（台灣時間）</span>` : ''}
+        <button onclick="startClaudeCodeResearch('${r.code}','research-update-${r.code}')" class="rh-btn${isStale(r.generatedAt)?' urgent':''}">🔄 重新研究並更新為最新資訊</button>
+      </div>
+      <p class="moat-line">${r.moat}</p>
+      <div class="kv-grid"><div class="kv"><div class="k">主要業務</div><div class="v">${r.basics.主要業務}</div></div></div>
+      <div id="research-update-${r.code}" style="margin-top:12px;"></div>
+    </div>
+
+    <div class="report-cols">
+      <div class="report-col">${colHtml(leftItems)}</div>
+      <div class="report-col">${colHtml(rightItems)}</div>
+    </div>
+
+    ${fullWidthHtml}
+    ${sourcesHtml}
+
+    <div style="text-align:center;margin-top:20px;">
+      <button onclick="goHome()" class="rh-btn">← 回主頁</button>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="rh-btn">↑ 回頂端</button>
+    </div>
+  </article>`;
+}
+
+let currentReportCode = null; // 目前畫面上顯示的是哪份報告（沒有就是null）——用來讓名詞查詢完成後能原地重繪回同一份報告，不用整頁重新整理跳回主頁
+
+function goHome(){
+  currentReportCode = null;
+  root.innerHTML = '';
+  notFound.style.display = 'none';
+  const chainMapBox = document.getElementById('chainMapBox');
+  if(chainMapBox) chainMapBox.style.display = 'block';
+  const conceptGuideBox = document.getElementById('conceptGuideBox');
+  if(conceptGuideBox) conceptGuideBox.style.display = 'block';
+  const marketFilterBar = document.getElementById('marketFilterBar');
+  if(marketFilterBar) marketFilterBar.style.display = 'flex';
+  document.getElementById('homeBtnHeader').style.display = 'none';
+  document.getElementById('searchInput').value = '';
+  closeSearchSuggestions();
+  if(compareMode) toggleCompareMode();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showReport(codeOrQuery){
+  const q = codeOrQuery.trim().toLowerCase();
+  if(!q){ return; }
+  let match = REPORTS[q.toUpperCase()] || REPORTS[q];
+  if(!match){
+    match = Object.values(REPORTS).find(r =>
+      r.code.toLowerCase() === q ||
+      r.name.toLowerCase() === q ||
+      r.aliases.some(a=>a.toLowerCase()===q) ||
+      r.name.includes(codeOrQuery.trim()) ||
+      r.aliases.some(a=>a.toLowerCase().includes(q))
+    );
+  }
+  const chainMapBox = document.getElementById('chainMapBox');
+  if(chainMapBox) chainMapBox.style.display = 'none';
+  const conceptGuideBox = document.getElementById('conceptGuideBox');
+  if(conceptGuideBox) conceptGuideBox.style.display = 'none';
+  const marketFilterBar = document.getElementById('marketFilterBar');
+  if(marketFilterBar) marketFilterBar.style.display = 'none';
+  document.getElementById('homeBtnHeader').style.display = 'inline-flex';
+  if(match){
+    currentReportCode = match.code;
+    notFound.style.display = 'none';
+    root.innerHTML = renderReport(match);
+  }else{
+    currentReportCode = null;
+    root.innerHTML = '';
+    notFound.style.display = 'block';
+    const usVerifyBox = document.getElementById('notFoundUsVerify');
+    const genBox = document.getElementById('notFoundGenerate');
+    const twseBox = document.getElementById('notFoundTwse');
+    const rawCode = codeOrQuery.trim();
+    // 台股代碼：4-6碼純數字。美股ticker：常常比這短（VSH、GM、T、BA等只有1-3個字母），
+    // 用同一組長度規則會誤判美股代碼「看起來不像股票代碼」，所以拆成兩種形狀分開判斷。
+    const looksLikeTwCode = /^[0-9]{4,6}$/.test(rawCode);
+    const looksLikeUsCode = /^[A-Za-z]{1,6}$/.test(rawCode);
+    if(looksLikeTwCode || looksLikeUsCode){
+      const researchContainerId = `research-${rawCode.toUpperCase()}`;
+      genBox.innerHTML = `
+        <button onclick="startClaudeCodeResearch('${rawCode}','${researchContainerId}')" style="padding:8px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13.5px;font-weight:600;">研究並加入「${rawCode}」到資料庫</button>
+        <div style="color:var(--ink-soft);font-size:12px;margin-top:6px;">會呼叫本機的Claude Code在背景執行，需要先啟動 claude-code-research-server（詳見專案README）。</div>
+        <div id="${researchContainerId}" style="margin-top:10px;"></div>`;
+      // TWSE查證只涵蓋台股，美股代碼不會查到任何東西，這顆按鈕只在看起來是台股代碼時顯示。
+      twseBox.innerHTML = looksLikeTwCode ? `
+        <button onclick="runTwseLookup('${rawCode}','notFoundTwseResult')" style="padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--navy-2);color:#fff;cursor:pointer;font-size:13px;">向TWSE查證「${rawCode}」的官方資料</button>
+        <div id="notFoundTwseResult" style="margin-top:10px;"></div>` : '';
+      // 美股代碼自動向SEC EDGAR核對是否真實存在，錯了的話直接列出候選正確代碼，
+      // 不用等使用者真的按下去、花十幾分鐘跑完背景研究才發現打錯字。
+      if(looksLikeUsCode){
+        verifyUsTicker(rawCode, 'notFoundUsVerify');
+      }else{
+        usVerifyBox.innerHTML = '';
+      }
+    } else {
+      usVerifyBox.innerHTML = '';
+      genBox.innerHTML = '';
+      twseBox.innerHTML = '';
+    }
+  }
+}
+
+/* =========================================================
+   搜尋自動完成 ＋ 全文搜尋
+   輸入時即時列出REPORTS裡代碼/名稱/別名符合的公司，不用打完整代碼或
+   名稱、按下查詢才有反應。只建議「資料庫裡已經有」的公司——查不到建議
+   不代表沒有這檔股票，正常搜尋流程（含「研究並加入」）完全不受影響。
+   如果打的字沒有直接命中公司名稱/代碼，另外在內文（護城河、產業鏈敘述、
+   財務洞察、名詞小百科等欄位）裡找，讓「這詞哪些報告有提到」也能查得到，
+   不用自己一份一份點開找。
+========================================================= */
+let searchSuggestionResults = [];
+let searchContentResults = [];
+let searchSuggestionActiveIdx = -1;
+const _reportSearchTextCache = {};
+
+function searchMatches(query){
+  const q = query.trim().toLowerCase();
+  if(!q) return [];
+  return Object.values(REPORTS).filter(r=>
+    r.code.toLowerCase().includes(q) ||
+    r.name.toLowerCase().includes(q) ||
+    r.aliases.some(a=>a.toLowerCase().includes(q))
+  ).slice(0, 8);
+}
+
+// 把一份報告裡「讀了才知道」的敘述型欄位攤平成一段純文字，供全文比對用。
+// 只挑敘述/名詞類欄位，不含finTable這種純數字表格（數字比對意義不大）。
+function buildReportSearchText(r){
+  const parts = [
+    r.industry, r.moat, r.chainTitle, r.finTitle,
+    ...(r.chain || []).map(c => `${c.lbl} ${c.text}`),
+    ...(r.narrative || []).map(n => `${n.tag} ${n.text}`),
+    ...(r.growthDriver || []).map(g => `${g.driver} ${g.why} ${g.progress}`),
+    ...(r.technical ? [`${r.technical.pattern} ${r.technical.tendency}`] : []),
+    ...(r.terms || []),
+    ...(r.sources || []),
+  ];
+  if(r.peers){
+    parts.push(r.peers.takeaway || '');
+    (r.peers.rows || []).forEach(row => parts.push(row.dimension, ...(row.values || [])));
+  }
+  return parts.filter(Boolean).join('　');
+}
+
+function getReportSearchText(code){
+  if(!_reportSearchTextCache[code]){
+    const original = buildReportSearchText(REPORTS[code]);
+    _reportSearchTextCache[code] = { original, lower: original.toLowerCase() };
+  }
+  return _reportSearchTextCache[code];
+}
+
+// 已經被公司名稱/代碼比對命中的報告不重複列在內文比對區；查詢字串太短
+// （單一字元）全文比對容易噴一堆不相關結果，直接跳過。
+function contentSearchMatches(query){
+  const q = query.trim().toLowerCase();
+  if(q.length < 2) return [];
+  const nameMatchedCodes = new Set(searchMatches(query).map(r => r.code));
+  return Object.values(REPORTS)
+    .filter(r => !nameMatchedCodes.has(r.code) && getReportSearchText(r.code).lower.includes(q))
+    .slice(0, 4);
+}
+
+function extractSearchSnippet(code, query){
+  const { original, lower } = getReportSearchText(code);
+  const q = query.trim().toLowerCase();
+  const idx = lower.indexOf(q);
+  if(idx === -1) return '';
+  const start = Math.max(0, idx - 15);
+  const end = Math.min(original.length, idx + q.length + 25);
+  return (start > 0 ? '…' : '') + original.slice(start, end).trim() + (end < original.length ? '…' : '');
+}
+
+function renderSearchSuggestions(){
+  const box = document.getElementById('searchSuggestions');
+  if(!box) return;
+  const total = searchSuggestionResults.length + searchContentResults.length;
+  if(!total){
+    box.classList.remove('show');
+    box.innerHTML = '';
+    return;
+  }
+  const query = document.getElementById('searchInput').value;
+  let html = searchSuggestionResults.map((r,i)=>`
+    <div class="search-suggestion-item${i===searchSuggestionActiveIdx?' active':''}" data-code="${r.code}">
+      <span class="ssi-market-dot ${r.market === 'US' ? 'us' : 'tw'}" title="${r.market === 'US' ? '美股' : '台股'}"></span>
+      <span class="ssi-name">${displayCompanyName(r)}</span><span class="ssi-code">${r.code}</span>
+      <span class="ssi-industry">${r.industry}</span>
+    </div>`).join('');
+  if(searchContentResults.length){
+    html += `<div class="search-suggestion-group-label">內文提到「${escHtml(query.trim())}」的報告</div>`;
+    html += searchContentResults.map((r,j)=>{
+      const idx = searchSuggestionResults.length + j;
+      return `
+      <div class="search-suggestion-item content-match${idx===searchSuggestionActiveIdx?' active':''}" data-code="${r.code}">
+        <div style="flex:1;min-width:0;">
+          <div><span class="ssi-name">${r.name}</span><span class="ssi-code">${r.code}</span></div>
+          <div class="ssi-snippet">${escHtml(extractSearchSnippet(r.code, query))}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  box.innerHTML = html;
+  box.classList.add('show');
+}
+
+function closeSearchSuggestions(){
+  searchSuggestionResults = [];
+  searchContentResults = [];
+  searchSuggestionActiveIdx = -1;
+  renderSearchSuggestions();
+}
+
+function selectSearchSuggestion(code){
+  closeSearchSuggestions();
+  document.getElementById('searchInput').value = code;
+  showReport(code);
+}
+
+const searchInputEl = document.getElementById('searchInput');
+
+searchInputEl.addEventListener('input', (e)=>{
+  searchSuggestionResults = searchMatches(e.target.value);
+  searchContentResults = contentSearchMatches(e.target.value);
+  searchSuggestionActiveIdx = -1;
+  renderSearchSuggestions();
+});
+
+searchInputEl.addEventListener('keydown', e=>{
+  const totalCount = searchSuggestionResults.length + searchContentResults.length;
+  if(e.key === 'ArrowDown' && totalCount){
+    e.preventDefault();
+    searchSuggestionActiveIdx = Math.min(searchSuggestionActiveIdx + 1, totalCount - 1);
+    renderSearchSuggestions();
+  } else if(e.key === 'ArrowUp' && totalCount){
+    e.preventDefault();
+    searchSuggestionActiveIdx = Math.max(searchSuggestionActiveIdx - 1, 0);
+    renderSearchSuggestions();
+  } else if(e.key === 'Enter'){
+    const all = [...searchSuggestionResults, ...searchContentResults];
+    if(searchSuggestionActiveIdx >= 0 && all[searchSuggestionActiveIdx]){
+      selectSearchSuggestion(all[searchSuggestionActiveIdx].code);
+    } else {
+      closeSearchSuggestions();
+      showReport(e.target.value);
+    }
+  } else if(e.key === 'Escape'){
+    closeSearchSuggestions();
+  }
+});
+
+document.getElementById('searchBtn').addEventListener('click', ()=>{
+  closeSearchSuggestions();
+  showReport(document.getElementById('searchInput').value);
+});
+
+document.addEventListener('click', (e)=>{
+  const suggestion = e.target.closest('.search-suggestion-item');
+  if(suggestion){
+    selectSearchSuggestion(suggestion.dataset.code);
+    return;
+  }
+  if(!e.target.closest('.search-input-wrap')){
+    closeSearchSuggestions();
+  }
+});
+
+/* =========================================================
+   AI伺服器供應鏈地圖 ＋ 非核心公司的終端產品分類
+   核心8環節：把收錄的公司依照它們在AI伺服器供應鏈裡的主要角色分組，
+   分類原則以各公司moat／chain段落裡實際描述的業務內容為依據（而非只看
+   產業代碼），部分公司業務橫跨多個環節，僅取其最主要、報告裡著墨最多
+   的角色歸類。不在這條供應鏈上的公司，改用終端產品/服務角度分類（例如
+   消費性電子、車用與新能源、電信服務等），而不是全部塞進單一「其他」。
+========================================================= */
+// CHAIN_MAP只定義「有哪些環節/分類、說明文字是什麼」，不再列codes——公司
+// 名單是從每份REPORTS資料自己的chainStage欄位動態算出來的（見下面getStageGroups）。
+// 舊設計是CHAIN_MAP自己維護一份codes清單，新增股票時如果忘記手動把代碼加進
+// 對應環節，那家公司就會從地圖上完全消失（3450、5536就是這樣不見的）——
+// 改成「資料自己說自己屬於哪個環節」，只要研究報告有正確寫入chainStage，
+// 地圖就會自動更新，不會再有「生成了但沒出現在地圖上」的問題。
+// core:true的8個環節是AI伺服器供應鏈上下游順序（會畫成串連的流程圖）；
+// core:false是「不在AI伺服器供應鏈上」的公司改用終端產品角度分類，彼此
+// 是平行關係、沒有上下游順序，不畫箭頭。
+const CHAIN_MAP = [
+  { title:"晶片設計與晶圓代工", desc:"AI晶片、ASIC與化合物半導體的設計與製造源頭", core:true },
+  { title:"封裝測試與良率驗證", desc:"先進封裝、晶片測試與檢測分析，是晶片產能的「最後一哩路」", core:true },
+  { title:"設備與廠務工程", desc:"先進封裝設備、檢測設備與晶圓廠廠務工程，支撐AI晶片產能擴張", core:true },
+  { title:"PCB／載板與電路板材料", desc:"AI伺服器高速訊號傳輸所需的高階電路板與基板材料", core:true },
+  { title:"連接器、線纜與被動元件", desc:"AI伺服器機櫃內部高速訊號與大電流電源的連接方案", core:true },
+  { title:"電源管理與散熱", desc:"AI伺服器高功耗運算所需的電源轉換與散熱驅動元件", core:true },
+  { title:"系統組裝、ODM與系統整合", desc:"把晶片、電路板、電源組裝成完整AI伺服器機櫃並交付客戶", core:true },
+  { title:"網路與資料中心基礎設施", desc:"AI叢集內部高速連網設備，以及資料中心／高科技廠辦的營建", core:true },
+  { title:"消費性電子與嵌入式應用", desc:"服務手機、電視、遊戲機、工控與物聯網等一般消費性/嵌入式電子產品的記憶體與顯示驅動IC，終端市場高度分散，跟AI伺服器是不同的訂單與景氣循環邏輯", core:false },
+  { title:"車用與新能源", desc:"產品終端應用在汽車、儲能系統與電動車，隨車用電子化與能源轉型成長，跟資料中心的成長曲線是兩條不同的故事", core:false },
+  { title:"鋼鐵與傳統原物料", desc:"電線電纜、特殊鋼、不鏽鋼與鋁捲板等傳統原物料與金屬加工業，終端應用橫跨電網、營建、航太、一般工業，是原物料價格與景氣循環驅動的傳產邏輯", core:false },
+  { title:"電信服務", desc:"電信網路服務供應商，終端產品是提供給一般消費者與企業的通訊、上網與ICT服務，仰賴頻譜執照與長期基礎建設投資，跟硬體供應鏈的訂單/產能邏輯不同", core:false },
+  { title:"金融服務", desc:"銀行、保險、證券等金融服務業者，終端產品是存放款、保單、投資理財等金融商品，獲利邏輯跟利率、資產品質與資本市場連動，與電子供應鏈是完全不同的產業", core:false },
+  { title:"觀光餐旅", desc:"飯店、餐飲與品牌授權管理業者，終端產品是住宿、餐飲與會展服務，營運邏輯跟觀光人潮、商務需求與品牌經營相關，與科技供應鏈無關", core:false },
+  { title:"資訊服務與系統整合", desc:"以代理經銷國際品牌軟硬體、企業系統整合與客製化雲端/AI解決方案為主的資訊服務商，賣的是「幫其他公司導入科技」的服務本身，不是自己設計或製造電子零組件，跟供應鏈上游硬體公司的角色不同", core:false },
+  { title:"軍工", desc:"軍艦、無人機／無人艇與國防電子系統等軍規裝備供應商，終端客戶是國防部、海巡署等政府機關，部分廠商同時打入美系軍工供應鏈（需通過NDAA等法規認證），訂單來自國防預算、「國艦國造」與無人載具等政策採購，涉及國安審查與長期驗證關係、進入門檻高，跟AI供應鏈的訂單／產能邏輯無關，是國安與地緣政治驅動的產業", core:false },
+  { title:"食品飼料與肉品", desc:"禽畜飼料生產、屠宰與食品加工一貫化業者，終端產品是動物飼料與肉品食材，成本受黃豆／玉米等穀物原料價格、禽畜疫情與內需消費影響，跟AI供應鏈的訂單／產能邏輯無關，是傳統民生消費驅動的產業", core:false },
+  { title:"醫療器材", desc:"心血管、神經科學、外科手術等醫療設備與器械供應商，終端客戶是醫院與醫療院所，受健保給付政策、臨床法規認證週期與人口老化趨勢驅動，跟AI供應鏈的訂單／產能邏輯無關，是醫療保健需求驅動的產業", core:false },
+];
+
+function chainChipsHtml(codes, meCode){
+  return codes.map(code=>{
+    const r = REPORTS[code];
+    if(!r) return '';
+    const isMe = code === meCode;
+    const isUS = r.market === 'US';
+    const marketClass = isUS ? 'market-us' : 'market-tw';
+    // 首頁的chip美股一律只顯示代號（例如VSH），不重複顯示公司全名／縮寫，
+    // 名稱仍然保留在title提示文字裡；台股維持「簡稱 代碼」的既有顯示方式。
+    const chipText = isUS ? r.code : `${SHORT_NAME[code] || r.name} ${r.code}`;
+    const newTag = isRecentlyGenerated(r.generatedAt) ? '<span class="chip-new-tag">NEW</span>' : '';
+    return `<span class="chain-chip${isMe?' me':''} ${marketClass}" data-code="${code}" title="${r.name}（${isUS ? '美股' : '台股'}）${newTag ? '　過去12小時內剛更新' : ''}">${newTag}${chipText}</span>`;
+  }).join('');
+}
+
+// 供應鏈地圖／個股頁「產業鏈地圖中的位置」共用的單一環節卡片，右側固定放
+// 這個環節的示意圖像；num/desc可省略（例如「目前環節」跟「上/下游」卡片
+// 不需要重複的說明文字或編號）。
+function chainNodeHtml({ title, num, desc, codes, meCode, extraClass, style }){
+  const headNum = num ? `<span class="chain-node-num">${num}</span>` : '';
+  return `
+    <div class="chain-node${extraClass ? ' '+extraClass : ''}"${style ? ` style="${style}"` : ''}>
+      <div class="chain-node-body">
+        <div class="chain-node-head">${headNum}<span class="chain-node-title">${title}</span></div>
+        ${desc ? `<div class="chain-node-desc">${desc}</div>` : ''}
+        <div class="chain-chips">${chainChipsHtml(codes, meCode)}</div>
+      </div>
+      ${stageIconHtml(title)}
+    </div>`;
+}
+
+// 分類清單「以資料實際有什麼為準」，不是只照CHAIN_MAP預先寫好的固定清單去
+// 找公司——先前的做法（CHAIN_MAP自己列codes清單、或是把所有不認得的值都
+// 塞進單一"other"分類）都發生過同一種bug：只要chainStage沒對到預期字串，
+// 那家公司就從地圖上完全消失。現在改成反過來，先把REPORTS實際出現過的
+// chainStage值都掃過一輪，找得到CHAIN_MAP裡對應說明文字就用，找不到（例如
+// 以後研究新股票、Claude Code自己造了一個沒見過的終端產品分類名稱）也還是
+// 會出現在地圖上，只是說明文字先用通用備援句，不會整個消失不見。
+// 首頁「顯示：全部／新增／台股／美股」篩選——只影響瀏覽用的清單（供應鏈
+// 地圖、概念股圖鑑），不影響搜尋（搜尋已經是精準查詢，不需要再篩市場）。
+// 'new'沿用跟NEW徽章同一套「過去12小時內生成」的判斷（isRecentlyGenerated），
+// 不是額外獨立維護一份「新增」定義。
+let marketFilter = 'all'; // 'all' | 'new' | 'TW' | 'US'
+
+function matchesMarketFilter(code){
+  if(marketFilter === 'all') return true;
+  const r = REPORTS[code];
+  if(!r) return false;
+  if(marketFilter === 'new') return isRecentlyGenerated(r.generatedAt);
+  return (r.market || 'TW') === marketFilter;
+}
+
+function setMarketFilter(m){
+  marketFilter = m;
+  document.querySelectorAll('.market-filter-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.market === m);
+  });
+  renderChainMap();
+  renderConceptGuide();
+}
+
+function getStageGroups(){
+  const byTitle = new Map();
+  Object.values(REPORTS).forEach(r=>{
+    if(!matchesMarketFilter(r.code)) return;
+    const key = r.chainStage || '未分類';
+    if(!byTitle.has(key)) byTitle.set(key, []);
+    byTitle.get(key).push(r.code);
+  });
+  const groups = [];
+  CHAIN_MAP.forEach(g=>{
+    if(byTitle.has(g.title)){
+      groups.push({ title:g.title, desc:g.desc, core:g.core, codes:byTitle.get(g.title).sort() });
+      byTitle.delete(g.title);
+    }
+  });
+  byTitle.forEach((codes, title)=>{
+    groups.push({ title, desc:'這是新出現的分類，還沒有寫說明文字，可以之後手動補上。', core:false, codes:codes.sort() });
+  });
+  return groups;
+}
+
+// 首頁的完整供應鏈流程圖：核心供應鏈8個環節上下相連（用箭頭表示上下游關係），
+// 非核心的終端產品分類彼此是平行關係，用分隔線隔開、各自獨立卡片呈現。
+function renderChainMap(){
+  const wrap = document.getElementById('chainMapGroups');
+  if(!wrap) return;
+  const groups = getStageGroups();
+  const core = groups.filter(g=>g.core);
+  const nonCore = groups.filter(g=>!g.core);
+
+  const flowHtml = core.map((group, i)=>{
+    const connector = i < core.length - 1 ? `<div class="chain-connector">↓</div>` : '';
+    return chainNodeHtml({ title:group.title, num:i+1, desc:group.desc, codes:group.codes }) + connector;
+  }).join('');
+
+  const otherHtml = nonCore.length ? `
+    <div class="chain-other-divider">
+      <span>收錄的其他公司（非AI伺服器核心供應鏈，依終端產品分類）</span>
+      <button id="otherCompaniesToggleBtn" class="rh-btn" style="font-size:9px;padding:3px 8px;margin-left:10px;" onclick="toggleOtherCompanies()">▴ 收合</button>
+    </div>
+    <div id="otherCompaniesGroups">
+      ${nonCore.map(group => chainNodeHtml({ title:group.title, desc:group.desc, codes:group.codes, extraClass:'other' })).join('')}
+    </div>` : '';
+
+  wrap.innerHTML = `<div class="chain-flow">${flowHtml}</div>${otherHtml}`;
+}
+renderChainMap();
+
+function toggleChainMap(){
+  const grid = document.getElementById('chainMapGroups');
+  const btn = document.getElementById('chainMapToggleBtn');
+  if(!grid || !btn) return;
+  const showing = grid.style.display !== 'none';
+  grid.style.display = showing ? 'none' : 'block';
+  btn.textContent = showing ? '▾ 展開地圖' : '▴ 收合地圖';
+}
+
+// otherCompaniesGroups是renderChainMap()每次重繪都會重新產生的節點（例如切換
+// 台股/美股篩選時），收合狀態不會跨重繪保留，重新整理或切換篩選後預設會是
+// 展開狀態——這是刻意的簡化，不做額外的state持久化。
+function toggleOtherCompanies(){
+  const grid = document.getElementById('otherCompaniesGroups');
+  const btn = document.getElementById('otherCompaniesToggleBtn');
+  if(!grid || !btn) return;
+  const showing = grid.style.display !== 'none';
+  grid.style.display = showing ? 'none' : 'block';
+  btn.textContent = showing ? '▾ 展開' : '▴ 收合';
+}
+
+// 概念股圖鑑：把ICON_META（公司→概念股圖像）依圖像分組、配上CONCEPT_META的
+// 標題／說明，直接生成圖鑑卡片——分類資料只維護在ICON_META/CONCEPT_META一份，
+// 這裡單純做分組與排版，不會有兩邊兜不起來的問題。
+function renderConceptGuide(){
+  const wrap = document.getElementById('conceptGuideGrid');
+  if(!wrap) return;
+  const byIcon = {};
+  Object.entries(ICON_META).forEach(([code, iconId])=>{
+    if(!REPORTS[code]) return; // 只列資料庫裡實際收錄的公司
+    if(!matchesMarketFilter(code)) return;
+    (byIcon[iconId] = byIcon[iconId] || []).push(code);
+  });
+  const cards = Object.keys(CONCEPT_META)
+    .filter(iconId => byIcon[iconId] && byIcon[iconId].length)
+    .map(iconId=>{
+      const meta = CONCEPT_META[iconId];
+      const codes = byIcon[iconId].sort();
+      const color = ICON_BASE_COLOR[iconId] || '#5b6bd6';
+      return `
+        <div class="concept-card">
+          <div class="concept-card-icon" title="${meta.title}">${renderIconSVG(iconId, color)}</div>
+          <div class="concept-card-body">
+            <div class="concept-card-title">${meta.title}</div>
+            <div class="concept-card-desc">${meta.desc}</div>
+            <div class="concept-card-chips">${chainChipsHtml(codes)}</div>
+          </div>
+        </div>`;
+    }).join('');
+  wrap.innerHTML = cards;
+}
+renderConceptGuide();
+
+function toggleConceptGuide(){
+  const grid = document.getElementById('conceptGuideGrid');
+  const btn = document.getElementById('conceptGuideToggleBtn');
+  if(!grid || !btn) return;
+  const showing = grid.style.display !== 'none';
+  grid.style.display = showing ? 'none' : 'grid';
+  btn.textContent = showing ? '▾ 展開圖鑑' : '▴ 收合圖鑑';
+}
+
+// 首頁「目前收錄N檔股票」的N之前是寫死的數字，每次研究新股票都要記得
+// 手動回來改這一行——忘了改就會像這次一樣卡在舊數字。改成直接算
+// REPORTS裡實際有幾筆資料，永遠跟資料庫真正的筆數一致，不用手動維護。
+document.getElementById('stockCount').textContent = Object.keys(REPORTS).length;
+
+/* =========================================================
+   同儕比較檢視
+   從首頁供應鏈地圖挑最多3家公司並排比較，直接重組REPORTS/VALUATIONS
+   裡已經有的欄位（最新一期財務數字、moat、估值範圍），不重新抓資料、
+   不重新計算，純粹是換一種「看資料」的排版方式。
+========================================================= */
+let compareMode = false;
+let compareSelection = [];
+const COMPARE_MAX = 3;
+
+function toggleCompareMode(){
+  compareMode = !compareMode;
+  compareSelection = [];
+  const btn = document.getElementById('compareToggleBtn');
+  const bar = document.getElementById('compareBar');
+  const groups = document.getElementById('chainMapGroups');
+  if(btn) btn.classList.toggle('urgent', compareMode);
+  if(bar) bar.style.display = compareMode ? 'flex' : 'none';
+  if(groups){
+    groups.classList.toggle('compare-mode', compareMode);
+    groups.querySelectorAll('.chain-chip.compare-selected').forEach(el=>el.classList.remove('compare-selected'));
+  }
+  updateCompareBar();
+}
+
+function toggleCompareSelection(code){
+  const idx = compareSelection.indexOf(code);
+  if(idx >= 0){
+    compareSelection.splice(idx, 1);
+  } else {
+    if(compareSelection.length >= COMPARE_MAX){
+      alert(`最多只能同時比較 ${COMPARE_MAX} 家公司，請先移除一家再選新的。`);
+      return;
+    }
+    compareSelection.push(code);
+  }
+  document.querySelectorAll(`#chainMapGroups .chain-chip[data-code="${code}"]`).forEach(el=>{
+    el.classList.toggle('compare-selected', compareSelection.includes(code));
+  });
+  updateCompareBar();
+}
+
+function clearCompareSelection(){
+  compareSelection = [];
+  document.querySelectorAll('#chainMapGroups .chain-chip.compare-selected').forEach(el=>el.classList.remove('compare-selected'));
+  updateCompareBar();
+}
+
+function updateCompareBar(){
+  const listEl = document.getElementById('compareBarList');
+  const btn = document.getElementById('compareBarBtn');
+  if(!listEl || !btn) return;
+  if(!compareSelection.length){
+    listEl.textContent = `點選最多${COMPARE_MAX}家公司來比較`;
+  } else {
+    const names = compareSelection.map(c => REPORTS[c] ? `${REPORTS[c].name} ${c}` : c).join('、');
+    listEl.textContent = `已選擇：${names}`;
+  }
+  btn.disabled = compareSelection.length < 2;
+}
+
+// 每家公司的finTable欄位不見得一樣（例如有的用「毛利率」，有的多一欄
+// 「營收YoY」），這裡取所有選定公司欄位的聯集，缺欄位的公司顯示「—」，
+// 不強行假裝每家都有一樣的揭露項目。
+function buildCompareFinRows(reports){
+  const metrics = [];
+  reports.forEach(r=>{
+    const t = r.finTable;
+    if(!t) return;
+    t.headers.forEach(h=>{ if(h !== '季度' && !metrics.includes(h)) metrics.push(h); });
+  });
+  return metrics.map(metric=>({
+    metric,
+    values: reports.map(r=>{
+      const t = r.finTable;
+      if(!t || !t.rows.length) return '—';
+      const idx = t.headers.indexOf(metric);
+      if(idx === -1) return '—';
+      const lastRow = t.rows[t.rows.length - 1];
+      const v = lastRow[idx];
+      return (v === undefined || v === null || v === '') ? '—' : v;
+    }),
+  }));
+}
+
+function latestQuarterLabel(r){
+  const t = r.finTable;
+  if(!t || !t.rows.length) return '—';
+  const qIdx = t.headers.indexOf('季度');
+  if(qIdx === -1) return '—';
+  return t.rows[t.rows.length - 1][qIdx];
+}
+
+function fmtCompareView(codes){
+  const reports = codes.map(c => REPORTS[c]).filter(Boolean);
+  const finRows = buildCompareFinRows(reports);
+
+  const headerCells = reports.map(r => `<th>${displayCompanyName(r)}<div style="font-weight:400;font-size:11px;opacity:.85;">${r.code} ${marketBadgeHtml(r.market)}</div></th>`).join('');
+  const industryCells = reports.map(r => `<td>${r.industry}</td>`).join('');
+  const stageCells = reports.map(r => `<td>${r.chainStage || '未分類'}</td>`).join('');
+  const moatCells = reports.map(r => `<td style="text-align:left;font-size:13px;">${r.moat}</td>`).join('');
+  const quarterCells = reports.map(r => `<td>${latestQuarterLabel(r)}</td>`).join('');
+  const finRowsHtml = finRows.map(row => `<tr><td>${row.metric}</td>${row.values.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('');
+  const priceCells = reports.map(r=>{
+    const v = VALUATIONS[r.code];
+    return v ? `<td>${v.currentPrice.toLocaleString()} ${currencyUnit(r.market)}</td>` : '<td>—</td>';
+  }).join('');
+  const valRangeCells = reports.map(r=>{
+    const v = VALUATIONS[r.code];
+    return v ? `<td>${v.range[0].toLocaleString()} ~ ${v.range[1].toLocaleString()} ${currencyUnit(r.market)}<br>平均 ${v.avg.toLocaleString()} ${currencyUnit(r.market)}</td>` : '<td>—</td>';
+  }).join('');
+
+  return `
+  <article class="report active">
+    <div class="report-head">
+      <div class="rh-top"><h2>公司比較</h2></div>
+      <div style="color:var(--ink-soft);font-size:13px;margin-top:6px;">直接重組各公司報告裡已經有的最新一期財務數字與估值範圍，不是重新抓取或重新計算的即時資料，數字新鮮度以各公司報告自己的生成時間為準。</div>
+    </div>
+
+    <section class="block" style="overflow-x:auto;">
+      <table class="fin">
+        <thead><tr><th>比較項目</th>${headerCells}</tr></thead>
+        <tbody>
+          <tr><td>所屬產業</td>${industryCells}</tr>
+          <tr><td>供應鏈環節</td>${stageCells}</tr>
+          <tr><td>護城河</td>${moatCells}</tr>
+          <tr><td>最新揭露季度</td>${quarterCells}</tr>
+          ${finRowsHtml}
+          <tr><td>目前市價</td>${priceCells}</tr>
+          <tr><td>估值範圍（各模型）</td>${valRangeCells}</tr>
+        </tbody>
+      </table>
+    </section>
+  </article>`;
+}
+
+function runCompare(){
+  if(compareSelection.length < 2) return;
+  currentReportCode = null;
+  const chainMapBox = document.getElementById('chainMapBox');
+  if(chainMapBox) chainMapBox.style.display = 'none';
+  const conceptGuideBox = document.getElementById('conceptGuideBox');
+  if(conceptGuideBox) conceptGuideBox.style.display = 'none';
+  const marketFilterBar = document.getElementById('marketFilterBar');
+  if(marketFilterBar) marketFilterBar.style.display = 'none';
+  document.getElementById('homeBtnHeader').style.display = 'inline-flex';
+  notFound.style.display = 'none';
+  root.innerHTML = fmtCompareView(compareSelection);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// 事件委派：不管chip是在首頁供應鏈地圖還是個股頁的「產業鏈位置」區塊裡，
+// 點擊都導去該公司報告，不用每次重新render都重新綁定監聽器。
+// 例外：如果目前在首頁供應鏈地圖的「比較模式」下，點擊改成加入/移出比較清單，
+// 不導頁——比較模式只在首頁地圖生效，個股頁的「產業鏈地圖中的位置」不受影響。
+document.addEventListener('click', (e)=>{
+  const chip = e.target.closest('.chain-chip');
+  if(!chip || chip.classList.contains('me')) return;
+  const code = chip.dataset.code;
+  if(!code) return;
+  if(compareMode && chip.closest('#chainMapGroups')){
+    toggleCompareSelection(code);
+    return;
+  }
+  document.getElementById('searchInput').value = code;
+  showReport(code);
+});
+
+// 「本頁導覽」跳轉：自己處理捲動（而不是單純依賴瀏覽器原生#錨點跳轉），
+// 這樣在任何環境下都能穩定捲到正確位置，網址列的hash也一併同步、可分享。
+document.addEventListener('click', (e)=>{
+  const pill = e.target.closest('.toc-pill');
+  if(!pill) return;
+  const id = pill.getAttribute('href').slice(1);
+  const target = document.getElementById(id);
+  if(!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior:'smooth', block:'start' });
+  history.replaceState(null, '', '#'+id);
+});
+
+/* =========================================================
+   反白查詞彙 popup
+========================================================= */
+const popup = document.getElementById('popup');
+const popTitle = document.getElementById('popTitle');
+const popPlain = document.getElementById('popPlain');
+const popAdv = document.getElementById('popAdv');
+const lookupPopup = document.getElementById('lookupPopup');
+const lookupPopupBody = document.getElementById('lookupPopupBody');
+let currentLookupTerm = null; // 目前lookupPopup顯示的是哪個詞彙，輪詢時用來判斷結果還算不算數
+
+function findTerm(raw){
+  const q = raw.trim();
+  if(!q || q.length>20) return null;
+  if(GLOSSARY[q]) return {key:q, ...GLOSSARY[q]};
+  const qLower = q.toLowerCase();
+  const exact = Object.keys(GLOSSARY).find(k=>k.toLowerCase()===qLower);
+  if(exact) return {key:exact, ...GLOSSARY[exact]};
+  if(q.length>=2){
+    const partial = Object.keys(GLOSSARY).find(k=> k.includes(q) || q.includes(k));
+    if(partial) return {key:partial, ...GLOSSARY[partial]};
+  }
+  return null;
+}
+
+function openPopupAt(x,y,term){
+  popTitle.textContent = term.key;
+  popPlain.textContent = term.plain;
+  popAdv.textContent = term.adv;
+  popup.style.left = (x + window.scrollX) + 'px';
+  popup.style.top = (y + window.scrollY + 12) + 'px';
+  popup.style.display = 'block';
+}
+
+function closePopup(){ popup.style.display='none'; }
+
+document.addEventListener('mouseup', (e)=>{
+  if(e.target.closest('#popup') || e.target.closest('#lookupPopup')) return;
+  if(!e.target.closest('.report')) return;
+  const sel = window.getSelection();
+  const text = sel ? sel.toString() : '';
+  if(!text || !text.trim()){ return; }
+  const trimmed = text.trim();
+  const term = findTerm(trimmed);
+  const range = sel.getRangeAt(0);
+  const rect = range.getBoundingClientRect();
+  if(term){
+    openPopupAt(rect.left, rect.bottom, term);
+  }else if(trimmed.length>=2 && trimmed.length<=20){
+    // 名詞小百科裡沒有這個詞——不是整段話（太長的選取範圍不太可能是「一個
+    // 詞彙」，比照findTerm本身20字的上限），提供查詢並加入小百科的選項。
+    openLookupPopupAt(rect.left, rect.bottom, trimmed);
+  }
+});
+
+/* =========================================================
+   反白選到「名詞小百科裡沒有」的詞彙時的查詢流程：跟claude-code-research-
+   server的/api/glossary-lookup溝通，背景呼叫本機Claude Code查詢這個詞彙、
+   寫進data/glossary.js，完成後提示使用者重新整理頁面。
+========================================================= */
+function openLookupPopupAt(x,y,term){
+  renderLookupPopup('prompt', term);
+  lookupPopup.style.left = (x + window.scrollX) + 'px';
+  lookupPopup.style.top = (y + window.scrollY + 12) + 'px';
+  lookupPopup.style.display = 'block';
+}
+
+function closeLookupPopup(){
+  lookupPopup.style.display = 'none';
+  currentLookupTerm = null;
+}
+
+function renderLookupPopup(kind, term, opts){
+  opts = opts || {};
+  currentLookupTerm = term;
+  const escTerm = escHtml(term);
+  const attrTerm = term.replace(/'/g,"\\'");
+  let html;
+  if(kind === 'prompt'){
+    html = `
+      <div style="font-family:var(--px);font-size:10.5px;color:var(--gold);margin-bottom:8px;">「${escTerm}」還沒有在名詞小百科裡</div>
+      <button onclick="startGlossaryLookup('${attrTerm}')" style="padding:6px 12px;border-radius:6px;border:none;background:var(--gold);color:#231a06;cursor:pointer;font-size:12px;font-weight:600;">🔍 查詢並加入名詞小百科</button>`;
+  }else if(kind === 'running'){
+    html = `
+      <div style="font-family:var(--px);font-size:10.5px;color:var(--gold);margin-bottom:8px;">正在查詢「${escTerm}」…</div>
+      <div style="font-size:11.5px;color:#c9cdd6;">${escHtml(opts.activity || '⏳ 已連線，等待Claude Code開始第一個動作…')}</div>`;
+  }else if(kind === 'done'){
+    html = `
+      <div style="font-family:var(--px);font-size:10.5px;color:#8fd68a;margin-bottom:8px;">✅ 查詢完成</div>
+      <div style="font-size:11.5px;color:#c9cdd6;margin-bottom:8px;">「${escTerm}」現在應該已經在名詞小百科裡了（如果詞彙庫本來就有這個詞，也會顯示在這裡）。</div>
+      <button onclick="refreshGlossaryAndRerender()" style="padding:6px 12px;border-radius:6px;border:none;background:var(--gold);color:#231a06;cursor:pointer;font-size:12px;font-weight:600;">🔄 重新整理頁面</button>`;
+  }else{ // error
+    html = `
+      <div style="font-family:var(--px);font-size:10.5px;color:#e08a8a;margin-bottom:8px;">查詢失敗</div>
+      <div style="font-size:11.5px;color:#c9cdd6;margin-bottom:8px;">${escHtml(opts.message || '未知錯誤')}</div>
+      <button onclick="startGlossaryLookup('${attrTerm}')" style="padding:5px 10px;border-radius:6px;border:1px solid #555;background:transparent;color:#f2efe6;cursor:pointer;font-size:11.5px;">重試</button>`;
+  }
+  lookupPopupBody.innerHTML = html;
+}
+
+async function startGlossaryLookup(term){
+  renderLookupPopup('running', term, {});
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ term }),
+    });
+    const body = await res.json().catch(()=>({}));
+    if(currentLookupTerm !== term) return; // 使用者在等待回應期間已經關掉或換了別的詞
+    if(!res.ok){
+      renderLookupPopup('error', term, { message: body.error || `啟動失敗（HTTP ${res.status}）` });
+      return;
+    }
+    setTimeout(()=>pollGlossaryLookup(term), 3000);
+  }catch(e){
+    if(currentLookupTerm !== term) return;
+    renderLookupPopup('error', term, { message: `無法連線到 claude-code-research-server（${window.RESEARCH_BACKEND_BASE}）：${e.message}<br>請確認已依照 claude-code-research-server/README.md 啟動這支伺服器。` });
+  }
+}
+
+async function pollGlossaryLookup(term){
+  // currentLookupTerm在輪詢期間變了（使用者關掉popup、或選了別的詞彙），
+  // 代表這次輪詢結果不再重要，不要覆蓋掉畫面上其他內容。
+  if(currentLookupTerm !== term) return;
+  try{
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup/${encodeURIComponent(term)}`);
+    const body = await res.json().catch(()=>({}));
+    if(currentLookupTerm !== term) return;
+    if(!res.ok){
+      renderLookupPopup('error', term, { message: body.error || `查詢狀態失敗（HTTP ${res.status}）` });
+      return;
+    }
+    if(body.status === 'running'){
+      renderLookupPopup('running', term, { activity: body.activity });
+      setTimeout(()=>pollGlossaryLookup(term), 3000);
+    }else if(body.status === 'done'){
+      renderLookupPopup('done', term, {});
+    }else{
+      renderLookupPopup('error', term, { message: body.error || '查詢過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。' });
+    }
+  }catch(e){
+    if(currentLookupTerm !== term) return;
+    renderLookupPopup('error', term, { message: `無法連線到 claude-code-research-server（${window.RESEARCH_BACKEND_BASE}）：${e.message}` });
+  }
+}
+
+// 名詞查詢完成後按「重新整理頁面」時呼叫——這個App沒有網址路由（沒有hash
+// 或query string記錄目前在看哪份報告），如果真的整頁location.reload()，
+// 使用者會被丟回主頁，而不是留在原本正在讀的報告頁。既然glossary.js本身
+// 就是靠<script src>載入的，改成直接重新fetch它、覆寫window.GLOSSARY，
+// 再對currentReportCode原地重新呼叫showReport()重繪同一份報告即可，不需要
+// 真的整頁重新整理。cache:'no-store'是必要的——實測過瀏覽器對這個檔案的
+// 快取可能黏得很緊，不加這個選項可能撈到舊內容。
+async function refreshGlossaryAndRerender(){
+  try{
+    const res = await fetch('data/glossary.js', { cache: 'no-store' });
+    const text = await res.text();
+    new Function(text)(); // 執行裡面的「window.GLOSSARY = {...}」，覆寫成最新內容
+  }catch(e){
+    // 抓不到最新的glossary.js，退回原本整頁重新整理，至少確保資料是新的
+    location.reload();
+    return;
+  }
+  closeLookupPopup();
+  if(currentReportCode && REPORTS[currentReportCode]){
+    showReport(currentReportCode);
+  }
+}
+
+// 敏感度分析表的解讀說明是固定寫死在這裡的通用內容（不是每份報告各自的資料），
+// 因為「這張表格怎麼看」對每一份報告都一樣，不需要放進REPORTS資料裡重複維護。
+function showSensitivityInfo(e){
+  const term = {
+    key: 'DCF 敏感度分析怎麼看',
+    plain: '這張表格顯示，如果對「折現率（WACC）」與「未來永續成長率」的假設有些微不同，用DCF模型算出來的合理股價會怎麼變動。橫排是折現率（數字越低代表覺得投資這家公司的風險越低），直排是對公司長期成長的假設（數字越高代表假設成長越快）。反白標示的格子通常是報告採用的主要假設組合，其餘格子讓你看到「如果假設不太一樣，股價估算大概會落在哪個範圍」，藉此判斷這個估值結果對假設變動的敏感程度——範圍越大，代表這個估值越不穩固、越依賴特定假設。',
+    adv: 'DCF估值對兩個關鍵假設特別敏感：WACC（加權平均資金成本，作為折現率）與終值成長率（Terminal Growth Rate，永續期成長率假設）。這張敏感度網格固定其他假設，只讓這兩個變數在合理區間內變動、重新計算隱含股價，呈現的是「估值結果對關鍵假設的敏感程度」，而不是給出單一「正確」數字。一般來說：WACC越低、終值成長率越高，算出來的股價越高（未來現金流被賦予更高的現值）；但終值成長率假設如果超過長期名目GDP成長率，通常已偏離現實，看表格邊界數字時要留意這一點，不要只看數字大小而忽略假設本身是否合理。',
+  };
+  const rect = e.target.getBoundingClientRect();
+  openPopupAt(rect.left, rect.bottom, term);
+}
+
+function showTermPopupByClick(e, key){
+  const term = findTerm(key);
+  if(term){
+    const rect = e.target.getBoundingClientRect();
+    openPopupAt(rect.left, rect.bottom, term);
+  }
+}
+
+document.addEventListener('mousedown', (e)=>{
+  if(popup.style.display==='block' && !e.target.closest('#popup') && !e.target.closest('.term-chip')){
+    closePopup();
+  }
+  if(lookupPopup.style.display==='block' && !e.target.closest('#lookupPopup')){
+    closeLookupPopup();
+  }
+});
+</script>
+</body>
+</html>
