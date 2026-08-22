@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>研究報告 App</title>
+<title>股概英雄圖鑑</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='9' y='0' width='2' height='1' fill='%233d8f4a'/%3E%3Crect x='8' y='1' width='4' height='1' fill='%233d8f4a'/%3E%3Crect x='7' y='2' width='6' height='1' fill='%233d8f4a'/%3E%3Crect x='6' y='3' width='8' height='1' fill='%233d8f4a'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%231f5c30'/%3E%3Crect x='3' y='3' width='2' height='3' fill='%233a3128'/%3E%3Crect x='15' y='3' width='2' height='3' fill='%233a3128'/%3E%3Crect x='5' y='4' width='10' height='6' fill='%23262019'/%3E%3Crect x='6' y='6' width='2' height='1' fill='%230d0a06'/%3E%3Crect x='12' y='6' width='2' height='1' fill='%230d0a06'/%3E%3Crect x='8' y='8' width='4' height='2' fill='%23ecd9b8'/%3E%3Crect x='9' y='9' width='2' height='1' fill='%230d0a06'/%3E%3Crect x='6' y='10' width='8' height='1' fill='%23c41e1e'/%3E%3Crect x='5' y='11' width='10' height='3' fill='%23c41e1e'/%3E%3Crect x='13' y='11' width='1' height='3' fill='%238a1414'/%3E%3Crect x='4' y='14' width='12' height='1' fill='%23c41e1e'/%3E%3Crect x='14' y='12' width='3' height='2' fill='%23ecd9b8'/%3E%3Crect x='15' y='4' width='3' height='3' fill='%239fd3ff'/%3E%3Crect x='16' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='16' y='7' width='2' height='11' fill='%238a6a3a'/%3E%3Crect x='17' y='7' width='1' height='11' fill='%235c4425'/%3E%3Crect x='7' y='15' width='1' height='2' fill='%23262019'/%3E%3Crect x='12' y='15' width='1' height='2' fill='%23262019'/%3E%3Crect x='6' y='17' width='2' height='1' fill='%23ecd9b8'/%3E%3Crect x='11' y='17' width='2' height='1' fill='%23ecd9b8'/%3E%3C/svg%3E">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -66,7 +67,8 @@
   }
   .top-inner{max-width:1440px;margin:0 auto;}
   .top-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mascot{width:30px;height:30px;flex-shrink:0;image-rendering:pixelated;}
   .brand h1{font-family:var(--px);font-size:16px;margin:0;font-weight:400;letter-spacing:1px;line-height:1.6;text-shadow:2px 2px 0 var(--navy-2);}
   .brand .tag{font-family:var(--px);font-size:9px;color:#0d0f1c;background:var(--gold);border:2px solid #0d0f1c;padding:3px 8px;cursor:help;}
   .top-sub{margin:10px 0 20px;font-size:13px;color:#cfe0c9;}
@@ -524,7 +526,34 @@
   <div class="top-inner">
     <div class="top-row">
       <div class="brand">
-        <h1>研究報告 App</h1>
+        <svg class="brand-mascot" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="9" y="0" width="2" height="1" fill="#3d8f4a"/>
+          <rect x="8" y="1" width="4" height="1" fill="#3d8f4a"/>
+          <rect x="7" y="2" width="6" height="1" fill="#3d8f4a"/>
+          <rect x="6" y="3" width="8" height="1" fill="#3d8f4a"/>
+          <rect x="13" y="3" width="1" height="1" fill="#1f5c30"/>
+          <rect x="3" y="3" width="2" height="3" fill="#3a3128"/>
+          <rect x="15" y="3" width="2" height="3" fill="#3a3128"/>
+          <rect x="5" y="4" width="10" height="6" fill="#262019"/>
+          <rect x="6" y="6" width="2" height="1" fill="#0d0a06"/>
+          <rect x="12" y="6" width="2" height="1" fill="#0d0a06"/>
+          <rect x="8" y="8" width="4" height="2" fill="#ecd9b8"/>
+          <rect x="9" y="9" width="2" height="1" fill="#0d0a06"/>
+          <rect x="6" y="10" width="8" height="1" fill="#c41e1e"/>
+          <rect x="5" y="11" width="10" height="3" fill="#c41e1e"/>
+          <rect x="13" y="11" width="1" height="3" fill="#8a1414"/>
+          <rect x="4" y="14" width="12" height="1" fill="#c41e1e"/>
+          <rect x="14" y="12" width="3" height="2" fill="#ecd9b8"/>
+          <rect x="15" y="4" width="3" height="3" fill="#9fd3ff"/>
+          <rect x="16" y="5" width="1" height="1" fill="#ffffff"/>
+          <rect x="16" y="7" width="2" height="11" fill="#8a6a3a"/>
+          <rect x="17" y="7" width="1" height="11" fill="#5c4425"/>
+          <rect x="7" y="15" width="1" height="2" fill="#262019"/>
+          <rect x="12" y="15" width="1" height="2" fill="#262019"/>
+          <rect x="6" y="17" width="2" height="1" fill="#ecd9b8"/>
+          <rect x="11" y="17" width="2" height="1" fill="#ecd9b8"/>
+        </svg>
+        <h1>股概英雄圖鑑</h1>
         <div class="demo-tag-wrap" tabindex="0">
           <span class="tag">App 說明</span>
           <div class="demo-tag-popover">
@@ -2174,6 +2203,20 @@ const ICON_LIB = {
     pxRect(map,6,5,4,1,'H'); pxRect(map,9,6,1,1,'H'); pxRect(map,8,7,1,1,'H'); pxRect(map,7,8,1,1,'H');
     pxRect(map,7,10,1,1,'W');
   },
+  // 電力設備概念股（超高壓變壓器、電網基礎建設）用的電塔示意圖像，跟
+  // power（電源管理IC，方塊+閃電）與tower（電信基地台，單一直桿）造型
+  // 都刻意做出區隔。
+  grid(map){
+    pxLine(map,8,2,8,13,'F',2);
+    pxLine(map,4,5,12,5,'F',1); pxLine(map,5,8,11,8,'F',1); pxLine(map,6,11,10,11,'F',1);
+    pxRect(map,3,13,4,2,'F'); pxRect(map,9,13,4,2,'F');
+    pxRect(map,7,6,1,1,'H'); pxRect(map,8,9,1,1,'H');
+  },
+  // 精密機構件概念股（沖壓機殼、金屬結構件）用的L型沖壓件圖像。
+  bracket(map){
+    pxRect(map,3,3,4,10,'F'); pxRect(map,3,10,10,3,'F');
+    pxRect(map,4,4,2,2,'H'); pxRect(map,4,11,2,1,'H'); pxRect(map,10,11,2,1,'H');
+  },
 };
 
 const ICON_BASE_COLOR = {
@@ -2182,7 +2225,7 @@ const ICON_BASE_COLOR = {
   tower:'#d6336c', factory:'#7d8a4a', server:'#3b4a6b', material_roll:'#9c6b30',
   construction:'#6b6b6b', ship:'#1f5f8a', coin:'#c99a2e', hotel:'#c76b8a', box:'#8a7050',
   thermal:'#2f8fb3', gadget:'#8a4fd6', car:'#1f8a4c', cloud:'#5b6bd6', robot:'#4a7fc9',
-  food:'#8a9c3a', medical:'#e0384f', pending:'#767676',
+  food:'#8a9c3a', medical:'#e0384f', pending:'#767676', grid:'#c96a1f', bracket:'#6b7a8a',
 };
 
 // AI伺服器供應鏈地圖每個「角色／環節」對應的示意圖像（依CHAIN_MAP的title比對）
@@ -2238,7 +2281,7 @@ const ICON_META = {
   // IC設計概念股
   '2454':'chip', '3034':'chip', 'NVDA':'chip',
   // 記憶體概念股
-  '2337':'memory', '2344':'memory', '3006':'memory', '2451':'memory', '8299':'memory',
+  '2337':'memory', '2344':'memory', '3006':'memory', '2451':'memory', '8299':'memory', '3260':'memory',
   // 半導體封測與檢測概念股
   '2360':'probe', '2449':'probe', '3030':'probe', '3264':'probe', '3587':'probe',
   '3711':'probe', '6223':'probe', '6257':'probe', '8150':'probe', '3265':'probe',
@@ -2252,18 +2295,18 @@ const ICON_META = {
   // 電子材料概念股（玻纖布、銅箔等PCB/半導體上游材料）
   '1802':'material_roll', '1815':'material_roll', '5475':'material_roll', '8358':'material_roll',
   // 連接器概念股（含分立半導體與被動元件，跟連接器/線纜同屬終端應用被動料件）
-  '6197':'connector', 'VSH':'connector',
+  '6197':'connector', 'VSH':'connector', '3665':'connector',
   // 網通設備概念股
-  '2345':'network',
+  '2345':'network', '3558':'network',
   // 光學／光通訊概念股
-  '3450':'optic', '3362':'optic',
+  '3450':'optic', '3362':'optic', '3234':'optic', '8111':'optic',
   // 半導體設備與廠務工程概念股
   '2467':'factory', '3167':'factory', '5536':'factory', '6196':'factory',
   '6664':'factory', '6667':'factory', '6829':'factory', '6691':'factory',
   // 系統組裝與ODM概念股
   '2317':'server', '2382':'server',
   // 資訊服務概念股
-  '3147':'cloud', '6214':'cloud',
+  '3147':'cloud', '6214':'cloud', '5403':'cloud',
   // 食品飼料與肉品概念股
   '1215':'food',
   // 醫療器材概念股
@@ -2280,6 +2323,12 @@ const ICON_META = {
   '8043':'box',
   // 傳產營造與原物料概念股
   '1605':'construction', '2027':'construction', '2546':'construction',
+  // 電力設備概念股（超高壓變壓器、電網基礎建設，跟電源管理IC不同賽道）
+  '1519':'grid',
+  // 工具機與精密機械概念股
+  '1583':'gear',
+  // 精密機構件概念股（沖壓機殼、金屬結構件，跟連接器/線纜是不同的機構加工能力）
+  '4942':'bracket',
 };
 
 // 概念股圖鑑用的分類說明（圖像 → 概念股名稱／一句話說明），首頁「概念股圖鑑」
@@ -2310,6 +2359,9 @@ const CONCEPT_META = {
   construction:   { title:'傳產營造與原物料概念股', desc:'營造工程承攬與傳統金屬原物料製造商' },
   food:           { title:'食品飼料與肉品概念股',   desc:'禽畜飼料、屠宰與食品加工一貫化業者' },
   medical:        { title:'醫療器材概念股',        desc:'醫療設備、手術器械與健康科技相關產品供應商' },
+  grid:           { title:'電力設備概念股',        desc:'超高壓變壓器、開關設備與電網基礎建設工程供應商' },
+  gear:           { title:'工具機與精密機械概念股', desc:'CNC工具機、機械加工設備與精密傳動元件製造商' },
+  bracket:        { title:'精密機構件概念股',       desc:'沖壓機殼、金屬結構件等精密機構加工供應商' },
   // 不在ICON_META裡的公司（通常是剛生成、還沒有人工判斷該歸進哪個概念股
   // 題材）會自動落到這張卡片，而不是從圖鑑上完全消失——見下面renderConceptGuide。
   pending:        { title:'尚待分類概念股',        desc:'剛收錄進資料庫的公司，還沒有人工判斷該歸進哪個概念股題材，之後可在ICON_META補上正確分類' },
