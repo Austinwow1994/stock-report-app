@@ -196,8 +196,9 @@
   .market-filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
   .market-filter-label{font-size:12px;color:var(--ink-soft);font-family:var(--px);}
   .market-filter-btn{
-    padding:6px 14px;border:2px solid var(--line);background:var(--card);color:var(--ink-soft);
-    font-family:var(--px);font-size:10px;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    min-width:74px;padding:6px 10px;border:2px solid var(--line);background:var(--card);color:var(--ink-soft);
+    font-family:var(--px);font-size:10px;cursor:pointer;box-sizing:border-box;
   }
   .market-filter-btn:hover{background:#fdf0c2;border-color:var(--gold);}
   .market-filter-btn.active{color:#fff;border-color:var(--line);}
@@ -525,13 +526,17 @@
       <div class="brand">
         <h1>研究報告 App</h1>
         <div class="demo-tag-wrap" tabindex="0">
-          <span class="tag">Prototype Demo</span>
+          <span class="tag">App 說明</span>
           <div class="demo-tag-popover">
-            這是產品原型 demo（可在上方「概念股圖鑑」或「AI伺服器供應鏈地圖」點選公司名稱查看報告），報告依循 <b>tw-stock-research-report skill</b> 的研究方法與固定結構撰寫，估值模型依循 <b>stock-valuation-model skill</b> 計算，同儕比較整理各公司主要競爭對手在產品類別、客戶分布等構面的差異。
+            <b>這是什麼</b>：輸入股票代碼或公司名稱，產生一份見解導向的個股研究報告——不只是列數字，而是解釋財務數字背後「發生了什麼、為什麼、代表什麼」，報告依循 <b>tw-stock-research-report</b> ／ <b>us-stock-research-report skill</b> 的固定結構撰寫，涵蓋台股與美股。
             <br><br>
-            <b>新功能</b>：報告內「股價推算模型」區塊可即時向TWSE／TPEx查證最新公司登記資料、單季財務與均價，並自動算出5/10/20/150日均線，免設置免安裝、點一下就查。
+            <b>怎麼找股票</b>：直接在搜尋框輸入代碼或名稱；或從上方「📖 概念股圖鑑」依題材瀏覽、「AI伺服器供應鏈地圖」依供應鏈角色瀏覽，點公司名稱即可看報告；也可用「全部／新增／台股／美股」篩選瀏覽清單。若輸入的股票還沒收錄，可按「研究並加入」讓本機Claude Code背景研究並寫入資料庫。
             <br><br>
-            小技巧：在報告內文中<b>反白選取</b>任何專有名詞（如 HVDC、CoWoS、本益比），會彈出白話＋進階解釋卡片；如果小百科裡還沒有這個詞，會改成跳出「查詢並加入」按鈕，背景呼叫本機Claude Code即時查詢，查完提醒重新整理頁面即可看到解釋。
+            <b>報告內容</b>：產業鏈定位（為什麼這家公司重要、為什麼難被取代）、公司自陳成長動能、多空觀點對照（附來源）、技術面K線型態、同儕比較（最多3家並排，比產品類別／客戶分布等構面差異）、財務健診、以及「股價推算模型」——用DCF／股利折現／可比乘數法估算合理股價區間，並即時向TWSE／TPEx查證最新公司登記資料、單季財報與均價，自動算出5/10/20/150日均線，免設置免安裝、點一下就查。
+            <br><br>
+            <b>名詞小百科</b>：在報告內文中<b>反白選取</b>任何專有名詞（如 HVDC、CoWoS、本益比），會彈出白話＋進階解釋卡片；如果小百科裡還沒有這個詞，會改成跳出「查詢並加入」按鈕，背景呼叫本機Claude Code即時查詢，查完提醒重新整理頁面即可看到解釋。
+            <br><br>
+            <b>注意</b>：所有內容僅供研究參考，不構成投資建議。
           </div>
         </div>
       </div>
@@ -2161,6 +2166,14 @@ const ICON_LIB = {
     pxCircle(map,8,8,6,'F');
     pxRect(map,7,4,2,8,'W'); pxRect(map,4,7,8,2,'W');
   },
+  // 概念股圖鑑「尚待分類」備援卡片用的問號圖像——新報告收錄進資料庫、但
+  // 還沒有人工判斷該歸進哪個概念股題材時顯示，跟其他既有概念圖像明顯有
+  // 區別，一眼就能看出「這批公司還沒分類」。
+  pending(map){
+    pxRect(map,3,3,10,10,'F');
+    pxRect(map,6,5,4,1,'H'); pxRect(map,9,6,1,1,'H'); pxRect(map,8,7,1,1,'H'); pxRect(map,7,8,1,1,'H');
+    pxRect(map,7,10,1,1,'W');
+  },
 };
 
 const ICON_BASE_COLOR = {
@@ -2169,7 +2182,7 @@ const ICON_BASE_COLOR = {
   tower:'#d6336c', factory:'#7d8a4a', server:'#3b4a6b', material_roll:'#9c6b30',
   construction:'#6b6b6b', ship:'#1f5f8a', coin:'#c99a2e', hotel:'#c76b8a', box:'#8a7050',
   thermal:'#2f8fb3', gadget:'#8a4fd6', car:'#1f8a4c', cloud:'#5b6bd6', robot:'#4a7fc9',
-  food:'#8a9c3a', medical:'#e0384f',
+  food:'#8a9c3a', medical:'#e0384f', pending:'#767676',
 };
 
 // AI伺服器供應鏈地圖每個「角色／環節」對應的示意圖像（依CHAIN_MAP的title比對）
@@ -2190,6 +2203,11 @@ const STAGE_ICON_META = {
   '觀光餐旅':'hotel',
   '資訊服務與系統整合':'cloud',
   '軍工':'ship',
+  '食品飼料與肉品':'food',
+  '醫療器材':'medical',
+  '電力設備與電網基礎建設':'power',
+  '工具機與精密機械':'gear',
+  '網路通訊設備':'network',
 };
 function stageIconHtml(title){
   const iconId = STAGE_ICON_META[title] || 'box';
@@ -2292,6 +2310,9 @@ const CONCEPT_META = {
   construction:   { title:'傳產營造與原物料概念股', desc:'營造工程承攬與傳統金屬原物料製造商' },
   food:           { title:'食品飼料與肉品概念股',   desc:'禽畜飼料、屠宰與食品加工一貫化業者' },
   medical:        { title:'醫療器材概念股',        desc:'醫療設備、手術器械與健康科技相關產品供應商' },
+  // 不在ICON_META裡的公司（通常是剛生成、還沒有人工判斷該歸進哪個概念股
+  // 題材）會自動落到這張卡片，而不是從圖鑑上完全消失——見下面renderConceptGuide。
+  pending:        { title:'尚待分類概念股',        desc:'剛收錄進資料庫的公司，還沒有人工判斷該歸進哪個概念股題材，之後可在ICON_META補上正確分類' },
 };
 
 function pxLighten(hex, amt){
@@ -2726,6 +2747,9 @@ const CHAIN_MAP = [
   { title:"軍工", desc:"軍艦、無人機／無人艇與國防電子系統等軍規裝備供應商，終端客戶是國防部、海巡署等政府機關，部分廠商同時打入美系軍工供應鏈（需通過NDAA等法規認證），訂單來自國防預算、「國艦國造」與無人載具等政策採購，涉及國安審查與長期驗證關係、進入門檻高，跟AI供應鏈的訂單／產能邏輯無關，是國安與地緣政治驅動的產業", core:false },
   { title:"食品飼料與肉品", desc:"禽畜飼料生產、屠宰與食品加工一貫化業者，終端產品是動物飼料與肉品食材，成本受黃豆／玉米等穀物原料價格、禽畜疫情與內需消費影響，跟AI供應鏈的訂單／產能邏輯無關，是傳統民生消費驅動的產業", core:false },
   { title:"醫療器材", desc:"心血管、神經科學、外科手術等醫療設備與器械供應商，終端客戶是醫院與醫療院所，受健保給付政策、臨床法規認證週期與人口老化趨勢驅動，跟AI供應鏈的訂單／產能邏輯無關，是醫療保健需求驅動的產業", core:false },
+  { title:"電力設備與電網基礎建設", desc:"超高壓變壓器、開關設備與電網基礎建設工程供應商，終端客戶是台電與各國電力公司，受電網升級、再生能源併網與用電需求成長驅動，跟AI伺服器供應鏈的晶片／伺服器訂單邏輯不同，是電力基礎建設投資週期驅動的產業", core:false },
+  { title:"工具機與精密機械", desc:"CNC工具機、機械加工設備與精密傳動元件製造商，終端客戶是機械加工廠與各類製造業者，景氣連動全球製造業資本支出與工具機汰換週期，跟AI伺服器供應鏈的訂單／產能邏輯不同，是傳統機械資本支出循環驅動的產業", core:false },
+  { title:"網路通訊設備", desc:"Wi-Fi、網路交換器等網通設備ODM／OEM代工廠商，終端客戶是電信商與網路服務供應商（ISP），跟AI伺服器供應鏈核心環節不同，是電信／網通市場資本支出驅動的產業", core:false },
 ];
 
 function chainChipsHtml(codes, meCode){
@@ -2861,13 +2885,20 @@ function toggleOtherCompanies(){
 // 概念股圖鑑：把ICON_META（公司→概念股圖像）依圖像分組、配上CONCEPT_META的
 // 標題／說明，直接生成圖鑑卡片——分類資料只維護在ICON_META/CONCEPT_META一份，
 // 這裡單純做分組與排版，不會有兩邊兜不起來的問題。
+// 以REPORTS（資料庫實際收錄的公司）為準去掃，而不是反過來以ICON_META為準
+// 去查——ICON_META是人工維護的分類表，新報告（例如背景研究job新寫入的
+// 股票）不會自動出現在裡面。如果只挑ICON_META裡列出的公司，剛生成、還沒
+// 人工分類的新報告就會從概念股圖鑑上完全消失，即使它已經正確出現在上面
+// 的AI伺服器供應鏈地圖裡（那邊靠chainStage欄位自動分組，見getStageGroups）。
+// 改成「资料庫有的公司都要出現」，沒有ICON_META分類的就先歸進pending
+// （尚待分類）卡片，之後再人工補分類即可，兩份地圖才不會不同步。
 function renderConceptGuide(){
   const wrap = document.getElementById('conceptGuideGrid');
   if(!wrap) return;
   const byIcon = {};
-  Object.entries(ICON_META).forEach(([code, iconId])=>{
-    if(!REPORTS[code]) return; // 只列資料庫裡實際收錄的公司
+  Object.keys(REPORTS).forEach(code=>{
     if(!matchesMarketFilter(code)) return;
+    const iconId = ICON_META[code] || 'pending';
     (byIcon[iconId] = byIcon[iconId] || []).push(code);
   });
   const cards = Object.keys(CONCEPT_META)
@@ -3121,16 +3152,20 @@ function openPopupAt(x,y,term){
 
 function closePopup(){ popup.style.display='none'; }
 
-document.addEventListener('mouseup', (e)=>{
-  if(e.target.closest('#popup') || e.target.closest('#lookupPopup')) return;
-  if(!e.target.closest('.report')) return;
+function handleSelectionResult(){
   const sel = window.getSelection();
   const text = sel ? sel.toString() : '';
-  if(!text || !text.trim()){ return; }
+  if(!text || !text.trim()) return;
+  const anchorNode = sel.anchorNode;
+  const anchorEl = anchorNode && (anchorNode.nodeType===1 ? anchorNode : anchorNode.parentElement);
+  if(!anchorEl || !anchorEl.closest('.report')) return;
+  if(anchorEl.closest('#popup') || anchorEl.closest('#lookupPopup')) return;
+  let range;
+  try{ range = sel.getRangeAt(0); }catch(e){ return; }
+  const rect = range.getBoundingClientRect();
+  if(!rect || (rect.left===0 && rect.right===0 && rect.top===0 && rect.bottom===0)) return;
   const trimmed = text.trim();
   const term = findTerm(trimmed);
-  const range = sel.getRangeAt(0);
-  const rect = range.getBoundingClientRect();
   if(term){
     openPopupAt(rect.left, rect.bottom, term);
   }else if(trimmed.length>=2 && trimmed.length<=20){
@@ -3138,6 +3173,23 @@ document.addEventListener('mouseup', (e)=>{
     // 詞彙」，比照findTerm本身20字的上限），提供查詢並加入小百科的選項。
     openLookupPopupAt(rect.left, rect.bottom, trimmed);
   }
+}
+
+document.addEventListener('mouseup', (e)=>{
+  if(e.target.closest('#popup') || e.target.closest('#lookupPopup')) return;
+  if(!e.target.closest('.report')) return;
+  handleSelectionResult();
+});
+
+// 手機（尤其iOS Safari）長按拖曳選字handle來反白時，瀏覽器不會補送mouseup
+// 事件，只有mouseup監聽會導致手機上反白永遠彈不出名詞解釋。改用selectionchange
+// 搭配debounce偵測「選取動作告一段落」（handle還在拖曳時會連續觸發，停下來
+// 才處理），涵蓋觸控裝置；桌面則兩個監聽都會觸發，handleSelectionResult本身
+// 是純讀取、可重複呼叫，不會有副作用。
+let selectionChangeTimer = null;
+document.addEventListener('selectionchange', ()=>{
+  clearTimeout(selectionChangeTimer);
+  selectionChangeTimer = setTimeout(handleSelectionResult, 400);
 });
 
 /* =========================================================
@@ -3275,14 +3327,18 @@ function showTermPopupByClick(e, key){
   }
 }
 
-document.addEventListener('mousedown', (e)=>{
+function dismissPopupsOnOutsideTap(e){
   if(popup.style.display==='block' && !e.target.closest('#popup') && !e.target.closest('.term-chip')){
     closePopup();
   }
   if(lookupPopup.style.display==='block' && !e.target.closest('#lookupPopup')){
     closeLookupPopup();
   }
-});
+}
+document.addEventListener('mousedown', dismissPopupsOnOutsideTap);
+// 觸控裝置上，點選畫面其他地方有時不會補送mousedown（尤其手指剛結束前一次
+// 反白選字的情況），另外綁touchstart確保點別處還是關得掉popup。
+document.addEventListener('touchstart', dismissPopupsOnOutsideTap, {passive:true});
 </script>
 </body>
 </html>
