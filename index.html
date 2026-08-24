@@ -836,6 +836,10 @@
     <script src="data/valuations/4942.js"></script>
     <script src="data/reports/3533.js"></script>
     <script src="data/valuations/3533.js"></script>
+    <script src="data/reports/MRNA.js"></script>
+    <script src="data/valuations/MRNA.js"></script>
+    <script src="data/reports/6213.js"></script>
+    <script src="data/valuations/6213.js"></script>
     <!-- STOCK_DATA:END -->
 <script>
 
@@ -1736,8 +1740,35 @@ async function verifyTwseAndSync(code){
 
    需要先啟動 claude-code-research-server（見專案README），預設監聽
    http://localhost:3003。
+
+   雲端部署版本：如果claude-code-research-server已經部署到雲端（見README
+   「雲端部署」一節），把下面這行的預設值改成雲端網址（例如
+   'https://your-app.onrender.com'），公開網站的訪客才連得到。雲端版本通常
+   會要求存取權杖（ALLOWED_TOKENS），第一次呼叫遇到401會自動跳出輸入框
+   請使用者貼上，之後存在瀏覽器localStorage裡不用每次重輸。
 ========================================================= */
 window.RESEARCH_BACKEND_BASE = window.RESEARCH_BACKEND_BASE || 'http://localhost:3003';
+
+// ── 存取權杖：只有部署到雲端、且伺服器有設定ALLOWED_TOKENS時才會用到。
+// 本機開發（伺服器沒設定ALLOWED_TOKENS）完全不受影響——伺服器那邊本來就
+// 不會檢查這個header，這裡多帶一個空的Authorization也不影響任何行為。
+function getResearchToken(){
+  return localStorage.getItem('RESEARCH_ACCESS_TOKEN') || '';
+}
+function setResearchToken(t){
+  if(t) localStorage.setItem('RESEARCH_ACCESS_TOKEN', t);
+}
+function researchAuthHeaders(){
+  const t = getResearchToken();
+  return t ? { 'Authorization': 'Bearer ' + t } : {};
+}
+// 401代表雲端伺服器要求存取權杖但沒帶、或帶錯了——跳出輸入框讓使用者貼上，
+// 存起來後回傳true給呼叫端知道可以重試一次；使用者取消輸入就回傳false。
+function promptForResearchToken(){
+  const t = window.prompt('這個功能需要存取權杖才能使用（跟提供這個功能的人索取），請貼上：');
+  if(t && t.trim()){ setResearchToken(t.trim()); return true; }
+  return false;
+}
 
 const RESEARCH_POLL_INTERVAL_MS = 5000;
 const RESEARCH_ESTIMATED_MS = 4 * 60 * 1000; // 典型案例約3-5分鐘，僅用來畫預估進度條，非精確值
@@ -1903,21 +1934,41 @@ function fmtResearchPanel(code, kind, opts){
 
   if(kind === 'done'){
     clearResearchTimer(code);
+    // prUrl有值代表這是雲端版本、結果送成PR等人工審核，還沒真的合併進網站
+    // 看得到的內容；沒有prUrl代表跟以前一樣（本機版本直接寫入本機檔案，或
+    // 雲端版本設定成direct-commit模式），重新整理就看得到。
+    const isPR = !!opts.prUrl;
     if(compact){
+      const doneNote = isPR
+        ? `已送出審核 PR，等待管理員合併後才會出現在網站上。`
+        : `已寫入資料庫，重新整理頁面查看。`;
+      const actionBtn = isPR
+        ? `<a href="${escHtml(opts.prUrl)}" target="_blank" rel="noopener" style="margin-top:6px;display:inline-block;padding:4px 10px;border-radius:6px;background:var(--navy-2);color:#fff;text-decoration:none;font-size:11px;font-weight:600;">查看 PR</a>`
+        : `<button onclick="location.reload()" style="margin-top:6px;padding:4px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">重新整理頁面</button>`;
       return `
         <div class="floating-widget-head">
           <b>${code}</b>
           <span style="color:var(--green);font-size:11px;">✅ 完成</span>
           <button onclick="dismissFloatingWidget('${code}')" class="floating-widget-close" title="關閉">✕</button>
         </div>
-        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;">已寫入資料庫，重新整理頁面查看。</div>
-        <button onclick="location.reload()" style="margin-top:6px;padding:4px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">重新整理頁面</button>`;
+        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;">${doneNote}</div>
+        ${actionBtn}`;
     }
+    const doneNote = isPR
+      ? `研究已完成，內容已送出一個 Pull Request 等待人工審核；審核通過並合併後，「${code}」才會正式出現在網站上給所有訪客看到。`
+      : `請重新整理頁面後再次搜尋「${code}」查看完整報告。`;
+    const actionBtn = isPR
+      ? `<a href="${escHtml(opts.prUrl)}" target="_blank" rel="noopener" style="display:inline-block;padding:6px 16px;border-radius:8px;background:var(--navy-2);color:#fff;text-decoration:none;font-size:13px;font-weight:600;margin-top:12px;">查看 Pull Request</a>`
+      : `<button onclick="location.reload()" style="padding:6px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13px;font-weight:600;margin-top:12px;">重新整理頁面</button>`;
+    const publishErrNote = opts.publishError
+      ? `<div style="margin-top:8px;font-size:12px;color:var(--red);">研究內容已產生，但自動送出審核時發生問題（${escHtml(opts.publishError)}），請聯絡管理員手動處理。</div>`
+      : '';
     return `<div style="padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--green-bg);">
-      <div style="font-weight:600;margin-bottom:6px;color:var(--green);">完成！「${code}」已寫入資料庫</div>
-      <div style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">請重新整理頁面後再次搜尋「${code}」查看完整報告。</div>
+      <div style="font-weight:600;margin-bottom:6px;color:var(--green);">完成！「${code}」研究已產生</div>
+      <div style="color:var(--ink-soft);font-size:13px;margin-bottom:10px;">${doneNote}</div>
       ${fmtDiffHtml(opts.diff)}
-      <button onclick="location.reload()" style="padding:6px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13px;font-weight:600;margin-top:12px;">重新整理頁面</button>
+      ${publishErrNote}
+      ${actionBtn}
     </div>`;
   }
 
@@ -1948,7 +1999,7 @@ async function pollResearchStatus(code){
   const widgetEl = document.getElementById(`floatWidget-${code}`);
   if(!pageEl && !widgetEl){ clearResearchTimer(code); window._activeResearchCodes.delete(code); return; }
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}`);
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}`, { headers: researchAuthHeaders() });
     const body = await res.json().catch(()=>({}));
     if(!res.ok){
       renderResearchTargets(code, 'error', { message: body.error || `查詢狀態失敗（HTTP ${res.status}）` });
@@ -1962,7 +2013,7 @@ async function pollResearchStatus(code){
       startResearchTicker(code, body.startedAt);
       setTimeout(()=>pollResearchStatus(code), RESEARCH_POLL_INTERVAL_MS);
     }else if(body.status === 'done'){
-      renderResearchTargets(code, 'done', { diff: body.diff });
+      renderResearchTargets(code, 'done', { diff: body.diff, prUrl: body.prUrl, publishError: body.publishError });
       window._activeResearchCodes.delete(code);
     }else{
       renderResearchTargets(code, 'error', { message: body.error || '研究過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。' });
@@ -1988,7 +2039,7 @@ function appendResearchNote(code, msg){
 // 延長次數）就在旁邊附註原因。
 async function extendResearch(code){
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}/extend`, { method: 'POST' });
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research/${encodeURIComponent(code)}/extend`, { method: 'POST', headers: researchAuthHeaders() });
     const body = await res.json().catch(()=>({}));
     if(!res.ok){
       appendResearchNote(code, body.error || '未知原因（畫面會在下一次輪詢時自動反映最新狀態）');
@@ -2010,11 +2061,17 @@ async function startClaudeCodeResearch(rawCode, containerId){
   window._activeResearchCodes.add(code);
   renderResearchTargets(code, 'starting', {});
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`, {
+    const doPost = () => fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: Object.assign({ 'Content-Type': 'application/json' }, researchAuthHeaders()),
       body: JSON.stringify({ code }),
     });
+    let res = await doPost();
+    // 401代表雲端伺服器要求存取權杖：跳出輸入框讓使用者貼上後重試一次，
+    // 不想輸入或輸入錯誤就照一般錯誤處理顯示訊息。
+    if(res.status === 401 && promptForResearchToken()){
+      res = await doPost();
+    }
     const body = await res.json().catch(()=>({}));
     if(!res.ok){
       renderResearchTargets(code, 'error', { message: body.error || `啟動失敗（HTTP ${res.status}）` });
@@ -2034,7 +2091,7 @@ async function startClaudeCodeResearch(rawCode, containerId){
 // 伺服器那邊其實還在繼續執行。
 async function restoreActiveResearchJobs(){
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`);
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/research`, { headers: researchAuthHeaders() });
     if(!res.ok) return;
     const body = await res.json().catch(()=>({ jobs: [] }));
     (body.jobs || []).forEach(j => {
@@ -3286,10 +3343,19 @@ function renderLookupPopup(kind, term, opts){
       <div style="font-family:var(--px);font-size:10.5px;color:var(--gold);margin-bottom:8px;">正在查詢「${escTerm}」…</div>
       <div style="font-size:11.5px;color:#c9cdd6;">${escHtml(opts.activity || '⏳ 已連線，等待Claude Code開始第一個動作…')}</div>`;
   }else if(kind === 'done'){
-    html = `
-      <div style="font-family:var(--px);font-size:10.5px;color:#8fd68a;margin-bottom:8px;">✅ 查詢完成</div>
-      <div style="font-size:11.5px;color:#c9cdd6;margin-bottom:8px;">「${escTerm}」現在應該已經在名詞小百科裡了（如果詞彙庫本來就有這個詞，也會顯示在這裡）。</div>
-      <button onclick="refreshGlossaryAndRerender()" style="padding:6px 12px;border-radius:6px;border:none;background:var(--gold);color:#231a06;cursor:pointer;font-size:12px;font-weight:600;">🔄 重新整理頁面</button>`;
+    // prUrl有值代表雲端版本把結果送成PR等審核，本機的glossary.js還沒有這條，
+    // 「重新整理」按鈕在這種情況下按了也看不到新內容，改成引導去看PR。
+    if(opts.prUrl){
+      html = `
+        <div style="font-family:var(--px);font-size:10.5px;color:#8fd68a;margin-bottom:8px;">✅ 查詢完成</div>
+        <div style="font-size:11.5px;color:#c9cdd6;margin-bottom:8px;">「${escTerm}」的解釋已送出一個 Pull Request 等待人工審核，合併後才會正式出現在名詞小百科裡。</div>
+        <a href="${escHtml(opts.prUrl)}" target="_blank" rel="noopener" style="display:inline-block;padding:6px 12px;border-radius:6px;background:var(--gold);color:#231a06;text-decoration:none;font-size:12px;font-weight:600;">查看 Pull Request</a>`;
+    }else{
+      html = `
+        <div style="font-family:var(--px);font-size:10.5px;color:#8fd68a;margin-bottom:8px;">✅ 查詢完成</div>
+        <div style="font-size:11.5px;color:#c9cdd6;margin-bottom:8px;">「${escTerm}」現在應該已經在名詞小百科裡了（如果詞彙庫本來就有這個詞，也會顯示在這裡）。</div>
+        <button onclick="refreshGlossaryAndRerender()" style="padding:6px 12px;border-radius:6px;border:none;background:var(--gold);color:#231a06;cursor:pointer;font-size:12px;font-weight:600;">🔄 重新整理頁面</button>`;
+    }
   }else{ // error
     html = `
       <div style="font-family:var(--px);font-size:10.5px;color:#e08a8a;margin-bottom:8px;">查詢失敗</div>
@@ -3302,11 +3368,15 @@ function renderLookupPopup(kind, term, opts){
 async function startGlossaryLookup(term){
   renderLookupPopup('running', term, {});
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup`, {
+    const doPost = () => fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: Object.assign({ 'Content-Type': 'application/json' }, researchAuthHeaders()),
       body: JSON.stringify({ term }),
     });
+    let res = await doPost();
+    if(res.status === 401 && promptForResearchToken()){
+      res = await doPost();
+    }
     const body = await res.json().catch(()=>({}));
     if(currentLookupTerm !== term) return; // 使用者在等待回應期間已經關掉或換了別的詞
     if(!res.ok){
@@ -3325,7 +3395,7 @@ async function pollGlossaryLookup(term){
   // 代表這次輪詢結果不再重要，不要覆蓋掉畫面上其他內容。
   if(currentLookupTerm !== term) return;
   try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup/${encodeURIComponent(term)}`);
+    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup/${encodeURIComponent(term)}`, { headers: researchAuthHeaders() });
     const body = await res.json().catch(()=>({}));
     if(currentLookupTerm !== term) return;
     if(!res.ok){
@@ -3336,7 +3406,7 @@ async function pollGlossaryLookup(term){
       renderLookupPopup('running', term, { activity: body.activity });
       setTimeout(()=>pollGlossaryLookup(term), 3000);
     }else if(body.status === 'done'){
-      renderLookupPopup('done', term, {});
+      renderLookupPopup('done', term, { prUrl: body.prUrl });
     }else{
       renderLookupPopup('error', term, { message: body.error || '查詢過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。' });
     }
