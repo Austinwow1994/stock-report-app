@@ -232,6 +232,17 @@
   }
   .floating-widget-close:hover{color:var(--red);}
 
+  .clip-toast{
+    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);
+    background:#14162a;color:#f2efe6;border:2px solid var(--gold);box-shadow:5px 5px 0 rgba(0,0,0,.4);
+    padding:12px 16px;font-size:12.5px;line-height:1.6;max-width:min(440px,90vw);z-index:999;
+    opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+  }
+  .clip-toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+  .clip-toast .pt{font-family:var(--px);font-size:10px;color:var(--gold);margin-bottom:6px;}
+  .clip-toast code{display:block;background:rgba(255,255,255,.08);padding:6px 8px;margin:4px 0 8px;word-break:break-all;color:#fff;}
+  .clip-toast button{padding:4px 10px;border-radius:6px;border:none;background:var(--gold);color:#231a06;cursor:pointer;font-size:11.5px;font-weight:600;}
+
   .compare-bar{
     display:flex;align-items:center;gap:10px;flex-wrap:wrap;
     margin-top:12px;padding:10px 14px;background:#fdf0c2;border:2px solid var(--gold);
@@ -469,6 +480,7 @@
   /* 多空觀點：沿用這個App既有的漲跌配色慣例（K線／同儕比較的price upside
      已經是紅漲綠跌，跟台股市場習慣一致），多方＝紅、空方＝綠，不是這次
      另外新創的顏色系統。 */
+  .fundamentals-subhead{font-size:13px;color:var(--navy-2);margin:20px 0 8px;padding-top:14px;border-top:1px dashed var(--line);}
   .bullbear-group{margin-bottom:14px;}
   .bullbear-group:last-child{margin-bottom:0;}
   .bullbear-label{font-family:var(--px);font-size:10px;padding:5px 10px;display:inline-block;margin-bottom:8px;border:1.5px solid var(--line);}
@@ -663,6 +675,10 @@
   <div id="lookupPopupBody"></div>
 </div>
 
+<!-- 按「研究並加入」時，複製給Claude Code對話視窗貼上的提示語會用這個
+     toast顯示，見copyResearchPromptToClipboard() -->
+<div id="clipToast" class="clip-toast"></div>
+
 <script>window.REPORTS = {}; window.VALUATIONS = {};</script>
 <script src="data/glossary.js"></script>
 <!-- STOCK_DATA:BEGIN 新股票研究完成後，把新的兩行<script src>加在 STOCK_DATA:END 這一行的正上方 -->
@@ -840,6 +856,32 @@
     <script src="data/valuations/MRNA.js"></script>
     <script src="data/reports/6213.js"></script>
     <script src="data/valuations/6213.js"></script>
+    <script src="data/reports/2395.js"></script>
+    <script src="data/valuations/2395.js"></script>
+    <script src="data/reports/6274.js"></script>
+    <script src="data/valuations/6274.js"></script>
+    <script src="data/reports/3044.js"></script>
+<script src="data/valuations/3044.js"></script>
+<script src="data/reports/3037.js"></script>
+<script src="data/valuations/3037.js"></script>
+  <script src="data/reports/5289.js"></script>
+  <script src="data/valuations/5289.js"></script>
+<script src="data/reports/2464.js"></script>
+<script src="data/valuations/2464.js"></script>
+<script src="data/reports/6117.js"></script>
+    <script src="data/valuations/6117.js"></script>
+<script src="data/reports/6739.js"></script>
+<script src="data/valuations/6739.js"></script>
+        <script src="data/reports/6533.js"></script>
+    <script src="data/valuations/6533.js"></script>
+    <script src="data/reports/4958.js"></script>
+    <script src="data/valuations/4958.js"></script>
+    <script src="data/reports/4977.js"></script>
+    <script src="data/valuations/4977.js"></script>
+    <script src="data/reports/6442.js"></script>
+    <script src="data/valuations/6442.js"></script>
+    <script src="data/reports/6415.js"></script>
+    <script src="data/valuations/6415.js"></script>
     <!-- STOCK_DATA:END -->
 <script>
 
@@ -2054,6 +2096,41 @@ async function extendResearch(code){
 // containerId是選填的：有的話代表「這是使用者當下所在頁面裡的容器」，會被記錄下來
 // 持續同步更新；不管有沒有傳，一律都會在右下角建立/更新一個小視窗（見
 // renderResearchTargets），讓使用者換頁瀏覽其他報告時還是看得到這裡的進度。
+// 「研究並加入」按鈕按下去時，除了照常觸發claude-code-research-server的
+// 背景任務，順便把一句可以直接貼給Claude Code互動session的提示語複製到
+// 剪貼簿——這是因為法說會逐字稿分析（AlphaMemo.ai）需要人工登入，全自動
+// 背景流程沒有瀏覽器碰不到，只能請使用者自己回到對話視窗貼上這句話，讓
+// 互動session額外去抓逐字稿、把結果併回這份報告的「基本面」段落。網頁跟
+// Claude Code對話視窗是兩個完全獨立的程式，沒有辦法讓網頁按鈕直接把文字
+// 送進對話框，複製到剪貼簿＋使用者手動貼上，是目前技術上做得到的最接近方案。
+function copyResearchPromptToClipboard(code){
+  const prompt = `研究${code}的公司，並抓法說會逐字稿`;
+  const toast = document.getElementById('clipToast');
+  const showToast = (bodyHtml) => {
+    if(!toast) return;
+    toast.innerHTML = bodyHtml;
+    toast.classList.add('show');
+    clearTimeout(window._clipToastTimer);
+    window._clipToastTimer = setTimeout(()=>toast.classList.remove('show'), 8000);
+  };
+  const escPrompt = escHtml(prompt);
+  navigator.clipboard.writeText(prompt).then(()=>{
+    showToast(`
+      <div class="pt">📋 已複製到剪貼簿</div>
+      <div>回到跟Claude Code的對話視窗貼上、送出，就可以請它額外去抓法說會逐字稿、把分析併進這份報告：</div>
+      <code>${escPrompt}</code>
+      <button onclick="document.getElementById('clipToast').classList.remove('show')">知道了</button>`);
+  }).catch(()=>{
+    // 有些瀏覽器情境（例如非https、使用者未曾與頁面互動過）clipboard API會被拒絕，
+    // 這時退而求其次，直接把文字顯示出來讓使用者自己反白複製。
+    showToast(`
+      <div class="pt">📋 請手動複製這段文字</div>
+      <div>瀏覽器不允許自動寫入剪貼簿，麻煩反白選取後手動複製，貼到跟Claude Code的對話視窗：</div>
+      <code>${escPrompt}</code>
+      <button onclick="document.getElementById('clipToast').classList.remove('show')">知道了</button>`);
+  });
+}
+
 async function startClaudeCodeResearch(rawCode, containerId){
   const code = String(rawCode).trim().toUpperCase();
   if(containerId) window._researchPageContainer[code] = containerId;
@@ -2487,7 +2564,6 @@ function renderReport(r){
   const sources = r.sources.map(s=>`<div>・${s}</div>`).join('');
 
   const chainMainHtml = `<section class="block"><h3>產業鏈定位：${r.chainTitle}</h3>${chain}</section>`;
-  const finHtml = `<section class="block" id="fincontent-${r.code}"><h3>財務健診：${r.finTitle}</h3><div style="overflow-x:auto;"><table class="fin"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div>${narrative}${extra}</section>`;
   const valHtml = fmtValuationSection(r.code, r.market);
   const peersHtml = fmtPeersSection(r);
   // growthDriver／technical是舊資料（重新研究前產生的報告）沒有的新欄位，
@@ -2498,12 +2574,22 @@ function renderReport(r){
   const technicalHtml = r.technical
     ? `<section class="block"><h3>技術面觀察（K線型態）</h3>${fmtTechnical(r.technical)}</section>`
     : '';
-  const bullBearHtml = (r.bullBear && ((r.bullBear.bull && r.bullBear.bull.length) || (r.bullBear.bear && r.bullBear.bear.length)))
-    ? `<section class="block"><h3>多空觀點${r.bullBearTitle ? '：'+r.bullBearTitle : ''}</h3>
+  // 基本面＝財務健診＋多空觀點合併成一個段落（2026-08起），多空觀點跟法說會逐字稿
+  // 跨場次追蹤都是「有才顯示」的子區塊，財務數字表格則一律顯示，維持原本財務健診
+  // 一定會有內容的行為不變。
+  const bullBearContentHtml = (r.bullBear && ((r.bullBear.bull && r.bullBear.bull.length) || (r.bullBear.bear && r.bullBear.bear.length)))
+    ? `<h4 class="fundamentals-subhead">多空觀點${r.bullBearTitle ? '：'+r.bullBearTitle : ''}</h4>
         ${r.bullBear.bull && r.bullBear.bull.length ? `<div class="bullbear-group"><span class="bullbear-label bull">多方觀點</span>${r.bullBear.bull.map(fmtBullBearItem).join('')}</div>` : ''}
-        ${r.bullBear.bear && r.bullBear.bear.length ? `<div class="bullbear-group"><span class="bullbear-label bear">空方觀點</span>${r.bullBear.bear.map(fmtBullBearItem).join('')}</div>` : ''}
-      </section>`
+        ${r.bullBear.bear && r.bullBear.bear.length ? `<div class="bullbear-group"><span class="bullbear-label bear">空方觀點</span>${r.bullBear.bear.map(fmtBullBearItem).join('')}</div>` : ''}`
     : '';
+  // transcriptInsight：法說會逐字稿跨場次比對重點（呼叫earnings-call-transcript-analysis
+  // skill才會有這個欄位——這個skill需要人工登入AlphaMemo.ai才能執行，沒辦法透過
+  // claude-code-research-server的全自動背景流程觸發，所以這個子區塊在大多數（尤其
+  // 自動生成的）報告裡會是空的，只有互動session裡額外手動跑過這個skill的報告才會有。
+  const transcriptInsightHtml = (r.transcriptInsight && r.transcriptInsight.length)
+    ? `<h4 class="fundamentals-subhead">法說會逐字稿跨場次追蹤</h4>${r.transcriptInsight.map(fmtBullBearItem).join('')}`
+    : '';
+  const finHtml = `<section class="block" id="fincontent-${r.code}"><h3>基本面：${r.finTitle}</h3><div style="overflow-x:auto;"><table class="fin"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div>${narrative}${extra}${bullBearContentHtml}${transcriptInsightHtml}</section>`;
   const glossaryHtml = `
     <section class="block">
       <h3>名詞小百科</h3>
@@ -2517,18 +2603,18 @@ function renderReport(r){
       <div class="disclaimer">本報告內容基於公開資料整理與分析撰寫，可能包含推論與待驗證的假設，僅供參考，不構成任何投資建議。投資人應自行查證並判斷，並自負投資風險。</div>
     </section>`;
 
-  // 左欄：敘事／市場觀點路線（產業鏈定位 → 主要成長動能 → 多空觀點 → 技術面觀察 → 同儕比較）
-  // 右欄：數字／估值路線（財務健診 → 股價推算模型，官方數據速覽已併入股價推算模型的「目前市價」旁）
+  // 左欄：敘事路線（產業鏈定位 → 主要成長動能 → 技術面觀察 → 同儕比較）
+  // 右欄：基本面／估值路線（基本面＝財務健診＋多空觀點合併，2026-08起 → 股價推算模型，
+  // 官方數據速覽已併入股價推算模型的「目前市價」旁）
   // 名詞小百科／資料來源與免責聲明：不分左右欄，全寬、放在同一個相對位置（欄位下方）
   const leftItems = [
     { id:`sec-chain-${r.code}`, label:'產業鏈定位', html:chainMainHtml },
     growthDriverHtml ? { id:`sec-growth-${r.code}`, label:'主要成長動能', html:growthDriverHtml } : null,
-    bullBearHtml ? { id:`sec-bullbear-${r.code}`, label:'多空觀點', html:bullBearHtml } : null,
     technicalHtml ? { id:`sec-technical-${r.code}`, label:'技術面觀察', html:technicalHtml } : null,
     peersHtml ? { id:`sec-peers-${r.code}`, label:'同儕比較', html:peersHtml } : null,
   ].filter(Boolean);
   const rightItems = [
-    { id:`sec-fin-${r.code}`, label:'財務健診', html:finHtml },
+    { id:`sec-fin-${r.code}`, label:'基本面', html:finHtml },
     valHtml ? { id:`sec-val-${r.code}`, label:'股價推算模型', html:valHtml } : null,
   ].filter(Boolean);
   const fullWidthItems = [
@@ -2642,7 +2728,7 @@ function showReport(codeOrQuery){
     if(looksLikeTwCode || looksLikeUsCode){
       const researchContainerId = `research-${rawCode.toUpperCase()}`;
       genBox.innerHTML = `
-        <button onclick="startClaudeCodeResearch('${rawCode}','${researchContainerId}')" style="padding:8px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13.5px;font-weight:600;">研究並加入「${rawCode}」到資料庫</button>
+        <button onclick="startClaudeCodeResearch('${rawCode}','${researchContainerId}');copyResearchPromptToClipboard('${rawCode}')" style="padding:8px 16px;border-radius:8px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:13.5px;font-weight:600;">研究並加入「${rawCode}」到資料庫</button>
         <div style="color:var(--ink-soft);font-size:12px;margin-top:6px;">會呼叫本機的Claude Code在背景執行，需要先啟動 claude-code-research-server（詳見專案README）。</div>
         <div id="${researchContainerId}" style="margin-top:10px;"></div>`;
       // TWSE查證只涵蓋台股，美股代碼不會查到任何東西，這顆按鈕只在看起來是台股代碼時顯示。
