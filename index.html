@@ -882,7 +882,13 @@
     <script src="data/valuations/6442.js"></script>
     <script src="data/reports/6415.js"></script>
     <script src="data/valuations/6415.js"></script>
-    <!-- STOCK_DATA:END -->
+    <script src="data/reports/2890.js"></script>
+    <script src="data/valuations/2890.js"></script>
+    <script src="data/reports/3029.js"></script>
+    <script src="data/valuations/3029.js"></script>
+    <script src="data/reports/5014.js"></script>
+<script src="data/valuations/5014.js"></script>
+<!-- STOCK_DATA:END -->
 <script>
 
 /* =========================================================
@@ -1813,7 +1819,7 @@ function promptForResearchToken(){
 }
 
 const RESEARCH_POLL_INTERVAL_MS = 5000;
-const RESEARCH_ESTIMATED_MS = 4 * 60 * 1000; // 典型案例約3-5分鐘，僅用來畫預估進度條，非精確值
+const RESEARCH_ESTIMATED_MS = 14 * 60 * 1000; // 典型案例約13-15分鐘，僅用來畫預估進度條，非精確值
 // 逾時秒數不再寫死在前端（server.js改成兩段式：先問要不要延長，同意才繼續跑），
 // 避免兩邊常數各自維護卻忘記同步；實際逾時提醒改成needsExtension旗標驅動的
 // 通知卡片（見fmtResearchPanel），不是這裡的固定倒數文字。
@@ -1889,7 +1895,7 @@ function startResearchTicker(code, startedAtISO){
     const mm = Math.floor(elapsedMs/60000);
     const ss = Math.floor((elapsedMs%60000)/1000).toString().padStart(2,'0');
     const overTime = elapsedMs > RESEARCH_ESTIMATED_MS;
-    const fullText = `已執行 <b>${mm}:${ss}</b>　（預估約3-5分鐘；耗時較久的話，系統會主動跳出詢問是否延長等待）${overTime ? '　<span style="color:var(--amber);">已超過預估時間，仍可能是正常的，請再耐心等候</span>' : ''}`;
+    const fullText = `已執行 <b>${mm}:${ss}</b>　（預估約13-15分鐘；耗時較久的話，系統會主動跳出詢問是否延長等待）${overTime ? '　<span style="color:var(--amber);">已超過預估時間，仍可能是正常的，請再耐心等候</span>' : ''}`;
     const shortText = `已執行 <b>${mm}:${ss}</b>`;
     elapsedEls.forEach(el => { el.innerHTML = el.dataset.compact ? shortText : fullText; });
     if(barEls.length){
