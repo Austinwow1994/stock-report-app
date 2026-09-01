@@ -888,6 +888,10 @@
     <script src="data/valuations/3029.js"></script>
     <script src="data/reports/5014.js"></script>
 <script src="data/valuations/5014.js"></script>
+<script src="data/reports/2493.js"></script>
+<script src="data/valuations/2493.js"></script>
+<script src="data/reports/1560.js"></script>
+<script src="data/valuations/1560.js"></script>
 <!-- STOCK_DATA:END -->
 <script>
 
@@ -2367,6 +2371,23 @@ const ICON_LIB = {
     pxRect(map,3,3,4,10,'F'); pxRect(map,3,10,10,3,'F');
     pxRect(map,4,4,2,2,'H'); pxRect(map,4,11,2,1,'H'); pxRect(map,10,11,2,1,'H');
   },
+  // 生技醫療概念股用的錐形燒瓶（Erlenmeyer flask）圖像，跟medical（醫療器材，
+  // 圓形＋十字）刻意做出區隔——生技製藥是「研發試驗」的意象，醫療器材是
+  // 「臨床/診斷」的意象。
+  biotech(map){
+    pxRect(map,7,2,2,3,'F');
+    pxRect(map,6,5,4,1,'F'); pxRect(map,5,6,6,1,'F'); pxRect(map,4,7,8,1,'F');
+    pxRect(map,3,8,10,6,'F');
+    pxRect(map,6,10,1,1,'W'); pxRect(map,9,11,1,1,'W'); pxRect(map,8,9,1,1,'H');
+  },
+  // 工業電腦與物聯網概念股用的機箱＋無線訊號弧線圖像，跟network（交換器＋
+  // 雙上聯線）、server（機架＋水平分隔線）刻意做出區隔。
+  ipc(map){
+    pxRect(map,2,5,9,9,'F');
+    pxRect(map,4,7,2,2,'H'); pxRect(map,7,7,2,2,'H');
+    pxRect(map,4,11,5,1,'W');
+    pxRing(map,13,4,2,1,'F'); pxRing(map,13,4,4,3,'F');
+  },
 };
 
 const ICON_BASE_COLOR = {
@@ -2376,6 +2397,7 @@ const ICON_BASE_COLOR = {
   construction:'#6b6b6b', ship:'#1f5f8a', coin:'#c99a2e', hotel:'#c76b8a', box:'#8a7050',
   thermal:'#2f8fb3', gadget:'#8a4fd6', car:'#1f8a4c', cloud:'#5b6bd6', robot:'#4a7fc9',
   food:'#8a9c3a', medical:'#e0384f', pending:'#767676', grid:'#c96a1f', bracket:'#6b7a8a',
+  biotech:'#7a4fb0', ipc:'#4a7a8a',
 };
 
 // AI伺服器供應鏈地圖每個「角色／環節」對應的示意圖像（依CHAIN_MAP的title比對）
@@ -2398,7 +2420,8 @@ const STAGE_ICON_META = {
   '軍工':'ship',
   '食品飼料與肉品':'food',
   '醫療器材':'medical',
-  '電力設備與電網基礎建設':'power',
+  '生技醫療':'biotech',
+  '電力設備與電網基礎建設':'grid',
   '工具機與精密機械':'gear',
   '網路通訊設備':'network',
 };
@@ -2429,42 +2452,49 @@ const ICON_META = {
   // 晶圓代工與矽晶圓概念股
   '2330':'wafer', '2455':'wafer', '3105':'wafer', '3532':'wafer', '4971':'wafer', '4991':'wafer',
   // IC設計概念股
-  '2454':'chip', '3034':'chip', 'NVDA':'chip',
+  '2454':'chip', '3034':'chip', 'NVDA':'chip', '6533':'chip',
   // 記憶體概念股
   '2337':'memory', '2344':'memory', '3006':'memory', '2451':'memory', '8299':'memory', '3260':'memory',
+  '5289':'memory',
   // 半導體封測與檢測概念股
   '2360':'probe', '2449':'probe', '3030':'probe', '3264':'probe', '3587':'probe',
   '3711':'probe', '6223':'probe', '6257':'probe', '8150':'probe', '3265':'probe',
   // 電源管理概念股
-  '2301':'power', '2308':'power', '6138':'power', '6719':'power', '7788':'power',
-  '3211':'power', '4931':'power',
+  '2301':'power', '2308':'power', '6138':'power', '6719':'power',
+  '3211':'power', '4931':'power', '6415':'power',
   // 散熱概念股
-  '2421':'thermal', '3653':'thermal',
+  '2421':'thermal', '3653':'thermal', '6117':'thermal',
   // PCB／載板概念股
   '2316':'pcb', '2383':'pcb', '3189':'pcb', '8039':'pcb', '8155':'pcb', '8046':'pcb',
+  '3037':'pcb', '3044':'pcb', '4958':'pcb', '6213':'pcb', '6274':'pcb',
   // 電子材料概念股（玻纖布、銅箔等PCB/半導體上游材料）
   '1802':'material_roll', '1815':'material_roll', '5475':'material_roll', '8358':'material_roll',
   // 連接器概念股（含分立半導體與被動元件，跟連接器/線纜同屬終端應用被動料件）
-  '6197':'connector', 'VSH':'connector', '3665':'connector',
+  '6197':'connector', 'VSH':'connector', '3665':'connector', '3533':'connector', '6442':'connector',
   // 網通設備概念股
   '2345':'network', '3558':'network',
   // 光學／光通訊概念股
-  '3450':'optic', '3362':'optic', '3234':'optic', '8111':'optic',
+  '3450':'optic', '3362':'optic', '3234':'optic', '8111':'optic', '4977':'optic',
   // 半導體設備與廠務工程概念股
   '2467':'factory', '3167':'factory', '5536':'factory', '6196':'factory',
   '6664':'factory', '6667':'factory', '6829':'factory', '6691':'factory',
+  '2464':'factory', '6739':'factory',
   // 系統組裝與ODM概念股
   '2317':'server', '2382':'server',
   // 資訊服務概念股
-  '3147':'cloud', '6214':'cloud', '5403':'cloud',
+  '3147':'cloud', '6214':'cloud', '5403':'cloud', '3029':'cloud',
   // 食品飼料與肉品概念股
   '1215':'food',
   // 醫療器材概念股
   'MDT':'medical',
+  // 生技醫療概念股（新藥／疫苗研發製造，跟醫療器材是不同商業模式）
+  'MRNA':'biotech',
+  // 工業電腦與物聯網概念股
+  '2395':'ipc',
   // 電信概念股
   '2412':'tower',
   // 金融概念股
-  '2881':'coin',
+  '2881':'coin', '2890':'coin',
   // 觀光概念股
   '2707':'hotel',
   // 軍工概念股
@@ -2472,7 +2502,10 @@ const ICON_META = {
   // 通路代理概念股
   '8043':'box',
   // 傳產營造與原物料概念股
-  '1605':'construction', '2027':'construction', '2546':'construction',
+  '1605':'construction', '2027':'construction', '2546':'construction', '5014':'construction',
+  // 車用與新能源概念股（松川精密自己的chainStage就標為「車用與新能源」，
+  // 繼電器／接觸器是新能源電力系統的關鍵開關元件，跟電源管理IC是不同賽道）
+  '7788':'car',
   // 電力設備概念股（超高壓變壓器、電網基礎建設，跟電源管理IC不同賽道）
   '1519':'grid',
   // 工具機與精密機械概念股
@@ -2512,6 +2545,8 @@ const CONCEPT_META = {
   grid:           { title:'電力設備概念股',        desc:'超高壓變壓器、開關設備與電網基礎建設工程供應商' },
   gear:           { title:'工具機與精密機械概念股', desc:'CNC工具機、機械加工設備與精密傳動元件製造商' },
   bracket:        { title:'精密機構件概念股',       desc:'沖壓機殼、金屬結構件等精密機構加工供應商' },
+  biotech:        { title:'生技醫療概念股',         desc:'新藥、疫苗與治療藥物研發製造商，獲利繫於臨床試驗進度與藥證審批，跟醫療器材（賣設備）是不同的商業模式' },
+  ipc:            { title:'工業電腦與物聯網概念股',  desc:'工業電腦、嵌入式運算平台與物聯網閘道器供應商' },
   // 不在ICON_META裡的公司（通常是剛生成、還沒有人工判斷該歸進哪個概念股
   // 題材）會自動落到這張卡片，而不是從圖鑑上完全消失——見下面renderConceptGuide。
   pending:        { title:'尚待分類概念股',        desc:'剛收錄進資料庫的公司，還沒有人工判斷該歸進哪個概念股題材，之後可在ICON_META補上正確分類' },
@@ -2958,6 +2993,7 @@ const CHAIN_MAP = [
   { title:"軍工", desc:"軍艦、無人機／無人艇與國防電子系統等軍規裝備供應商，終端客戶是國防部、海巡署等政府機關，部分廠商同時打入美系軍工供應鏈（需通過NDAA等法規認證），訂單來自國防預算、「國艦國造」與無人載具等政策採購，涉及國安審查與長期驗證關係、進入門檻高，跟AI供應鏈的訂單／產能邏輯無關，是國安與地緣政治驅動的產業", core:false },
   { title:"食品飼料與肉品", desc:"禽畜飼料生產、屠宰與食品加工一貫化業者，終端產品是動物飼料與肉品食材，成本受黃豆／玉米等穀物原料價格、禽畜疫情與內需消費影響，跟AI供應鏈的訂單／產能邏輯無關，是傳統民生消費驅動的產業", core:false },
   { title:"醫療器材", desc:"心血管、神經科學、外科手術等醫療設備與器械供應商，終端客戶是醫院與醫療院所，受健保給付政策、臨床法規認證週期與人口老化趨勢驅動，跟AI供應鏈的訂單／產能邏輯無關，是醫療保健需求驅動的產業", core:false },
+  { title:"生技醫療", desc:"新藥、疫苗與治療藥物的研發製造業者，終端客戶是病患、醫療院所與各國藥品監管機關，獲利邏輯繫於臨床試驗成敗、藥證審批進度與專利保護期，是典型的高風險高報酬、長研發週期產業，跟醫療器材（賣設備給醫院）或AI供應鏈的訂單／產能邏輯完全不同", core:false },
   { title:"電力設備與電網基礎建設", desc:"超高壓變壓器、開關設備與電網基礎建設工程供應商，終端客戶是台電與各國電力公司，受電網升級、再生能源併網與用電需求成長驅動，跟AI伺服器供應鏈的晶片／伺服器訂單邏輯不同，是電力基礎建設投資週期驅動的產業", core:false },
   { title:"工具機與精密機械", desc:"CNC工具機、機械加工設備與精密傳動元件製造商，終端客戶是機械加工廠與各類製造業者，景氣連動全球製造業資本支出與工具機汰換週期，跟AI伺服器供應鏈的訂單／產能邏輯不同，是傳統機械資本支出循環驅動的產業", core:false },
   { title:"網路通訊設備", desc:"Wi-Fi、網路交換器等網通設備ODM／OEM代工廠商，終端客戶是電信商與網路服務供應商（ISP），跟AI伺服器供應鏈核心環節不同，是電信／網通市場資本支出驅動的產業", core:false },
