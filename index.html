@@ -892,7 +892,9 @@
 <script src="data/valuations/2493.js"></script>
 <script src="data/reports/1560.js"></script>
 <script src="data/valuations/1560.js"></script>
-<!-- STOCK_DATA:END -->
+<script src="data/reports/3357.js"></script>
+    <script src="data/valuations/3357.js"></script>
+    <!-- STOCK_DATA:END -->
 <script>
 
 /* =========================================================
@@ -945,11 +947,11 @@ function isStale(iso){
   return days !== null && days >= FRESHNESS_STALE_DAYS;
 }
 
-// 「NEW」標記：generatedAt在過去12小時內都算——這個欄位無論是全新股票的
+// 「NEW」標記：generatedAt在過去7天內都算——這個欄位無論是全新股票的
 // 首次生成、還是既有股票按「重新研究並更新」，伺服器都會蓋上最新時間戳記
 // （見server.js的stampGeneratedAt），所以剛更新過的舊報告也會一併標成NEW，
 // 這是預期行為，不只是全新股票才算。
-const RECENT_HOURS = 12;
+const RECENT_HOURS = 24 * 7;
 function hoursSinceGenerated(iso){
   if(!iso) return null;
   const d = new Date(iso);
@@ -2686,7 +2688,7 @@ function renderReport(r){
         <span class="code-badge">${r.code}</span>
         ${marketBadgeHtml(r.market)}
         <span class="industry-badge">${r.industry}</span>
-        ${isRecentlyGenerated(r.generatedAt) ? `<span class="freshness-badge new">🆕 過去12小時內剛更新</span>` : ''}
+        ${isRecentlyGenerated(r.generatedAt) ? `<span class="freshness-badge new">🆕 過去7天內剛更新</span>` : ''}
         ${freshnessBadgeHtml(r.generatedAt)}
         ${r.generatedAt ? `<span class="date-badge">🕐 報告生成於 ${fmtGeneratedAt(r.generatedAt)}（台灣時間）</span>` : ''}
         <button onclick="startClaudeCodeResearch('${r.code}','research-update-${r.code}')" class="rh-btn${isStale(r.generatedAt)?' urgent':''}">🔄 重新研究並更新為最新資訊</button>
@@ -3010,7 +3012,7 @@ function chainChipsHtml(codes, meCode){
     // 名稱仍然保留在title提示文字裡；台股維持「簡稱 代碼」的既有顯示方式。
     const chipText = isUS ? r.code : `${SHORT_NAME[code] || r.name} ${r.code}`;
     const newTag = isRecentlyGenerated(r.generatedAt) ? '<span class="chip-new-tag">NEW</span>' : '';
-    return `<span class="chain-chip${isMe?' me':''} ${marketClass}" data-code="${code}" title="${r.name}（${isUS ? '美股' : '台股'}）${newTag ? '　過去12小時內剛更新' : ''}">${newTag}${chipText}</span>`;
+    return `<span class="chain-chip${isMe?' me':''} ${marketClass}" data-code="${code}" title="${r.name}（${isUS ? '美股' : '台股'}）${newTag ? '　過去7天內剛更新' : ''}">${newTag}${chipText}</span>`;
   }).join('');
 }
 
@@ -3039,7 +3041,7 @@ function chainNodeHtml({ title, num, desc, codes, meCode, extraClass, style }){
 // 會出現在地圖上，只是說明文字先用通用備援句，不會整個消失不見。
 // 首頁「顯示：全部／新增／台股／美股」篩選——只影響瀏覽用的清單（供應鏈
 // 地圖、概念股圖鑑），不影響搜尋（搜尋已經是精準查詢，不需要再篩市場）。
-// 'new'沿用跟NEW徽章同一套「過去12小時內生成」的判斷（isRecentlyGenerated），
+// 'new'沿用跟NEW徽章同一套「過去7天內生成」的判斷（isRecentlyGenerated），
 // 不是額外獨立維護一份「新增」定義。
 let marketFilter = 'all'; // 'all' | 'new' | 'TW' | 'US'
 
