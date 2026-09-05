@@ -894,6 +894,8 @@
 <script src="data/valuations/1560.js"></script>
 <script src="data/reports/3357.js"></script>
     <script src="data/valuations/3357.js"></script>
+    <script src="data/reports/6672.js"></script>
+    <script src="data/valuations/6672.js"></script>
     <!-- STOCK_DATA:END -->
 <script>
 
@@ -2715,8 +2717,28 @@ function renderReport(r){
 
 let currentReportCode = null; // 目前畫面上顯示的是哪份報告（沒有就是null）——用來讓名詞查詢完成後能原地重繪回同一份報告，不用整頁重新整理跳回主頁
 
+// 用網址的query string（?r=代碼）記錄目前在看哪份報告，這樣使用者按瀏覽器
+// 重新整理（或分享網址給別人）時，才能直接回到原本在看的報告頁，而不是
+// 被丟回主頁。刻意用query string而不是hash（網址#後面的部分）：報告內文
+// 「名詞小百科」等段落本來就用hash錨點做頁內跳轉（例如#sec-fin-2330），
+// 如果路由也搶用hash，兩者容易互相干擾；query string完全不會跟這些錨點
+// 衝突。用pushState而不是直接改location.search，是為了不觸發整頁重新
+// 載入，也讓瀏覽器上一頁／下一頁按鈕可以正常運作（見下面的popstate監聽）。
+function getReportCodeFromUrl(){
+  return new URLSearchParams(window.location.search).get('r');
+}
+function updateUrlForReport(code){
+  if(getReportCodeFromUrl() === code) return;
+  history.pushState({ reportCode: code }, '', `${window.location.pathname}?r=${encodeURIComponent(code)}`);
+}
+function updateUrlForHome(){
+  if(getReportCodeFromUrl() === null) return;
+  history.pushState({ reportCode: null }, '', window.location.pathname);
+}
+
 function goHome(){
   currentReportCode = null;
+  updateUrlForHome();
   root.innerHTML = '';
   notFound.style.display = 'none';
   const chainMapBox = document.getElementById('chainMapBox');
@@ -2754,10 +2776,12 @@ function showReport(codeOrQuery){
   document.getElementById('homeBtnHeader').style.display = 'inline-flex';
   if(match){
     currentReportCode = match.code;
+    updateUrlForReport(match.code);
     notFound.style.display = 'none';
     root.innerHTML = renderReport(match);
   }else{
     currentReportCode = null;
+    updateUrlForReport(codeOrQuery.trim());
     root.innerHTML = '';
     notFound.style.display = 'block';
     const usVerifyBox = document.getElementById('notFoundUsVerify');
@@ -3498,10 +3522,13 @@ function renderLookupPopup(kind, term, opts){
 async function startGlossaryLookup(term){
   renderLookupPopup('running', term, {});
   try{
+    // currentReportCode有值時一併帶上——讓伺服器把查到的詞彙也補進「目前
+    // 正在看的這份報告」自己的terms陣列，這樣詞彙才會真的出現在該報告下方
+    // 的名詞小百科清單裡，不是只加進全域glossary.js（見server.js的說明）。
     const doPost = () => fetch(`${window.RESEARCH_BACKEND_BASE}/api/glossary-lookup`, {
       method: 'POST',
       headers: Object.assign({ 'Content-Type': 'application/json' }, researchAuthHeaders()),
-      body: JSON.stringify({ term }),
+      body: JSON.stringify({ term, reportCode: currentReportCode || undefined }),
     });
     let res = await doPost();
     if(res.status === 401 && promptForResearchToken()){
@@ -3546,20 +3573,29 @@ async function pollGlossaryLookup(term){
   }
 }
 
-// 名詞查詢完成後按「重新整理頁面」時呼叫——這個App沒有網址路由（沒有hash
-// 或query string記錄目前在看哪份報告），如果真的整頁location.reload()，
-// 使用者會被丟回主頁，而不是留在原本正在讀的報告頁。既然glossary.js本身
-// 就是靠<script src>載入的，改成直接重新fetch它、覆寫window.GLOSSARY，
-// 再對currentReportCode原地重新呼叫showReport()重繪同一份報告即可，不需要
-// 真的整頁重新整理。cache:'no-store'是必要的——實測過瀏覽器對這個檔案的
-// 快取可能黏得很緊，不加這個選項可能撈到舊內容。
+// 名詞查詢完成後按「重新整理頁面」時呼叫——比起真的整頁location.reload()
+// （會把使用者丟回主頁，因為目前網址列同時也代表「回主頁」這個狀態，見
+// showReport/goHome裡對history.pushState的處理），改成直接重新fetch
+// glossary.js跟目前這份報告自己的data/reports/{code}.js、覆寫對應的
+// window.GLOSSARY／window.REPORTS內容，再對currentReportCode原地重新呼叫
+// showReport()重繪，不需要真的整頁重新整理。兩個檔案都要重抓，因為查詢到
+// 的新詞彙現在會同時寫進全域glossary.js「和」目前報告自己的terms陣列（見
+// server.js的buildGlossaryPrompt），只重抓glossary.js的話，報告下方的
+// 名詞小百科清單不會出現新加的詞彙標籤。cache:'no-store'是必要的——實測過
+// 瀏覽器對這兩個檔案的快取可能黏得很緊，不加這個選項可能撈到舊內容。
 async function refreshGlossaryAndRerender(){
   try{
     const res = await fetch('data/glossary.js', { cache: 'no-store' });
     const text = await res.text();
     new Function(text)(); // 執行裡面的「window.GLOSSARY = {...}」，覆寫成最新內容
+    if(currentReportCode){
+      const reportRes = await fetch(`data/reports/${currentReportCode}.js`, { cache: 'no-store' });
+      if(reportRes.ok){
+        new Function(await reportRes.text())(); // 覆寫「window.REPORTS["${currentReportCode}"] = {...}」
+      }
+    }
   }catch(e){
-    // 抓不到最新的glossary.js，退回原本整頁重新整理，至少確保資料是新的
+    // 抓不到最新的檔案，退回原本整頁重新整理，至少確保資料是新的
     location.reload();
     return;
   }
@@ -3601,6 +3637,20 @@ document.addEventListener('mousedown', dismissPopupsOnOutsideTap);
 // 觸控裝置上，點選畫面其他地方有時不會補送mousedown（尤其手指剛結束前一次
 // 反白選字的情況），另外綁touchstart確保點別處還是關得掉popup。
 document.addEventListener('touchstart', dismissPopupsOnOutsideTap, {passive:true});
+
+// 頁面載入（含使用者按瀏覽器重新整理）時，如果網址帶著?r=代碼，代表使用者
+// 上次是在看某份報告——直接把那份報告叫出來，不要預設顯示主頁。放在整個
+// script的最後執行，確保這時候REPORTS、showReport等都已經定義好。
+(function bootstrapFromUrl(){
+  const code = getReportCodeFromUrl();
+  if(code) showReport(code);
+})();
+
+// 瀏覽器上一頁／下一頁按鈕：依網址目前的?r=代碼狀態重新渲染對應畫面。
+window.addEventListener('popstate', () => {
+  const code = getReportCodeFromUrl();
+  if(code) showReport(code); else goHome();
+});
 </script>
 </body>
 </html>
