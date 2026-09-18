@@ -572,7 +572,12 @@
 
   .industry-block{background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:22px;}
   .ind-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .ind-head-toggle{cursor:pointer;user-select:none;}
+  .ind-head-toggle:hover .ind-name{color:var(--navy-2);}
   .ind-name{font-family:var(--px);font-size:14px;color:var(--navy);}
+  .ind-toggle-icon{font-family:var(--px);font-size:11px;color:var(--navy-2);transition:transform 0.15s;display:inline-block;}
+  .industry-block.collapsed .ind-toggle-icon{transform:rotate(-90deg);}
+  .industry-block.collapsed .ind-body{display:none;}
   .ind-kv{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-soft);margin-bottom:16px;}
   .ind-kv b{font-family:var(--px);font-size:11px;color:var(--navy-2);font-weight:400;}
 
@@ -3198,17 +3203,29 @@ function divergenceCandHtml(c){
   </div>`;
 }
 
-function divergenceIndustryHtml(ind){
+function toggleIndustryBlock(id){
+  const body = document.getElementById(id);
+  const block = body && body.closest('.industry-block');
+  if(block) block.classList.toggle('collapsed');
+}
+
+function divergenceIndustryHtml(ind, idx){
   const peMed = (ind.industry_pe_median === null || ind.industry_pe_median === undefined) ? '資料不足' : ind.industry_pe_median;
   const epsMed = (ind.industry_eps_growth_median === null || ind.industry_eps_growth_median === undefined) ? '資料不足' : `${(ind.industry_eps_growth_median*100).toFixed(1)}%`;
+  const bodyId = `divInd-${idx}`;
   return `<div class="industry-block">
-    <div class="ind-head"><span class="ind-name">${ind.industry}</span></div>
-    <div class="ind-kv">
-      <span>同組本益比中位數 <b>${peMed}</b></span>
-      <span>同組EPS成長中位數 <b>${epsMed}</b></span>
-      <span>外資近20日合計 <b>${ind.industry_foreign_20d_billion>0?'+':''}${ind.industry_foreign_20d_billion}億</b></span>
+    <div class="ind-head ind-head-toggle" onclick="toggleIndustryBlock('${bodyId}')">
+      <span class="ind-name">${ind.industry}</span>
+      <span class="ind-toggle-icon">▾</span>
     </div>
-    ${ind.candidates.map(divergenceCandHtml).join('')}
+    <div id="${bodyId}" class="ind-body">
+      <div class="ind-kv">
+        <span>同組本益比中位數 <b>${peMed}</b></span>
+        <span>同組EPS成長中位數 <b>${epsMed}</b></span>
+        <span>外資近20日合計 <b>${ind.industry_foreign_20d_billion>0?'+':''}${ind.industry_foreign_20d_billion}億</b></span>
+      </div>
+      ${ind.candidates.map(divergenceCandHtml).join('')}
+    </div>
   </div>`;
 }
 
