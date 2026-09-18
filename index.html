@@ -3030,7 +3030,8 @@ function renderReport(r){
         ${companyIconHtml(r.code)}
         <h2>${displayCompanyName(r)}</h2>
         <div class="price-stats" id="priceStats-${r.code}">
-          ${r.market === 'US' ? '' : `<button class="price-stats-trigger" onclick="verifyTwseAndSync('${r.code}')">📈 查詢TWSE最新股價與均線</button>`}
+          ${r.market === 'US' ? '' : `<button class="price-stats-trigger" onclick="verifyTwseAndSync('${r.code}')">📈 查詢TWSE最新股價與均線</button>
+          <a class="price-stats-trigger" href="https://toalpha.tw/stock/${r.code}" target="_blank" rel="noopener" style="text-decoration:none;">📊 查看ToAlpha個股資料</a>`}
         </div>
       </div>
       <div class="rh-top">
@@ -4337,11 +4338,23 @@ document.addEventListener('touchstart', dismissPopupsOnOutsideTap, {passive:true
 // 頁面載入（含使用者按瀏覽器重新整理）時，如果網址帶著?r=代碼，代表使用者
 // 上次是在看某份報告——直接把那份報告叫出來，不要預設顯示主頁。放在整個
 // script的最後執行，確保這時候REPORTS、showReport等都已經定義好。
+//
+// 如果這個分頁是直接從網址列或連結進站（例如在產業共識落差掃描頁對某檔
+// 個股按右鍵「在新分頁開啟連結」），這個分頁的瀏覽紀錄從頭到尾只有這一筆，
+// updateUrlForReport/updateUrlForView發現網址本來就對得上、不會觸發
+// pushState，導致markAppNavigated()沒被呼叫、「回前頁」按鈕永遠不會出現。
+// 這裡先用replaceState把「首頁」墊在這筆紀錄下面，讓後續showReport／
+// showDivergenceScan／showCrowdingAlert自己呼叫的updateUrl*偵測到網址
+// 對不上、正常pushState一次，「回前頁」按鈕才會出現，按下去也會回到首頁
+// （而不是沒有上一頁可回、或直接跳出這個分頁）。
 (function bootstrapFromUrl(){
   const view = getViewFromUrl();
+  const code = getReportCodeFromUrl();
+  if(view === 'scan' || view === 'crowding' || code){
+    history.replaceState({ reportCode: null }, '', window.location.pathname);
+  }
   if(view === 'scan'){ showDivergenceScan(); return; }
   if(view === 'crowding'){ showCrowdingAlert(); return; }
-  const code = getReportCodeFromUrl();
   if(code) showReport(code);
 })();
 
