@@ -1175,6 +1175,12 @@
     <script src="data/valuations/2404.js"></script>
     <script src="data/reports/3583.js"></script>
     <script src="data/valuations/3583.js"></script>
+    <script src="data/reports/6147.js"></script>
+    <script src="data/valuations/6147.js"></script>
+    <script src="data/reports/3413.js"></script>
+    <script src="data/valuations/3413.js"></script>
+    <script src="data/reports/2354.js"></script>
+    <script src="data/valuations/2354.js"></script>
     <!-- STOCK_DATA:END -->
 <script>
 
@@ -2426,11 +2432,17 @@ async function triggerScanRefresh(){
   }
 }
 
-async function pollScanRefreshStatus(){
+// silent=true時是頁面載入時的自動背景檢查（使用者根本沒按按鈕），連不上
+// 本機伺服器是完全正常的情況（多數時候使用者根本沒開claude-code-research-
+// server），這種時候安靜清空狀態列就好，不要跳紅字錯誤嚇到使用者；只有
+// 使用者自己按了「手動更新資料」（silent為false／省略）才需要把連線失敗
+// 這類錯誤明確秀出來，因為這時候使用者真的在等結果。
+async function pollScanRefreshStatus(silent){
   try{
     const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/refresh-scans`, { headers: researchAuthHeaders() });
     const body = await res.json().catch(()=>({}));
     if(!res.ok){
+      if(silent){ renderScanRefreshStatus(''); return; }
       setScanRefreshBtnsDisabled(false);
       renderScanRefreshStatus(`<span style="color:var(--red);">查詢狀態失敗：${escHtml(body.error || ('HTTP '+res.status))}</span>`);
       return;
@@ -2440,7 +2452,7 @@ async function pollScanRefreshStatus(){
       const activity = escHtml(body.activity || '⏳ 已連線，等待開始第一個動作…');
       renderScanRefreshStatus(`🔄 更新中…（可能需要數分鐘，查詢18組產業與10檔觀察名單的資料）　${activity}`);
       clearTimeout(window._scanRefreshTimer);
-      window._scanRefreshTimer = setTimeout(pollScanRefreshStatus, 5000);
+      window._scanRefreshTimer = setTimeout(()=>pollScanRefreshStatus(silent), 5000);
     }else if(body.status === 'done'){
       setScanRefreshBtnsDisabled(false);
       renderScanRefreshStatus(`<span style="color:var(--green);">✅ 更新完成。</span> <button onclick="location.reload()" style="padding:3px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">重新整理頁面查看最新資料</button>`);
@@ -2448,11 +2460,13 @@ async function pollScanRefreshStatus(){
       setScanRefreshBtnsDisabled(false);
       renderScanRefreshStatus('');
     }else{
+      if(silent){ renderScanRefreshStatus(''); return; }
       setScanRefreshBtnsDisabled(false);
       const detail = body.error || '執行過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。';
       renderScanRefreshStatus(`<span style="color:var(--red);">⚠️ 更新失敗：${escHtml(detail)}</span>`);
     }
   }catch(e){
+    if(silent){ renderScanRefreshStatus(''); return; }
     setScanRefreshBtnsDisabled(false);
     renderScanRefreshStatus(`<span style="color:var(--red);">無法連線到 claude-code-research-server（${escHtml(window.RESEARCH_BACKEND_BASE)}）：${escHtml(e.message)}</span>`);
   }
@@ -3317,7 +3331,7 @@ function showDivergenceScan(){
   const box = document.getElementById('divergenceScanBox');
   box.style.display = 'block';
   box.innerHTML = renderDivergenceScan();
-  pollScanRefreshStatus();
+  pollScanRefreshStatus(true);
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -3444,7 +3458,7 @@ function showCrowdingAlert(){
   const box = document.getElementById('crowdingAlertBox');
   box.style.display = 'block';
   box.innerHTML = renderCrowdingAlert();
-  pollScanRefreshStatus();
+  pollScanRefreshStatus(true);
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
