@@ -1,6 +1,39 @@
 {
-  "generated_at": "2026-09-24",
+  "generated_at": "2026-09-25",
   "watchlist": [
+    {
+      "stock_id": "2454",
+      "name": "聯發科",
+      "score": 64.0,
+      "light": "yellow",
+      "divergence": null,
+      "components": {
+        "institutional": 15.7,
+        "fund_holding": 90,
+        "rating_consensus": 64.3,
+        "margin_heat": 93.0,
+        "momentum": 100
+      },
+      "raw_facts": {
+        "foreign_streak": "連買 7 天",
+        "trust_streak": "連賣 2 天",
+        "foreign_d20_amount_billion": 738.3,
+        "trust_d20_amount_billion": 124.4,
+        "net20_amount_billion": 862.7,
+        "buy_ratio": 0.6429,
+        "analysts": 29,
+        "buy_analysts_est": 19,
+        "target_range_ratio": 1.631,
+        "active_fund_count": 60,
+        "active_fund_count_prev": 80,
+        "margin_pct_rank_1y": 0.93,
+        "margin_usage": 0.027,
+        "pos_52w": 1.0,
+        "foreign_held_pct": 56.62,
+        "short_ratio": 0.007
+      },
+      "narrative": "外資連買 7 天、投信連賣 2 天，近20日合計買超約862.7億元（外資+738.3億、投信+124.4億），30日內14家分析師中9家喊買（看多比例64%）；融資餘額站在近一年93%分位、現價在52週區間100%位置。"
+    },
     {
       "stock_id": "2308",
       "name": "台達電",
@@ -11,7 +44,7 @@
         "institutional": 12.2,
         "fund_holding": 90,
         "rating_consensus": 77.8,
-        "margin_heat": 100.0,
+        "margin_heat": 100,
         "momentum": 64.0
       },
       "raw_facts": {
@@ -30,87 +63,21 @@
         "margin_usage": 0.017,
         "pos_52w": 0.64,
         "foreign_held_pct": 61.6,
-        "short_ratio": 0.011
+        "short_ratio": 0.012
       },
       "narrative": "外資連賣 3 天、投信連買 4 天，近20日合計賣超約169.0億元（外資-201.5億、投信+32.5億），30日內9家分析師中7家喊買（看多比例78%），法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年100%分位、現價在52週區間64%位置。"
     },
     {
-      "stock_id": "2454",
-      "name": "聯發科",
-      "score": 63.0,
-      "light": "yellow",
-      "divergence": null,
-      "components": {
-        "institutional": 15.7,
-        "fund_holding": 90,
-        "rating_consensus": 64.3,
-        "margin_heat": 86.0,
-        "momentum": 100.0
-      },
-      "raw_facts": {
-        "foreign_streak": "連買 7 天",
-        "trust_streak": "連賣 2 天",
-        "foreign_d20_amount_billion": 738.3,
-        "trust_d20_amount_billion": 124.4,
-        "net20_amount_billion": 862.7,
-        "buy_ratio": 0.6429,
-        "analysts": 29,
-        "buy_analysts_est": 19,
-        "target_range_ratio": 1.631,
-        "active_fund_count": 60,
-        "active_fund_count_prev": 80,
-        "margin_pct_rank_1y": 0.86,
-        "margin_usage": 0.026,
-        "pos_52w": 1.0,
-        "foreign_held_pct": 56.62,
-        "short_ratio": 0.007
-      },
-      "narrative": "外資連買 7 天、投信連賣 2 天，近20日合計買超約862.7億元（外資+738.3億、投信+124.4億），30日內14家分析師中9家喊買（看多比例64%）；融資餘額站在近一年86%分位、現價在52週區間100%位置。"
-    },
-    {
-      "stock_id": "3711",
-      "name": "日月光投控",
-      "score": 62.1,
-      "light": "yellow",
-      "divergence": null,
-      "components": {
-        "institutional": 15.7,
-        "fund_holding": 66.7,
-        "rating_consensus": 100,
-        "margin_heat": 75.0,
-        "momentum": 95.0
-      },
-      "raw_facts": {
-        "foreign_streak": "連買 7 天",
-        "trust_streak": "連賣 2 天",
-        "foreign_d20_amount_billion": 336.0,
-        "trust_d20_amount_billion": -79.4,
-        "net20_amount_billion": 256.6,
-        "buy_ratio": 1.0,
-        "analysts": 20,
-        "buy_analysts_est": 20,
-        "target_range_ratio": 0.415,
-        "active_fund_count": 23,
-        "active_fund_count_prev": 28,
-        "margin_pct_rank_1y": 0.75,
-        "margin_usage": 0.008,
-        "pos_52w": 0.95,
-        "foreign_held_pct": 77.92,
-        "short_ratio": 0.033
-      },
-      "narrative": "外資連買 7 天、投信連賣 2 天，近20日合計買超約256.6億元（外資+336.0億、投信-79.4億），30日內4家分析師中4家喊買（看多比例100% (樣本數少，估計僅供參考)）；融資餘額站在近一年75%分位、現價在52週區間95%位置。"
-    },
-    {
       "stock_id": "2330",
       "name": "台積電",
-      "score": 62.0,
+      "score": 62.9,
       "light": "red",
       "divergence": "bearish_gap",
       "components": {
         "institutional": 5.0,
         "fund_holding": 90,
         "rating_consensus": 80.0,
-        "margin_heat": 82.0,
+        "margin_heat": 88.0,
         "momentum": 97.0
       },
       "raw_facts": {
@@ -125,13 +92,46 @@
         "target_range_ratio": 0.723,
         "active_fund_count": 104,
         "active_fund_count_prev": 116,
-        "margin_pct_rank_1y": 0.82,
-        "margin_usage": 0.004,
+        "margin_pct_rank_1y": 0.88,
+        "margin_usage": 0.005,
         "pos_52w": 0.97,
         "foreign_held_pct": 69.2,
         "short_ratio": 0.001
       },
-      "narrative": "外資連賣 1 天、投信連賣 3 天，近20日合計賣超約379.8億元（外資-259.6億、投信-120.2億），30日內15家分析師中12家喊買（看多比例80%），法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年82%分位、現價在52週區間97%位置。"
+      "narrative": "外資連賣 1 天、投信連賣 3 天，近20日合計賣超約379.8億元（外資-259.6億、投信-120.2億），30日內15家分析師中12家喊買（看多比例80%），法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年88%分位、現價在52週區間97%位置。"
+    },
+    {
+      "stock_id": "3711",
+      "name": "日月光投控",
+      "score": 61.4,
+      "light": "yellow",
+      "divergence": null,
+      "components": {
+        "institutional": 15.7,
+        "fund_holding": 66.7,
+        "rating_consensus": 100,
+        "margin_heat": 70.0,
+        "momentum": 95.0
+      },
+      "raw_facts": {
+        "foreign_streak": "連買 7 天",
+        "trust_streak": "連賣 2 天",
+        "foreign_d20_amount_billion": 336.0,
+        "trust_d20_amount_billion": -79.4,
+        "net20_amount_billion": 256.6,
+        "buy_ratio": 1.0,
+        "analysts": 20,
+        "buy_analysts_est": 20,
+        "target_range_ratio": 0.415,
+        "active_fund_count": 23,
+        "active_fund_count_prev": 28,
+        "margin_pct_rank_1y": 0.7,
+        "margin_usage": 0.008,
+        "pos_52w": 0.95,
+        "foreign_held_pct": 77.96,
+        "short_ratio": 0.033
+      },
+      "narrative": "外資連買 7 天、投信連賣 2 天，近20日合計買超約256.6億元（外資+336.0億、投信-79.4億），30日內4家分析師中4家喊買（看多比例100% (樣本數少，估計僅供參考)）；融資餘額站在近一年70%分位、現價在52週區間95%位置。"
     },
     {
       "stock_id": "3037",
@@ -144,7 +144,7 @@
         "fund_holding": 100,
         "rating_consensus": 81.8,
         "margin_heat": 34.0,
-        "momentum": 100.0
+        "momentum": 100
       },
       "raw_facts": {
         "foreign_streak": "連買 6 天",
@@ -162,21 +162,21 @@
         "margin_usage": 0.079,
         "pos_52w": 1.0,
         "foreign_held_pct": 41.95,
-        "short_ratio": 0.023
+        "short_ratio": 0.024
       },
       "narrative": "外資連買 6 天、投信連買 2 天，近20日合計買超約339.4億元（外資+435.1億、投信-95.7億），30日內11家分析師中9家喊買（看多比例82%）；融資餘額站在近一年34%分位、現價在52週區間100%位置。"
     },
     {
       "stock_id": "3008",
       "name": "大立光",
-      "score": 54.4,
+      "score": 54.6,
       "light": "yellow",
       "divergence": null,
       "components": {
         "institutional": 10.0,
         "fund_holding": 100,
         "rating_consensus": 22.2,
-        "margin_heat": 98.0,
+        "margin_heat": 99.0,
         "momentum": 73.0
       },
       "raw_facts": {
@@ -191,13 +191,13 @@
         "target_range_ratio": 0.988,
         "active_fund_count": 30,
         "active_fund_count_prev": 9,
-        "margin_pct_rank_1y": 0.98,
-        "margin_usage": 0.128,
+        "margin_pct_rank_1y": 0.99,
+        "margin_usage": 0.132,
         "pos_52w": 0.73,
         "foreign_held_pct": 25.12,
         "short_ratio": 0.013
       },
-      "narrative": "外資連賣 7 天、投信連賣 2 天，近20日合計賣超約130.3億元（外資-103.9億、投信-26.4億），30日內9家分析師中2家喊買（看多比例22%）；融資餘額站在近一年98%分位、現價在52週區間73%位置。"
+      "narrative": "外資連賣 7 天、投信連賣 2 天，近20日合計賣超約130.3億元（外資-103.9億、投信-26.4億），30日內9家分析師中2家喊買（看多比例22%）；融資餘額站在近一年99%分位、現價在52週區間73%位置。"
     },
     {
       "stock_id": "2409",
@@ -209,7 +209,7 @@
         "institutional": 5.0,
         "fund_holding": 0,
         "rating_consensus": 50.0,
-        "margin_heat": 100.0,
+        "margin_heat": 100,
         "momentum": 91.0
       },
       "raw_facts": {
@@ -225,24 +225,24 @@
         "active_fund_count": 0,
         "active_fund_count_prev": 0,
         "margin_pct_rank_1y": 1.0,
-        "margin_usage": 0.161,
+        "margin_usage": 0.162,
         "pos_52w": 0.91,
         "foreign_held_pct": 16.52,
-        "short_ratio": 0.05
+        "short_ratio": 0.045
       },
       "narrative": "外資連賣 2 天、投信連賣 1 天，近20日合計買超約168.4億元（外資+168.0億、投信+0.4億），30日內4家分析師中2家喊買（看多比例50% (樣本數少，估計僅供參考)）；融資餘額站在近一年100%分位、現價在52週區間91%位置。"
     },
     {
       "stock_id": "2344",
       "name": "華邦電",
-      "score": 29.2,
+      "score": 29.9,
       "light": "red",
       "divergence": "bearish_gap",
       "components": {
         "institutional": 5.0,
         "fund_holding": 0,
-        "rating_consensus": 88.9,
-        "margin_heat": 17.0,
+        "rating_consensus": 87.5,
+        "margin_heat": 23.0,
         "momentum": 74.0
       },
       "raw_facts": {
@@ -251,31 +251,31 @@
         "foreign_d20_amount_billion": -91.9,
         "trust_d20_amount_billion": -89.6,
         "net20_amount_billion": -181.5,
-        "buy_ratio": 0.8889,
+        "buy_ratio": 0.875,
         "analysts": 9,
         "buy_analysts_est": 8,
         "target_range_ratio": 0.513,
         "active_fund_count": 3,
         "active_fund_count_prev": 7,
-        "margin_pct_rank_1y": 0.17,
-        "margin_usage": 0.108,
+        "margin_pct_rank_1y": 0.23,
+        "margin_usage": 0.109,
         "pos_52w": 0.74,
         "foreign_held_pct": 18.58,
-        "short_ratio": 0.031
+        "short_ratio": 0.028
       },
-      "narrative": "外資連賣 1 天、投信連賣 6 天，近20日合計賣超約181.5億元（外資-91.9億、投信-89.6億），30日內9家分析師中8家喊買（看多比例89%），法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年17%分位、現價在52週區間74%位置。"
+      "narrative": "外資連賣 1 天、投信連賣 6 天，近20日合計賣超約181.5億元（外資-91.9億、投信-89.6億），30日內8家分析師中7家喊買（看多比例88%），法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年23%分位、現價在52週區間74%位置。"
     },
     {
       "stock_id": "2882",
       "name": "國泰金",
-      "score": 28.5,
+      "score": 28.9,
       "light": "green",
       "divergence": null,
       "components": {
         "institutional": 8.8,
         "fund_holding": 0,
         "rating_consensus": 44.4,
-        "margin_heat": 53.0,
+        "margin_heat": 56.0,
         "momentum": 90.0
       },
       "raw_facts": {
@@ -290,25 +290,25 @@
         "target_range_ratio": 0.416,
         "active_fund_count": 2,
         "active_fund_count_prev": 3,
-        "margin_pct_rank_1y": 0.53,
+        "margin_pct_rank_1y": 0.56,
         "margin_usage": 0.001,
         "pos_52w": 0.9,
         "foreign_held_pct": 23.13,
-        "short_ratio": 0.3
+        "short_ratio": 0.297
       },
-      "narrative": "外資連賣 3 天、投信連買 2 天，近20日合計買超約10.4億元（外資-11.2億、投信+21.6億），30日內9家分析師中4家喊買（看多比例44%）；融資餘額站在近一年53%分位、現價在52週區間90%位置。"
+      "narrative": "外資連賣 3 天、投信連買 2 天，近20日合計買超約10.4億元（外資-11.2億、投信+21.6億），30日內9家分析師中4家喊買（看多比例44%）；融資餘額站在近一年56%分位、現價在52週區間90%位置。"
     },
     {
       "stock_id": "6770",
       "name": "力積電",
-      "score": 20.5,
+      "score": 22.0,
       "light": "yellow",
       "divergence": "bullish_gap",
       "components": {
         "institutional": 5.0,
         "fund_holding": 16.7,
         "rating_consensus": 0,
-        "margin_heat": 49.0,
+        "margin_heat": 59.0,
         "momentum": 75.0
       },
       "raw_facts": {
@@ -323,13 +323,13 @@
         "target_range_ratio": 0.361,
         "active_fund_count": 2,
         "active_fund_count_prev": 1,
-        "margin_pct_rank_1y": 0.49,
-        "margin_usage": 0.107,
+        "margin_pct_rank_1y": 0.59,
+        "margin_usage": 0.11,
         "pos_52w": 0.75,
         "foreign_held_pct": 15.94,
-        "short_ratio": 0.015
+        "short_ratio": 0.011
       },
-      "narrative": "外資連賣 1 天、投信連賣 3 天，近20日合計買超約95.4億元（外資+87.0億、投信+8.4億），30日內2家分析師中0家喊買（看多比例0% (樣本數少，估計僅供參考)），法人買、評等偏保守，出現背離，燈號因此至少升級為黃；融資餘額站在近一年49%分位、現價在52週區間75%位置。"
+      "narrative": "外資連賣 1 天、投信連賣 3 天，近20日合計買超約95.4億元（外資+87.0億、投信+8.4億），30日內2家分析師中0家喊買（看多比例0% (樣本數少，估計僅供參考)），法人買、評等偏保守，出現背離，燈號因此至少升級為黃；融資餘額站在近一年59%分位、現價在52週區間75%位置。"
     }
   ]
 }

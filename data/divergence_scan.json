@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-24",
+  "generated_at": "2026-09-25",
   "industries": [
     {
       "industry": "半導體業",
       "industry_pe_median": 27.423,
       "industry_eps_growth_median": 0.335,
-      "industry_foreign_20d_billion": 1309.5,
+      "industry_foreign_20d_billion": 1028.1,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
@@ -19,7 +19,7 @@
             "execution_vs_expectation": -4.0
           },
           "raw_facts": {
-            "mcap_billion": 84822.0,
+            "mcap_billion": 84822,
             "foreign_d20_billion": 738.3,
             "trust_d20_billion": 124.4,
             "net20_billion": 862.7,
@@ -45,7 +45,7 @@
             "execution_vs_expectation": -73.0
           },
           "raw_facts": {
-            "mcap_billion": 19358.0,
+            "mcap_billion": 19358,
             "foreign_d20_billion": 84.3,
             "trust_d20_billion": 156.3,
             "net20_billion": 240.6,
@@ -71,7 +71,7 @@
             "execution_vs_expectation": -86.0
           },
           "raw_facts": {
-            "mcap_billion": 15586.0,
+            "mcap_billion": 15586,
             "foreign_d20_billion": -153.5,
             "trust_d20_billion": -40.2,
             "net20_billion": -193.7,
@@ -92,21 +92,21 @@
       "industry": "金融保險業",
       "industry_pe_median": 15.226,
       "industry_eps_growth_median": 0.032,
-      "industry_foreign_20d_billion": 360.1,
+      "industry_foreign_20d_billion": 344.5,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2891",
           "name": "中信金",
-          "divergence_score": 56.0,
+          "divergence_score": 55.4,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 137.6,
             "valuation_vs_growth": -1.7,
-            "execution_vs_expectation": 5.0
+            "execution_vs_expectation": 3.0
           },
           "raw_facts": {
-            "mcap_billion": 13478.0,
+            "mcap_billion": 13478,
             "foreign_d20_billion": 10.6,
             "trust_d20_billion": 40.1,
             "net20_billion": 50.7,
@@ -117,9 +117,9 @@
             "industry_eps_g2_median": 0.032,
             "beat_rate": 0.75,
             "beat_quarters": null,
-            "dispersion_fy1": 0.2
+            "dispersion_fy1": 0.22
           },
-          "narrative": "外資投信近20日合計買超約50.7億元（外資+10.6億、投信+40.1億），分析師看多比例0%，本益比(FY1)16.1倍高於產業中位數15.2倍，明年EPS成長率5.3%高於產業中位數3.2%，近幾季EPS有75%優於預估，分歧度20%。"
+          "narrative": "外資投信近20日合計買超約50.7億元（外資+10.6億、投信+40.1億），分析師看多比例0%，本益比(FY1)16.1倍高於產業中位數15.2倍，明年EPS成長率5.3%高於產業中位數3.2%，近幾季EPS有75%優於預估，分歧度22%。"
         },
         {
           "stock_id": "2887",
@@ -132,7 +132,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 10674.0,
+            "mcap_billion": 10674,
             "foreign_d20_billion": -17.5,
             "trust_d20_billion": 47.2,
             "net20_billion": 29.7,
@@ -150,19 +150,19 @@
         {
           "stock_id": "2881",
           "name": "富邦金",
-          "divergence_score": 32.2,
+          "divergence_score": 48.2,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 63.6,
+            "flow_vs_rating": 103.6,
             "valuation_vs_growth": 1.5,
             "execution_vs_expectation": 21.0
           },
           "raw_facts": {
-            "mcap_billion": 21011.0,
+            "mcap_billion": 21011,
             "foreign_d20_billion": -0.7,
             "trust_d20_billion": 8.2,
             "net20_billion": 7.5,
-            "buy_ratio_used": 0.2,
+            "buy_ratio_used": 0.0,
             "pe_fy1": 13.7,
             "industry_pe_fy1_median": 15.226,
             "eps_g2": -0.05,
@@ -171,7 +171,7 @@
             "beat_quarters": null,
             "dispersion_fy1": 0.17
           },
-          "narrative": "外資投信近20日合計買超約7.5億元（外資-0.7億、投信+8.2億），分析師看多比例20%，本益比(FY1)13.7倍低於產業中位數15.2倍，明年EPS成長率-5.0%低於產業中位數3.2%，近幾季EPS有88%優於預估，分歧度17%。"
+          "narrative": "外資投信近20日合計買超約7.5億元（外資-0.7億、投信+8.2億），分析師看多比例0%，本益比(FY1)13.7倍低於產業中位數15.2倍，明年EPS成長率-5.0%低於產業中位數3.2%，近幾季EPS有88%優於預估，分歧度17%。"
         },
         {
           "stock_id": "2882",
@@ -184,7 +184,7 @@
             "execution_vs_expectation": 5.0
           },
           "raw_facts": {
-            "mcap_billion": 16209.0,
+            "mcap_billion": 16209,
             "foreign_d20_billion": -11.2,
             "trust_d20_billion": 21.6,
             "net20_billion": 10.4,
@@ -210,7 +210,7 @@
             "execution_vs_expectation": 15.0
           },
           "raw_facts": {
-            "mcap_billion": 9594.0,
+            "mcap_billion": 9594,
             "foreign_d20_billion": 41.4,
             "trust_d20_billion": -11.5,
             "net20_billion": 29.9,
@@ -231,47 +231,21 @@
       "industry": "航運業",
       "industry_pe_median": 9.901,
       "industry_eps_growth_median": 0.026,
-      "industry_foreign_20d_billion": 10.2,
+      "industry_foreign_20d_billion": 10.3,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
-          "stock_id": "2618",
-          "name": "長榮航",
-          "divergence_score": 31.7,
-          "direction": "undervalued_gap",
-          "components": {
-            "flow_vs_rating": 88.6,
-            "valuation_vs_growth": 2.7,
-            "execution_vs_expectation": -15.0
-          },
-          "raw_facts": {
-            "mcap_billion": 2268.0,
-            "foreign_d20_billion": 0.9,
-            "trust_d20_billion": 19.2,
-            "net20_billion": 20.1,
-            "buy_ratio_used": null,
-            "pe_fy1": 10.7,
-            "industry_pe_fy1_median": 9.901,
-            "eps_g2": 0.154,
-            "industry_eps_g2_median": 0.026,
-            "beat_rate": 0.75,
-            "beat_quarters": null,
-            "dispersion_fy1": 0.4
-          },
-          "narrative": "外資投信近20日合計買超約20.1億元（外資+0.9億、投信+19.2億），該股沒有分析師評等覆蓋，rating部分以0處理，本益比(FY1)10.7倍高於產業中位數9.9倍，明年EPS成長率15.4%高於產業中位數2.6%，近幾季EPS有75%優於預估，分歧度40%。"
-        },
-        {
           "stock_id": "2609",
           "name": "陽明",
-          "divergence_score": 30.0,
+          "divergence_score": 41.7,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 133.3,
             "valuation_vs_growth": -14.8,
-            "execution_vs_expectation": -63.0
+            "execution_vs_expectation": -24.0
           },
           "raw_facts": {
-            "mcap_billion": 2081.0,
+            "mcap_billion": 2081,
             "foreign_d20_billion": 34.8,
             "trust_d20_billion": 0.4,
             "net20_billion": 35.2,
@@ -282,9 +256,35 @@
             "industry_eps_g2_median": 0.026,
             "beat_rate": 0.38,
             "beat_quarters": null,
-            "dispersion_fy1": 0.51
+            "dispersion_fy1": 0.12
           },
-          "narrative": "外資投信近20日合計買超約35.2億元（外資+34.8億、投信+0.4億），分析師看多比例33%，本益比(FY1)8.2倍低於產業中位數9.9倍，明年EPS成長率-47.7%低於產業中位數2.6%，近幾季EPS有38%優於預估，分歧度51%。"
+          "narrative": "外資投信近20日合計買超約35.2億元（外資+34.8億、投信+0.4億），分析師看多比例33%，本益比(FY1)8.2倍低於產業中位數9.9倍，明年EPS成長率-47.7%低於產業中位數2.6%，近幾季EPS有38%優於預估，分歧度12%。"
+        },
+        {
+          "stock_id": "2618",
+          "name": "長榮航",
+          "divergence_score": 41.6,
+          "direction": "undervalued_gap",
+          "components": {
+            "flow_vs_rating": 88.6,
+            "valuation_vs_growth": 2.7,
+            "execution_vs_expectation": 18.0
+          },
+          "raw_facts": {
+            "mcap_billion": 2268,
+            "foreign_d20_billion": 0.9,
+            "trust_d20_billion": 19.2,
+            "net20_billion": 20.1,
+            "buy_ratio_used": null,
+            "pe_fy1": 10.7,
+            "industry_pe_fy1_median": 9.901,
+            "eps_g2": 0.154,
+            "industry_eps_g2_median": 0.026,
+            "beat_rate": 0.75,
+            "beat_quarters": null,
+            "dispersion_fy1": 0.07
+          },
+          "narrative": "外資投信近20日合計買超約20.1億元（外資+0.9億、投信+19.2億），該股沒有分析師評等覆蓋，rating部分以0處理，本益比(FY1)10.7倍高於產業中位數9.9倍，明年EPS成長率15.4%高於產業中位數2.6%，近幾季EPS有75%優於預估，分歧度7%。"
         },
         {
           "stock_id": "2633",
@@ -297,7 +297,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 1438.0,
+            "mcap_billion": 1438,
             "foreign_d20_billion": -8.9,
             "trust_d20_billion": 3.3,
             "net20_billion": -5.6,
@@ -323,7 +323,7 @@
             "execution_vs_expectation": -5.0
           },
           "raw_facts": {
-            "mcap_billion": 3241.0,
+            "mcap_billion": 3241,
             "foreign_d20_billion": 2.2,
             "trust_d20_billion": -1.4,
             "net20_billion": 0.8,
@@ -349,7 +349,7 @@
             "execution_vs_expectation": -80.0
           },
           "raw_facts": {
-            "mcap_billion": 5261.0,
+            "mcap_billion": 5261,
             "foreign_d20_billion": -20.6,
             "trust_d20_billion": 48.1,
             "net20_billion": 27.5,
@@ -370,21 +370,21 @@
       "industry": "電腦及週邊設備業",
       "industry_pe_median": 15.83,
       "industry_eps_growth_median": 0.229,
-      "industry_foreign_20d_billion": -562.5,
+      "industry_foreign_20d_billion": -552.7,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2382",
           "name": "廣達",
-          "divergence_score": 35.4,
+          "divergence_score": 39.0,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 75.9,
             "valuation_vs_growth": 9.7,
-            "execution_vs_expectation": 7.0
+            "execution_vs_expectation": 19.0
           },
           "raw_facts": {
-            "mcap_billion": 13904.0,
+            "mcap_billion": 13904,
             "foreign_d20_billion": 25.7,
             "trust_d20_billion": 79.9,
             "net20_billion": 105.6,
@@ -395,22 +395,22 @@
             "industry_eps_g2_median": 0.229,
             "beat_rate": 0.88,
             "beat_quarters": null,
-            "dispersion_fy1": 0.31
+            "dispersion_fy1": 0.19
           },
-          "narrative": "外資投信近20日合計買超約105.6億元（外資+25.7億、投信+79.9億），分析師看多比例50%，本益比(FY1)12.8倍低於產業中位數15.8倍，明年EPS成長率18.7%低於產業中位數22.9%，近幾季EPS有88%優於預估，分歧度31%。"
+          "narrative": "外資投信近20日合計買超約105.6億元（外資+25.7億、投信+79.9億），分析師看多比例50%，本益比(FY1)12.8倍低於產業中位數15.8倍，明年EPS成長率18.7%低於產業中位數22.9%，近幾季EPS有88%優於預估，分歧度19%。"
         },
         {
           "stock_id": "2357",
           "name": "華碩",
-          "divergence_score": -18.1,
+          "divergence_score": -10.3,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -34.3,
             "valuation_vs_growth": -1.7,
-            "execution_vs_expectation": -13.0
+            "execution_vs_expectation": 13.0
           },
           "raw_facts": {
-            "mcap_billion": 7079.0,
+            "mcap_billion": 7079,
             "foreign_d20_billion": -13.1,
             "trust_d20_billion": 59.6,
             "net20_billion": 46.5,
@@ -421,9 +421,9 @@
             "industry_eps_g2_median": 0.229,
             "beat_rate": 0.88,
             "beat_quarters": null,
-            "dispersion_fy1": 0.51
+            "dispersion_fy1": 0.25
           },
-          "narrative": "外資投信近20日合計買超約46.5億元（外資-13.1億、投信+59.6億），分析師看多比例100%，本益比(FY1)13.3倍低於產業中位數15.8倍，明年EPS成長率0.5%低於產業中位數22.9%，近幾季EPS有88%優於預估，分歧度51%。"
+          "narrative": "外資投信近20日合計買超約46.5億元（外資-13.1億、投信+59.6億），分析師看多比例100%，本益比(FY1)13.3倍低於產業中位數15.8倍，明年EPS成長率0.5%低於產業中位數22.9%，近幾季EPS有88%優於預估，分歧度25%。"
         },
         {
           "stock_id": "3231",
@@ -436,7 +436,7 @@
             "execution_vs_expectation": -35.0
           },
           "raw_facts": {
-            "mcap_billion": 6328.0,
+            "mcap_billion": 6328,
             "foreign_d20_billion": -188.8,
             "trust_d20_billion": 47.6,
             "net20_billion": -141.2,
@@ -462,7 +462,7 @@
             "execution_vs_expectation": -51.0
           },
           "raw_facts": {
-            "mcap_billion": 6647.0,
+            "mcap_billion": 6647,
             "foreign_d20_billion": -62.0,
             "trust_d20_billion": -0.7,
             "net20_billion": -62.7,
@@ -483,7 +483,7 @@
       "industry": "其他電子業",
       "industry_pe_median": 20.884,
       "industry_eps_growth_median": 0.286,
-      "industry_foreign_20d_billion": -22.8,
+      "industry_foreign_20d_billion": 4.0,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
@@ -497,7 +497,7 @@
             "execution_vs_expectation": 5.0
           },
           "raw_facts": {
-            "mcap_billion": 9759.0,
+            "mcap_billion": 9759,
             "foreign_d20_billion": 40.9,
             "trust_d20_billion": 13.3,
             "net20_billion": 54.2,
@@ -523,7 +523,7 @@
             "execution_vs_expectation": 1.0
           },
           "raw_facts": {
-            "mcap_billion": 35142.0,
+            "mcap_billion": 35142,
             "foreign_d20_billion": -30.2,
             "trust_d20_billion": 16.0,
             "net20_billion": -14.2,
@@ -544,12 +544,12 @@
           "divergence_score": -16.1,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 43.8,
             "execution_vs_expectation": 36.0
           },
           "raw_facts": {
-            "mcap_billion": 1774.0,
+            "mcap_billion": 1774,
             "foreign_d20_billion": -16.2,
             "trust_d20_billion": -16.1,
             "net20_billion": -32.3,
@@ -575,7 +575,7 @@
             "execution_vs_expectation": 30.0
           },
           "raw_facts": {
-            "mcap_billion": 4565.0,
+            "mcap_billion": 4565,
             "foreign_d20_billion": -124.1,
             "trust_d20_billion": 38.8,
             "net20_billion": -85.3,
@@ -610,7 +610,7 @@
             "execution_vs_expectation": -11.0
           },
           "raw_facts": {
-            "mcap_billion": 3993.0,
+            "mcap_billion": 3993,
             "foreign_d20_billion": 60.5,
             "trust_d20_billion": 48.5,
             "net20_billion": 109.0,
@@ -636,7 +636,7 @@
             "execution_vs_expectation": -21.0
           },
           "raw_facts": {
-            "mcap_billion": 789.0,
+            "mcap_billion": 789,
             "foreign_d20_billion": 79.9,
             "trust_d20_billion": 0.3,
             "net20_billion": 80.2,
@@ -662,7 +662,7 @@
             "execution_vs_expectation": -1.0
           },
           "raw_facts": {
-            "mcap_billion": 1176.0,
+            "mcap_billion": 1176,
             "foreign_d20_billion": 48.6,
             "trust_d20_billion": -3.3,
             "net20_billion": 45.3,
@@ -688,7 +688,7 @@
             "execution_vs_expectation": 4.0
           },
           "raw_facts": {
-            "mcap_billion": 31249.0,
+            "mcap_billion": 31249,
             "foreign_d20_billion": 336.0,
             "trust_d20_billion": -79.4,
             "net20_billion": 256.6,
@@ -715,15 +715,15 @@
         {
           "stock_id": "2404",
           "name": "漢唐",
-          "divergence_score": 32.1,
+          "divergence_score": 38.4,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 73.5,
             "valuation_vs_growth": 9.0,
-            "execution_vs_expectation": 0.0
+            "execution_vs_expectation": 21.0
           },
           "raw_facts": {
-            "mcap_billion": 2449.0,
+            "mcap_billion": 2449,
             "foreign_d20_billion": 2.5,
             "trust_d20_billion": 15.5,
             "net20_billion": 18.0,
@@ -734,22 +734,22 @@
             "industry_eps_g2_median": 0.247,
             "beat_rate": 0.71,
             "beat_quarters": null,
-            "dispersion_fy1": null
+            "dispersion_fy1": 0.0
           },
-          "narrative": "外資投信近20日合計買超約18.0億元（外資+2.5億、投信+15.5億），該股沒有分析師評等覆蓋，rating部分以0處理，本益比(FY1)17.0倍低於同題材中位數20.7倍，明年EPS成長率20.9%低於同題材中位數24.7%，近期無分析師預估可供計算beat rate。"
+          "narrative": "外資投信近20日合計買超約18.0億元（外資+2.5億、投信+15.5億），該股沒有分析師評等覆蓋，rating部分以0處理，本益比(FY1)17.0倍低於同題材中位數20.7倍，明年EPS成長率20.9%低於同題材中位數24.7%，近幾季EPS有71%優於預估，分歧度0%。"
         },
         {
           "stock_id": "6664",
           "name": "群翊",
-          "divergence_score": -5.1,
+          "divergence_score": -20.1,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -12.8,
             "valuation_vs_growth": 0.1,
-            "execution_vs_expectation": 0.0
+            "execution_vs_expectation": -50.0
           },
           "raw_facts": {
-            "mcap_billion": 218.0,
+            "mcap_billion": 218,
             "foreign_d20_billion": 1.7,
             "trust_d20_billion": 0.2,
             "net20_billion": 1.9,
@@ -760,9 +760,9 @@
             "industry_eps_g2_median": 0.247,
             "beat_rate": 0.0,
             "beat_quarters": null,
-            "dispersion_fy1": null
+            "dispersion_fy1": 0.0
           },
-          "narrative": "外資投信近20日合計買超約1.9億元（外資+1.7億、投信+0.2億），分析師看多比例100%，本益比(FY1)20.7倍低於同題材中位數20.7倍，明年EPS成長率24.8%高於同題材中位數24.7%，近期無分析師預估可供計算beat rate。"
+          "narrative": "外資投信近20日合計買超約1.9億元（外資+1.7億、投信+0.2億），分析師看多比例100%，本益比(FY1)20.7倍低於同題材中位數20.7倍，明年EPS成長率24.8%高於同題材中位數24.7%，近幾季EPS有0%優於預估，分歧度0%。"
         },
         {
           "stock_id": "2467",
@@ -775,7 +775,7 @@
             "execution_vs_expectation": -56.0
           },
           "raw_facts": {
-            "mcap_billion": 830.0,
+            "mcap_billion": 830,
             "foreign_d20_billion": -6.8,
             "trust_d20_billion": 0.9,
             "net20_billion": -5.9,
@@ -801,7 +801,7 @@
             "execution_vs_expectation": -103.0
           },
           "raw_facts": {
-            "mcap_billion": 1119.0,
+            "mcap_billion": 1119,
             "foreign_d20_billion": -21.2,
             "trust_d20_billion": 2.9,
             "net20_billion": -18.3,
@@ -827,7 +827,7 @@
             "execution_vs_expectation": -64.0
           },
           "raw_facts": {
-            "mcap_billion": 124.0,
+            "mcap_billion": 124,
             "foreign_d20_billion": -2.7,
             "trust_d20_billion": 0.0,
             "net20_billion": -2.7,
@@ -862,7 +862,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 176.0,
+            "mcap_billion": 176,
             "foreign_d20_billion": -1.6,
             "trust_d20_billion": 0.0,
             "net20_billion": -1.6,
@@ -888,7 +888,7 @@
             "execution_vs_expectation": -54.0
           },
           "raw_facts": {
-            "mcap_billion": 170.0,
+            "mcap_billion": 170,
             "foreign_d20_billion": -1.3,
             "trust_d20_billion": 0.0,
             "net20_billion": -1.3,
@@ -914,7 +914,7 @@
             "execution_vs_expectation": -16.0
           },
           "raw_facts": {
-            "mcap_billion": 713.0,
+            "mcap_billion": 713,
             "foreign_d20_billion": -0.1,
             "trust_d20_billion": 0.8,
             "net20_billion": 0.7,
@@ -940,7 +940,7 @@
             "execution_vs_expectation": -57.0
           },
           "raw_facts": {
-            "mcap_billion": 561.0,
+            "mcap_billion": 561,
             "foreign_d20_billion": -12.0,
             "trust_d20_billion": -3.4,
             "net20_billion": -15.4,
@@ -967,15 +967,15 @@
         {
           "stock_id": "3702",
           "name": "大聯大",
-          "divergence_score": -17.7,
+          "divergence_score": -9.9,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": 0.0,
             "valuation_vs_growth": 0.0,
-            "execution_vs_expectation": -59.0
+            "execution_vs_expectation": -33.0
           },
           "raw_facts": {
-            "mcap_billion": 1977.0,
+            "mcap_billion": 1977,
             "foreign_d20_billion": 26.2,
             "trust_d20_billion": -0.7,
             "net20_billion": 25.5,
@@ -986,9 +986,9 @@
             "industry_eps_g2_median": 0.195,
             "beat_rate": 0.5,
             "beat_quarters": null,
-            "dispersion_fy1": 0.59
+            "dispersion_fy1": 0.33
           },
-          "narrative": "外資投信近20日合計買超約25.5億元（外資+26.2億、投信-0.7億），分析師看多比例100%，本益比(FY1)8.1倍低於同題材中位數8.1倍，明年EPS成長率19.5%低於同題材中位數19.5%，近幾季EPS有50%優於預估，分歧度59%。"
+          "narrative": "外資投信近20日合計買超約25.5億元（外資+26.2億、投信-0.7億），分析師看多比例100%，本益比(FY1)8.1倍低於同題材中位數8.1倍，明年EPS成長率19.5%低於同題材中位數19.5%，近幾季EPS有50%優於預估，分歧度33%。"
         },
         {
           "stock_id": "8112",
@@ -996,12 +996,12 @@
           "divergence_score": -40.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 0.0,
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 472.0,
+            "mcap_billion": 472,
             "foreign_d20_billion": -39.7,
             "trust_d20_billion": 2.7,
             "net20_billion": -37.0,
@@ -1019,15 +1019,15 @@
         {
           "stock_id": "5434",
           "name": "崇越",
-          "divergence_score": -73.3,
+          "divergence_score": -73.6,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -166.7,
             "valuation_vs_growth": -30.1,
-            "execution_vs_expectation": 8.0
+            "execution_vs_expectation": 7.0
           },
           "raw_facts": {
-            "mcap_billion": 1050.0,
+            "mcap_billion": 1050,
             "foreign_d20_billion": -6.8,
             "trust_d20_billion": -0.2,
             "net20_billion": -7.0,
@@ -1038,22 +1038,22 @@
             "industry_eps_g2_median": 0.195,
             "beat_rate": 0.62,
             "beat_quarters": null,
-            "dispersion_fy1": 0.04
+            "dispersion_fy1": 0.05
           },
-          "narrative": "外資投信近20日合計賣超約7.0億元（外資-6.8億、投信-0.2億），分析師看多比例100%，本益比(FY1)17.9倍高於同題材中位數8.1倍，明年EPS成長率14.0%低於同題材中位數19.5%，近幾季EPS有62%優於預估，分歧度4%。"
+          "narrative": "外資投信近20日合計賣超約7.0億元（外資-6.8億、投信-0.2億），分析師看多比例100%，本益比(FY1)17.9倍高於同題材中位數8.1倍，明年EPS成長率14.0%低於同題材中位數19.5%，近幾季EPS有62%優於預估，分歧度5%。"
         },
         {
           "stock_id": "3036",
           "name": "文曄",
-          "divergence_score": -79.1,
+          "divergence_score": -80.3,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -200.0,
             "valuation_vs_growth": 1.1,
-            "execution_vs_expectation": 2.0
+            "execution_vs_expectation": -2.0
           },
           "raw_facts": {
-            "mcap_billion": 2787.0,
+            "mcap_billion": 2787,
             "foreign_d20_billion": -54.9,
             "trust_d20_billion": 5.8,
             "net20_billion": -49.1,
@@ -1064,9 +1064,9 @@
             "industry_eps_g2_median": 0.195,
             "beat_rate": 0.75,
             "beat_quarters": null,
-            "dispersion_fy1": 0.23
+            "dispersion_fy1": 0.27
           },
-          "narrative": "外資投信近20日合計賣超約49.1億元（外資-54.9億、投信+5.8億），分析師看多比例100%，本益比(FY1)8.0倍低於同題材中位數8.1倍，明年EPS成長率20.4%高於同題材中位數19.5%，近幾季EPS有75%優於預估，分歧度23%。"
+          "narrative": "外資投信近20日合計賣超約49.1億元（外資-54.9億、投信+5.8億），分析師看多比例100%，本益比(FY1)8.0倍低於同題材中位數8.1倍，明年EPS成長率20.4%高於同題材中位數19.5%，近幾季EPS有75%優於預估，分歧度27%。"
         }
       ]
     },
@@ -1083,12 +1083,12 @@
           "divergence_score": 17.7,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 100.0,
+            "flow_vs_rating": 100,
             "valuation_vs_growth": 27.6,
             "execution_vs_expectation": -102.0
           },
           "raw_facts": {
-            "mcap_billion": 538.0,
+            "mcap_billion": 538,
             "foreign_d20_billion": 16.7,
             "trust_d20_billion": 0.1,
             "net20_billion": 16.8,
@@ -1114,7 +1114,7 @@
             "execution_vs_expectation": -19.0
           },
           "raw_facts": {
-            "mcap_billion": 3250.0,
+            "mcap_billion": 3250,
             "foreign_d20_billion": -10.9,
             "trust_d20_billion": -100.6,
             "net20_billion": -111.5,
@@ -1140,7 +1140,7 @@
             "execution_vs_expectation": -22.0
           },
           "raw_facts": {
-            "mcap_billion": 11425.0,
+            "mcap_billion": 11425,
             "foreign_d20_billion": -37.7,
             "trust_d20_billion": 37.0,
             "net20_billion": -0.7,
@@ -1166,7 +1166,7 @@
             "execution_vs_expectation": -173.0
           },
           "raw_facts": {
-            "mcap_billion": 219.0,
+            "mcap_billion": 219,
             "foreign_d20_billion": -0.2,
             "trust_d20_billion": 0.1,
             "net20_billion": -0.1,
@@ -1192,7 +1192,7 @@
             "execution_vs_expectation": -38.0
           },
           "raw_facts": {
-            "mcap_billion": 2412.0,
+            "mcap_billion": 2412,
             "foreign_d20_billion": -183.7,
             "trust_d20_billion": 102.9,
             "net20_billion": -80.8,
@@ -1227,7 +1227,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 1755.0,
+            "mcap_billion": 1755,
             "foreign_d20_billion": -8.6,
             "trust_d20_billion": 25.7,
             "net20_billion": 17.1,
@@ -1253,7 +1253,7 @@
             "execution_vs_expectation": 36.0
           },
           "raw_facts": {
-            "mcap_billion": 641826.0,
+            "mcap_billion": 641826,
             "foreign_d20_billion": -259.6,
             "trust_d20_billion": -120.2,
             "net20_billion": -379.8,
@@ -1279,7 +1279,7 @@
             "execution_vs_expectation": -61.0
           },
           "raw_facts": {
-            "mcap_billion": 1024.0,
+            "mcap_billion": 1024,
             "foreign_d20_billion": 40.2,
             "trust_d20_billion": 24.7,
             "net20_billion": 64.9,
@@ -1305,7 +1305,7 @@
             "execution_vs_expectation": -83.0
           },
           "raw_facts": {
-            "mcap_billion": 2128.0,
+            "mcap_billion": 2128,
             "foreign_d20_billion": 18.1,
             "trust_d20_billion": 89.4,
             "net20_billion": 107.5,
@@ -1335,12 +1335,12 @@
           "divergence_score": -22.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 10.2,
             "execution_vs_expectation": 50.0
           },
           "raw_facts": {
-            "mcap_billion": 155.0,
+            "mcap_billion": 155,
             "foreign_d20_billion": -3.0,
             "trust_d20_billion": 0.0,
             "net20_billion": -3.0,
@@ -1361,12 +1361,12 @@
           "divergence_score": -40.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 0.0,
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 277.0,
+            "mcap_billion": 277,
             "foreign_d20_billion": -9.6,
             "trust_d20_billion": 0.0,
             "net20_billion": -9.6,
@@ -1392,7 +1392,7 @@
             "execution_vs_expectation": -61.0
           },
           "raw_facts": {
-            "mcap_billion": 594.0,
+            "mcap_billion": 594,
             "foreign_d20_billion": -28.0,
             "trust_d20_billion": 0.1,
             "net20_billion": -27.9,
@@ -1413,12 +1413,12 @@
           "divergence_score": -100,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 0.0,
             "execution_vs_expectation": -1913.0
           },
           "raw_facts": {
-            "mcap_billion": 255.0,
+            "mcap_billion": 255,
             "foreign_d20_billion": -4.0,
             "trust_d20_billion": 0.0,
             "net20_billion": -4.0,
@@ -1453,7 +1453,7 @@
             "execution_vs_expectation": -13.0
           },
           "raw_facts": {
-            "mcap_billion": 835.0,
+            "mcap_billion": 835,
             "foreign_d20_billion": 5.3,
             "trust_d20_billion": 1.6,
             "net20_billion": 6.9,
@@ -1479,7 +1479,7 @@
             "execution_vs_expectation": -45.0
           },
           "raw_facts": {
-            "mcap_billion": 2429.0,
+            "mcap_billion": 2429,
             "foreign_d20_billion": -3.4,
             "trust_d20_billion": 3.2,
             "net20_billion": -0.2,
@@ -1505,7 +1505,7 @@
             "execution_vs_expectation": -33.0
           },
           "raw_facts": {
-            "mcap_billion": 1021.0,
+            "mcap_billion": 1021,
             "foreign_d20_billion": -2.6,
             "trust_d20_billion": 0.3,
             "net20_billion": -2.3,
@@ -1531,7 +1531,7 @@
             "execution_vs_expectation": -47.0
           },
           "raw_facts": {
-            "mcap_billion": 284.0,
+            "mcap_billion": 284,
             "foreign_d20_billion": -1.0,
             "trust_d20_billion": 0.2,
             "net20_billion": -0.8,
@@ -1566,7 +1566,7 @@
             "execution_vs_expectation": -75.0
           },
           "raw_facts": {
-            "mcap_billion": 4698.0,
+            "mcap_billion": 4698,
             "foreign_d20_billion": 73.5,
             "trust_d20_billion": -10.0,
             "net20_billion": 63.5,
@@ -1592,7 +1592,7 @@
             "execution_vs_expectation": 3.0
           },
           "raw_facts": {
-            "mcap_billion": 1227.0,
+            "mcap_billion": 1227,
             "foreign_d20_billion": -5.1,
             "trust_d20_billion": -1.2,
             "net20_billion": -6.3,
@@ -1613,12 +1613,12 @@
           "divergence_score": -28.8,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": -12.7,
             "execution_vs_expectation": 50.0
           },
           "raw_facts": {
-            "mcap_billion": 818.0,
+            "mcap_billion": 818,
             "foreign_d20_billion": -46.6,
             "trust_d20_billion": 2.0,
             "net20_billion": -44.6,
@@ -1644,7 +1644,7 @@
             "execution_vs_expectation": -47.0
           },
           "raw_facts": {
-            "mcap_billion": 2318.0,
+            "mcap_billion": 2318,
             "foreign_d20_billion": -15.1,
             "trust_d20_billion": -6.8,
             "net20_billion": -21.9,
@@ -1662,19 +1662,19 @@
         {
           "stock_id": "2344",
           "name": "華邦電",
-          "divergence_score": -74.8,
+          "divergence_score": -73.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -177.8,
+            "flow_vs_rating": -175.0,
             "valuation_vs_growth": 26.7,
             "execution_vs_expectation": -39.0
           },
           "raw_facts": {
-            "mcap_billion": 7718.0,
+            "mcap_billion": 7718,
             "foreign_d20_billion": -91.9,
             "trust_d20_billion": -89.6,
             "net20_billion": -181.5,
-            "buy_ratio_used": 0.8889,
+            "buy_ratio_used": 0.875,
             "pe_fy1": 6.7,
             "industry_pe_fy1_median": 6.2,
             "eps_g2": 1.04,
@@ -1683,7 +1683,7 @@
             "beat_quarters": null,
             "dispersion_fy1": 0.27
           },
-          "narrative": "外資投信近20日合計賣超約181.5億元（外資-91.9億、投信-89.6億），分析師看多比例89%，本益比(FY1)6.7倍高於同題材中位數6.2倍，明年EPS成長率104.0%高於同題材中位數43.2%，近幾季EPS有38%優於預估，分歧度27%。"
+          "narrative": "外資投信近20日合計賣超約181.5億元（外資-91.9億、投信-89.6億），分析師看多比例88%，本益比(FY1)6.7倍高於同題材中位數6.2倍，明年EPS成長率104.0%高於同題材中位數43.2%，近幾季EPS有38%優於預估，分歧度27%。"
         }
       ]
     },
@@ -1700,12 +1700,12 @@
           "divergence_score": 41.0,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 100.0,
+            "flow_vs_rating": 100,
             "valuation_vs_growth": 53.3,
             "execution_vs_expectation": -50.0
           },
           "raw_facts": {
-            "mcap_billion": 932.0,
+            "mcap_billion": 932,
             "foreign_d20_billion": 16.4,
             "trust_d20_billion": -0.0,
             "net20_billion": 16.4,
@@ -1731,7 +1731,7 @@
             "execution_vs_expectation": 9.0
           },
           "raw_facts": {
-            "mcap_billion": 13955.0,
+            "mcap_billion": 13955,
             "foreign_d20_billion": 45.4,
             "trust_d20_billion": 28.3,
             "net20_billion": 73.7,
@@ -1757,7 +1757,7 @@
             "execution_vs_expectation": -59.0
           },
           "raw_facts": {
-            "mcap_billion": 19449.0,
+            "mcap_billion": 19449,
             "foreign_d20_billion": 435.1,
             "trust_d20_billion": -95.7,
             "net20_billion": 339.4,
@@ -1775,19 +1775,19 @@
         {
           "stock_id": "2327",
           "name": "國巨*",
-          "divergence_score": -35.3,
+          "divergence_score": -45.4,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -85.7,
+            "flow_vs_rating": -111.1,
             "valuation_vs_growth": 0.7,
             "execution_vs_expectation": -4.0
           },
           "raw_facts": {
-            "mcap_billion": 11941.0,
+            "mcap_billion": 11941,
             "foreign_d20_billion": -64.9,
             "trust_d20_billion": -68.7,
             "net20_billion": -133.6,
-            "buy_ratio_used": 0.4286,
+            "buy_ratio_used": 0.5556,
             "pe_fy1": 30.0,
             "industry_pe_fy1_median": 34.7,
             "eps_g2": 0.624,
@@ -1796,7 +1796,7 @@
             "beat_quarters": null,
             "dispersion_fy1": 0.16
           },
-          "narrative": "外資投信近20日合計賣超約133.6億元（外資-64.9億、投信-68.7億），分析師看多比例43%，本益比(FY1)30.0倍低於同題材中位數34.7倍，明年EPS成長率62.4%低於同題材中位數76.6%，近幾季EPS有62%優於預估，分歧度16%。"
+          "narrative": "外資投信近20日合計賣超約133.6億元（外資-64.9億、投信-68.7億），分析師看多比例56%，本益比(FY1)30.0倍低於同題材中位數34.7倍，明年EPS成長率62.4%低於同題材中位數76.6%，近幾季EPS有62%優於預估，分歧度16%。"
         },
         {
           "stock_id": "6274",
@@ -1809,7 +1809,7 @@
             "execution_vs_expectation": -67.0
           },
           "raw_facts": {
-            "mcap_billion": 4318.0,
+            "mcap_billion": 4318,
             "foreign_d20_billion": 153.9,
             "trust_d20_billion": -222.4,
             "net20_billion": -68.5,
@@ -1844,7 +1844,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 79.0,
+            "mcap_billion": 79,
             "foreign_d20_billion": 0.1,
             "trust_d20_billion": 0.0,
             "net20_billion": 0.1,
@@ -1870,7 +1870,7 @@
             "execution_vs_expectation": -10.0
           },
           "raw_facts": {
-            "mcap_billion": 850.0,
+            "mcap_billion": 850,
             "foreign_d20_billion": -13.9,
             "trust_d20_billion": 14.4,
             "net20_billion": 0.5,
@@ -1896,7 +1896,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 156.0,
+            "mcap_billion": 156,
             "foreign_d20_billion": -0.2,
             "trust_d20_billion": -0.2,
             "net20_billion": -0.4,
@@ -1931,7 +1931,7 @@
             "execution_vs_expectation": -27.0
           },
           "raw_facts": {
-            "mcap_billion": 521.0,
+            "mcap_billion": 521,
             "foreign_d20_billion": 19.2,
             "trust_d20_billion": 0.5,
             "net20_billion": 19.7,
@@ -1957,7 +1957,7 @@
             "execution_vs_expectation": -46.0
           },
           "raw_facts": {
-            "mcap_billion": 1590.0,
+            "mcap_billion": 1590,
             "foreign_d20_billion": -41.6,
             "trust_d20_billion": 32.3,
             "net20_billion": -9.3,
@@ -1983,7 +1983,7 @@
             "execution_vs_expectation": -75.0
           },
           "raw_facts": {
-            "mcap_billion": 319.0,
+            "mcap_billion": 319,
             "foreign_d20_billion": -6.0,
             "trust_d20_billion": -0.4,
             "net20_billion": -6.4,
@@ -2018,7 +2018,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 225.0,
+            "mcap_billion": 225,
             "foreign_d20_billion": 1.1,
             "trust_d20_billion": 0.0,
             "net20_billion": 1.1,
@@ -2044,7 +2044,7 @@
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 255.0,
+            "mcap_billion": 255,
             "foreign_d20_billion": 0.6,
             "trust_d20_billion": 0.0,
             "net20_billion": 0.6,
@@ -2065,12 +2065,12 @@
           "divergence_score": -40.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100.0,
+            "flow_vs_rating": -100,
             "valuation_vs_growth": 0.0,
             "execution_vs_expectation": 0.0
           },
           "raw_facts": {
-            "mcap_billion": 747.0,
+            "mcap_billion": 747,
             "foreign_d20_billion": -46.9,
             "trust_d20_billion": 0.6,
             "net20_billion": -46.3,
@@ -2096,7 +2096,7 @@
             "execution_vs_expectation": -621.0
           },
           "raw_facts": {
-            "mcap_billion": 741.0,
+            "mcap_billion": 741,
             "foreign_d20_billion": -20.5,
             "trust_d20_billion": 1.7,
             "net20_billion": -18.8,
