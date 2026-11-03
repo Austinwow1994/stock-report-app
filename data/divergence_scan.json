@@ -1,832 +1,824 @@
 {
-  "generated_at": "2026-11-02",
+  "generated_at": "2026-11-03",
   "industries": [
     {
       "industry": "半導體業",
-      "industry_type": "official",
-      "industry_pe_median": 26.472,
+      "industry_pe_median": 23.891,
       "industry_eps_growth_median": 0.359,
-      "industry_foreign_20d_billion": -7595.5,
+      "industry_foreign_20d_billion": -8188.2,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2408",
           "name": "南亞科",
-          "divergence_score": -41.7,
+          "divergence_score": -42.1,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -166.7,
-            "valuation_vs_growth": 162.2,
+            "valuation_vs_growth": 160.8,
             "estimate_quality": -79.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -232.0,
-            "trust_d20_billion": -75.2,
-            "net20_billion": -307.2,
-            "mcap_billion": 14145.0,
-            "buy_ratio": 0.8333,
+            "foreign_d20_billion": -267.6,
+            "trust_d20_billion": -72.0,
+            "net20_billion": -339.6,
+            "mcap_billion": 12735,
+            "buy_ratio": 0.8333333333333334,
             "analysts": 6,
             "buy_analysts_est": 5,
-            "pe_fy1": 6.6,
+            "pe_fy1": 6.0,
             "eps_g2": 0.593,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.67
           },
-          "narrative": "近20日外資-232.0億、投信-75.2億，合計賣超約307.2億元（占市值-2.17%）；30日內6家分析師中5家喊買（看多比例83%）。個股今年前瞻本益比6.6倍，產業中位數26.5倍。明年EPS成長預估59.3%，較產業中位數35.9%高。近8季財報優於預估比例38%，明年預估分歧度67%。"
+          "narrative": "近20日外資-267.6億、投信-72.0億，合計賣超約339.6億元（占市值-2.67%）；30日內6家分析師中5家喊買（看多比例83%）。個股今年前瞻本益比6.0倍，產業中位數23.9倍。明年EPS成長預估59.3%，較產業中位數35.9%高。近8季財報優於預估比例38%，明年預估分歧度67%。"
         },
         {
           "stock_id": "2454",
           "name": "聯發科",
-          "divergence_score": -71.5,
+          "divergence_score": -74.6,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -150.0,
-            "valuation_vs_growth": 9.7,
-            "estimate_quality": -48.0
+            "flow_vs_rating": -169.2,
+            "valuation_vs_growth": 10.8,
+            "estimate_quality": -34.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -1725.5,
-            "trust_d20_billion": 183.0,
-            "net20_billion": -1542.5,
-            "mcap_billion": 63717.0,
-            "buy_ratio": 0.75,
-            "analysts": 12,
-            "buy_analysts_est": 9,
-            "pe_fy1": 56.4,
-            "eps_g2": 1.083,
+            "foreign_d20_billion": -1716.9,
+            "trust_d20_billion": 185.6,
+            "net20_billion": -1531.3,
+            "mcap_billion": 58982,
+            "buy_ratio": 0.8461538461538461,
+            "analysts": 13,
+            "buy_analysts_est": 11,
+            "pe_fy1": 52.2,
+            "eps_g2": 1.118,
             "beat_rate": 0.75,
-            "dispersion_fy2": 0.73
+            "dispersion_fy2": 0.59
           },
-          "narrative": "近20日外資-1725.5億、投信+183.0億，合計賣超約1542.5億元（占市值-2.42%）；30日內12家分析師中9家喊買（看多比例75%）。個股今年前瞻本益比56.4倍，產業中位數26.5倍。明年EPS成長預估108.3%，較產業中位數35.9%高。近8季財報優於預估比例75%，明年預估分歧度73%。"
+          "narrative": "近20日外資-1716.9億、投信+185.6億，合計賣超約1531.3億元（占市值-2.60%）；30日內13家分析師中11家喊買（看多比例85%）。個股今年前瞻本益比52.2倍，產業中位數23.9倍。明年EPS成長預估111.8%，較產業中位數35.9%高。近8季財報優於預估比例75%，明年預估分歧度59%。"
         },
         {
           "stock_id": "2303",
           "name": "聯電",
-          "divergence_score": -76.4,
+          "divergence_score": -77.3,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -155.6,
-            "valuation_vs_growth": 15.9,
+            "valuation_vs_growth": 12.8,
             "estimate_quality": -63.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -323.5,
-            "trust_d20_billion": -229.3,
-            "net20_billion": -552.8,
-            "mcap_billion": 13827.0,
-            "buy_ratio": 0.7778,
+            "foreign_d20_billion": -323.3,
+            "trust_d20_billion": -217.8,
+            "net20_billion": -541.1,
+            "mcap_billion": 12947,
+            "buy_ratio": 0.7777777777777778,
             "analysts": 9,
             "buy_analysts_est": 7,
-            "pe_fy1": 15.9,
+            "pe_fy1": 14.9,
             "eps_g2": 0.012,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.63
           },
-          "narrative": "近20日外資-323.5億、投信-229.3億，合計賣超約552.8億元（占市值-4.00%）；30日內9家分析師中7家喊買（看多比例78%）。個股今年前瞻本益比15.9倍，產業中位數26.5倍。明年EPS成長預估1.2%，較產業中位數35.9%低。近8季財報優於預估比例50%，明年預估分歧度63%。"
+          "narrative": "近20日外資-323.3億、投信-217.8億，合計賣超約541.1億元（占市值-4.18%）；30日內9家分析師中7家喊買（看多比例78%）。個股今年前瞻本益比14.9倍，產業中位數23.9倍。明年EPS成長預估1.2%，較產業中位數35.9%低。近8季財報優於預估比例50%，明年預估分歧度63%。"
         }
       ]
     },
     {
       "industry": "金融保險業",
-      "industry_type": "official",
-      "industry_pe_median": 15.363,
+      "industry_pe_median": 14.881,
       "industry_eps_growth_median": 0.029,
-      "industry_foreign_20d_billion": 435.0,
+      "industry_foreign_20d_billion": 374.1,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2891",
           "name": "中信金",
-          "divergence_score": 59.8,
+          "divergence_score": 61.4,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 147.0,
-            "valuation_vs_growth": -4.9,
+            "flow_vs_rating": 151.8,
+            "valuation_vs_growth": -5.7,
             "estimate_quality": 8.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 45.0,
-            "trust_d20_billion": 24.4,
-            "net20_billion": 69.4,
-            "mcap_billion": 14757.0,
+            "foreign_d20_billion": 46.4,
+            "trust_d20_billion": 29.3,
+            "net20_billion": 75.7,
+            "mcap_billion": 14600,
             "buy_ratio": 0.0,
-            "analysts": 3,
+            "analysts": 2,
             "buy_analysts_est": 0,
-            "pe_fy1": 17.6,
+            "pe_fy1": 17.4,
             "eps_g2": 0.059,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.17
           },
-          "narrative": "近20日外資+45.0億、投信+24.4億，合計買超約69.4億元（占市值+0.47%）；30日內3家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比17.6倍，產業中位數15.4倍。明年EPS成長預估5.9%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度17%。"
+          "narrative": "近20日外資+46.4億、投信+29.3億，合計買超約75.7億元（占市值+0.52%）；30日內2家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比17.4倍，產業中位數14.9倍。明年EPS成長預估5.9%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度17%。"
         },
         {
           "stock_id": "2881",
           "name": "富邦金",
-          "divergence_score": 53.3,
+          "divergence_score": 54.1,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 121.3,
-            "valuation_vs_growth": -1.1,
+            "flow_vs_rating": 123.1,
+            "valuation_vs_growth": -0.9,
             "estimate_quality": 17.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 27.5,
-            "trust_d20_billion": 20.2,
-            "net20_billion": 47.7,
-            "mcap_billion": 22342.0,
+            "foreign_d20_billion": 30.6,
+            "trust_d20_billion": 19.2,
+            "net20_billion": 49.8,
+            "mcap_billion": 21571,
             "buy_ratio": 0.0,
             "analysts": 1,
             "buy_analysts_est": 0,
-            "pe_fy1": 14.5,
+            "pe_fy1": 14.0,
             "eps_g2": -0.052,
             "beat_rate": 0.88,
             "dispersion_fy2": 0.21
           },
-          "narrative": "近20日外資+27.5億、投信+20.2億，合計買超約47.7億元（占市值+0.21%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比14.5倍，產業中位數15.4倍。明年EPS成長預估-5.2%，較產業中位數2.9%低。近8季財報優於預估比例88%，明年預估分歧度21%。"
+          "narrative": "近20日外資+30.6億、投信+19.2億，合計買超約49.8億元（占市值+0.23%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比14.0倍，產業中位數14.9倍。明年EPS成長預估-5.2%，較產業中位數2.9%低。近8季財報優於預估比例88%，明年預估分歧度21%。"
         },
         {
           "stock_id": "2885",
           "name": "元大金",
-          "divergence_score": 26.7,
+          "divergence_score": 28.9,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 69.8,
+            "flow_vs_rating": 75.2,
             "valuation_vs_growth": -5.0,
             "estimate_quality": 1.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 62.5,
-            "trust_d20_billion": 6.7,
-            "net20_billion": 69.2,
-            "mcap_billion": 9913.0,
+            "foreign_d20_billion": 65.2,
+            "trust_d20_billion": 6.9,
+            "net20_billion": 72.1,
+            "mcap_billion": 9594,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 15.3,
+            "pe_fy1": 14.8,
             "eps_g2": -0.076,
             "beat_rate": 0.86,
             "dispersion_fy2": 0.35
           },
-          "narrative": "近20日外資+62.5億、投信+6.7億，合計買超約69.2億元（占市值+0.70%）；近期無分析師評等覆蓋。個股今年前瞻本益比15.3倍，產業中位數15.4倍。明年EPS成長預估-7.6%，較產業中位數2.9%低。近8季財報優於預估比例86%，明年預估分歧度35%。"
+          "narrative": "近20日外資+65.2億、投信+6.9億，合計買超約72.1億元（占市值+0.75%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比14.8倍，產業中位數14.9倍。明年EPS成長預估-7.6%，較產業中位數2.9%低。近8季財報優於預估比例86%，明年預估分歧度35%。"
         },
         {
           "stock_id": "2887",
           "name": "台新新光金",
-          "divergence_score": 10.7,
+          "divergence_score": 12.1,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 17.5,
-            "valuation_vs_growth": 6.5,
+            "flow_vs_rating": 21.8,
+            "valuation_vs_growth": 5.2,
             "estimate_quality": 6.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.1,
-            "trust_d20_billion": 18.4,
-            "net20_billion": 18.3,
-            "mcap_billion": 10473.0,
+            "foreign_d20_billion": 7.7,
+            "trust_d20_billion": 14.9,
+            "net20_billion": 22.6,
+            "mcap_billion": 10360,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 13.7,
+            "pe_fy1": 13.6,
             "eps_g2": 0.038,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.19
           },
-          "narrative": "近20日外資-0.1億、投信+18.4億，合計買超約18.3億元（占市值+0.17%）；近期無分析師評等覆蓋。個股今年前瞻本益比13.7倍，產業中位數15.4倍。明年EPS成長預估3.8%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度19%。"
+          "narrative": "近20日外資+7.7億、投信+14.9億，合計買超約22.6億元（占市值+0.22%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比13.6倍，產業中位數14.9倍。明年EPS成長預估3.8%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度19%。"
         },
         {
           "stock_id": "2882",
           "name": "國泰金",
-          "divergence_score": -25.5,
+          "divergence_score": -25.4,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -68.3,
-            "valuation_vs_growth": 6.2,
+            "flow_vs_rating": -67.8,
+            "valuation_vs_growth": 5.6,
             "estimate_quality": 0.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 26.3,
-            "trust_d20_billion": 27.6,
-            "net20_billion": 53.9,
-            "mcap_billion": 17016.0,
+            "foreign_d20_billion": 24.4,
+            "trust_d20_billion": 28.9,
+            "net20_billion": 53.3,
+            "mcap_billion": 16576,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 13.3,
+            "pe_fy1": 13.0,
             "eps_g2": -0.003,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.25
           },
-          "narrative": "近20日外資+26.3億、投信+27.6億，合計買超約53.9億元（占市值+0.32%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比13.3倍，產業中位數15.4倍。明年EPS成長預估-0.3%，較產業中位數2.9%低。近8季財報優於預估比例75%，明年預估分歧度25%。"
+          "narrative": "近20日外資+24.4億、投信+28.9億，合計買超約53.3億元（占市值+0.32%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比13.0倍，產業中位數14.9倍。明年EPS成長預估-0.3%，較產業中位數2.9%低。近8季財報優於預估比例75%，明年預估分歧度25%。"
         }
       ]
     },
     {
       "industry": "航運業",
-      "industry_type": "official",
-      "industry_pe_median": 9.824,
+      "industry_pe_median": 9.706,
       "industry_eps_growth_median": 0.074,
-      "industry_foreign_20d_billion": 262.0,
+      "industry_foreign_20d_billion": 277.1,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2609",
           "name": "陽明",
-          "divergence_score": 63.1,
+          "divergence_score": 63.4,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 200.0,
-            "valuation_vs_growth": -18.3,
+            "valuation_vs_growth": -17.4,
             "estimate_quality": -38.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 75.3,
-            "trust_d20_billion": 4.5,
-            "net20_billion": 79.8,
-            "mcap_billion": 2235.0,
+            "foreign_d20_billion": 74.8,
+            "trust_d20_billion": 4.3,
+            "net20_billion": 79.1,
+            "mcap_billion": 2169,
             "buy_ratio": 0.0,
             "analysts": 1,
             "buy_analysts_est": 0,
-            "pe_fy1": 7.9,
+            "pe_fy1": 7.7,
             "eps_g2": -0.535,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.26
           },
-          "narrative": "近20日外資+75.3億、投信+4.5億，合計買超約79.8億元（占市值+3.57%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比7.9倍，產業中位數9.8倍。明年EPS成長預估-53.5%，較產業中位數7.4%低。近8季財報優於預估比例38%，明年預估分歧度26%。"
+          "narrative": "近20日外資+74.8億、投信+4.3億，合計買超約79.1億元（占市值+3.65%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比7.7倍，產業中位數9.7倍。明年EPS成長預估-53.5%，較產業中位數7.4%低。近8季財報優於預估比例38%，明年預估分歧度26%。"
         },
         {
           "stock_id": "2615",
           "name": "萬海",
-          "divergence_score": 4.7,
+          "divergence_score": 6.2,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 23.0,
-            "valuation_vs_growth": -0.0,
+            "flow_vs_rating": 25.3,
+            "valuation_vs_growth": 2.0,
             "estimate_quality": -15.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 5.3,
-            "trust_d20_billion": 2.4,
-            "net20_billion": 7.7,
-            "mcap_billion": 3353.0,
+            "foreign_d20_billion": 6.1,
+            "trust_d20_billion": 2.1,
+            "net20_billion": 8.2,
+            "mcap_billion": 3241,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 7.4,
+            "pe_fy1": 7.1,
             "eps_g2": -0.254,
             "beat_rate": 0.86,
             "dispersion_fy2": 0.51
           },
-          "narrative": "近20日外資+5.3億、投信+2.4億，合計買超約7.7億元（占市值+0.23%）；近期無分析師評等覆蓋。個股今年前瞻本益比7.4倍，產業中位數9.8倍。明年EPS成長預估-25.4%，較產業中位數7.4%低。近8季財報優於預估比例86%，明年預估分歧度51%。"
+          "narrative": "近20日外資+6.1億、投信+2.1億，合計買超約8.2億元（占市值+0.25%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比7.1倍，產業中位數9.7倍。明年EPS成長預估-25.4%，較產業中位數7.4%低。近8季財報優於預估比例86%，明年預估分歧度51%。"
         },
         {
           "stock_id": "2603",
           "name": "長榮",
-          "divergence_score": 0.6,
+          "divergence_score": 0.9,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 66.7,
-            "valuation_vs_growth": -2.0,
+            "valuation_vs_growth": -1.0,
             "estimate_quality": -85.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 112.8,
-            "trust_d20_billion": 38.6,
-            "net20_billion": 151.4,
-            "mcap_billion": 5943.0,
-            "buy_ratio": 0.6667,
+            "foreign_d20_billion": 108.2,
+            "trust_d20_billion": 38.0,
+            "net20_billion": 146.2,
+            "mcap_billion": 5770,
+            "buy_ratio": 0.6666666666666666,
             "analysts": 6,
             "buy_analysts_est": 4,
-            "pe_fy1": 7.5,
+            "pe_fy1": 7.3,
             "eps_g2": -0.275,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.85
           },
-          "narrative": "近20日外資+112.8億、投信+38.6億，合計買超約151.4億元（占市值+2.55%）；30日內6家分析師中4家喊買（看多比例67%）。個股今年前瞻本益比7.5倍，產業中位數9.8倍。明年EPS成長預估-27.5%，較產業中位數7.4%低。近8季財報優於預估比例50%，明年預估分歧度85%。"
+          "narrative": "近20日外資+108.2億、投信+38.0億，合計買超約146.2億元（占市值+2.53%）；30日內6家分析師中4家喊買（看多比例67%）。個股今年前瞻本益比7.3倍，產業中位數9.7倍。明年EPS成長預估-27.5%，較產業中位數7.4%低。近8季財報優於預估比例50%，明年預估分歧度85%。"
         },
         {
           "stock_id": "2618",
           "name": "長榮航",
-          "divergence_score": -5.9,
+          "divergence_score": -6.2,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": 0.0,
-            "valuation_vs_growth": 0.3,
+            "valuation_vs_growth": -0.6,
             "estimate_quality": -20.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 34.5,
-            "trust_d20_billion": -8.3,
-            "net20_billion": 26.2,
-            "mcap_billion": 2330.0,
+            "foreign_d20_billion": 43.4,
+            "trust_d20_billion": -7.0,
+            "net20_billion": 36.4,
+            "mcap_billion": 2360,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 10.6,
+            "pe_fy1": 10.7,
             "eps_g2": 0.154,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.45
           },
-          "narrative": "近20日外資+34.5億、投信-8.3億，合計買超約26.2億元（占市值+1.12%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比10.6倍，產業中位數9.8倍。明年EPS成長預估15.4%，較產業中位數7.4%高。近8季財報優於預估比例75%，明年預估分歧度45%。"
+          "narrative": "近20日外資+43.4億、投信-7.0億，合計買超約36.4億元（占市值+1.54%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比10.7倍，產業中位數9.7倍。明年EPS成長預估15.4%，較產業中位數7.4%高。近8季財報優於預估比例75%，明年預估分歧度45%。"
         },
         {
           "stock_id": "2633",
           "name": "台灣高鐵",
-          "divergence_score": -8.5,
+          "divergence_score": -7.1,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 16.2,
-            "valuation_vs_growth": 0.0,
+            "flow_vs_rating": 19.8,
+            "valuation_vs_growth": 0,
             "estimate_quality": -50.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 5.4,
-            "trust_d20_billion": -3.0,
-            "net20_billion": 2.4,
-            "mcap_billion": 1480.0,
+            "foreign_d20_billion": 5.5,
+            "trust_d20_billion": -2.6,
+            "net20_billion": 2.9,
+            "mcap_billion": 1466,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
             "pe_fy1": null,
             "eps_g2": null,
             "beat_rate": 0.0,
-            "dispersion_fy2": 0.0
+            "dispersion_fy2": null
           },
-          "narrative": "近20日外資+5.4億、投信-3.0億，合計買超約2.4億元（占市值+0.16%）；近期無分析師評等覆蓋。近8季財報優於預估比例0%，明年預估分歧度0%。"
+          "narrative": "近20日外資+5.5億、投信-2.6億，合計買超約2.9億元（占市值+0.20%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例0%，明年預估分歧度0%。"
         }
       ]
     },
     {
       "industry": "電腦及週邊設備業",
-      "industry_type": "official",
-      "industry_pe_median": 14.855,
+      "industry_pe_median": 13.985,
       "industry_eps_growth_median": 0.194,
-      "industry_foreign_20d_billion": 6.0,
+      "industry_foreign_20d_billion": -117.2,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
-          "stock_id": "3231",
-          "name": "緯創",
-          "divergence_score": 18.9,
-          "direction": "undervalued_gap",
-          "components": {
-            "flow_vs_rating": 66.7,
-            "valuation_vs_growth": 30.1,
-            "estimate_quality": -56.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": 67.6,
-            "trust_d20_billion": 7.7,
-            "net20_billion": 75.3,
-            "mcap_billion": 6225.0,
-            "buy_ratio": 0.6667,
-            "analysts": 3,
-            "buy_analysts_est": 2,
-            "pe_fy1": 10.9,
-            "eps_g2": 0.433,
-            "beat_rate": 0.5,
-            "dispersion_fy2": 0.56
-          },
-          "narrative": "近20日外資+67.6億、投信+7.7億，合計買超約75.3億元（占市值+1.21%）；30日內3家分析師中2家喊買（看多比例67%）。個股今年前瞻本益比10.9倍，產業中位數14.9倍。明年EPS成長預估43.3%，較產業中位數19.4%高。近8季財報優於預估比例50%，明年預估分歧度56%。"
-        },
-        {
           "stock_id": "2382",
           "name": "廣達",
-          "divergence_score": 16.3,
+          "divergence_score": 17.5,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 30.0,
-            "valuation_vs_growth": 12.3,
+            "flow_vs_rating": 35.1,
+            "valuation_vs_growth": 9.7,
             "estimate_quality": 2.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -38.3,
-            "trust_d20_billion": 34.0,
-            "net20_billion": -4.3,
-            "mcap_billion": 13062.0,
-            "buy_ratio": 0.3333,
+            "foreign_d20_billion": -34.0,
+            "trust_d20_billion": 36.2,
+            "net20_billion": 2.2,
+            "mcap_billion": 12795,
+            "buy_ratio": 0.3333333333333333,
             "analysts": 3,
             "buy_analysts_est": 1,
-            "pe_fy1": 11.9,
+            "pe_fy1": 11.7,
             "eps_g2": 0.192,
             "beat_rate": 0.88,
             "dispersion_fy2": 0.36
           },
-          "narrative": "近20日外資-38.3億、投信+34.0億，合計賣超約4.3億元（占市值-0.03%）；30日內3家分析師中1家喊買（看多比例33%）。個股今年前瞻本益比11.9倍，產業中位數14.9倍。明年EPS成長預估19.2%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度36%。"
+          "narrative": "近20日外資-34.0億、投信+36.2億，合計買超約2.2億元（占市值+0.02%）；30日內3家分析師中1家喊買（看多比例33%）。個股今年前瞻本益比11.7倍，產業中位數14.0倍。明年EPS成長預估19.2%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度36%。"
         },
         {
           "stock_id": "2357",
           "name": "華碩",
-          "divergence_score": 1.1,
-          "direction": "undervalued_gap",
+          "divergence_score": -2.4,
+          "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 14.9,
-            "valuation_vs_growth": 0.8,
+            "flow_vs_rating": 7.7,
+            "valuation_vs_growth": -1.3,
             "estimate_quality": -17.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 14.4,
-            "trust_d20_billion": -4.3,
-            "net20_billion": 10.1,
-            "mcap_billion": 6774.0,
+            "foreign_d20_billion": 5.9,
+            "trust_d20_billion": -0.8,
+            "net20_billion": 5.1,
+            "mcap_billion": 6603,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 12.2,
+            "pe_fy1": 11.9,
             "eps_g2": -0.007,
             "beat_rate": 0.88,
             "dispersion_fy2": 0.55
           },
-          "narrative": "近20日外資+14.4億、投信-4.3億，合計買超約10.1億元（占市值+0.15%）；近期無分析師評等覆蓋。個股今年前瞻本益比12.2倍，產業中位數14.9倍。明年EPS成長預估-0.7%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度55%。"
+          "narrative": "近20日外資+5.9億、投信-0.8億，合計買超約5.1億元（占市值+0.08%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比11.9倍，產業中位數14.0倍。明年EPS成長預估-0.7%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度55%。"
+        },
+        {
+          "stock_id": "3231",
+          "name": "緯創",
+          "divergence_score": -16.7,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -20.6,
+            "valuation_vs_growth": 27.9,
+            "estimate_quality": -56.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -0.3,
+            "trust_d20_billion": 8.0,
+            "net20_billion": 7.7,
+            "mcap_billion": 6054,
+            "buy_ratio": 0.6666666666666666,
+            "analysts": 3,
+            "buy_analysts_est": 2,
+            "pe_fy1": 10.6,
+            "eps_g2": 0.433,
+            "beat_rate": 0.5,
+            "dispersion_fy2": 0.56
+          },
+          "narrative": "近20日外資-0.3億、投信+8.0億，合計買超約7.7億元（占市值+0.13%）；30日內3家分析師中2家喊買（看多比例67%）。個股今年前瞻本益比10.6倍，產業中位數14.0倍。明年EPS成長預估43.3%，較產業中位數19.4%高。近8季財報優於預估比例50%，明年預估分歧度56%。"
         },
         {
           "stock_id": "2301",
           "name": "光寶科",
-          "divergence_score": -60.5,
+          "divergence_score": -64.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -95.8,
-            "valuation_vs_growth": -8.8,
-            "estimate_quality": -65.0
+            "flow_vs_rating": -100,
+            "valuation_vs_growth": -9.1,
+            "estimate_quality": -71.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -62.4,
-            "trust_d20_billion": 9.3,
-            "net20_billion": -53.1,
-            "mcap_billion": 5542.0,
+            "foreign_d20_billion": -74.4,
+            "trust_d20_billion": 7.9,
+            "net20_billion": -66.5,
+            "mcap_billion": 5190,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 22.7,
-            "eps_g2": 0.363,
+            "pe_fy1": 21.4,
+            "eps_g2": 0.359,
             "beat_rate": 0.38,
-            "dispersion_fy2": 0.53
+            "dispersion_fy2": 0.59
           },
-          "narrative": "近20日外資-62.4億、投信+9.3億，合計賣超約53.1億元（占市值-0.96%）；近期無分析師評等覆蓋。個股今年前瞻本益比22.7倍，產業中位數14.9倍。明年EPS成長預估36.3%，較產業中位數19.4%高。近8季財報優於預估比例38%，明年預估分歧度53%。"
+          "narrative": "近20日外資-74.4億、投信+7.9億，合計賣超約66.5億元（占市值-1.28%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比21.4倍，產業中位數14.0倍。明年EPS成長預估35.9%，較產業中位數19.4%高。近8季財報優於預估比例38%，明年預估分歧度59%。"
         }
       ]
     },
     {
       "industry": "其他電子業",
-      "industry_type": "official",
-      "industry_pe_median": 18.815,
+      "industry_pe_median": 17.337,
       "industry_eps_growth_median": 0.324,
-      "industry_foreign_20d_billion": -157.1,
+      "industry_foreign_20d_billion": -220.9,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "6139",
           "name": "亞翔",
-          "divergence_score": -14.8,
+          "divergence_score": -15.7,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -100,
-            "valuation_vs_growth": 47.9,
+            "valuation_vs_growth": 45.1,
             "estimate_quality": 36.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -52.3,
-            "trust_d20_billion": -2.8,
-            "net20_billion": -55.1,
-            "mcap_billion": 1501.0,
+            "foreign_d20_billion": -43.9,
+            "trust_d20_billion": 0.5,
+            "net20_billion": -43.4,
+            "mcap_billion": 1432,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 10.0,
+            "pe_fy1": 9.5,
             "eps_g2": 0.401,
             "beat_rate": 0.86,
             "dispersion_fy2": 0.0
           },
-          "narrative": "近20日外資-52.3億、投信-2.8億，合計賣超約55.1億元（占市值-3.67%）；近期無分析師評等覆蓋。個股今年前瞻本益比10.0倍，產業中位數18.8倍。明年EPS成長預估40.1%，較產業中位數32.4%高。近8季財報優於預估比例86%，明年預估分歧度0%。"
+          "narrative": "近20日外資-43.9億、投信+0.5億，合計賣超約43.4億元（占市值-3.03%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比9.5倍，產業中位數17.3倍。明年EPS成長預估40.1%，較產業中位數32.4%高。近8季財報優於預估比例86%，明年預估分歧度0%。"
         },
         {
           "stock_id": "3665",
           "name": "貿聯-KY",
-          "divergence_score": -26.3,
+          "divergence_score": -30.3,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -90.2,
-            "valuation_vs_growth": 11.6,
-            "estimate_quality": 21.0
+            "flow_vs_rating": -100,
+            "valuation_vs_growth": 10.2,
+            "estimate_quality": 22.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 88.8,
-            "trust_d20_billion": -117.4,
-            "net20_billion": -28.6,
-            "mcap_billion": 3170.0,
+            "foreign_d20_billion": 85.4,
+            "trust_d20_billion": -118.3,
+            "net20_billion": -32.9,
+            "mcap_billion": 3072,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 23.5,
-            "eps_g2": 0.756,
+            "pe_fy1": 22.8,
+            "eps_g2": 0.768,
             "beat_rate": 0.88,
-            "dispersion_fy2": 0.17
+            "dispersion_fy2": 0.16
           },
-          "narrative": "近20日外資+88.8億、投信-117.4億，合計賣超約28.6億元（占市值-0.90%）；近期無分析師評等覆蓋。個股今年前瞻本益比23.5倍，產業中位數18.8倍。明年EPS成長預估75.6%，較產業中位數32.4%高。近8季財報優於預估比例88%，明年預估分歧度17%。"
+          "narrative": "近20日外資+85.4億、投信-118.3億，合計賣超約32.9億元（占市值-1.07%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比22.8倍，產業中位數17.3倍。明年EPS成長預估76.8%，較產業中位數32.4%高。近8季財報優於預估比例88%，明年預估分歧度16%。"
         },
         {
           "stock_id": "2317",
           "name": "鴻海",
-          "divergence_score": -45.4,
+          "divergence_score": -47.3,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -113.8,
-            "valuation_vs_growth": 15.5,
+            "flow_vs_rating": -115.6,
+            "valuation_vs_growth": 11.5,
             "estimate_quality": -15.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -66.2,
-            "trust_d20_billion": 17.5,
-            "net20_billion": -48.7,
-            "mcap_billion": 35212.0,
+            "foreign_d20_billion": -71.4,
+            "trust_d20_billion": 17.7,
+            "net20_billion": -53.7,
+            "mcap_billion": 34440,
             "buy_ratio": 1.0,
             "analysts": 7,
             "buy_analysts_est": 7,
-            "pe_fy1": 13.6,
+            "pe_fy1": 13.3,
             "eps_g2": 0.25,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.4
           },
-          "narrative": "近20日外資-66.2億、投信+17.5億，合計賣超約48.7億元（占市值-0.14%）；30日內7家分析師中7家喊買（看多比例100%）。個股今年前瞻本益比13.6倍，產業中位數18.8倍。明年EPS成長預估25.0%，較產業中位數32.4%低。近8季財報優於預估比例75%，明年預估分歧度40%。"
+          "narrative": "近20日外資-71.4億、投信+17.7億，合計賣超約53.7億元（占市值-0.16%）；30日內7家分析師中7家喊買（看多比例100%）。個股今年前瞻本益比13.3倍，產業中位數17.3倍。明年EPS成長預估25.0%，較產業中位數32.4%低。近8季財報優於預估比例75%，明年預估分歧度40%。"
         },
         {
           "stock_id": "2360",
           "name": "致茂",
-          "divergence_score": -73.4,
+          "divergence_score": -66.1,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -165.1,
-            "valuation_vs_growth": -16.6,
+            "flow_vs_rating": -147.2,
+            "valuation_vs_growth": -16.0,
             "estimate_quality": -8.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -35.9,
-            "trust_d20_billion": -11.6,
-            "net20_billion": -47.5,
-            "mcap_billion": 7293.0,
+            "foreign_d20_billion": -35.8,
+            "trust_d20_billion": 4.8,
+            "net20_billion": -31.0,
+            "mcap_billion": 6570,
             "buy_ratio": 1.0,
             "analysts": 2,
             "buy_analysts_est": 2,
-            "pe_fy1": 37.1,
+            "pe_fy1": 33.4,
             "eps_g2": 0.484,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.33
           },
-          "narrative": "近20日外資-35.9億、投信-11.6億，合計賣超約47.5億元（占市值-0.65%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比37.1倍，產業中位數18.8倍。明年EPS成長預估48.4%，較產業中位數32.4%高。近8季財報優於預估比例75%，明年預估分歧度33%。"
+          "narrative": "近20日外資-35.8億、投信+4.8億，合計賣超約31.0億元（占市值-0.47%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比33.4倍，產業中位數17.3倍。明年EPS成長預估48.4%，較產業中位數32.4%高。近8季財報優於預估比例75%，明年預估分歧度33%。"
         }
       ]
     },
     {
       "industry": "半導體封測概念股",
-      "industry_type": "concept",
-      "industry_pe_median": 25.6,
-      "industry_eps_growth_median": 0.467,
-      "industry_foreign_20d_billion": -581.2,
+      "industry_pe_median": 24.049999999999997,
+      "industry_eps_growth_median": 0.4665,
+      "industry_foreign_20d_billion": -607.6,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "8150",
           "name": "南茂",
-          "divergence_score": -7.6,
+          "divergence_score": -6.9,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": 0.0,
-            "valuation_vs_growth": 11.7,
+            "valuation_vs_growth": 14.0,
             "estimate_quality": -37.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -21.8,
-            "trust_d20_billion": 2.4,
-            "net20_billion": -19.4,
-            "mcap_billion": 648.0,
+            "foreign_d20_billion": -25.0,
+            "trust_d20_billion": 1.7,
+            "net20_billion": -23.3,
+            "mcap_billion": 588,
             "buy_ratio": 0.0,
             "analysts": 2,
             "buy_analysts_est": 0,
-            "pe_fy1": 19.4,
+            "pe_fy1": 17.6,
             "eps_g2": 0.381,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.37
           },
-          "narrative": "近20日外資-21.8億、投信+2.4億，合計賣超約19.4億元（占市值-2.99%）；30日內2家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比19.4倍，同題材中位數25.6倍。明年EPS成長預估38.1%，較同題材中位數46.7%低。近8季財報優於預估比例50%，明年預估分歧度37%。"
+          "narrative": "近20日外資-25.0億、投信+1.7億，合計賣超約23.3億元（占市值-3.96%）；30日內2家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比17.6倍，同題材中位數24.0倍。明年EPS成長預估38.1%，較同題材中位數46.7%低。近8季財報優於預估比例50%，明年預估分歧度37%。"
         },
         {
           "stock_id": "3711",
           "name": "日月光投控",
-          "divergence_score": -61.6,
+          "divergence_score": -69.0,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -136.7,
-            "valuation_vs_growth": -8.1,
+            "flow_vs_rating": -155.8,
+            "valuation_vs_growth": -7.1,
             "estimate_quality": -15.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -346.6,
-            "trust_d20_billion": 168.3,
-            "net20_billion": -178.3,
-            "mcap_billion": 30250.0,
-            "buy_ratio": 0.8889,
+            "foreign_d20_billion": -384.0,
+            "trust_d20_billion": 168.2,
+            "net20_billion": -215.8,
+            "mcap_billion": 27647,
+            "buy_ratio": 0.8888888888888888,
             "analysts": 9,
             "buy_analysts_est": 8,
-            "pe_fy1": 34.0,
+            "pe_fy1": 31.1,
             "eps_g2": 0.552,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.4
           },
-          "narrative": "近20日外資-346.6億、投信+168.3億，合計賣超約178.3億元（占市值-0.59%）；30日內9家分析師中8家喊買（看多比例89%）。個股今年前瞻本益比34.0倍，同題材中位數25.6倍。明年EPS成長預估55.2%，較同題材中位數46.7%高。近8季財報優於預估比例75%，明年預估分歧度40%。"
+          "narrative": "近20日外資-384.0億、投信+168.2億，合計賣超約215.8億元（占市值-0.78%）；30日內9家分析師中8家喊買（看多比例89%）。個股今年前瞻本益比31.1倍，同題材中位數24.0倍。明年EPS成長預估55.2%，較同題材中位數46.7%高。近8季財報優於預估比例75%，明年預估分歧度40%。"
         },
         {
           "stock_id": "6257",
           "name": "矽格",
-          "divergence_score": -80.8,
+          "divergence_score": -71.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -200.0,
-            "valuation_vs_growth": 1.4,
+            "flow_vs_rating": -179.0,
+            "valuation_vs_growth": 3.7,
             "estimate_quality": -4.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -26.4,
-            "trust_d20_billion": 16.1,
-            "net20_billion": -10.3,
-            "mcap_billion": 1019.0,
+            "foreign_d20_billion": -20.7,
+            "trust_d20_billion": 13.4,
+            "net20_billion": -7.3,
+            "mcap_billion": 924,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 21.2,
+            "pe_fy1": 19.2,
             "eps_g2": 0.287,
             "beat_rate": 0.57,
             "dispersion_fy2": 0.11
           },
-          "narrative": "近20日外資-26.4億、投信+16.1億，合計賣超約10.3億元（占市值-1.01%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比21.2倍，同題材中位數25.6倍。明年EPS成長預估28.7%，較同題材中位數46.7%低。近8季財報優於預估比例57%，明年預估分歧度11%。"
+          "narrative": "近20日外資-20.7億、投信+13.4億，合計賣超約7.3億元（占市值-0.79%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比19.2倍，同題材中位數24.0倍。明年EPS成長預估28.7%，較同題材中位數46.7%低。近8季財報優於預估比例57%，明年預估分歧度11%。"
         },
         {
           "stock_id": "2449",
           "name": "京元電子",
-          "divergence_score": -88.2,
+          "divergence_score": -88.5,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -200.0,
-            "valuation_vs_growth": 1.8,
+            "valuation_vs_growth": 0.7,
             "estimate_quality": -29.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -186.4,
-            "trust_d20_billion": -29.4,
-            "net20_billion": -215.8,
-            "mcap_billion": 3377.0,
+            "foreign_d20_billion": -177.9,
+            "trust_d20_billion": -22.5,
+            "net20_billion": -200.4,
+            "mcap_billion": 3255,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 30.0,
+            "pe_fy1": 28.9,
             "eps_g2": 0.649,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.29
           },
-          "narrative": "近20日外資-186.4億、投信-29.4億，合計賣超約215.8億元（占市值-6.39%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比30.0倍，同題材中位數25.6倍。明年EPS成長預估64.9%，較同題材中位數46.7%高。近8季財報優於預估比例50%，明年預估分歧度29%。"
+          "narrative": "近20日外資-177.9億、投信-22.5億，合計賣超約200.4億元（占市值-6.16%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比28.9倍，同題材中位數24.0倍。明年EPS成長預估64.9%，較同題材中位數46.7%高。近8季財報優於預估比例50%，明年預估分歧度29%。"
         }
       ]
     },
     {
       "industry": "廠務工程",
-      "industry_type": "concept",
-      "industry_pe_median": 18.2,
+      "industry_pe_median": 17.2,
       "industry_eps_growth_median": 0.267,
-      "industry_foreign_20d_billion": -40.2,
+      "industry_foreign_20d_billion": -37.6,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
-          "stock_id": "2404",
-          "name": "漢唐",
-          "divergence_score": -2.2,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": -28.2,
-            "valuation_vs_growth": 18.3,
-            "estimate_quality": 12.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -16.8,
-            "trust_d20_billion": 11.1,
-            "net20_billion": -5.7,
-            "mcap_billion": 2020.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": 13.5,
-            "eps_g2": 0.285,
-            "beat_rate": 0.71,
-            "dispersion_fy2": 0.09
-          },
-          "narrative": "近20日外資-16.8億、投信+11.1億，合計賣超約5.7億元（占市值-0.28%）；近期無分析師評等覆蓋。個股今年前瞻本益比13.5倍，同題材中位數18.2倍。明年EPS成長預估28.5%，較同題材中位數26.7%高。近8季財報優於預估比例71%，明年預估分歧度9%。"
-        },
-        {
           "stock_id": "6664",
           "name": "群翊",
-          "divergence_score": -9.0,
+          "divergence_score": -10.9,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 15.6,
+            "flow_vs_rating": 11.0,
             "valuation_vs_growth": -1.0,
             "estimate_quality": -50.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 0.2,
+            "foreign_d20_billion": 0.1,
             "trust_d20_billion": 0.1,
-            "net20_billion": 0.3,
-            "mcap_billion": 192.0,
+            "net20_billion": 0.2,
+            "mcap_billion": 181,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 18.2,
+            "pe_fy1": 17.2,
             "eps_g2": 0.247,
             "beat_rate": 0.0,
             "dispersion_fy2": 0.0
           },
-          "narrative": "近20日外資+0.2億、投信+0.1億，合計買超約0.3億元（占市值+0.16%）；近期無分析師評等覆蓋。個股今年前瞻本益比18.2倍，同題材中位數18.2倍。明年EPS成長預估24.7%，較同題材中位數26.7%低。近8季財報優於預估比例0%，明年預估分歧度0%。"
+          "narrative": "近20日外資+0.1億、投信+0.1億，合計買超約0.2億元（占市值+0.11%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比17.2倍，同題材中位數17.2倍。明年EPS成長預估24.7%，較同題材中位數26.7%低。近8季財報優於預估比例0%，明年預估分歧度0%。"
+        },
+        {
+          "stock_id": "2404",
+          "name": "漢唐",
+          "divergence_score": -14.3,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -58.8,
+            "valuation_vs_growth": 18.6,
+            "estimate_quality": 12.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -18.1,
+            "trust_d20_billion": 6.9,
+            "net20_billion": -11.2,
+            "mcap_billion": 1906,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": 12.7,
+            "eps_g2": 0.285,
+            "beat_rate": 0.71,
+            "dispersion_fy2": 0.09
+          },
+          "narrative": "近20日外資-18.1億、投信+6.9億，合計賣超約11.2億元（占市值-0.59%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比12.7倍，同題材中位數17.2倍。明年EPS成長預估28.5%，較同題材中位數26.7%高。近8季財報優於預估比例71%，明年預估分歧度9%。"
         },
         {
           "stock_id": "6829",
           "name": "千附精密",
-          "divergence_score": -33.8,
+          "divergence_score": -23.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -43.9,
-            "valuation_vs_growth": -29.3,
+            "flow_vs_rating": -18.9,
+            "valuation_vs_growth": -29.0,
             "estimate_quality": -25.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.5,
+            "foreign_d20_billion": -0.2,
             "trust_d20_billion": 0.0,
-            "net20_billion": -0.5,
-            "mcap_billion": 114.0,
+            "net20_billion": -0.2,
+            "mcap_billion": 106,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 29.0,
+            "pe_fy1": 27.1,
             "eps_g2": 0.053,
             "beat_rate": 0.25,
             "dispersion_fy2": 0.0
           },
-          "narrative": "近20日外資-0.5億、投信+0.0億，合計賣超約0.5億元（占市值-0.44%）；近期無分析師評等覆蓋。個股今年前瞻本益比29.0倍，同題材中位數18.2倍。明年EPS成長預估5.3%，較同題材中位數26.7%低。近8季財報優於預估比例25%，明年預估分歧度0%。"
+          "narrative": "近20日外資-0.2億、投信+0.0億，合計賣超約0.2億元（占市值-0.19%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比27.1倍，同題材中位數17.2倍。明年EPS成長預估5.3%，較同題材中位數26.7%低。近8季財報優於預估比例25%，明年預估分歧度0%。"
         },
         {
           "stock_id": "2467",
           "name": "志聖",
-          "divergence_score": -42.6,
+          "divergence_score": -37.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -56.5,
-            "valuation_vs_growth": -13.7,
+            "flow_vs_rating": -45.2,
+            "valuation_vs_growth": -12.6,
             "estimate_quality": -53.0
           },
           "raw_facts": {
             "foreign_d20_billion": -2.3,
-            "trust_d20_billion": -1.4,
-            "net20_billion": -3.7,
-            "mcap_billion": 655.0,
+            "trust_d20_billion": -0.4,
+            "net20_billion": -2.7,
+            "mcap_billion": 598,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 25.1,
+            "pe_fy1": 23.0,
             "eps_g2": 0.268,
             "beat_rate": 0.6,
             "dispersion_fy2": 0.63
           },
-          "narrative": "近20日外資-2.3億、投信-1.4億，合計賣超約3.7億元（占市值-0.56%）；近期無分析師評等覆蓋。個股今年前瞻本益比25.1倍，同題材中位數18.2倍。明年EPS成長預估26.8%，較同題材中位數26.7%高。近8季財報優於預估比例60%，明年預估分歧度63%。"
+          "narrative": "近20日外資-2.3億、投信-0.4億，合計賣超約2.7億元（占市值-0.45%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比23.0倍，同題材中位數17.2倍。明年EPS成長預估26.8%，較同題材中位數26.7%高。近8季財報優於預估比例60%，明年預估分歧度63%。"
         },
         {
           "stock_id": "5536",
           "name": "聖暉*",
-          "divergence_score": -58.2,
+          "divergence_score": -58.3,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -100.0,
-            "valuation_vs_growth": 31.2,
+            "valuation_vs_growth": 31.1,
             "estimate_quality": -92.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -20.8,
-            "trust_d20_billion": 2.4,
-            "net20_billion": -18.4,
-            "mcap_billion": 955.0,
+            "foreign_d20_billion": -17.1,
+            "trust_d20_billion": -1.0,
+            "net20_billion": -18.1,
+            "mcap_billion": 908,
             "buy_ratio": 0.5,
             "analysts": 2,
             "buy_analysts_est": 1,
-            "pe_fy1": 11.2,
+            "pe_fy1": 10.6,
             "eps_g2": 0.267,
             "beat_rate": 0.12,
             "dispersion_fy2": 0.54
           },
-          "narrative": "近20日外資-20.8億、投信+2.4億，合計賣超約18.4億元（占市值-1.93%）；30日內2家分析師中1家喊買（看多比例50%）。個股今年前瞻本益比11.2倍，同題材中位數18.2倍。明年EPS成長預估26.7%，較同題材中位數26.7%持平。近8季財報優於預估比例12%，明年預估分歧度54%。"
+          "narrative": "近20日外資-17.1億、投信-1.0億，合計賣超約18.1億元（占市值-1.99%）；30日內2家分析師中1家喊買（看多比例50%）。個股今年前瞻本益比10.6倍，同題材中位數17.2倍。明年EPS成長預估26.7%，較同題材中位數26.7%低。近8季財報優於預估比例12%，明年預估分歧度54%。"
         }
       ]
     },
     {
       "industry": "檢驗設備",
-      "industry_type": "concept",
-      "industry_pe_median": 27.7,
+      "industry_pe_median": 25.4,
       "industry_eps_growth_median": 0.49,
-      "industry_foreign_20d_billion": -8.3,
+      "industry_foreign_20d_billion": 0.8,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
@@ -836,14 +828,14 @@
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 100,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
-            "foreign_d20_billion": 1.9,
+            "foreign_d20_billion": 2.1,
             "trust_d20_billion": 0.0,
-            "net20_billion": 1.9,
-            "mcap_billion": 161.0,
+            "net20_billion": 2.1,
+            "mcap_billion": 148,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
@@ -852,57 +844,57 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資+1.9億、投信+0.0億，合計買超約1.9億元（占市值+1.18%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。"
-        },
-        {
-          "stock_id": "3587",
-          "name": "閎康",
-          "divergence_score": -36.5,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": -64.9,
-            "valuation_vs_growth": 15.1,
-            "estimate_quality": -50.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -1.0,
-            "trust_d20_billion": 0.0,
-            "net20_billion": -1.0,
-            "mcap_billion": 154.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": 18.8,
-            "eps_g2": 0.318,
-            "beat_rate": 0.0,
-            "dispersion_fy2": 0.0
-          },
-          "narrative": "近20日外資-1.0億、投信+0.0億，合計賣超約1.0億元（占市值-0.65%）；近期無分析師評等覆蓋。個股今年前瞻本益比18.8倍，同題材中位數27.7倍。明年EPS成長預估31.8%，較同題材中位數49.0%低。近8季財報優於預估比例0%，明年預估分歧度0%。"
+          "narrative": "近20日外資+2.1億、投信+0.0億，合計買超約2.1億元（占市值+1.42%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"
         },
         {
           "stock_id": "3131",
           "name": "弘塑",
-          "divergence_score": -65.1,
+          "divergence_score": -15.1,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -146.1,
-            "valuation_vs_growth": 2.8,
+            "flow_vs_rating": -20.8,
+            "valuation_vs_growth": 2.6,
             "estimate_quality": -25.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -2.2,
+            "foreign_d20_billion": 4.5,
             "trust_d20_billion": -0.4,
-            "net20_billion": -2.6,
-            "mcap_billion": 564.0,
+            "net20_billion": 4.1,
+            "mcap_billion": 518,
             "buy_ratio": 1.0,
             "analysts": 2,
             "buy_analysts_est": 2,
-            "pe_fy1": 29.3,
+            "pe_fy1": 27.0,
             "eps_g2": 0.601,
             "beat_rate": 0.62,
             "dispersion_fy2": 0.37
           },
-          "narrative": "近20日外資-2.2億、投信-0.4億，合計賣超約2.6億元（占市值-0.46%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比29.3倍，同題材中位數27.7倍。明年EPS成長預估60.1%，較同題材中位數49.0%高。近8季財報優於預估比例62%，明年預估分歧度37%。"
+          "narrative": "近20日外資+4.5億、投信-0.4億，合計買超約4.1億元（占市值+0.79%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比27.0倍，同題材中位數25.4倍。明年EPS成長預估60.1%，較同題材中位數49.0%高。近8季財報優於預估比例62%，明年預估分歧度37%。"
+        },
+        {
+          "stock_id": "3587",
+          "name": "閎康",
+          "divergence_score": -35.9,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -63.4,
+            "valuation_vs_growth": 14.8,
+            "estimate_quality": -50.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -0.9,
+            "trust_d20_billion": 0.0,
+            "net20_billion": -0.9,
+            "mcap_billion": 142,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": 17.3,
+            "eps_g2": 0.318,
+            "beat_rate": 0.0,
+            "dispersion_fy2": 0.0
+          },
+          "narrative": "近20日外資-0.9億、投信+0.0億，合計賣超約0.9億元（占市值-0.63%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比17.3倍，同題材中位數25.4倍。明年EPS成長預估31.8%，較同題材中位數49.0%低。近8季財報優於預估比例0%，明年預估分歧度0%。"
         },
         {
           "stock_id": "3583",
@@ -915,104 +907,103 @@
             "estimate_quality": -61.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -7.0,
-            "trust_d20_billion": -3.9,
-            "net20_billion": -10.9,
-            "mcap_billion": 452.0,
+            "foreign_d20_billion": -4.9,
+            "trust_d20_billion": -3.6,
+            "net20_billion": -8.5,
+            "mcap_billion": 415,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 27.7,
+            "pe_fy1": 25.4,
             "eps_g2": 0.49,
             "beat_rate": 0.14,
             "dispersion_fy2": 0.25
           },
-          "narrative": "近20日外資-7.0億、投信-3.9億，合計賣超約10.9億元（占市值-2.41%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比27.7倍，同題材中位數27.7倍。明年EPS成長預估49.0%，較同題材中位數49.0%持平。近8季財報優於預估比例14%，明年預估分歧度25%。"
+          "narrative": "近20日外資-4.9億、投信-3.6億，合計賣超約8.5億元（占市值-2.05%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比25.4倍，同題材中位數25.4倍。明年EPS成長預估49.0%，較同題材中位數49.0%低。近8季財報優於預估比例14%，明年預估分歧度25%。"
         }
       ]
     },
     {
       "industry": "半導體通路商",
-      "industry_type": "concept",
-      "industry_pe_median": 7.8,
+      "industry_pe_median": 7.6,
       "industry_eps_growth_median": 0.126,
-      "industry_foreign_20d_billion": 6.1,
+      "industry_foreign_20d_billion": -5.5,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "3702",
           "name": "大聯大",
-          "divergence_score": 29.3,
+          "divergence_score": 29.7,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 100,
-            "valuation_vs_growth": 8.3,
+            "valuation_vs_growth": 9.6,
             "estimate_quality": -44.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 27.2,
-            "trust_d20_billion": 4.7,
-            "net20_billion": 31.9,
-            "mcap_billion": 1775.0,
+            "foreign_d20_billion": 21.1,
+            "trust_d20_billion": 3.7,
+            "net20_billion": 24.8,
+            "mcap_billion": 1699,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 6.4,
+            "pe_fy1": 6.1,
             "eps_g2": 0.073,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.44
           },
-          "narrative": "近20日外資+27.2億、投信+4.7億，合計買超約31.9億元（占市值+1.80%）；近期無分析師評等覆蓋。個股今年前瞻本益比6.4倍，同題材中位數7.8倍。明年EPS成長預估7.3%，較同題材中位數12.6%低。近8季財報優於預估比例50%，明年預估分歧度44%。"
+          "narrative": "近20日外資+21.1億、投信+3.7億，合計買超約24.8億元（占市值+1.46%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比6.1倍，同題材中位數7.6倍。明年EPS成長預估7.3%，較同題材中位數12.6%低。近8季財報優於預估比例50%，明年預估分歧度44%。"
         },
         {
           "stock_id": "5434",
           "name": "崇越",
-          "divergence_score": -4.8,
+          "divergence_score": -10.6,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 4.7,
+            "flow_vs_rating": -9.7,
             "valuation_vs_growth": -28.3,
             "estimate_quality": 6.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 3.1,
-            "trust_d20_billion": -2.6,
-            "net20_billion": 0.5,
-            "mcap_billion": 1061.0,
+            "foreign_d20_billion": 0.3,
+            "trust_d20_billion": -1.3,
+            "net20_billion": -1.0,
+            "mcap_billion": 1030,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 18.0,
+            "pe_fy1": 17.5,
             "eps_g2": 0.126,
             "beat_rate": 0.62,
             "dispersion_fy2": 0.06
           },
-          "narrative": "近20日外資+3.1億、投信-2.6億，合計買超約0.5億元（占市值+0.05%）；近期無分析師評等覆蓋。個股今年前瞻本益比18.0倍，同題材中位數7.8倍。明年EPS成長預估12.6%，較同題材中位數12.6%持平。近8季財報優於預估比例62%，明年預估分歧度6%。"
+          "narrative": "近20日外資+0.3億、投信-1.3億，合計賣超約1.0億元（占市值-0.10%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比17.5倍，同題材中位數7.6倍。明年EPS成長預估12.6%，較同題材中位數12.6%低。近8季財報優於預估比例62%，明年預估分歧度6%。"
         },
         {
           "stock_id": "3036",
           "name": "文曄",
-          "divergence_score": -25.9,
+          "divergence_score": -28.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -69.7,
+            "flow_vs_rating": -76.7,
             "valuation_vs_growth": 2.7,
             "estimate_quality": 4.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -19.2,
-            "trust_d20_billion": 0.0,
-            "net20_billion": -19.2,
-            "mcap_billion": 2753.0,
+            "foreign_d20_billion": -21.0,
+            "trust_d20_billion": 0.2,
+            "net20_billion": -20.8,
+            "mcap_billion": 2713,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 7.8,
+            "pe_fy1": 7.6,
             "eps_g2": 0.18,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.21
           },
-          "narrative": "近20日外資-19.2億、投信+0.0億，合計賣超約19.2億元（占市值-0.70%）；近期無分析師評等覆蓋。個股今年前瞻本益比7.8倍，同題材中位數7.8倍。明年EPS成長預估18.0%，較同題材中位數12.6%高。近8季財報優於預估比例75%，明年預估分歧度21%。"
+          "narrative": "近20日外資-21.0億、投信+0.2億，合計賣超約20.8億元（占市值-0.77%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比7.6倍，同題材中位數7.6倍。明年EPS成長預估18.0%，較同題材中位數12.6%高。近8季財報優於預估比例75%，明年預估分歧度21%。"
         },
         {
           "stock_id": "8112",
@@ -1021,14 +1012,14 @@
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -100,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
-            "foreign_d20_billion": -5.0,
-            "trust_d20_billion": -1.3,
-            "net20_billion": -6.3,
-            "mcap_billion": 462.0,
+            "foreign_d20_billion": -5.9,
+            "trust_d20_billion": -1.8,
+            "net20_billion": -7.7,
+            "mcap_billion": 444,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
@@ -1037,227 +1028,225 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資-5.0億、投信-1.3億，合計賣超約6.3億元（占市值-1.36%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。"
+          "narrative": "近20日外資-5.9億、投信-1.8億，合計賣超約7.7億元（占市值-1.73%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"
         }
       ]
     },
     {
       "industry": "IP/ASIC/IC設計",
-      "industry_type": "concept",
-      "industry_pe_median": 69.5,
+      "industry_pe_median": 62.7,
       "industry_eps_growth_median": 0.82,
-      "industry_foreign_20d_billion": 30.3,
+      "industry_foreign_20d_billion": 44.8,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "3035",
           "name": "智原",
-          "divergence_score": 28.7,
+          "divergence_score": 28.5,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 133.3,
-            "valuation_vs_growth": 6.0,
+            "valuation_vs_growth": 5.4,
             "estimate_quality": -88.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 20.8,
-            "trust_d20_billion": 1.3,
-            "net20_billion": 22.1,
-            "mcap_billion": 546.0,
-            "buy_ratio": 0.3333,
+            "foreign_d20_billion": 15.9,
+            "trust_d20_billion": 1.2,
+            "net20_billion": 17.1,
+            "mcap_billion": 498,
+            "buy_ratio": 0.3333333333333333,
             "analysts": 3,
             "buy_analysts_est": 1,
-            "pe_fy1": 62.1,
+            "pe_fy1": 56.6,
             "eps_g2": 0.82,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.76
           },
-          "narrative": "近20日外資+20.8億、投信+1.3億，合計買超約22.1億元（占市值+4.05%）；30日內3家分析師中1家喊買（看多比例33%）。個股今年前瞻本益比62.1倍，同題材中位數69.5倍。明年EPS成長預估82.0%，較同題材中位數82.0%持平。近8季財報優於預估比例38%，明年預估分歧度76%。"
+          "narrative": "近20日外資+15.9億、投信+1.2億，合計買超約17.1億元（占市值+3.43%）；30日內3家分析師中1家喊買（看多比例33%）。個股今年前瞻本益比56.6倍，同題材中位數62.7倍。明年EPS成長預估82.0%，較同題材中位數82.0%低。近8季財報優於預估比例38%，明年預估分歧度76%。"
         },
         {
           "stock_id": "3661",
           "name": "世芯-KY",
-          "divergence_score": 16.6,
+          "divergence_score": 15.5,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 0.0,
-            "valuation_vs_growth": 70.2,
+            "valuation_vs_growth": 66.7,
             "estimate_quality": -15.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -37.0,
-            "trust_d20_billion": 97.6,
-            "net20_billion": 60.6,
-            "mcap_billion": 2927.0,
+            "foreign_d20_billion": -29.7,
+            "trust_d20_billion": 91.1,
+            "net20_billion": 61.4,
+            "mcap_billion": 2707,
             "buy_ratio": 1.0,
             "analysts": 2,
             "buy_analysts_est": 2,
-            "pe_fy1": 23.9,
+            "pe_fy1": 22.1,
             "eps_g2": 0.317,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.4
           },
-          "narrative": "近20日外資-37.0億、投信+97.6億，合計買超約60.6億元（占市值+2.07%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比23.9倍，同題材中位數69.5倍。明年EPS成長預估31.7%，較同題材中位數82.0%低。近8季財報優於預估比例75%，明年預估分歧度40%。"
+          "narrative": "近20日外資-29.7億、投信+91.1億，合計買超約61.4億元（占市值+2.27%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比22.1倍，同題材中位數62.7倍。明年EPS成長預估31.7%，較同題材中位數82.0%低。近8季財報優於預估比例75%，明年預估分歧度40%。"
         },
         {
           "stock_id": "3443",
           "name": "創意",
-          "divergence_score": 11.0,
+          "divergence_score": 5.8,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 80.0,
-            "valuation_vs_growth": -3.9,
-            "estimate_quality": -66.0
+            "flow_vs_rating": 66.7,
+            "valuation_vs_growth": -4.7,
+            "estimate_quality": -65.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 32.2,
-            "trust_d20_billion": 93.2,
-            "net20_billion": 125.4,
-            "mcap_billion": 9763.0,
-            "buy_ratio": 0.6,
-            "analysts": 5,
-            "buy_analysts_est": 3,
-            "pe_fy1": 134.6,
-            "eps_g2": 1.225,
+            "foreign_d20_billion": 34.6,
+            "trust_d20_billion": 99.2,
+            "net20_billion": 133.8,
+            "mcap_billion": 9106,
+            "buy_ratio": 0.6666666666666666,
+            "analysts": 6,
+            "buy_analysts_est": 4,
+            "pe_fy1": 124.8,
+            "eps_g2": 1.224,
             "beat_rate": 0.62,
-            "dispersion_fy2": 0.78
+            "dispersion_fy2": 0.77
           },
-          "narrative": "近20日外資+32.2億、投信+93.2億，合計買超約125.4億元（占市值+1.28%）；30日內5家分析師中3家喊買（看多比例60%）。個股今年前瞻本益比134.6倍，同題材中位數69.5倍。明年EPS成長預估122.5%，較同題材中位數82.0%高。近8季財報優於預估比例62%，明年預估分歧度78%。"
+          "narrative": "近20日外資+34.6億、投信+99.2億，合計買超約133.8億元（占市值+1.47%）；30日內6家分析師中4家喊買（看多比例67%）。個股今年前瞻本益比124.8倍，同題材中位數62.7倍。明年EPS成長預估122.4%，較同題材中位數82.0%高。近8季財報優於預估比例62%，明年預估分歧度77%。"
         },
         {
           "stock_id": "3529",
           "name": "力旺",
-          "divergence_score": -28.6,
+          "divergence_score": -27.5,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -7.8,
+            "flow_vs_rating": -5.0,
             "valuation_vs_growth": -24.9,
             "estimate_quality": -60.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 16.3,
-            "trust_d20_billion": -17.7,
-            "net20_billion": -1.4,
-            "mcap_billion": 1789.0,
+            "foreign_d20_billion": 24.4,
+            "trust_d20_billion": -25.2,
+            "net20_billion": -0.8,
+            "mcap_billion": 1613,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 69.5,
+            "pe_fy1": 62.7,
             "eps_g2": 0.322,
             "beat_rate": 0.25,
             "dispersion_fy2": 0.35
           },
-          "narrative": "近20日外資+16.3億、投信-17.7億，合計賣超約1.4億元（占市值-0.08%）；近期無分析師評等覆蓋。個股今年前瞻本益比69.5倍，同題材中位數69.5倍。明年EPS成長預估32.2%，較同題材中位數82.0%低。近8季財報優於預估比例25%，明年預估分歧度35%。"
+          "narrative": "近20日外資+24.4億、投信-25.2億，合計賣超約0.8億元（占市值-0.05%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比62.7倍，同題材中位數62.7倍。明年EPS成長預估32.2%，較同題材中位數82.0%低。近8季財報優於預估比例25%，明年預估分歧度35%。"
         },
         {
           "stock_id": "6643",
           "name": "M31",
-          "divergence_score": -78.5,
+          "divergence_score": -46.2,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100,
-            "valuation_vs_growth": 4.5,
+            "flow_vs_rating": -18.4,
+            "valuation_vs_growth": 3.5,
             "estimate_quality": -133.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -2.0,
+            "foreign_d20_billion": -0.4,
             "trust_d20_billion": 0.1,
-            "net20_billion": -1.9,
-            "mcap_billion": 175.0,
+            "net20_billion": -0.3,
+            "mcap_billion": 163,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 101.4,
+            "pe_fy1": 94.4,
             "eps_g2": 1.225,
             "beat_rate": 0.12,
             "dispersion_fy2": 0.95
           },
-          "narrative": "近20日外資-2.0億、投信+0.1億，合計賣超約1.9億元（占市值-1.09%）；近期無分析師評等覆蓋。個股今年前瞻本益比101.4倍，同題材中位數69.5倍。明年EPS成長預估122.5%，較同題材中位數82.0%高。近8季財報優於預估比例12%，明年預估分歧度95%。"
+          "narrative": "近20日外資-0.4億、投信+0.1億，合計賣超約0.3億元（占市值-0.18%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比94.4倍，同題材中位數62.7倍。明年EPS成長預估122.5%，較同題材中位數82.0%高。近8季財報優於預估比例12%，明年預估分歧度95%。"
         }
       ]
     },
     {
       "industry": "晶圓製造",
-      "industry_type": "concept",
-      "industry_pe_median": 71.55,
-      "industry_eps_growth_median": 0.458,
-      "industry_foreign_20d_billion": -3736.3,
+      "industry_pe_median": 64.45,
+      "industry_eps_growth_median": 0.45799999999999996,
+      "industry_foreign_20d_billion": -4081.6,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "3532",
           "name": "台勝科",
-          "divergence_score": -1.4,
-          "direction": "overvalued_gap",
+          "divergence_score": 16.7,
+          "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": -19.1,
-            "valuation_vs_growth": 71.0,
+            "flow_vs_rating": 26.1,
+            "valuation_vs_growth": 70.9,
             "estimate_quality": -50.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -2.1,
-            "trust_d20_billion": -0.5,
-            "net20_billion": -2.6,
-            "mcap_billion": 1359.0,
+            "foreign_d20_billion": 3.1,
+            "trust_d20_billion": 0.1,
+            "net20_billion": 3.2,
+            "mcap_billion": 1226,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 159.9,
+            "pe_fy1": 144.2,
             "eps_g2": 2.43,
             "beat_rate": 0.0,
             "dispersion_fy2": 0.0
           },
-          "narrative": "近20日外資-2.1億、投信-0.5億，合計賣超約2.6億元（占市值-0.19%）；近期無分析師評等覆蓋。個股今年前瞻本益比159.9倍，同題材中位數71.6倍。明年EPS成長預估243.0%，較同題材中位數45.8%高。近8季財報優於預估比例0%，明年預估分歧度0%。"
+          "narrative": "近20日外資+3.1億、投信+0.1億，合計買超約3.2億元（占市值+0.26%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比144.2倍，同題材中位數64.5倍。明年EPS成長預估243.0%，較同題材中位數45.8%高。近8季財報優於預估比例0%，明年預估分歧度0%。"
         },
         {
           "stock_id": "2330",
           "name": "台積電",
-          "divergence_score": -4.7,
+          "divergence_score": -11.1,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -114.4,
-            "valuation_vs_growth": 111.8,
+            "flow_vs_rating": -119.5,
+            "valuation_vs_growth": 97.3,
             "estimate_quality": 25.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -4022.8,
-            "trust_d20_billion": 633.2,
-            "net20_billion": -3389.6,
-            "mcap_billion": 604224.0,
-            "buy_ratio": 0.7917,
+            "foreign_d20_billion": -4301.9,
+            "trust_d20_billion": 663.7,
+            "net20_billion": -3638.2,
+            "mcap_billion": 595148,
+            "buy_ratio": 0.7916666666666666,
             "analysts": 24,
             "buy_analysts_est": 19,
-            "pe_fy1": 21.3,
+            "pe_fy1": 21.0,
             "eps_g2": 0.335,
             "beat_rate": 1.0,
             "dispersion_fy2": 0.25
           },
-          "narrative": "近20日外資-4022.8億、投信+633.2億，合計賣超約3389.6億元（占市值-0.56%）；30日內24家分析師中19家喊買（看多比例79%）。個股今年前瞻本益比21.3倍，同題材中位數71.6倍。明年EPS成長預估33.5%，較同題材中位數45.8%低。近8季財報優於預估比例100%，明年預估分歧度25%。"
+          "narrative": "近20日外資-4301.9億、投信+663.7億，合計賣超約3638.2億元（占市值-0.61%）；30日內24家分析師中19家喊買（看多比例79%）。個股今年前瞻本益比21.0倍，同題材中位數64.5倍。明年EPS成長預估33.5%，較同題材中位數45.8%低。近8季財報優於預估比例100%，明年預估分歧度25%。"
         },
         {
           "stock_id": "3105",
           "name": "穩懋",
-          "divergence_score": -14.0,
+          "divergence_score": -15.4,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 28.6,
+            "flow_vs_rating": 25.0,
             "valuation_vs_growth": -3.7,
             "estimate_quality": -81.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 291.5,
-            "trust_d20_billion": -65.0,
-            "net20_billion": 226.5,
-            "mcap_billion": 2493.0,
-            "buy_ratio": 0.8571,
-            "analysts": 7,
-            "buy_analysts_est": 6,
-            "pe_fy1": 67.2,
+            "foreign_d20_billion": 225.5,
+            "trust_d20_billion": -61.9,
+            "net20_billion": 163.6,
+            "mcap_billion": 2247,
+            "buy_ratio": 0.875,
+            "analysts": 8,
+            "buy_analysts_est": 7,
+            "pe_fy1": 60.6,
             "eps_g2": 0.32,
             "beat_rate": 0.62,
             "dispersion_fy2": 0.93
           },
-          "narrative": "近20日外資+291.5億、投信-65.0億，合計買超約226.5億元（占市值+9.09%）；30日內7家分析師中6家喊買（看多比例86%）。個股今年前瞻本益比67.2倍，同題材中位數71.6倍。明年EPS成長預估32.0%，較同題材中位數45.8%低。近8季財報優於預估比例62%，明年預估分歧度93%。"
+          "narrative": "近20日外資+225.5億、投信-61.9億，合計買超約163.6億元（占市值+7.28%）；30日內8家分析師中7家喊買（看多比例88%）。個股今年前瞻本益比60.6倍，同題材中位數64.5倍。明年EPS成長預估32.0%，較同題材中位數45.8%低。近8季財報優於預估比例62%，明年預估分歧度93%。"
         },
         {
           "stock_id": "2455",
@@ -1270,120 +1259,69 @@
             "estimate_quality": -94.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -2.9,
-            "trust_d20_billion": -16.5,
-            "net20_billion": -19.4,
-            "mcap_billion": 831.0,
-            "buy_ratio": 0.6667,
+            "foreign_d20_billion": -8.3,
+            "trust_d20_billion": -10.3,
+            "net20_billion": -18.6,
+            "mcap_billion": 749,
+            "buy_ratio": 0.6666666666666666,
             "analysts": 3,
             "buy_analysts_est": 2,
-            "pe_fy1": 75.9,
+            "pe_fy1": 68.3,
             "eps_g2": 0.581,
             "beat_rate": 0.25,
             "dispersion_fy2": 0.69
           },
-          "narrative": "近20日外資-2.9億、投信-16.5億，合計賣超約19.4億元（占市值-2.33%）；30日內3家分析師中2家喊買（看多比例67%）。個股今年前瞻本益比75.9倍，同題材中位數71.6倍。明年EPS成長預估58.1%，較同題材中位數45.8%高。近8季財報優於預估比例25%，明年預估分歧度69%。"
+          "narrative": "近20日外資-8.3億、投信-10.3億，合計賣超約18.6億元（占市值-2.48%）；30日內3家分析師中2家喊買（看多比例67%）。個股今年前瞻本益比68.3倍，同題材中位數64.5倍。明年EPS成長預估58.1%，較同題材中位數45.8%高。近8季財報優於預估比例25%，明年預估分歧度69%。"
         }
       ]
     },
     {
       "industry": "軍工",
-      "industry_type": "concept",
-      "industry_pe_median": 20.75,
-      "industry_eps_growth_median": 0.012,
-      "industry_foreign_20d_billion": 5.0,
+      "industry_pe_median": 19.7,
+      "industry_eps_growth_median": 0.012000000000000004,
+      "industry_foreign_20d_billion": 5.5,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2634",
           "name": "漢翔",
-          "divergence_score": 11.1,
+          "divergence_score": 9.3,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 82.3,
-            "valuation_vs_growth": -3.7,
+            "flow_vs_rating": 77.7,
+            "valuation_vs_growth": -3.5,
             "estimate_quality": -69.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 4.6,
-            "trust_d20_billion": 0.0,
-            "net20_billion": 4.6,
-            "mcap_billion": 559.0,
+            "foreign_d20_billion": 4.3,
+            "trust_d20_billion": -0.2,
+            "net20_billion": 4.1,
+            "mcap_billion": 528,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 25.9,
+            "pe_fy1": 24.5,
             "eps_g2": 0.137,
             "beat_rate": 0.25,
             "dispersion_fy2": 0.44
           },
-          "narrative": "近20日外資+4.6億、投信+0.0億，合計買超約4.6億元（占市值+0.82%）；近期無分析師評等覆蓋。個股今年前瞻本益比25.9倍，同題材中位數20.8倍。明年EPS成長預估13.7%，較同題材中位數1.2%高。近8季財報優於預估比例25%，明年預估分歧度44%。"
-        },
-        {
-          "stock_id": "6753",
-          "name": "龍德造船",
-          "divergence_score": 0.7,
-          "direction": "undervalued_gap",
-          "components": {
-            "flow_vs_rating": -43.5,
-            "valuation_vs_growth": 10.3,
-            "estimate_quality": 50.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -0.6,
-            "trust_d20_billion": 0.0,
-            "net20_billion": -0.6,
-            "mcap_billion": 138.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": 15.6,
-            "eps_g2": -0.113,
-            "beat_rate": 1.0,
-            "dispersion_fy2": 0.0
-          },
-          "narrative": "近20日外資-0.6億、投信+0.0億，合計賣超約0.6億元（占市值-0.43%）；近期無分析師評等覆蓋。個股今年前瞻本益比15.6倍，同題材中位數20.8倍。明年EPS成長預估-11.3%，較同題材中位數1.2%低。近8季財報優於預估比例100%，明年預估分歧度0%。"
-        },
-        {
-          "stock_id": "3718",
-          "name": "中光電投控",
-          "divergence_score": -4.0,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": 49.3,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": -79.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": 1.0,
-            "trust_d20_billion": 0.0,
-            "net20_billion": 1.0,
-            "mcap_billion": 203.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": null,
-            "eps_g2": null,
-            "beat_rate": 0.25,
-            "dispersion_fy2": 0.54
-          },
-          "narrative": "近20日外資+1.0億、投信+0.0億，合計買超約1.0億元（占市值+0.49%）；近期無分析師評等覆蓋。近8季財報優於預估比例25%，明年預估分歧度54%。"
+          "narrative": "近20日外資+4.3億、投信-0.2億，合計買超約4.1億元（占市值+0.78%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比24.5倍，同題材中位數19.7倍。明年EPS成長預估13.7%，較同題材中位數1.2%高。近8季財報優於預估比例25%，明年預估分歧度44%。"
         },
         {
           "stock_id": "8033",
           "name": "雷虎",
-          "divergence_score": -9.4,
-          "direction": "overvalued_gap",
+          "divergence_score": 1.7,
+          "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": -23.6,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "flow_vs_rating": 4.1,
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.0,
+            "foreign_d20_billion": 0.7,
             "trust_d20_billion": -0.6,
-            "net20_billion": -0.6,
-            "mcap_billion": 254.0,
+            "net20_billion": 0.1,
+            "mcap_billion": 242,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
@@ -1392,202 +1330,250 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資+-0.0億、投信-0.6億，合計賣超約0.6億元（占市值-0.24%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。"
+          "narrative": "近20日外資+0.7億、投信-0.6億，合計買超約0.1億元（占市值+0.04%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"
+        },
+        {
+          "stock_id": "3718",
+          "name": "中光電投控",
+          "divergence_score": 1.4,
+          "direction": "undervalued_gap",
+          "components": {
+            "flow_vs_rating": 62.8,
+            "valuation_vs_growth": 0,
+            "estimate_quality": -79.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": 1.2,
+            "trust_d20_billion": 0.0,
+            "net20_billion": 1.2,
+            "mcap_billion": 191,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": null,
+            "eps_g2": null,
+            "beat_rate": 0.25,
+            "dispersion_fy2": 0.54
+          },
+          "narrative": "近20日外資+1.2億、投信+0.0億，合計買超約1.2億元（占市值+0.63%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例25%，明年預估分歧度54%。"
+        },
+        {
+          "stock_id": "6753",
+          "name": "龍德造船",
+          "divergence_score": -3.4,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -53.4,
+            "valuation_vs_growth": 9.9,
+            "estimate_quality": 50.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -0.7,
+            "trust_d20_billion": 0.0,
+            "net20_billion": -0.7,
+            "mcap_billion": 131,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": 14.9,
+            "eps_g2": -0.113,
+            "beat_rate": 1.0,
+            "dispersion_fy2": 0.0
+          },
+          "narrative": "近20日外資-0.7億、投信+0.0億，合計賣超約0.7億元（占市值-0.53%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比14.9倍，同題材中位數19.7倍。明年EPS成長預估-11.3%，較同題材中位數1.2%低。近8季財報優於預估比例100%，明年預估分歧度0%。"
         }
       ]
     },
     {
       "industry": "重電",
-      "industry_type": "concept",
-      "industry_pe_median": 23.35,
-      "industry_eps_growth_median": 0.257,
-      "industry_foreign_20d_billion": -21.1,
+      "industry_pe_median": 22.15,
+      "industry_eps_growth_median": 0.2565,
+      "industry_foreign_20d_billion": -17.9,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "1513",
           "name": "中興電",
-          "divergence_score": 13.6,
+          "divergence_score": 11.9,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 38.7,
-            "valuation_vs_growth": 13.8,
+            "flow_vs_rating": 34.9,
+            "valuation_vs_growth": 13.0,
             "estimate_quality": -20.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 3.7,
+            "foreign_d20_billion": 3.3,
             "trust_d20_billion": -0.7,
-            "net20_billion": 3.0,
-            "mcap_billion": 775.0,
+            "net20_billion": 2.6,
+            "mcap_billion": 745,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 17.2,
+            "pe_fy1": 16.5,
             "eps_g2": 0.175,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.2
           },
-          "narrative": "近20日外資+3.7億、投信-0.7億，合計買超約3.0億元（占市值+0.39%）；近期無分析師評等覆蓋。個股今年前瞻本益比17.2倍，同題材中位數23.4倍。明年EPS成長預估17.5%，較同題材中位數25.7%低。近8季財報優於預估比例50%，明年預估分歧度20%。"
+          "narrative": "近20日外資+3.3億、投信-0.7億，合計買超約2.6億元（占市值+0.35%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比16.5倍，同題材中位數22.1倍。明年EPS成長預估17.5%，較同題材中位數25.7%低。近8季財報優於預估比例50%，明年預估分歧度20%。"
         },
         {
           "stock_id": "1503",
           "name": "士電",
-          "divergence_score": 1.0,
-          "direction": "undervalued_gap",
+          "divergence_score": -1.5,
+          "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 11.4,
-            "valuation_vs_growth": 16.3,
+            "flow_vs_rating": 5.4,
+            "valuation_vs_growth": 15.8,
             "estimate_quality": -28.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 0.9,
+            "foreign_d20_billion": 0.3,
             "trust_d20_billion": 0.2,
-            "net20_billion": 1.1,
-            "mcap_billion": 966.0,
+            "net20_billion": 0.5,
+            "mcap_billion": 922,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 21.1,
+            "pe_fy1": 20.2,
             "eps_g2": 0.476,
             "beat_rate": 0.33,
             "dispersion_fy2": 0.11
           },
-          "narrative": "近20日外資+0.9億、投信+0.2億，合計買超約1.1億元（占市值+0.11%）；近期無分析師評等覆蓋。個股今年前瞻本益比21.1倍，同題材中位數23.4倍。明年EPS成長預估47.6%，較同題材中位數25.7%高。近8季財報優於預估比例33%，明年預估分歧度11%。"
+          "narrative": "近20日外資+0.3億、投信+0.2億，合計買超約0.5億元（占市值+0.05%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比20.2倍，同題材中位數22.1倍。明年EPS成長預估47.6%，較同題材中位數25.7%高。近8季財報優於預估比例33%，明年預估分歧度11%。"
         },
         {
           "stock_id": "1514",
           "name": "亞力",
-          "divergence_score": -18.7,
+          "divergence_score": -23.6,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -7.7,
-            "valuation_vs_growth": -6.0,
+            "flow_vs_rating": -20.3,
+            "valuation_vs_growth": -5.6,
             "estimate_quality": -46.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.2,
-            "trust_d20_billion": -0.0,
-            "net20_billion": -0.2,
-            "mcap_billion": 261.0,
+            "foreign_d20_billion": -0.5,
+            "trust_d20_billion": 0.0,
+            "net20_billion": -0.5,
+            "mcap_billion": 246,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 25.6,
+            "pe_fy1": 24.1,
             "eps_g2": 0.225,
             "beat_rate": 0.12,
             "dispersion_fy2": 0.08
           },
-          "narrative": "近20日外資-0.2億、投信+-0.0億，合計賣超約0.2億元（占市值-0.08%）；近期無分析師評等覆蓋。個股今年前瞻本益比25.6倍，同題材中位數23.4倍。明年EPS成長預估22.5%，較同題材中位數25.7%低。近8季財報優於預估比例12%，明年預估分歧度8%。"
+          "narrative": "近20日外資-0.5億、投信+0.0億，合計賣超約0.5億元（占市值-0.20%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比24.1倍，同題材中位數22.1倍。明年EPS成長預估22.5%，較同題材中位數25.7%低。近8季財報優於預估比例12%，明年預估分歧度8%。"
         },
         {
           "stock_id": "1519",
           "name": "華城",
-          "divergence_score": -53.4,
+          "divergence_score": -53.2,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -100,
-            "valuation_vs_growth": -9.8,
+            "valuation_vs_growth": -9.2,
             "estimate_quality": -35.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -25.5,
+            "foreign_d20_billion": -21.0,
             "trust_d20_billion": -1.5,
-            "net20_billion": -27.0,
-            "mcap_billion": 1928.0,
+            "net20_billion": -22.5,
+            "mcap_billion": 1803,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 30.2,
+            "pe_fy1": 28.2,
             "eps_g2": 0.288,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.23
           },
-          "narrative": "近20日外資-25.5億、投信-1.5億，合計賣超約27.0億元（占市值-1.40%）；近期無分析師評等覆蓋。個股今年前瞻本益比30.2倍，同題材中位數23.4倍。明年EPS成長預估28.8%，較同題材中位數25.7%高。近8季財報優於預估比例38%，明年預估分歧度23%。"
+          "narrative": "近20日外資-21.0億、投信-1.5億，合計賣超約22.5億元（占市值-1.25%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比28.2倍，同題材中位數22.1倍。明年EPS成長預估28.8%，較同題材中位數25.7%高。近8季財報優於預估比例38%，明年預估分歧度23%。"
         }
       ]
     },
     {
       "industry": "記憶體",
-      "industry_type": "concept",
-      "industry_pe_median": 4.9,
+      "industry_pe_median": 4.5,
       "industry_eps_growth_median": 0.746,
-      "industry_foreign_20d_billion": -20.7,
+      "industry_foreign_20d_billion": -104.4,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2451",
           "name": "創見",
-          "divergence_score": 37.5,
+          "divergence_score": 36.3,
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 100,
-            "valuation_vs_growth": -22.3,
+            "valuation_vs_growth": -26.3,
             "estimate_quality": 14.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 6.9,
-            "trust_d20_billion": 7.2,
-            "net20_billion": 14.1,
-            "mcap_billion": 1229.0,
+            "foreign_d20_billion": 7.0,
+            "trust_d20_billion": 7.0,
+            "net20_billion": 14.0,
+            "mcap_billion": 1178,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 3.2,
+            "pe_fy1": 3.1,
             "eps_g2": -0.232,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.11
           },
-          "narrative": "近20日外資+6.9億、投信+7.2億，合計買超約14.1億元（占市值+1.15%）；近期無分析師評等覆蓋。個股今年前瞻本益比3.2倍，同題材中位數4.9倍。明年EPS成長預估-23.2%，較同題材中位數74.6%低。近8季財報優於預估比例75%，明年預估分歧度11%。"
+          "narrative": "近20日外資+7.0億、投信+7.0億，合計買超約14.0億元（占市值+1.19%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比3.1倍，同題材中位數4.5倍。明年EPS成長預估-23.2%，較同題材中位數74.6%低。近8季財報優於預估比例75%，明年預估分歧度11%。"
         },
         {
           "stock_id": "2344",
           "name": "華邦電",
-          "divergence_score": 4.9,
-          "direction": "undervalued_gap",
+          "divergence_score": -42.0,
+          "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": 73.3,
-            "valuation_vs_growth": 3.7,
+            "flow_vs_rating": -44.9,
+            "valuation_vs_growth": 4.9,
             "estimate_quality": -85.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 117.7,
-            "trust_d20_billion": -64.3,
-            "net20_billion": 53.4,
-            "mcap_billion": 7290.0,
+            "foreign_d20_billion": 27.9,
+            "trust_d20_billion": -57.4,
+            "net20_billion": -29.5,
+            "mcap_billion": 6570,
             "buy_ratio": 0.5,
             "analysts": 2,
             "buy_analysts_est": 1,
-            "pe_fy1": 6.4,
+            "pe_fy1": 5.7,
             "eps_g2": 1.054,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.73
           },
-          "narrative": "近20日外資+117.7億、投信-64.3億，合計買超約53.4億元（占市值+0.73%）；30日內2家分析師中1家喊買（看多比例50%）。個股今年前瞻本益比6.4倍，同題材中位數4.9倍。明年EPS成長預估105.4%，較同題材中位數74.6%高。近8季財報優於預估比例38%，明年預估分歧度73%。"
+          "narrative": "近20日外資+27.9億、投信-57.4億，合計賣超約29.5億元（占市值-0.45%）；30日內2家分析師中1家喊買（看多比例50%）。個股今年前瞻本益比5.7倍，同題材中位數4.5倍。明年EPS成長預估105.4%，較同題材中位數74.6%高。近8季財報優於預估比例38%，明年預估分歧度73%。"
         },
         {
           "stock_id": "3006",
           "name": "晶豪科",
-          "divergence_score": -22.5,
+          "divergence_score": -62.7,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -100,
-            "valuation_vs_growth": 8.3,
+            "flow_vs_rating": -200.0,
+            "valuation_vs_growth": 7.7,
             "estimate_quality": 50.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -31.8,
-            "trust_d20_billion": -0.2,
-            "net20_billion": -32.0,
-            "mcap_billion": 776.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": 4.2,
+            "foreign_d20_billion": -23.2,
+            "trust_d20_billion": -0.1,
+            "net20_billion": -23.3,
+            "mcap_billion": 721,
+            "buy_ratio": 1.0,
+            "analysts": 1,
+            "buy_analysts_est": 1,
+            "pe_fy1": 3.9,
             "eps_g2": 0.746,
             "beat_rate": 1.0,
             "dispersion_fy2": 0.0
           },
-          "narrative": "近20日外資-31.8億、投信-0.2億，合計賣超約32.0億元（占市值-4.12%）；近期無分析師評等覆蓋。個股今年前瞻本益比4.2倍，同題材中位數4.9倍。明年EPS成長預估74.6%，較同題材中位數74.6%持平。近8季財報優於預估比例100%，明年預估分歧度0%。"
+          "narrative": "近20日外資-23.2億、投信-0.1億，合計賣超約23.3億元（占市值-3.23%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比3.9倍，同題材中位數4.5倍。明年EPS成長預估74.6%，較同題材中位數74.6%低。近8季財報優於預估比例100%，明年預估分歧度0%。"
         },
         {
           "stock_id": "8299",
@@ -1595,24 +1581,24 @@
           "divergence_score": -100,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -127.5,
+            "flow_vs_rating": -137.7,
             "valuation_vs_growth": -50.0,
             "estimate_quality": -115.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -17.1,
-            "trust_d20_billion": 5.7,
-            "net20_billion": -11.4,
-            "mcap_billion": 4145.0,
+            "foreign_d20_billion": -19.4,
+            "trust_d20_billion": 5.3,
+            "net20_billion": -14.1,
+            "mcap_billion": 3736,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
-            "pe_fy1": 4.9,
+            "pe_fy1": 4.5,
             "eps_g2": -0.255,
             "beat_rate": 0.62,
             "dispersion_fy2": 1.27
           },
-          "narrative": "近20日外資-17.1億、投信+5.7億，合計賣超約11.4億元（占市值-0.28%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比4.9倍，同題材中位數4.9倍。明年EPS成長預估-25.5%，較同題材中位數74.6%低。近8季財報優於預估比例62%，明年預估分歧度127%。"
+          "narrative": "近20日外資-19.4億、投信+5.3億，合計賣超約14.1億元（占市值-0.38%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比4.5倍，同題材中位數4.5倍。明年EPS成長預估-25.5%，較同題材中位數74.6%低。近8季財報優於預估比例62%，明年預估分歧度127%。"
         },
         {
           "stock_id": "2337",
@@ -1621,167 +1607,165 @@
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -200.0,
-            "valuation_vs_growth": 16.7,
+            "valuation_vs_growth": 16.4,
             "estimate_quality": -122.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -96.4,
-            "trust_d20_billion": 3.6,
-            "net20_billion": -92.8,
-            "mcap_billion": 1906.0,
+            "foreign_d20_billion": -96.7,
+            "trust_d20_billion": 3.0,
+            "net20_billion": -93.7,
+            "mcap_billion": 1749,
             "buy_ratio": 1.0,
             "analysts": 2,
             "buy_analysts_est": 2,
-            "pe_fy1": 5.3,
+            "pe_fy1": 4.9,
             "eps_g2": 1.155,
             "beat_rate": 0.5,
             "dispersion_fy2": 1.22
           },
-          "narrative": "近20日外資-96.4億、投信+3.6億，合計賣超約92.8億元（占市值-4.87%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比5.3倍，同題材中位數4.9倍。明年EPS成長預估115.5%，較同題材中位數74.6%高。近8季財報優於預估比例50%，明年預估分歧度122%。"
+          "narrative": "近20日外資-96.7億、投信+3.0億，合計賣超約93.7億元（占市值-5.36%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比4.9倍，同題材中位數4.5倍。明年EPS成長預估115.5%，較同題材中位數74.6%高。近8季財報優於預估比例50%，明年預估分歧度122%。"
         }
       ]
     },
     {
       "industry": "CCL/PCB/被動元件/機殼/散熱",
-      "industry_type": "concept",
-      "industry_pe_median": 29.7,
-      "industry_eps_growth_median": 0.701,
-      "industry_foreign_20d_billion": -738.1,
+      "industry_pe_median": 27.9,
+      "industry_eps_growth_median": 0.7,
+      "industry_foreign_20d_billion": -847.1,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
           "stock_id": "2354",
           "name": "鴻準",
-          "divergence_score": -17.3,
+          "divergence_score": -10.2,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -41.0,
-            "valuation_vs_growth": 47.1,
+            "flow_vs_rating": -22.1,
+            "valuation_vs_growth": 45.5,
             "estimate_quality": -50.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -3.6,
+            "foreign_d20_billion": -1.9,
             "trust_d20_billion": 0.1,
-            "net20_billion": -3.5,
-            "mcap_billion": 853.0,
+            "net20_billion": -1.8,
+            "mcap_billion": 815,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 15.3,
+            "pe_fy1": 14.6,
             "eps_g2": null,
             "beat_rate": 0.0,
-            "dispersion_fy2": 0.0
+            "dispersion_fy2": null
           },
-          "narrative": "近20日外資-3.6億、投信+0.1億，合計賣超約3.5億元（占市值-0.41%）；近期無分析師評等覆蓋。個股今年前瞻本益比15.3倍，同題材中位數29.7倍。近8季財報優於預估比例0%，明年預估分歧度0%。"
+          "narrative": "近20日外資-1.9億、投信+0.1億，合計賣超約1.8億元（占市值-0.22%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比14.6倍，同題材中位數27.9倍。近8季財報優於預估比例0%，明年預估分歧度0%。"
         },
         {
           "stock_id": "6274",
           "name": "台燿",
-          "divergence_score": -35.8,
+          "divergence_score": -24.5,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -32.6,
-            "valuation_vs_growth": 18.3,
+            "flow_vs_rating": -6.0,
+            "valuation_vs_growth": 20.4,
             "estimate_quality": -94.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -67.5,
-            "trust_d20_billion": 56.1,
-            "net20_billion": -11.4,
-            "mcap_billion": 3495.0,
+            "foreign_d20_billion": -48.3,
+            "trust_d20_billion": 46.4,
+            "net20_billion": -1.9,
+            "mcap_billion": 3148,
             "buy_ratio": 0.5,
             "analysts": 4,
             "buy_analysts_est": 2,
-            "pe_fy1": 31.0,
+            "pe_fy1": 27.9,
             "eps_g2": 1.108,
             "beat_rate": 0.12,
             "dispersion_fy2": 0.56
           },
-          "narrative": "近20日外資-67.5億、投信+56.1億，合計賣超約11.4億元（占市值-0.33%）；30日內4家分析師中2家喊買（看多比例50%）。個股今年前瞻本益比31.0倍，同題材中位數29.7倍。明年EPS成長預估110.8%，較同題材中位數70.0%高。近8季財報優於預估比例12%，明年預估分歧度56%。"
+          "narrative": "近20日外資-48.3億、投信+46.4億，合計賣超約1.9億元（占市值-0.06%）；30日內4家分析師中2家喊買（看多比例50%）。個股今年前瞻本益比27.9倍，同題材中位數27.9倍。明年EPS成長預估110.8%，較同題材中位數70.0%高。近8季財報優於預估比例12%，明年預估分歧度56%。"
         },
         {
           "stock_id": "3037",
           "name": "欣興",
-          "divergence_score": -40.2,
+          "divergence_score": -53.2,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -40.1,
-            "valuation_vs_growth": -11.4,
+            "flow_vs_rating": -73.6,
+            "valuation_vs_growth": -10.1,
             "estimate_quality": -69.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -130.1,
-            "trust_d20_billion": 64.5,
-            "net20_billion": -65.6,
-            "mcap_billion": 16364.0,
+            "foreign_d20_billion": -154.3,
+            "trust_d20_billion": 45.3,
+            "net20_billion": -109.0,
+            "mcap_billion": 14804,
             "buy_ratio": 0.5,
             "analysts": 10,
             "buy_analysts_est": 5,
-            "pe_fy1": 44.4,
+            "pe_fy1": 40.2,
             "eps_g2": 0.803,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.69
           },
-          "narrative": "近20日外資-130.1億、投信+64.5億，合計賣超約65.6億元（占市值-0.40%）；30日內10家分析師中5家喊買（看多比例50%）。個股今年前瞻本益比44.4倍，同題材中位數29.7倍。明年EPS成長預估80.3%，較同題材中位數70.0%高。近8季財報優於預估比例50%，明年預估分歧度69%。"
+          "narrative": "近20日外資-154.3億、投信+45.3億，合計賣超約109.0億元（占市值-0.74%）；30日內10家分析師中5家喊買（看多比例50%）。個股今年前瞻本益比40.2倍，同題材中位數27.9倍。明年EPS成長預估80.3%，較同題材中位數70.0%高。近8季財報優於預估比例50%，明年預估分歧度69%。"
         },
         {
           "stock_id": "3017",
           "name": "奇鋐",
-          "divergence_score": -72.7,
+          "divergence_score": -71.2,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -170.7,
-            "valuation_vs_growth": -8.7,
+            "flow_vs_rating": -166.2,
+            "valuation_vs_growth": -9.7,
             "estimate_quality": -6.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -224.7,
-            "trust_d20_billion": 139.8,
-            "net20_billion": -84.9,
-            "mcap_billion": 12012.0,
+            "foreign_d20_billion": -225.9,
+            "trust_d20_billion": 149.6,
+            "net20_billion": -76.3,
+            "mcap_billion": 11521,
             "buy_ratio": 1.0,
             "analysts": 5,
             "buy_analysts_est": 5,
-            "pe_fy1": 29.7,
+            "pe_fy1": 28.5,
             "eps_g2": 0.527,
             "beat_rate": 0.75,
             "dispersion_fy2": 0.31
           },
-          "narrative": "近20日外資-224.7億、投信+139.8億，合計賣超約84.9億元（占市值-0.71%）；30日內5家分析師中5家喊買（看多比例100%）。個股今年前瞻本益比29.7倍，同題材中位數29.7倍。明年EPS成長預估52.7%，較同題材中位數70.0%低。近8季財報優於預估比例75%，明年預估分歧度31%。"
+          "narrative": "近20日外資-225.9億、投信+149.6億，合計賣超約76.3億元（占市值-0.66%）；30日內5家分析師中5家喊買（看多比例100%）。個股今年前瞻本益比28.5倍，同題材中位數27.9倍。明年EPS成長預估52.7%，較同題材中位數70.0%低。近8季財報優於預估比例75%，明年預估分歧度31%。"
         },
         {
           "stock_id": "2327",
           "name": "國巨*",
-          "divergence_score": -86.6,
+          "divergence_score": -86.0,
           "direction": "overvalued_gap",
           "components": {
             "flow_vs_rating": -200.0,
-            "valuation_vs_growth": 4.0,
+            "valuation_vs_growth": 6.0,
             "estimate_quality": -26.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -312.2,
-            "trust_d20_billion": 55.2,
-            "net20_billion": -257.0,
-            "mcap_billion": 10285.0,
+            "foreign_d20_billion": -416.7,
+            "trust_d20_billion": 34.7,
+            "net20_billion": -382.0,
+            "mcap_billion": 9346,
             "buy_ratio": 1.0,
             "analysts": 5,
             "buy_analysts_est": 5,
-            "pe_fy1": 25.1,
-            "eps_g2": 0.598,
+            "pe_fy1": 22.8,
+            "eps_g2": 0.597,
             "beat_rate": 0.62,
             "dispersion_fy2": 0.38
           },
-          "narrative": "近20日外資-312.2億、投信+55.2億，合計賣超約257.0億元（占市值-2.50%）；30日內5家分析師中5家喊買（看多比例100%）。個股今年前瞻本益比25.1倍，同題材中位數29.7倍。明年EPS成長預估59.8%，較同題材中位數70.0%低。近8季財報優於預估比例62%，明年預估分歧度38%。"
+          "narrative": "近20日外資-416.7億、投信+34.7億，合計賣超約382.0億元（占市值-4.09%）；30日內5家分析師中5家喊買（看多比例100%）。個股今年前瞻本益比22.8倍，同題材中位數27.9倍。明年EPS成長預估59.7%，較同題材中位數70.0%低。近8季財報優於預估比例62%，明年預估分歧度38%。"
         }
       ]
     },
     {
       "industry": "營建",
-      "industry_type": "concept",
       "industry_pe_median": null,
       "industry_eps_growth_median": null,
-      "industry_foreign_20d_billion": 21.6,
+      "industry_foreign_20d_billion": 22.0,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
@@ -1791,39 +1775,39 @@
           "direction": "undervalued_gap",
           "components": {
             "flow_vs_rating": 100,
-            "valuation_vs_growth": 0.0,
+            "valuation_vs_growth": 0,
             "estimate_quality": -36.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 21.6,
-            "trust_d20_billion": -5.0,
-            "net20_billion": 16.6,
-            "mcap_billion": 839.0,
+            "foreign_d20_billion": 22.1,
+            "trust_d20_billion": -3.9,
+            "net20_billion": 18.2,
+            "mcap_billion": 830,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
             "pe_fy1": 5.7,
-            "eps_g2": 0.004,
+            "eps_g2": 2.236,
             "beat_rate": 0.5,
             "dispersion_fy2": 0.36
           },
-          "narrative": "近20日外資+21.6億、投信-5.0億，合計買超約16.6億元（占市值+1.98%）；近期無分析師評等覆蓋。近8季財報優於預估比例50%，明年預估分歧度36%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+          "narrative": "近20日外資+22.1億、投信-3.9億，合計買超約18.2億元（占市值+2.19%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例50%，明年預估分歧度36%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
         },
         {
           "stock_id": "2546",
           "name": "根基",
-          "divergence_score": 5.4,
+          "divergence_score": 5.5,
           "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": 13.5,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "flow_vs_rating": 13.7,
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
             "foreign_d20_billion": 0.2,
-            "trust_d20_billion": -0.0,
+            "trust_d20_billion": 0.0,
             "net20_billion": 0.2,
-            "mcap_billion": 148.0,
+            "mcap_billion": 146,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
@@ -1832,23 +1816,23 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資+0.2億、投信+-0.0億，合計買超約0.2億元（占市值+0.14%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+          "narrative": "近20日外資+0.2億、投信+0.0億，合計買超約0.2億元（占市值+0.14%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
         },
         {
           "stock_id": "2534",
           "name": "宏盛",
-          "divergence_score": -10.8,
+          "divergence_score": -16.4,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -27.0,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "flow_vs_rating": -41.1,
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.2,
+            "foreign_d20_billion": -0.3,
             "trust_d20_billion": 0.0,
-            "net20_billion": -0.2,
-            "mcap_billion": 74.0,
+            "net20_billion": -0.3,
+            "mcap_billion": 73,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
@@ -1857,193 +1841,116 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資-0.2億、投信+0.0億，合計賣超約0.2億元（占市值-0.27%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+          "narrative": "近20日外資-0.3億、投信+0.0億，合計賣超約0.3億元（占市值-0.41%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
         }
       ]
     },
     {
       "industry": "CoWoS概念股",
-      "industry_type": "concept",
-      "industry_pe_median": 29.4,
+      "industry_pe_median": 26.5,
       "industry_eps_growth_median": 0.369,
-      "industry_foreign_20d_billion": -39.5,
+      "industry_foreign_20d_billion": -44.6,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
-          "stock_id": "6147",
-          "name": "頎邦",
-          "divergence_score": -11.1,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": 31.2,
-            "valuation_vs_growth": -2.6,
-            "estimate_quality": -76.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -41.9,
-            "trust_d20_billion": 51.1,
-            "net20_billion": 9.2,
-            "mcap_billion": 1426.0,
-            "buy_ratio": 0.6667,
-            "analysts": 3,
-            "buy_analysts_est": 2,
-            "pe_fy1": 33.4,
-            "eps_g2": 0.436,
-            "beat_rate": 0.25,
-            "dispersion_fy2": 0.51
-          },
-          "narrative": "近20日外資-41.9億、投信+51.1億，合計買超約9.2億元（占市值+0.65%）；30日內3家分析師中2家喊買（看多比例67%）。個股今年前瞻本益比33.4倍，同題材中位數29.4倍。明年EPS成長預估43.6%，較同題材中位數36.9%高。近8季財報優於預估比例25%，明年預估分歧度51%。"
-        },
-        {
           "stock_id": "3413",
           "name": "京鼎",
-          "divergence_score": -13.6,
+          "divergence_score": -20.3,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -30.4,
-            "valuation_vs_growth": 70.0,
+            "flow_vs_rating": -42.4,
+            "valuation_vs_growth": 63.8,
             "estimate_quality": -75.0
           },
           "raw_facts": {
-            "foreign_d20_billion": -0.4,
+            "foreign_d20_billion": -0.7,
             "trust_d20_billion": -0.5,
-            "net20_billion": -0.9,
-            "mcap_billion": 296.0,
+            "net20_billion": -1.2,
+            "mcap_billion": 283,
             "buy_ratio": null,
             "analysts": 0,
             "buy_analysts_est": 0,
-            "pe_fy1": 11.7,
+            "pe_fy1": 11.1,
             "eps_g2": 0.257,
             "beat_rate": 0.0,
             "dispersion_fy2": 0.25
           },
-          "narrative": "近20日外資-0.4億、投信-0.5億，合計賣超約0.9億元（占市值-0.30%）；近期無分析師評等覆蓋。個股今年前瞻本益比11.7倍，同題材中位數29.4倍。明年EPS成長預估25.7%，較同題材中位數36.9%低。近8季財報優於預估比例0%，明年預估分歧度25%。"
+          "narrative": "近20日外資-0.7億、投信-0.5億，合計賣超約1.2億元（占市值-0.42%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比11.1倍，同題材中位數26.5倍。明年EPS成長預估25.7%，較同題材中位數36.9%低。近8季財報優於預估比例0%，明年預估分歧度25%。"
+        },
+        {
+          "stock_id": "6147",
+          "name": "頎邦",
+          "divergence_score": -41.1,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -45.3,
+            "valuation_vs_growth": -1.7,
+            "estimate_quality": -75.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -43.5,
+            "trust_d20_billion": 44.1,
+            "net20_billion": 0.6,
+            "mcap_billion": 1284,
+            "buy_ratio": 0.75,
+            "analysts": 4,
+            "buy_analysts_est": 3,
+            "pe_fy1": 30.0,
+            "eps_g2": 0.452,
+            "beat_rate": 0.25,
+            "dispersion_fy2": 0.5
+          },
+          "narrative": "近20日外資-43.5億、投信+44.1億，合計買超約0.6億元（占市值+0.05%）；30日內4家分析師中3家喊買（看多比例75%）。個股今年前瞻本益比30.0倍，同題材中位數26.5倍。明年EPS成長預估45.2%，較同題材中位數36.9%高。近8季財報優於預估比例25%，明年預估分歧度50%。"
         },
         {
           "stock_id": "3680",
           "name": "家登",
-          "divergence_score": -28.8,
+          "divergence_score": -56.4,
           "direction": "overvalued_gap",
           "components": {
-            "flow_vs_rating": -40.4,
+            "flow_vs_rating": -109.5,
             "valuation_vs_growth": 0.0,
             "estimate_quality": -42.0
           },
           "raw_facts": {
-            "foreign_d20_billion": 2.8,
+            "foreign_d20_billion": -0.4,
             "trust_d20_billion": 0.0,
-            "net20_billion": 2.8,
-            "mcap_billion": 470.0,
+            "net20_billion": -0.4,
+            "mcap_billion": 423,
             "buy_ratio": 1.0,
             "analysts": 2,
             "buy_analysts_est": 2,
-            "pe_fy1": 29.4,
+            "pe_fy1": 26.5,
             "eps_g2": 0.369,
             "beat_rate": 0.38,
             "dispersion_fy2": 0.3
           },
-          "narrative": "近20日外資+2.8億、投信+0.0億，合計買超約2.8億元（占市值+0.60%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比29.4倍，同題材中位數29.4倍。明年EPS成長預估36.9%，較同題材中位數36.9%持平。近8季財報優於預估比例38%，明年預估分歧度30%。"
+          "narrative": "近20日外資-0.4億、投信+0.0億，合計賣超約0.4億元（占市值-0.09%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比26.5倍，同題材中位數26.5倍。明年EPS成長預估36.9%，較同題材中位數36.9%低。近8季財報優於預估比例38%，明年預估分歧度30%。"
         }
       ]
     },
     {
       "industry": "光通訊概念股",
-      "industry_type": "concept",
       "industry_pe_median": null,
       "industry_eps_growth_median": null,
-      "industry_foreign_20d_billion": -47.9,
+      "industry_foreign_20d_billion": -25.7,
       "sorted_by": "divergence_score_desc",
       "candidates": [
         {
-          "stock_id": "3362",
-          "name": "先進光",
-          "divergence_score": -13.0,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": -32.4,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -0.7,
-            "trust_d20_billion": 0.0,
-            "net20_billion": -0.7,
-            "mcap_billion": 216.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": null,
-            "eps_g2": null,
-            "beat_rate": null,
-            "dispersion_fy2": null
-          },
-          "narrative": "近20日外資-0.7億、投信+0.0億，合計賣超約0.7億元（占市值-0.32%）；近期無分析師評等覆蓋。近期無財報優於/劣於預估的比較基礎。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
-        },
-        {
-          "stock_id": "3450",
-          "name": "聯鈞",
-          "divergence_score": -45.1,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": -100,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": -17.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -28.2,
-            "trust_d20_billion": -6.6,
-            "net20_billion": -34.8,
-            "mcap_billion": 605.0,
-            "buy_ratio": null,
-            "analysts": 0,
-            "buy_analysts_est": 0,
-            "pe_fy1": 34.6,
-            "eps_g2": null,
-            "beat_rate": 0.33,
-            "dispersion_fy2": 0.0
-          },
-          "narrative": "近20日外資-28.2億、投信-6.6億，合計賣超約34.8億元（占市值-5.75%）；近期無分析師評等覆蓋。近8季財報優於預估比例33%，明年預估分歧度0%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
-        },
-        {
-          "stock_id": "3363",
-          "name": "上詮",
-          "divergence_score": -61.0,
-          "direction": "overvalued_gap",
-          "components": {
-            "flow_vs_rating": -100.0,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": -70.0
-          },
-          "raw_facts": {
-            "foreign_d20_billion": -7.1,
-            "trust_d20_billion": -2.9,
-            "net20_billion": -10.0,
-            "mcap_billion": 520.0,
-            "buy_ratio": 0.5,
-            "analysts": 2,
-            "buy_analysts_est": 1,
-            "pe_fy1": null,
-            "eps_g2": null,
-            "beat_rate": 0.29,
-            "dispersion_fy2": 0.49
-          },
-          "narrative": "近20日外資-7.1億、投信-2.9億，合計賣超約10.0億元（占市值-1.92%）；30日內2家分析師中1家喊買（看多比例50%）。近8季財報優於預估比例29%，明年預估分歧度49%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
-        },
-        {
           "stock_id": "3234",
           "name": "光環",
-          "divergence_score": -80.0,
-          "direction": "overvalued_gap",
+          "divergence_score": 0.0,
+          "direction": "undervalued_gap",
           "components": {
-            "flow_vs_rating": -200.0,
-            "valuation_vs_growth": 0.0,
-            "estimate_quality": 0.0
+            "flow_vs_rating": 0.0,
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
           },
           "raw_facts": {
-            "foreign_d20_billion": -11.9,
-            "trust_d20_billion": 0.0,
-            "net20_billion": -11.9,
-            "mcap_billion": 190.0,
+            "foreign_d20_billion": 1,
+            "trust_d20_billion": 1,
+            "net20_billion": 2,
+            "mcap_billion": 173,
             "buy_ratio": 1.0,
             "analysts": 1,
             "buy_analysts_est": 1,
@@ -2052,7 +1959,82 @@
             "beat_rate": null,
             "dispersion_fy2": null
           },
-          "narrative": "近20日外資-11.9億、投信+0.0億，合計賣超約11.9億元（占市值-6.26%）；30日內1家分析師中1家喊買（看多比例100%）。近期無財報優於/劣於預估的比較基礎。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+          "narrative": "近20日外資+1.0億、投信+1.0億，合計買超約2.0億元（占市值+1.16%）；30日內1家分析師中1家喊買（看多比例100%）。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+        },
+        {
+          "stock_id": "3362",
+          "name": "先進光",
+          "divergence_score": -5.9,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -14.9,
+            "valuation_vs_growth": 0,
+            "estimate_quality": 0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -0.3,
+            "trust_d20_billion": 0.0,
+            "net20_billion": -0.3,
+            "mcap_billion": 202,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": null,
+            "eps_g2": null,
+            "beat_rate": null,
+            "dispersion_fy2": null
+          },
+          "narrative": "近20日外資-0.3億、投信+0.0億，合計賣超約0.3億元（占市值-0.15%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+        },
+        {
+          "stock_id": "3450",
+          "name": "聯鈞",
+          "divergence_score": -45.1,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -100,
+            "valuation_vs_growth": 0,
+            "estimate_quality": -17.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -23.7,
+            "trust_d20_billion": -2.5,
+            "net20_billion": -26.2,
+            "mcap_billion": 546,
+            "buy_ratio": null,
+            "analysts": 0,
+            "buy_analysts_est": 0,
+            "pe_fy1": 31.3,
+            "eps_g2": null,
+            "beat_rate": 0.33,
+            "dispersion_fy2": 0.0
+          },
+          "narrative": "近20日外資-23.7億、投信-2.5億，合計賣超約26.2億元（占市值-4.80%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例33%，明年預估分歧度0%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
+        },
+        {
+          "stock_id": "3363",
+          "name": "上詮",
+          "divergence_score": -100,
+          "direction": "overvalued_gap",
+          "components": {
+            "flow_vs_rating": -100.0,
+            "valuation_vs_growth": 0,
+            "estimate_quality": -638.0
+          },
+          "raw_facts": {
+            "foreign_d20_billion": -2.7,
+            "trust_d20_billion": -4.3,
+            "net20_billion": -7.0,
+            "mcap_billion": 472,
+            "buy_ratio": 0.5,
+            "analysts": 2,
+            "buy_analysts_est": 1,
+            "pe_fy1": null,
+            "eps_g2": null,
+            "beat_rate": 0.29,
+            "dispersion_fy2": 6.17
+          },
+          "narrative": "近20日外資-2.7億、投信-4.3億，合計賣超約7.0億元（占市值-1.48%）；30日內2家分析師中1家喊買（看多比例50%）。近8季財報優於預估比例29%，明年預估分歧度617%。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"
         }
       ]
     }
