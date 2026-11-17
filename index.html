@@ -370,6 +370,7 @@
   table.fin th{background:var(--navy);color:#fff;font-weight:400;font-family:var(--px);font-size:9.5px;}
   table.fin td:first-child,table.fin th:first-child{text-align:left;}
   table.fin tr:last-child td{font-weight:700;background:#f2eed7;}
+  table.fin.scn-plain tr:last-child td{font-weight:400;background:transparent;}
 
   .narrative{margin:16px 0;padding:14px 16px;background:var(--paper);border:2px solid var(--line);}
   .narrative .tag-line{display:inline-block;font-size:9.5px;font-family:var(--px);font-weight:400;color:#fff;background:var(--navy-2);padding:5px 9px;margin-bottom:10px;border:1.5px solid var(--line);}
@@ -536,156 +537,6 @@
   footer.app-foot{max-width:1440px;margin:0 auto;padding:0 24px 40px;font-size:12px;color:var(--ink-soft);text-align:center;}
   mark.hl{background:var(--gold);color:#14162a;}
 
-  /* ===== 頁面分頁（個股研究／產業共識落差掃描／持股擁擠度警報） ===== */
-  .view-tab-bar{display:flex;gap:2px;background:var(--line);border:3px solid var(--line);box-shadow:var(--shadow-sm);margin-bottom:18px;flex-wrap:wrap;}
-  .view-tab-item{flex:1 1 auto;display:flex;align-items:stretch;background:var(--card);min-width:0;}
-  .view-tab-item:hover{background:#fdf0c2;}
-  .view-tab-item.active{background:var(--navy);}
-  .view-tab-btn{
-    flex:1 1 auto;font-family:var(--px);font-size:11px;padding:12px 6px 12px 14px;border:none;background:transparent;
-    color:var(--ink-soft);cursor:pointer;box-shadow:none;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  }
-  .view-tab-item.active .view-tab-btn{color:#fff;}
-  .view-tab-btn:active{transform:none;}
-  .view-tab-info{
-    flex:0 0 auto;display:inline-flex;align-items:center;padding:0 12px 0 2px;
-    color:var(--ink-soft);cursor:help;font-size:13px;
-  }
-  .view-tab-item.active .view-tab-info{color:#cfe0c9;}
-  .view-tab-info .demo-tag-popover{left:auto;right:0;}
-
-  .scan-stat-strip{display:flex;flex-wrap:wrap;gap:2px;background:var(--line);border:3px solid var(--line);box-shadow:var(--shadow);margin-bottom:20px;}
-  .scan-stat-cell{flex:1 1 150px;background:var(--card);padding:12px 14px;text-align:center;}
-  .scan-stat-cell .sv{font-family:var(--px);font-size:15px;color:var(--navy);}
-  .scan-stat-cell .sl{font-size:9.5px;color:var(--ink-soft);margin-top:5px;}
-
-  .scan-focus-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px;}
-  .scan-focus-block{background:#fdf0c2;border:3px solid var(--line);box-shadow:var(--shadow-sm);padding:16px 18px;}
-  .scan-focus-block.over{background:#e2f0e6;}
-  .scan-focus-block h3{margin:0 0 10px;font-family:var(--px);font-size:10.5px;color:var(--navy-2);border-left:6px solid var(--red);padding-left:10px;line-height:1.7;}
-  .scan-focus-block.over h3{border-left-color:var(--green);}
-  .scan-focus-item{display:flex;align-items:baseline;gap:8px;font-size:13px;flex-wrap:wrap;margin-bottom:7px;}
-  .scan-focus-item:last-child{margin-bottom:0;}
-  .scan-focus-item .fcode{font-family:var(--px);font-size:9px;background:var(--navy);color:#fff;padding:3px 7px;border:1.5px solid var(--line);}
-  .scan-focus-item b{color:var(--red);}
-  .scan-focus-block.over .scan-focus-item b{color:var(--green);}
-
-  .industry-block{background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);padding:20px 22px;margin-bottom:22px;}
-  .ind-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
-  .ind-head-toggle{cursor:pointer;user-select:none;}
-  .ind-head-toggle:hover .ind-name{color:var(--navy-2);}
-  .ind-name{font-family:var(--px);font-size:14px;color:var(--navy);}
-  .ind-toggle-icon{font-family:var(--px);font-size:11px;color:var(--navy-2);transition:transform 0.15s;display:inline-block;}
-  .industry-block.collapsed .ind-toggle-icon{transform:rotate(-90deg);}
-  .industry-block.collapsed .ind-body{display:none;}
-  .ind-kv{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-soft);margin-bottom:16px;}
-  .ind-kv b{font-family:var(--px);font-size:11px;color:var(--navy-2);font-weight:400;}
-
-  .cand-card{border:2.5px solid var(--line);margin-bottom:14px;position:relative;padding-left:12px;background:#fff;}
-  .cand-card:last-child{margin-bottom:0;}
-  .cand-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--tint,var(--line-soft));border-right:2.5px solid var(--line);}
-  .cand-card.undervalued_gap{--tint:var(--red);}
-  .cand-card.overvalued_gap{--tint:var(--green);}
-  .cand-inner{padding:14px 16px;}
-  .cand-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
-  .cand-name-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
-  .cand-code-link{
-    font-family:var(--px);font-size:9.5px;background:var(--navy);color:#fff;padding:4px 8px;border:1.5px solid var(--line);
-    text-decoration:none;display:inline-flex;align-items:center;gap:4px;cursor:pointer;
-  }
-  .cand-code-link:hover{background:var(--navy-2);}
-  .cand-name{font-family:var(--px);font-size:12.5px;color:var(--navy);}
-  .cand-report-link{
-    font-family:var(--px);font-size:9px;background:var(--gold);color:#231a06;padding:4px 8px;border:1.5px solid var(--line);
-    text-decoration:none;cursor:pointer;
-  }
-  .cand-report-link:hover{background:#ffcc33;}
-  .low-conf{font-size:9px;font-family:var(--px);color:var(--amber);background:var(--amber-bg);border:1.5px solid var(--amber);padding:3px 6px;}
-  .cand-score-wrap{display:flex;align-items:center;gap:8px;}
-  .cand-score{font-family:var(--px);font-size:17px;}
-  .cand-score.undervalued_gap{color:var(--red);}
-  .cand-score.overvalued_gap{color:var(--green);}
-  .cand-dir{font-family:var(--px);font-size:8.5px;padding:5px 8px;border:1.5px solid var(--line);white-space:nowrap;}
-  .cand-dir.undervalued_gap{background:var(--red-bg);color:var(--red);border-color:var(--red);}
-  .cand-dir.overvalued_gap{background:var(--green-bg);color:var(--green);border-color:var(--green);}
-
-  .dbars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px 18px;margin:12px 0;}
-  .dbar-row{display:flex;flex-direction:column;gap:4px;}
-  .dbar-label{display:flex;justify-content:space-between;font-size:10px;color:var(--ink-soft);}
-  .dbar-label b{font-family:var(--px);font-size:10px;font-weight:400;}
-  .dbar-label b.pos{color:var(--red);}
-  .dbar-label b.neg{color:var(--green);}
-  .dbar-track{position:relative;height:11px;background:var(--paper);border:1.5px solid var(--line);}
-  .dbar-center{position:absolute;left:50%;top:-2px;bottom:-2px;width:2px;background:var(--line);}
-  .dbar-fill{position:absolute;top:0;bottom:0;}
-  .dbar-fill.pos{left:50%;background:var(--red);}
-  .dbar-fill.neg{right:50%;background:var(--green);}
-
-  .cand-narrative{margin:10px 0 2px;padding:10px 12px;background:var(--paper);border:1.5px solid var(--line-soft);font-size:12.5px;}
-
-  .scan-method-box{
-    background:var(--card);border:2.5px solid var(--line);box-shadow:var(--shadow-xs);
-    padding:14px 16px;margin-bottom:16px;font-size:12px;color:var(--ink-soft);line-height:1.7;
-  }
-  .scan-method-box b{font-family:var(--px);font-size:10px;color:var(--navy);display:block;margin-bottom:8px;}
-
-  .cand-research-btn{
-    font-family:var(--px);font-size:9px;padding:5px 8px;border:2px solid var(--navy-2);background:transparent;
-    color:var(--navy-2);cursor:pointer;box-shadow:none;
-  }
-  .cand-research-btn:hover{background:var(--paper);border-color:var(--gold);}
-  .cand-research-progress:not(:empty){margin-top:8px;}
-  .cand-research-progress:empty{display:none;}
-
-  .scan-refresh-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 16px;}
-  .scan-refresh-btn{
-    font-family:var(--px);font-size:9px;padding:6px 10px;border:2px solid var(--navy-2);background:transparent;
-    color:var(--navy-2);cursor:pointer;box-shadow:none;
-  }
-  .scan-refresh-btn:hover:not(:disabled){background:var(--paper);border-color:var(--gold);}
-  .scan-refresh-btn:disabled{opacity:0.5;cursor:not-allowed;}
-  .scan-refresh-status:not(:empty){font-size:12px;color:var(--ink-soft);}
-
-  /* ===== 持股擁擠度警報 ===== */
-  .crowd-stat-strip{display:flex;flex-wrap:wrap;gap:2px;background:var(--line);border:3px solid var(--line);box-shadow:var(--shadow);margin-bottom:20px;}
-  .crowd-stat-cell{flex:1 1 130px;background:var(--card);padding:12px 14px;text-align:center;}
-  .crowd-stat-cell .sv{font-family:var(--px);font-size:17px;color:var(--navy);}
-  .crowd-stat-cell .sv.warn{color:var(--red);}
-  .crowd-stat-cell .sl{font-size:9.5px;color:var(--ink-soft);margin-top:5px;}
-
-  .crowd-focus-block{background:#fdf0c2;border:3px solid var(--line);box-shadow:var(--shadow-sm);padding:16px 18px;margin-bottom:22px;}
-  .crowd-focus-block h3{margin:0 0 10px;font-family:var(--px);font-size:11px;color:var(--navy-2);border-left:6px solid var(--red);padding-left:10px;line-height:1.7;}
-  .crowd-focus-item{display:flex;align-items:baseline;gap:8px;font-size:13px;flex-wrap:wrap;margin-bottom:8px;}
-  .crowd-focus-item:last-child{margin-bottom:0;}
-  .crowd-focus-item b{color:var(--red);}
-
-  .stock-card{background:var(--card);border:3px solid var(--line);box-shadow:var(--shadow);margin-bottom:18px;position:relative;padding-left:14px;}
-  .stock-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--tint,var(--green));border-right:3px solid var(--line);}
-  .stock-card.red{--tint:var(--red);}
-  .stock-card.yellow{--tint:var(--gold);}
-  .stock-card.green{--tint:var(--green);}
-  .sc-inner{padding:18px 20px;}
-  .sc-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
-  .sc-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-  .sc-score-wrap{display:flex;align-items:center;gap:10px;}
-  .sc-score{font-family:var(--px);font-size:22px;color:var(--ink);}
-  .sc-light{font-family:var(--px);font-size:9px;padding:6px 10px;border:2px solid var(--line);white-space:nowrap;}
-  .sc-light.red{background:var(--red-bg);color:var(--red);border-color:var(--red);}
-  .sc-light.yellow{background:var(--amber-bg);color:var(--amber);border-color:var(--amber);}
-  .sc-light.green{background:var(--green-bg);color:var(--green);border-color:var(--green);}
-
-  .divergence-flag{margin:12px 0;padding:10px 14px;border:2px solid var(--red);background:var(--red-bg);font-size:12.5px;color:#6e0f0f;border-left-width:6px;}
-  .divergence-flag.bullish_gap{border-color:var(--navy-2);background:#e4e6fb;color:var(--navy-2);}
-  .divergence-flag b{font-family:var(--px);font-size:9.5px;display:block;margin-bottom:4px;}
-
-  .bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;margin:14px 0;}
-  .bar-row{display:flex;flex-direction:column;gap:4px;}
-  .bar-label{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-soft);}
-  .bar-label b{font-family:var(--px);font-size:10.5px;color:var(--navy);font-weight:400;}
-  .bar-track{background:var(--paper);border:1.5px solid var(--line);height:12px;position:relative;}
-  .bar-fill{height:100%;background:var(--navy-2);}
-
-  .narrative-box{margin:14px 0 4px;padding:12px 14px;background:var(--paper);border:2px solid var(--line);font-size:13.5px;}
 </style>
 </head>
 <body>
@@ -759,7 +610,7 @@
             <br><br>
             <b>怎麼找股票</b>：直接在搜尋框輸入代碼或名稱；或從上方「📖 概念股圖鑑」依題材瀏覽、「AI伺服器供應鏈地圖」依供應鏈角色瀏覽，點公司名稱即可看報告；也可用「全部／新增／台股／美股」篩選瀏覽清單。若輸入的股票還沒收錄，可按「研究並加入」讓本機Claude Code背景研究並寫入資料庫。
             <br><br>
-            <b>報告內容</b>：產業鏈定位（為什麼這家公司重要、為什麼難被取代）、公司自陳成長動能、多空觀點對照（附來源）、技術面K線型態、同儕比較（最多3家並排，比產品類別／客戶分布等構面差異）、財務健診、以及「股價推算模型」——用DCF／股利折現／可比乘數法估算合理股價區間，並即時向TWSE／TPEx查證最新公司登記資料、單季財報與均價，自動算出5/10/20/150日均線，免設置免安裝、點一下就查。
+            <b>報告內容</b>：產業鏈定位（為什麼這家公司重要、為什麼難被取代）、公司自陳成長動能、多空觀點對照（附來源）、技術面K線型態、同儕比較（最多3家並排，比產品類別／客戶分布等構面差異）、財務健診、以及「三情境獲利」——保守／基準／樂觀三組營收、毛利率、費用假設推算 EPS，再乘上歷史或同業本益比換算股價（尚未建立三情境的股票，暫時顯示用DCF／股利折現／可比乘數法估算的「股價推算模型」），並即時向TWSE／TPEx查證最新公司登記資料、單季財報與均價，自動算出5/10/20/150日均線，免設置免安裝、點一下就查。
             <br><br>
             <b>名詞小百科</b>：在報告內文中<b>反白選取</b>任何專有名詞（如 HVDC、CoWoS、本益比），會彈出白話＋進階解釋卡片；如果小百科裡還沒有這個詞，會改成跳出「查詢並加入」按鈕，背景呼叫本機Claude Code即時查詢，查完提醒重新整理頁面即可看到解釋。
             <br><br>
@@ -788,33 +639,6 @@
 </header>
 
 <main>
-  <div id="viewTabBar" class="view-tab-bar">
-    <div class="view-tab-item active" data-view="home">
-      <button class="view-tab-btn" onclick="switchView('home')">🏠 個股研究</button>
-      <span class="demo-tag-wrap view-tab-info" tabindex="0">ⓘ
-        <div class="demo-tag-popover">
-          <b>這頁在做什麼</b>：查詢單一公司的完整研究報告——見解導向財務敘事、產業鏈定位、主要成長動能、多空觀點對照、技術面K線型態、股價推算模型，也可以反白文中名詞查白話小百科。輸入代碼或公司名稱開始查詢。
-        </div>
-      </span>
-    </div>
-    <div class="view-tab-item" data-view="scan">
-      <button class="view-tab-btn" onclick="switchView('scan')">🧭 產業共識落差掃描</button>
-      <span class="demo-tag-wrap view-tab-info" tabindex="0">ⓘ
-        <div class="demo-tag-popover">
-          <b>這頁在做什麼</b>：自動掃描官方產業分類與熱門概念股題材（半導體封測、CoWoS、記憶體、軍工等）的代表個股，比對「法人實際買賣的方向」跟「分析師評等的方向」有沒有落差、估值跟成長比不比得過同組股票、預估執行力是不是被低估，找出可能被低估或高估的候選股，供你決定值不值得深入研究——分數不是買賣建議。
-        </div>
-      </span>
-    </div>
-    <div class="view-tab-item" data-view="crowding">
-      <button class="view-tab-btn" onclick="switchView('crowding')">🚨 持股擁擠度警報</button>
-      <span class="demo-tag-wrap view-tab-info" tabindex="0">ⓘ
-        <div class="demo-tag-popover">
-          <b>這頁在做什麼</b>：監控一份觀察名單裡每一檔的籌碼集中程度——法人是不是擠在同一邊、分析師評等是不是過度一致、融資有沒有過熱，並特別標示「法人跟評等方向不一致」的背離警報，提醒可能的反轉風險，不是買賣建議。
-        </div>
-      </span>
-    </div>
-  </div>
-
   <div id="marketFilterBar" class="market-filter-bar">
     <span class="market-filter-label">顯示：</span>
     <button class="market-filter-btn active" data-market="all" onclick="setMarketFilter('all')">全部</button>
@@ -857,9 +681,6 @@
 
   <div id="reportsRoot"></div>
 
-  <div id="divergenceScanBox" style="display:none;"></div>
-
-  <div id="crowdingAlertBox" style="display:none;"></div>
 </main>
 
 <!-- 常駐在viewport右下角、跨頁面導覽不會被清掉的背景研究進度小視窗（見
@@ -889,7 +710,7 @@
      toast顯示，見copyResearchPromptToClipboard() -->
 <div id="clipToast" class="clip-toast"></div>
 
-<script>window.REPORTS = {}; window.VALUATIONS = {};</script>
+<script>window.REPORTS = {}; window.VALUATIONS = {}; window.SCENARIOS = {};</script>
 <script src="data/glossary.js"></script>
 <!-- STOCK_DATA:BEGIN 新股票研究完成後，把新的兩行<script src>加在 STOCK_DATA:END 這一行的正上方 -->
 <script src="data/reports/2027.js"></script>
@@ -1211,7 +1032,12 @@
     <script src="data/valuations/3498.js"></script>
     <script src="data/reports/6108.js"></script>
     <script src="data/valuations/6108.js"></script>
+    <script src="data/reports/8996.js"></script>
     <!-- STOCK_DATA:END -->
+    <!-- SCENARIOS:BEGIN 三情境獲利資料：不必再手動加 <script src>。清單在 data/scenarios/manifest.js，由 scripts/gen_scenarios_manifest.py 依資料夾內的 <代號>.js 自動產生；有檔的股票，估值區塊改顯示三情境獲利，沒有的維持股價推算模型。 -->
+    <script src="data/scenarios/manifest.js"></script>
+    <script>(window.SCENARIO_CODES||[]).forEach(function(c){document.write('<script src="data/scenarios/'+c+'.js"><\/script>');});</script>
+    <!-- SCENARIOS:END -->
 <script>
 
 /* =========================================================
@@ -1320,6 +1146,130 @@ function fmtTechnical(t){
 
 function fmtBullBearItem(item){
   return `<div class="chain-step"><p class="lead-p" style="margin:0;">${item.point}</p>${item.source ? `<div class="bullbear-source">來源：${item.source}</div>` : ''}</div>`;
+}
+
+function fmtScenarioSection(code, market){
+  const s = SCENARIOS[code];
+  if(!s) return '';
+  const unit = currencyUnit(market);
+  const isUS = market === 'US';
+  const price = s.price;
+  const names = s.scenarioNames || ['保守','基準','樂觀'];
+  const tbl = (t, cls) => !t ? '' : `<div style="overflow-x:auto;"><table class="fin scn-table ${cls||''}"><thead><tr>${t.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const pct = x => `${x>0?'+':''}${x}%`;
+  let mapHtml = '';
+  if(s.eps && s.multiples && s.multiples.length){
+    const head = `<th>${s.eps.label} × 本益比</th>` + names.map((n,j)=>`<th>${n}<div style="font-weight:400;font-size:10px;opacity:.85;">EPS ${s.eps.values[j]}</div></th>`).join('');
+    const rows = s.multiples.map((m,i)=>`<tr><td>${m.label}</td>${s.eps.values.map((e,j)=>{
+      if(!(e>0)) return '<td>—</td>';
+      const pr = Math.round(e*m.pe*10)/10;
+      const up = Math.round((pr/price-1)*1000)/10;
+      return `<td>${pr.toLocaleString()} ${unit}<br><span class="ff-upside ${up>=0?'up':'down'}" data-p="${pr}" id="scnUp-${code}-${i}-${j}">相對現價 ${pct(up)}</span></td>`;
+    }).join('')}</tr>`).join('');
+    mapHtml = `
+      <div class="val-subhead">換算股價（${s.eps.label} × 本益比）</div>
+      <div style="overflow-x:auto;"><table class="fin scn-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="ff-summary-line" id="scnImplied-${code}">${scnImpliedText(s, price)}</div>`;
+  }
+  const list = (title, arr, cls) => arr && arr.length ? `<div class="val-subhead">${title}</div><ul class="${cls||'val-assumptions'}">${arr.map(x=>`<li>${x}</li>`).join('')}</ul>` : '';
+  return `
+    <section class="block">
+      <h3>三情境獲利（${names.join('／')}）</h3>
+      <div class="val-disclaimer">${s.caveat || '三情境為自行假設，不是公司財測，也不是市場共識；結果高度依賴營收、毛利率與費用假設。不構成任何投資建議、目標價或買賣建議。'}</div>
+
+      <div class="val-price-row">
+        <span class="cp-label">目前市價（試算基準 ${s.priceDate || s.asOf}）</span>
+        <div class="val-price-cluster">
+          <span class="cp-value" id="cpValue-${code}">${price.toLocaleString()} ${unit}</span>
+          ${isUS ? '' : `<span class="cp-live-tag" id="cpLiveTag-${code}" style="display:none;">TWSE已驗證</span>
+          <div class="twse-verify">
+            <button class="twse-verify-btn" id="twseVerifyBtn-${code}" onclick="verifyTwseAndSync('${code}')">🔍 立即向TWSE查證</button>
+            <div class="twse-popover">
+              <div class="twse-popover-title">官方數據速覽（TWSE即時查證）</div>
+              <div id="twsePopoverBody-${code}" style="color:var(--ink-soft);font-size:12.5px;">點擊左側按鈕查詢，查詢完成後滑鼠移到按鈕上即可看到明細（公司登記資料、單季財務、均價）。</div>
+            </div>
+          </div>`}
+        </div>
+      </div>
+
+      ${s.lead ? `<p class="lead-p">${s.lead}</p>` : ''}
+      ${s.calibration ? `<div class="val-subhead">校準</div><p class="lead-p" style="font-size:13.5px;">${s.calibration}</p>` : ''}
+      ${s.assumptions ? `<div class="val-subhead">假設</div>${tbl(s.assumptions,'scn-plain')}` : ''}
+      ${s.results ? `<div class="val-subhead">結果</div>${tbl(s.results)}` : ''}
+      ${mapHtml}
+      ${fmtImpliedSection(code, market)}
+      ${s.priceMap ? `<div class="val-subhead">${s.priceMap.title}</div>${tbl(s.priceMap,'scn-plain')}` : ''}
+      ${list('解讀', s.notes)}
+      ${list('什麼數字會支持或推翻各情境', s.checks)}
+      ${list('限制', s.limits, 'risk-list')}
+      <div class="ff-summary-line">試算日期 ${s.asOf}${s.basis ? '　｜　'+s.basis : ''}${s.source ? '　｜　'+s.source : ''}</div>
+    </section>`;
+}
+
+// ── 現價隱含什麼（反推）：把現價除以參考本益比，得到市場要相信的 EPS，再用基準情境的費用、稅率、股數反推所需營收或毛利率
+function implCalc(im, price){
+  const m = im.model;
+  const need = eps => {
+    const pretax = eps * m.shares / (1 - m.tax);
+    const gross = pretax + m.opex - m.other;            // 需要的毛利（億）
+    return { eps, rev: gross / m.gm, gm: gross / m.rev };
+  };
+  const rows = im.anchors.map(a => Object.assign({label:a.label, pe:a.pe}, need(price / a.pe)));
+  const b = im.beyond;
+  let beyond = null;
+  if(b){
+    beyond = b.years.map(N => {
+      const g = Math.pow(price * Math.pow(1 + b.r, N + 1) / (m.eps * b.exitPe), 1 / N) - 1;
+      return { N, g };
+    });
+  }
+  return { rows, basePe: price / m.eps, consPe: im.consensus ? price / im.consensus.eps : null, beyond };
+}
+
+function implBodyHtml(code, price, priceLabel){
+  const s = SCENARIOS[code], im = s.implied, m = im.model;
+  const c = implCalc(im, price);
+  const f1 = x => x.toLocaleString(undefined,{maximumFractionDigits:1, minimumFractionDigits:1});
+  const f2 = x => x.toLocaleString(undefined,{maximumFractionDigits:2, minimumFractionDigits:2});
+  const pctTxt = x => `${(x*100).toFixed(1)}%`;
+  const vsBase = e => { const d = (e / m.eps - 1) * 100; return `${d>=0?'+':''}${d.toFixed(0)}%`; };
+  const gmTxt = g => g >= 1 ? '不可能（>100%）' : (g <= 0 ? '—' : pctTxt(g));
+  const head = `<tr><th>參考本益比</th><th>市場要相信的 2027 EPS</th><th>相對基準情境 EPS（${m.eps}）</th><th>需要的營收<div style="font-weight:400;font-size:10px;opacity:.85;">${m.gmLabel||'毛利率'}維持 ${pctTxt(m.gm)}</div></th><th>需要的${m.gmLabel||'毛利率'}<div style="font-weight:400;font-size:10px;opacity:.85;">營收維持 ${m.rev} 億</div></th></tr>`;
+  const rows = c.rows.map(r => `<tr><td>${r.label}（${r.pe} 倍）</td><td>${f2(r.eps)}</td><td>${vsBase(r.eps)}</td><td>${f1(r.rev)} 億</td><td>${gmTxt(r.gm)}</td></tr>`).join('');
+  let beyondTxt = '';
+  if(c.beyond){
+    const b = im.beyond;
+    const parts = c.beyond.map(x => x.g <= 0 ? `${x.N} 年：不需要再成長` : `${x.N} 年內每年約 ${(x.g*100).toFixed(0)}%`);
+    beyondTxt = `<div class="ff-summary-line">若 2027 年照基準情境（EPS ${m.eps}），之後本益比回到 ${b.exitLabel}（${b.exitPe} 倍），並要求每年 ${(b.r*100).toFixed(0)}% 報酬，現價需要 2027 年之後 EPS 成長：${parts.join('　｜　')}</div>`;
+  }
+  return `
+    <div class="ff-summary-line">${priceLabel}　｜　現價 ÷ 基準情境 2027 EPS = ${c.basePe.toFixed(1)} 倍${c.consPe ? `　｜　現價 ÷ 共識 2027 EPS ≈ ${c.consPe.toFixed(1)} 倍` : ''}</div>
+    <div style="overflow-x:auto;"><table class="fin scn-table scn-plain"><thead>${head}</thead><tbody>${rows}</tbody></table></div>
+    ${beyondTxt}`;
+}
+
+function fmtImpliedSection(code, market){
+  const s = SCENARIOS[code];
+  const im = s && s.implied;
+  if(!im) return '';
+  const m = im.model;
+  const list = (title, arr, cls) => arr && arr.length ? `<div class="val-subhead">${title}</div><ul class="${cls||'val-assumptions'}">${arr.map(x=>`<li>${x}</li>`).join('')}</ul>` : '';
+  const tbl = t => !t ? '' : `<div style="overflow-x:auto;"><table class="fin scn-table scn-plain"><thead><tr>${t.headers.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `
+      <div class="val-subhead">現價隱含什麼（反推）</div>
+      <p class="lead-p" style="font-size:13.5px;">把現價除以幾個參考本益比，得到「市場要相信的 2027 EPS」，再沿用基準情境的費用 ${m.opex} 億、業外及其他 ${m.other} 億（由基準情境反推）、稅率 ${(m.tax*100).toFixed(0)}%、股數 ${m.shares} 億股，換算需要多少營收（${m.gmLabel||'毛利率'}不變）或多少${m.gmLabel||'毛利率'}（營收不變）。這是算術，不是預測；按「立即向TWSE查證」會用最新價重算。</p>
+      <div id="scnImpl-${code}">${implBodyHtml(code, im.price, `以 ${im.priceDate} 收盤 ${im.price.toLocaleString()} 元試算`)}</div>
+      ${im.consensus ? `<div class="ff-summary-line">${im.consensus.label}</div>` : ''}
+      <div class="val-subhead">和現實對照</div>
+      ${tbl(im.refs)}
+      ${list('解讀（推論）', im.verdict)}
+      ${list('接下來要看什麼', im.watch)}
+      ${im.source ? `<div class="ff-summary-line">反推資料：${im.source}</div>` : ''}`;
+}
+
+function scnImpliedText(s, price){
+  const names = s.scenarioNames || ['保守','基準','樂觀'];
+  return `以目前市價換算的 ${s.eps.label} 本益比：` + s.eps.values.map((e,j)=> e>0 ? `${names[j]} ${(price/e).toFixed(1)} 倍` : `${names[j]} —（EPS ≤ 0）`).join('　｜　');
 }
 
 function fmtValuationSection(code, market){
@@ -1987,6 +1937,24 @@ function fmtPriceStatsRow(stats){
 // 與每個模型的「相對現價%」——長條本身寬度（模型估值）維持原本渲染時的座標範圍不變，
 // 只有跟現價相關的標記/文字更新，避免整組長條的比例尺跳動。
 function syncCurrentPriceToLive(code, livePrice, sourceLabel){
+  const sc = SCENARIOS[code];
+  if(sc){
+    const cpEl = document.getElementById(`cpValue-${code}`);
+    if(cpEl){ cpEl.textContent = `${livePrice.toLocaleString()} 元`; cpEl.classList.add('live'); cpEl.title = sourceLabel; }
+    const tagEl = document.getElementById(`cpLiveTag-${code}`);
+    if(tagEl) tagEl.style.display = 'inline-block';
+    document.querySelectorAll(`[id^="scnUp-${code}-"]`).forEach(el=>{
+      const up = Math.round((Number(el.dataset.p)/livePrice - 1) * 1000) / 10;
+      el.textContent = `相對現價 ${up>0?'+':''}${up}%`;
+      el.classList.toggle('up', up>=0);
+      el.classList.toggle('down', up<0);
+    });
+    const im = document.getElementById(`scnImplied-${code}`);
+    if(im && sc.eps) im.textContent = scnImpliedText(sc, livePrice);
+    const ib = document.getElementById(`scnImpl-${code}`);
+    if(ib && sc.implied) ib.innerHTML = implBodyHtml(code, livePrice, `以 TWSE 查證價 ${livePrice.toLocaleString()} 元重算`);
+    return;
+  }
   const v = VALUATIONS[code];
   if(!v) return;
   const cpEl = document.getElementById(`cpValue-${code}`);
@@ -2422,86 +2390,6 @@ async function extendResearch(code){
   }
 }
 
-/* ===== 掃描頁（產業共識落差掃描／持股擁擠度警報）手動更新按鈕 =====
-   跟前面的「研究並加入到資料庫」是同一支claude-code-research-server，
-   打的是它新增的/api/refresh-scans endpoint——已經有launchd本機排程每個
-   交易日18:00自動刷新（見scripts/），這裡是給不想等排程、或想立刻重試的
-   使用者用的手動觸發版本。兩個掃描頁（DIVERGENCE_SCAN／CROWDING_ALERT）
-   共用同一份底層刷新工作，所以只需要一組狀態輪詢邏輯，用class（不是id，
-   避免兩個掃描頁的box雖然只顯示一個、但DOM裡其實同時存在造成id重複）
-   同步更新畫面上所有「.scan-refresh-status」與「.scan-refresh-btn」。 */
-window._scanRefreshTimer = window._scanRefreshTimer || null;
-
-function renderScanRefreshStatus(html){
-  document.querySelectorAll('.scan-refresh-status').forEach(el => el.innerHTML = html);
-}
-function setScanRefreshBtnsDisabled(disabled){
-  document.querySelectorAll('.scan-refresh-btn').forEach(el => el.disabled = disabled);
-}
-
-async function triggerScanRefresh(){
-  setScanRefreshBtnsDisabled(true);
-  renderScanRefreshStatus('⏳ 正在啟動更新…');
-  try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/refresh-scans`, { method:'POST', headers: researchAuthHeaders() });
-    const body = await res.json().catch(()=>({}));
-    if(!res.ok){
-      setScanRefreshBtnsDisabled(false);
-      renderScanRefreshStatus(`<span style="color:var(--red);">啟動失敗：${escHtml(body.error || ('HTTP '+res.status))}</span>`);
-      return;
-    }
-    if(body.status === 'error'){
-      setScanRefreshBtnsDisabled(false);
-      renderScanRefreshStatus(`<span style="color:var(--red);">啟動失敗：${escHtml(body.error || '未知錯誤')}</span>`);
-      return;
-    }
-    pollScanRefreshStatus();
-  }catch(e){
-    setScanRefreshBtnsDisabled(false);
-    renderScanRefreshStatus(`<span style="color:var(--red);">無法連線到 claude-code-research-server（${escHtml(window.RESEARCH_BACKEND_BASE)}），請確認本機伺服器已啟動：${escHtml(e.message)}</span>`);
-  }
-}
-
-// silent=true時是頁面載入時的自動背景檢查（使用者根本沒按按鈕），連不上
-// 本機伺服器是完全正常的情況（多數時候使用者根本沒開claude-code-research-
-// server），這種時候安靜清空狀態列就好，不要跳紅字錯誤嚇到使用者；只有
-// 使用者自己按了「手動更新資料」（silent為false／省略）才需要把連線失敗
-// 這類錯誤明確秀出來，因為這時候使用者真的在等結果。
-async function pollScanRefreshStatus(silent){
-  try{
-    const res = await fetch(`${window.RESEARCH_BACKEND_BASE}/api/refresh-scans`, { headers: researchAuthHeaders() });
-    const body = await res.json().catch(()=>({}));
-    if(!res.ok){
-      if(silent){ renderScanRefreshStatus(''); return; }
-      setScanRefreshBtnsDisabled(false);
-      renderScanRefreshStatus(`<span style="color:var(--red);">查詢狀態失敗：${escHtml(body.error || ('HTTP '+res.status))}</span>`);
-      return;
-    }
-    if(body.status === 'running'){
-      setScanRefreshBtnsDisabled(true);
-      const activity = escHtml(body.activity || '⏳ 已連線，等待開始第一個動作…');
-      renderScanRefreshStatus(`🔄 更新中…（可能需要數分鐘，查詢18組產業與10檔觀察名單的資料）　${activity}`);
-      clearTimeout(window._scanRefreshTimer);
-      window._scanRefreshTimer = setTimeout(()=>pollScanRefreshStatus(silent), 5000);
-    }else if(body.status === 'done'){
-      setScanRefreshBtnsDisabled(false);
-      renderScanRefreshStatus(`<span style="color:var(--green);">✅ 更新完成。</span> <button onclick="location.reload()" style="padding:3px 10px;border-radius:6px;border:none;background:var(--navy-2);color:#fff;cursor:pointer;font-size:11px;font-weight:600;">重新整理頁面查看最新資料</button>`);
-    }else if(body.status === 'idle'){
-      setScanRefreshBtnsDisabled(false);
-      renderScanRefreshStatus('');
-    }else{
-      if(silent){ renderScanRefreshStatus(''); return; }
-      setScanRefreshBtnsDisabled(false);
-      const detail = body.error || '執行過程發生未知錯誤，可查看終端機裡 claude-code-research-server 的log了解細節。';
-      renderScanRefreshStatus(`<span style="color:var(--red);">⚠️ 更新失敗：${escHtml(detail)}</span>`);
-    }
-  }catch(e){
-    if(silent){ renderScanRefreshStatus(''); return; }
-    setScanRefreshBtnsDisabled(false);
-    renderScanRefreshStatus(`<span style="color:var(--red);">無法連線到 claude-code-research-server（${escHtml(window.RESEARCH_BACKEND_BASE)}）：${escHtml(e.message)}</span>`);
-  }
-}
-
 // containerId是選填的：有的話代表「這是使用者當下所在頁面裡的容器」，會被記錄下來
 // 持續同步更新；不管有沒有傳，一律都會在右下角建立/更新一個小視窗（見
 // renderResearchTargets），讓使用者換頁瀏覽其他報告時還是看得到這裡的進度。
@@ -2866,6 +2754,7 @@ const ICON_META = {
   '2301':'power', '2308':'power', '6138':'power', '6719':'power',
   '3211':'power', '4931':'power', '6415':'power', '2481':'power', '3357':'power',
   // 散熱概念股
+  '8996':'thermal',
   '2421':'thermal', '3653':'thermal', '6117':'thermal', '3017':'thermal', '3324':'thermal',
   // PCB／載板概念股
   '2316':'pcb', '2383':'pcb', '3189':'pcb', '8039':'pcb', '8155':'pcb', '8046':'pcb',
@@ -3024,7 +2913,7 @@ function renderReport(r){
   const sources = r.sources.map(s=>`<div>・${s}</div>`).join('');
 
   const chainMainHtml = `<section class="block"><h3>產業鏈定位：${r.chainTitle}</h3>${chain}</section>`;
-  const valHtml = fmtValuationSection(r.code, r.market);
+  const valHtml = SCENARIOS[r.code] ? fmtScenarioSection(r.code, r.market) : fmtValuationSection(r.code, r.market);
   const peersHtml = fmtPeersSection(r);
   // growthDriver／technical是舊資料（重新研究前產生的報告）沒有的新欄位，
   // 缺欄位時整段跳過渲染，不放進tocPills，不讓舊報告因為缺欄位而報錯或版面跑掉。
@@ -3075,7 +2964,7 @@ function renderReport(r){
   ].filter(Boolean);
   const rightItems = [
     { id:`sec-fin-${r.code}`, label:'基本面', html:finHtml },
-    valHtml ? { id:`sec-val-${r.code}`, label:'股價推算模型', html:valHtml } : null,
+    valHtml ? { id:`sec-val-${r.code}`, label: SCENARIOS[r.code] ? '三情境獲利' : '股價推算模型', html:valHtml } : null,
   ].filter(Boolean);
   const fullWidthItems = [
     { id:`sec-glossary-${r.code}`, label:'名詞小百科', html:glossaryHtml },
@@ -3190,12 +3079,6 @@ function setActiveViewTab(view){
   });
 }
 
-function switchView(view){
-  if(view === 'scan') showDivergenceScan();
-  else if(view === 'crowding') showCrowdingAlert();
-  else goHome();
-}
-
 function goHome(){
   currentReportCode = null;
   updateUrlForHome();
@@ -3211,298 +3094,7 @@ function goHome(){
   document.getElementById('searchInput').value = '';
   closeSearchSuggestions();
   if(compareMode) toggleCompareMode();
-  const divergenceScanBox = document.getElementById('divergenceScanBox');
-  if(divergenceScanBox) divergenceScanBox.style.display = 'none';
-  const crowdingAlertBox = document.getElementById('crowdingAlertBox');
-  if(crowdingAlertBox) crowdingAlertBox.style.display = 'none';
   setActiveViewTab('home');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ===== 產業共識落差掃描：資料為 2026-09-17 收盤後從 toalpha／toalpha-mops 查詢並程式化計算，
-// 每次要更新只要重新查資料、重新算分、覆寫下面這個常數即可。 =====
-const DIVERGENCE_SCAN = {"generated_at": "2026-11-04", "industries": [{"industry": "半導體業", "industry_pe_median": 24.186, "industry_eps_growth_median": 0.359, "industry_foreign_20d_billion": -8860.0, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2408", "name": "南亞科", "divergence_score": -39.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -166.7, "valuation_vs_growth": 170.2, "estimate_quality": -79.0}, "raw_facts": {"foreign_d20_billion": -308.5, "trust_d20_billion": -86.6, "net20_billion": -395.1, "mcap_billion": 12379, "buy_ratio": 0.8333333333333334, "analysts": 6, "buy_analysts_est": 5, "pe_fy1": 5.8, "eps_g2": 0.593, "beat_rate": 0.38, "dispersion_fy2": 0.67}, "narrative": "近20日外資-308.5億、投信-86.6億，合計賣超約395.1億元（占市值-3.19%）；30日內6家分析師中5家喊買（看多比例83%）。個股今年前瞻本益比5.8倍，產業中位數24.2倍。明年EPS成長預估59.3%，較產業中位數35.9%高。近8季財報優於預估比例38%，明年預估分歧度67%。"}, {"stock_id": "2303", "name": "聯電", "divergence_score": -77.6, "direction": "overvalued_gap", "components": {"flow_vs_rating": -155.6, "valuation_vs_growth": 11.7, "estimate_quality": -63.0}, "raw_facts": {"foreign_d20_billion": -370.5, "trust_d20_billion": -221.8, "net20_billion": -592.3, "mcap_billion": 13261, "buy_ratio": 0.7777777777777778, "analysts": 9, "buy_analysts_est": 7, "pe_fy1": 15.3, "eps_g2": 0.012, "beat_rate": 0.5, "dispersion_fy2": 0.63}, "narrative": "近20日外資-370.5億、投信-221.8億，合計賣超約592.3億元（占市值-4.47%）；30日內9家分析師中7家喊買（看多比例78%）。個股今年前瞻本益比15.3倍，產業中位數24.2倍。明年EPS成長預估1.2%，較產業中位數35.9%低。近8季財報優於預估比例50%，明年預估分歧度63%。"}, {"stock_id": "2454", "name": "聯發科", "divergence_score": -80.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -184.6, "valuation_vs_growth": 10.9, "estimate_quality": -34.0}, "raw_facts": {"foreign_d20_billion": -1874.5, "trust_d20_billion": 212.1, "net20_billion": -1662.4, "mcap_billion": 59624, "buy_ratio": 0.9230769230769231, "analysts": 13, "buy_analysts_est": 12, "pe_fy1": 52.8, "eps_g2": 1.118, "beat_rate": 0.75, "dispersion_fy2": 0.59}, "narrative": "近20日外資-1874.5億、投信+212.1億，合計賣超約1662.4億元（占市值-2.79%）；30日內13家分析師中12家喊買（看多比例92%）。個股今年前瞻本益比52.8倍，產業中位數24.2倍。明年EPS成長預估111.8%，較產業中位數35.9%高。近8季財報優於預估比例75%，明年預估分歧度59%。"}]}, {"industry": "金融保險業", "industry_pe_median": 14.65, "industry_eps_growth_median": 0.029, "industry_foreign_20d_billion": 312.5, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2891", "name": "中信金", "divergence_score": 60.8, "direction": "undervalued_gap", "components": {"flow_vs_rating": 150.5, "valuation_vs_growth": -5.9, "estimate_quality": 8.0}, "raw_facts": {"foreign_d20_billion": 38.7, "trust_d20_billion": 34.0, "net20_billion": 72.7, "mcap_billion": 14403, "buy_ratio": 0.0, "analysts": 2, "buy_analysts_est": 0, "pe_fy1": 17.2, "eps_g2": 0.059, "beat_rate": 0.75, "dispersion_fy2": 0.17}, "narrative": "近20日外資+38.7億、投信+34.0億，合計買超約72.7億元（占市值+0.5%）；30日內2家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比17.2倍，產業中位數14.7倍。明年EPS成長預估5.9%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度17%。"}, {"stock_id": "2881", "name": "富邦金", "divergence_score": 53.3, "direction": "undervalued_gap", "components": {"flow_vs_rating": 122.0, "valuation_vs_growth": -2.1, "estimate_quality": 17.0}, "raw_facts": {"foreign_d20_billion": 27.2, "trust_d20_billion": 20.4, "net20_billion": 47.6, "mcap_billion": 21641, "buy_ratio": 0.0, "analysts": 1, "buy_analysts_est": 0, "pe_fy1": 14.1, "eps_g2": -0.052, "beat_rate": 0.88, "dispersion_fy2": 0.21}, "narrative": "近20日外資+27.2億、投信+20.4億，合計買超約47.6億元（占市值+0.22%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比14.1倍，產業中位數14.7倍。明年EPS成長預估-5.2%，較產業中位數2.9%低。近8季財報優於預估比例88%，明年預估分歧度21%。"}, {"stock_id": "2887", "name": "台新新光金", "divergence_score": 14.4, "direction": "undervalued_gap", "components": {"flow_vs_rating": 27.3, "valuation_vs_growth": 5.5, "estimate_quality": 6.0}, "raw_facts": {"foreign_d20_billion": 6.6, "trust_d20_billion": 21.0, "net20_billion": 27.6, "mcap_billion": 10109, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 13.3, "eps_g2": 0.038, "beat_rate": 0.75, "dispersion_fy2": 0.19}, "narrative": "近20日外資+6.6億、投信+21.0億，合計買超約27.6億元（占市值+0.27%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比13.3倍，產業中位數14.7倍。明年EPS成長預估3.8%，較產業中位數2.9%高。近8季財報優於預估比例75%，明年預估分歧度19%。"}, {"stock_id": "2885", "name": "元大金", "divergence_score": -9.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -19.6, "valuation_vs_growth": -5.8, "estimate_quality": 1.0}, "raw_facts": {"foreign_d20_billion": 70.1, "trust_d20_billion": 6.8, "net20_billion": 76.9, "mcap_billion": 9566, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 14.8, "eps_g2": -0.076, "beat_rate": 0.86, "dispersion_fy2": 0.35}, "narrative": "近20日外資+70.1億、投信+6.8億，合計買超約76.9億元（占市值+0.8%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比14.8倍，產業中位數14.7倍。明年EPS成長預估-7.6%，較產業中位數2.9%低。近8季財報優於預估比例86%，明年預估分歧度35%。"}, {"stock_id": "2882", "name": "國泰金", "divergence_score": -26.4, "direction": "overvalued_gap", "components": {"flow_vs_rating": -70.6, "valuation_vs_growth": 6.1, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": 18.7, "trust_d20_billion": 29.1, "net20_billion": 47.8, "mcap_billion": 16283, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 12.7, "eps_g2": -0.003, "beat_rate": 0.75, "dispersion_fy2": 0.25}, "narrative": "近20日外資+18.7億、投信+29.1億，合計買超約47.8億元（占市值+0.29%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比12.7倍，產業中位數14.7倍。明年EPS成長預估-0.3%，較產業中位數2.9%低。近8季財報優於預估比例75%，明年預估分歧度25%。"}]}, {"industry": "航運業", "industry_pe_median": 9.658, "industry_eps_growth_median": 0.074, "industry_foreign_20d_billion": 294.1, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2609", "name": "陽明", "divergence_score": 63.3, "direction": "undervalued_gap", "components": {"flow_vs_rating": 200.0, "valuation_vs_growth": -17.7, "estimate_quality": -38.0}, "raw_facts": {"foreign_d20_billion": 75.4, "trust_d20_billion": 4.4, "net20_billion": 79.8, "mcap_billion": 2176, "buy_ratio": 0.0, "analysts": 1, "buy_analysts_est": 0, "pe_fy1": 7.7, "eps_g2": -0.535, "beat_rate": 0.38, "dispersion_fy2": 0.26}, "narrative": "近20日外資+75.4億、投信+4.4億，合計買超約79.8億元（占市值+3.67%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比7.7倍，產業中位數9.7倍。明年EPS成長預估-53.5%，較產業中位數7.4%低。近8季財報優於預估比例38%，明年預估分歧度26%。"}, {"stock_id": "2615", "name": "萬海", "divergence_score": 32.8, "direction": "undervalued_gap", "components": {"flow_vs_rating": 92.0, "valuation_vs_growth": 1.6, "estimate_quality": -15.0}, "raw_facts": {"foreign_d20_billion": 16.7, "trust_d20_billion": 2.1, "net20_billion": 18.8, "mcap_billion": 3241, "buy_ratio": 0.33, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 7.1, "eps_g2": -0.254, "beat_rate": 0.86, "dispersion_fy2": 0.51}, "narrative": "近20日外資+16.7億、投信+2.1億，合計買超約18.8億元（占市值+0.58%）；30日內無最新評等，以近180日累計看多比例33%為參考。個股今年前瞻本益比7.1倍，產業中位數9.7倍。明年EPS成長預估-25.4%，較產業中位數7.4%低。近8季財報優於預估比例86%，明年預估分歧度51%。"}, {"stock_id": "2603", "name": "長榮", "divergence_score": 0.5, "direction": "undervalued_gap", "components": {"flow_vs_rating": 66.7, "valuation_vs_growth": -2.2, "estimate_quality": -85.0}, "raw_facts": {"foreign_d20_billion": 104.0, "trust_d20_billion": 42.8, "net20_billion": 146.8, "mcap_billion": 5802, "buy_ratio": 0.6666666666666666, "analysts": 6, "buy_analysts_est": 4, "pe_fy1": 7.4, "eps_g2": -0.275, "beat_rate": 0.5, "dispersion_fy2": 0.85}, "narrative": "近20日外資+104.0億、投信+42.8億，合計買超約146.8億元（占市值+2.53%）；30日內6家分析師中4家喊買（看多比例67%）。個股今年前瞻本益比7.4倍，產業中位數9.7倍。明年EPS成長預估-27.5%，較產業中位數7.4%低。近8季財報優於預估比例50%，明年預估分歧度85%。"}, {"stock_id": "2633", "name": "台灣高鐵", "divergence_score": -5.4, "direction": "overvalued_gap", "components": {"flow_vs_rating": 24.0, "valuation_vs_growth": 0.0, "estimate_quality": -50.0}, "raw_facts": {"foreign_d20_billion": 5.6, "trust_d20_billion": -2.1, "net20_billion": 3.5, "mcap_billion": 1461, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": 0.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資+5.6億、投信-2.1億，合計買超約3.5億元（占市值+0.24%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例0%，明年預估分歧度0%。"}, {"stock_id": "2618", "name": "長榮航", "divergence_score": -6.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": 0.0, "valuation_vs_growth": -0.9, "estimate_quality": -20.0}, "raw_facts": {"foreign_d20_billion": 45.0, "trust_d20_billion": -7.2, "net20_billion": 37.8, "mcap_billion": 2363, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 10.7, "eps_g2": 0.154, "beat_rate": 0.75, "dispersion_fy2": 0.45}, "narrative": "近20日外資+45.0億、投信-7.2億，合計買超約37.8億元（占市值+1.6%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比10.7倍，產業中位數9.7倍。明年EPS成長預估15.4%，較產業中位數7.4%高。近8季財報優於預估比例75%，明年預估分歧度45%。"}]}, {"industry": "電腦及週邊設備業", "industry_pe_median": 13.964, "industry_eps_growth_median": 0.194, "industry_foreign_20d_billion": -173.6, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2382", "name": "廣達", "divergence_score": 3.4, "direction": "undervalued_gap", "components": {"flow_vs_rating": -1.7, "valuation_vs_growth": 11.7, "estimate_quality": 2.0}, "raw_facts": {"foreign_d20_billion": -38.3, "trust_d20_billion": 36.2, "net20_billion": -2.1, "mcap_billion": 12426, "buy_ratio": 0.5, "analysts": 4, "buy_analysts_est": 2, "pe_fy1": 11.3, "eps_g2": 0.192, "beat_rate": 0.88, "dispersion_fy2": 0.36}, "narrative": "近20日外資-38.3億、投信+36.2億，合計賣超約2.1億元（占市值-0.02%）；30日內4家分析師中2家喊買（看多比例50%）。個股今年前瞻本益比11.3倍，產業中位數14.0倍。明年EPS成長預估19.2%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度36%。"}, {"stock_id": "2357", "name": "華碩", "divergence_score": -7.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -4.8, "valuation_vs_growth": -0.9, "estimate_quality": -17.0}, "raw_facts": {"foreign_d20_billion": 4.8, "trust_d20_billion": 1.2, "net20_billion": 6.0, "mcap_billion": 6514, "buy_ratio": 0.57, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 11.8, "eps_g2": -0.007, "beat_rate": 0.88, "dispersion_fy2": 0.55}, "narrative": "近20日外資+4.8億、投信+1.2億，合計買超約6.0億元（占市值+0.09%）；30日內無最新評等，以近180日累計看多比例57%為參考。個股今年前瞻本益比11.8倍，產業中位數14.0倍。明年EPS成長預估-0.7%，較產業中位數19.4%低。近8季財報優於預估比例88%，明年預估分歧度55%。"}, {"stock_id": "3231", "name": "緯創", "divergence_score": -7.6, "direction": "overvalued_gap", "components": {"flow_vs_rating": 1.7, "valuation_vs_growth": 28.4, "estimate_quality": -56.0}, "raw_facts": {"foreign_d20_billion": 18.7, "trust_d20_billion": 12.5, "net20_billion": 31.2, "mcap_billion": 6037, "buy_ratio": 0.75, "analysts": 4, "buy_analysts_est": 3, "pe_fy1": 10.5, "eps_g2": 0.433, "beat_rate": 0.5, "dispersion_fy2": 0.56}, "narrative": "近20日外資+18.7億、投信+12.5億，合計買超約31.2億元（占市值+0.52%）；30日內4家分析師中3家喊買（看多比例75%）。個股今年前瞻本益比10.5倍，產業中位數14.0倍。明年EPS成長預估43.3%，較產業中位數19.4%高。近8季財報優於預估比例50%，明年預估分歧度56%。"}, {"stock_id": "2301", "name": "光寶科", "divergence_score": -90.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -166.0, "valuation_vs_growth": -8.8, "estimate_quality": -71.0}, "raw_facts": {"foreign_d20_billion": -70.6, "trust_d20_billion": 7.5, "net20_billion": -63.1, "mcap_billion": 5144, "buy_ratio": 0.83, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 21.2, "eps_g2": 0.359, "beat_rate": 0.38, "dispersion_fy2": 0.59}, "narrative": "近20日外資-70.6億、投信+7.5億，合計賣超約63.1億元（占市值-1.23%）；30日內無最新評等，以近180日累計看多比例83%為參考。個股今年前瞻本益比21.2倍，產業中位數14.0倍。明年EPS成長預估35.9%，較產業中位數19.4%高。近8季財報優於預估比例38%，明年預估分歧度59%。"}]}, {"industry": "其他電子業", "industry_pe_median": 17.555, "industry_eps_growth_median": 0.324, "industry_foreign_20d_billion": -221.8, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2317", "name": "鴻海", "divergence_score": -47.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -116.5, "valuation_vs_growth": 13.8, "estimate_quality": -15.0}, "raw_facts": {"foreign_d20_billion": -73.2, "trust_d20_billion": 17.5, "net20_billion": -55.7, "mcap_billion": 33669, "buy_ratio": 1.0, "analysts": 4, "buy_analysts_est": 4, "pe_fy1": 13.0, "eps_g2": 0.25, "beat_rate": 0.75, "dispersion_fy2": 0.4}, "narrative": "近20日外資-73.2億、投信+17.5億，合計賣超約55.7億元（占市值-0.17%）；30日內4家分析師中4家喊買（看多比例100%）。個股今年前瞻本益比13.0倍，產業中位數17.6倍。明年EPS成長預估25.0%，較產業中位數32.4%低。近8季財報優於預估比例75%，明年預估分歧度40%。"}, {"stock_id": "6139", "name": "亞翔", "divergence_score": -55.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 46.2, "estimate_quality": 36.0}, "raw_facts": {"foreign_d20_billion": -45.7, "trust_d20_billion": 0.9, "net20_billion": -44.8, "mcap_billion": 1435, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 9.5, "eps_g2": 0.401, "beat_rate": 0.86, "dispersion_fy2": 0.0}, "narrative": "近20日外資-45.7億、投信+0.9億，合計賣超約44.8億元（占市值-3.12%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比9.5倍，產業中位數17.6倍。明年EPS成長預估40.1%，較產業中位數32.4%高。近8季財報優於預估比例86%，明年預估分歧度0%。"}, {"stock_id": "3665", "name": "貿聯-KY", "divergence_score": -70.2, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 10.7, "estimate_quality": 22.0}, "raw_facts": {"foreign_d20_billion": 69.9, "trust_d20_billion": -113.5, "net20_billion": -43.6, "mcap_billion": 3063, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 22.8, "eps_g2": 0.768, "beat_rate": 0.88, "dispersion_fy2": 0.16}, "narrative": "近20日外資+69.9億、投信-113.5億，合計賣超約43.6億元（占市值-1.42%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比22.8倍，產業中位數17.6倍。明年EPS成長預估76.8%，較產業中位數32.4%高。近8季財報優於預估比例88%，明年預估分歧度16%。"}, {"stock_id": "2360", "name": "致茂", "divergence_score": -71.4, "direction": "overvalued_gap", "components": {"flow_vs_rating": -161.6, "valuation_vs_growth": -14.4, "estimate_quality": -8.0}, "raw_facts": {"foreign_d20_billion": -43.0, "trust_d20_billion": 4.5, "net20_billion": -38.5, "mcap_billion": 6251, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 31.8, "eps_g2": 0.484, "beat_rate": 0.75, "dispersion_fy2": 0.33}, "narrative": "近20日外資-43.0億、投信+4.5億，合計賣超約38.5億元（占市值-0.62%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比31.8倍，產業中位數17.6倍。明年EPS成長預估48.4%，較產業中位數32.4%高。近8季財報優於預估比例75%，明年預估分歧度33%。"}]}, {"industry": "半導體封測概念股", "industry_pe_median": 23.8, "industry_eps_growth_median": 0.467, "industry_foreign_20d_billion": -691.3, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "8150", "name": "南茂", "divergence_score": -7.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": 0.0, "valuation_vs_growth": 12.6, "estimate_quality": -37.0}, "raw_facts": {"foreign_d20_billion": -31.2, "trust_d20_billion": 1.4, "net20_billion": -29.8, "mcap_billion": 593, "buy_ratio": 0.0, "analysts": 1, "buy_analysts_est": 0, "pe_fy1": 17.8, "eps_g2": 0.381, "beat_rate": 0.5, "dispersion_fy2": 0.37}, "narrative": "近20日外資-31.2億、投信+1.4億，合計賣超約29.8億元（占市值-5.03%）；30日內1家分析師中0家喊買（看多比例0%）。個股今年前瞻本益比17.8倍，同題材中位數23.8倍。明年EPS成長預估38.1%，較同題材中位數46.7%低。近8季財報優於預估比例50%，明年預估分歧度37%。"}, {"stock_id": "3711", "name": "日月光投控", "divergence_score": -74.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -168.3, "valuation_vs_growth": -8.1, "estimate_quality": -15.0}, "raw_facts": {"foreign_d20_billion": -466.7, "trust_d20_billion": 211.9, "net20_billion": -254.8, "mcap_billion": 28140, "buy_ratio": 0.8888888888888888, "analysts": 9, "buy_analysts_est": 8, "pe_fy1": 31.6, "eps_g2": 0.552, "beat_rate": 0.75, "dispersion_fy2": 0.4}, "narrative": "近20日外資-466.7億、投信+211.9億，合計賣超約254.8億元（占市值-0.91%）；30日內9家分析師中8家喊買（看多比例89%）。個股今年前瞻本益比31.6倍，同題材中位數23.8倍。明年EPS成長預估55.2%，較同題材中位數46.7%高。近8季財報優於預估比例75%，明年預估分歧度40%。"}, {"stock_id": "6257", "name": "矽格", "divergence_score": -80.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 3.0, "estimate_quality": -4.0}, "raw_facts": {"foreign_d20_billion": -22.8, "trust_d20_billion": 9.8, "net20_billion": -13.0, "mcap_billion": 922, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 19.2, "eps_g2": 0.287, "beat_rate": 0.57, "dispersion_fy2": 0.11}, "narrative": "近20日外資-22.8億、投信+9.8億，合計賣超約13.0億元（占市值-1.41%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比19.2倍，同題材中位數23.8倍。明年EPS成長預估28.7%，較同題材中位數46.7%低。近8季財報優於預估比例57%，明年預估分歧度11%。"}, {"stock_id": "2449", "name": "京元電子", "divergence_score": -88.4, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 1.0, "estimate_quality": -29.0}, "raw_facts": {"foreign_d20_billion": -170.6, "trust_d20_billion": -19.9, "net20_billion": -190.5, "mcap_billion": 3190, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 28.4, "eps_g2": 0.649, "beat_rate": 0.5, "dispersion_fy2": 0.29}, "narrative": "近20日外資-170.6億、投信-19.9億，合計賣超約190.5億元（占市值-5.97%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比28.4倍，同題材中位數23.8倍。明年EPS成長預估64.9%，較同題材中位數46.7%高。近8季財報優於預估比例50%，明年預估分歧度29%。"}]}, {"industry": "廠務工程", "industry_pe_median": 17.1, "industry_eps_growth_median": 0.267, "industry_foreign_20d_billion": -38.5, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2404", "name": "漢唐", "divergence_score": -21.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -75.9, "valuation_vs_growth": 18.2, "estimate_quality": 12.0}, "raw_facts": {"foreign_d20_billion": -23.0, "trust_d20_billion": 8.6, "net20_billion": -14.4, "mcap_billion": 1896, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 12.7, "eps_g2": 0.285, "beat_rate": 0.71, "dispersion_fy2": 0.09}, "narrative": "近20日外資-23.0億、投信+8.6億，合計賣超約14.4億元（占市值-0.76%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比12.7倍，同題材中位數17.1倍。明年EPS成長預估28.5%，較同題材中位數26.7%高。近8季財報優於預估比例71%，明年預估分歧度9%。"}, {"stock_id": "5536", "name": "聖暉*", "divergence_score": -58.2, "direction": "overvalued_gap", "components": {"flow_vs_rating": -100.0, "valuation_vs_growth": 31.4, "estimate_quality": -92.0}, "raw_facts": {"foreign_d20_billion": -12.5, "trust_d20_billion": -1.9, "net20_billion": -14.4, "mcap_billion": 896, "buy_ratio": 0.5, "analysts": 2, "buy_analysts_est": 1, "pe_fy1": 10.5, "eps_g2": 0.267, "beat_rate": 0.12, "dispersion_fy2": 0.54}, "narrative": "近20日外資-12.5億、投信-1.9億，合計賣超約14.4億元（占市值-1.61%）；30日內2家分析師中1家喊買（看多比例50%）。個股今年前瞻本益比10.5倍，同題材中位數17.1倍。明年EPS成長預估26.7%，較同題材中位數26.7%低。近8季財報優於預估比例12%，明年預估分歧度54%。"}, {"stock_id": "6664", "name": "群翊", "divergence_score": -62.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -116.7, "valuation_vs_growth": -1.0, "estimate_quality": -50.0}, "raw_facts": {"foreign_d20_billion": -0.4, "trust_d20_billion": 0.1, "net20_billion": -0.3, "mcap_billion": 180, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 17.1, "eps_g2": 0.247, "beat_rate": 0.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資-0.4億、投信+0.1億，合計賣超約0.3億元（占市值-0.17%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比17.1倍，同題材中位數17.1倍。明年EPS成長預估24.7%，較同題材中位數26.7%低。近8季財報優於預估比例0%，明年預估分歧度0%。"}, {"stock_id": "6829", "name": "千附精密", "divergence_score": -63.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -118.7, "valuation_vs_growth": -29.3, "estimate_quality": -25.0}, "raw_facts": {"foreign_d20_billion": -0.2, "trust_d20_billion": 0.0, "net20_billion": -0.2, "mcap_billion": 107, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 27.2, "eps_g2": 0.053, "beat_rate": 0.25, "dispersion_fy2": 0.0}, "narrative": "近20日外資-0.2億、投信+0.0億，合計賣超約0.2億元（占市值-0.19%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比27.2倍，同題材中位數17.1倍。明年EPS成長預估5.3%，較同題材中位數26.7%低。近8季財報優於預估比例25%，明年預估分歧度0%。"}, {"stock_id": "2467", "name": "志聖", "divergence_score": -78.6, "direction": "overvalued_gap", "components": {"flow_vs_rating": -147.5, "valuation_vs_growth": -12.1, "estimate_quality": -53.0}, "raw_facts": {"foreign_d20_billion": -2.4, "trust_d20_billion": -0.4, "net20_billion": -2.8, "mcap_billion": 589, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 22.6, "eps_g2": 0.268, "beat_rate": 0.6, "dispersion_fy2": 0.63}, "narrative": "近20日外資-2.4億、投信-0.4億，合計賣超約2.8億元（占市值-0.48%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比22.6倍，同題材中位數17.1倍。明年EPS成長預估26.8%，較同題材中位數26.7%高。近8季財報優於預估比例60%，明年預估分歧度63%。"}]}, {"industry": "檢驗設備", "industry_pe_median": 25.2, "industry_eps_growth_median": 0.49, "industry_foreign_20d_billion": -1.6, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "5443", "name": "均豪", "divergence_score": 40.0, "direction": "undervalued_gap", "components": {"flow_vs_rating": 100, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": 1.8, "trust_d20_billion": 0.0, "net20_billion": 1.8, "mcap_billion": 146, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資+1.8億、投信+0.0億，合計買超約1.8億元（占市值+1.23%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"}, {"stock_id": "3131", "name": "弘塑", "divergence_score": -26.5, "direction": "overvalued_gap", "components": {"flow_vs_rating": -50.3, "valuation_vs_growth": 3.6, "estimate_quality": -25.0}, "raw_facts": {"foreign_d20_billion": 2.8, "trust_d20_billion": -0.3, "net20_billion": 2.5, "mcap_billion": 503, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 26.2, "eps_g2": 0.601, "beat_rate": 0.62, "dispersion_fy2": 0.37}, "narrative": "近20日外資+2.8億、投信-0.3億，合計買超約2.5億元（占市值+0.5%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比26.2倍，同題材中位數25.2倍。明年EPS成長預估60.1%，較同題材中位數49.0%高。近8季財報優於預估比例62%，明年預估分歧度37%。"}, {"stock_id": "3587", "name": "閎康", "divergence_score": -33.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -55.6, "valuation_vs_growth": 13.0, "estimate_quality": -50.0}, "raw_facts": {"foreign_d20_billion": -0.8, "trust_d20_billion": 0.0, "net20_billion": -0.8, "mcap_billion": 144, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 17.6, "eps_g2": 0.318, "beat_rate": 0.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資-0.8億、投信+0.0億，合計賣超約0.8億元（占市值-0.56%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比17.6倍，同題材中位數25.2倍。明年EPS成長預估31.8%，較同題材中位數49.0%低。近8季財報優於預估比例0%，明年預估分歧度0%。"}, {"stock_id": "3583", "name": "辛耘", "divergence_score": -98.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 0.0, "estimate_quality": -61.0}, "raw_facts": {"foreign_d20_billion": -5.4, "trust_d20_billion": -3.5, "net20_billion": -8.9, "mcap_billion": 411, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 25.2, "eps_g2": 0.49, "beat_rate": 0.14, "dispersion_fy2": 0.25}, "narrative": "近20日外資-5.4億、投信-3.5億，合計賣超約8.9億元（占市值-2.17%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比25.2倍，同題材中位數25.2倍。明年EPS成長預估49.0%，較同題材中位數49.0%低。近8季財報優於預估比例14%，明年預估分歧度25%。"}]}, {"industry": "半導體通路商", "industry_pe_median": 7.8, "industry_eps_growth_median": 0.126, "industry_foreign_20d_billion": -16.1, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "3702", "name": "大聯大", "divergence_score": 30.5, "direction": "undervalued_gap", "components": {"flow_vs_rating": 100, "valuation_vs_growth": 12.4, "estimate_quality": -44.0}, "raw_facts": {"foreign_d20_billion": 18.4, "trust_d20_billion": 4.6, "net20_billion": 23.0, "mcap_billion": 1676, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 6.0, "eps_g2": 0.073, "beat_rate": 0.5, "dispersion_fy2": 0.44}, "narrative": "近20日外資+18.4億、投信+4.6億，合計買超約23.0億元（占市值+1.37%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比6.0倍，同題材中位數7.8倍。明年EPS成長預估7.3%，較同題材中位數12.6%低。近8季財報優於預估比例50%，明年預估分歧度44%。"}, {"stock_id": "8112", "name": "至上", "divergence_score": -40.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -100, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": -5.3, "trust_d20_billion": -1.7, "net20_billion": -7.0, "mcap_billion": 438, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資-5.3億、投信-1.7億，合計賣超約7.0億元（占市值-1.6%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"}, {"stock_id": "5434", "name": "崇越", "divergence_score": -63.5, "direction": "overvalued_gap", "components": {"flow_vs_rating": -143.0, "valuation_vs_growth": -27.1, "estimate_quality": 6.0}, "raw_facts": {"foreign_d20_billion": -3.7, "trust_d20_billion": -0.6, "net20_billion": -4.3, "mcap_billion": 1001, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 17.0, "eps_g2": 0.126, "beat_rate": 0.62, "dispersion_fy2": 0.06}, "narrative": "近20日外資-3.7億、投信-0.6億，合計賣超約4.3億元（占市值-0.43%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比17.0倍，同題材中位數7.8倍。明年EPS成長預估12.6%，較同題材中位數12.6%低。近8季財報優於預估比例62%，明年預估分歧度6%。"}, {"stock_id": "3036", "name": "文曄", "divergence_score": -73.7, "direction": "overvalued_gap", "components": {"flow_vs_rating": -189.4, "valuation_vs_growth": 2.7, "estimate_quality": 4.0}, "raw_facts": {"foreign_d20_billion": -25.5, "trust_d20_billion": 0.9, "net20_billion": -24.6, "mcap_billion": 2753, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 7.8, "eps_g2": 0.18, "beat_rate": 0.75, "dispersion_fy2": 0.21}, "narrative": "近20日外資-25.5億、投信+0.9億，合計賣超約24.6億元（占市值-0.89%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比7.8倍，同題材中位數7.8倍。明年EPS成長預估18.0%，較同題材中位數12.6%高。近8季財報優於預估比例75%，明年預估分歧度21%。"}]}, {"industry": "IP/ASIC/IC設計", "industry_pe_median": 62.7, "industry_eps_growth_median": 0.82, "industry_foreign_20d_billion": -0.6, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "3035", "name": "智原", "divergence_score": 28.6, "direction": "undervalued_gap", "components": {"flow_vs_rating": 133.3, "valuation_vs_growth": 5.5, "estimate_quality": -88.0}, "raw_facts": {"foreign_d20_billion": 11.3, "trust_d20_billion": 1.2, "net20_billion": 12.5, "mcap_billion": 496, "buy_ratio": 0.3333333333333333, "analysts": 3, "buy_analysts_est": 1, "pe_fy1": 56.5, "eps_g2": 0.82, "beat_rate": 0.38, "dispersion_fy2": 0.76}, "narrative": "近20日外資+11.3億、投信+1.2億，合計買超約12.5億元（占市值+2.52%）；30日內3家分析師中1家喊買（看多比例33%）。個股今年前瞻本益比56.5倍，同題材中位數62.7倍。明年EPS成長預估82.0%，較同題材中位數82.0%低。近8季財報優於預估比例38%，明年預估分歧度76%。"}, {"stock_id": "3661", "name": "世芯-KY", "divergence_score": 14.9, "direction": "undervalued_gap", "components": {"flow_vs_rating": 0.0, "valuation_vs_growth": 64.8, "estimate_quality": -15.0}, "raw_facts": {"foreign_d20_billion": -37.9, "trust_d20_billion": 91.6, "net20_billion": 53.7, "mcap_billion": 2741, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 22.4, "eps_g2": 0.317, "beat_rate": 0.75, "dispersion_fy2": 0.4}, "narrative": "近20日外資-37.9億、投信+91.6億，合計買超約53.7億元（占市值+1.96%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比22.4倍，同題材中位數62.7倍。明年EPS成長預估31.7%，較同題材中位數82.0%低。近8季財報優於預估比例75%，明年預估分歧度40%。"}, {"stock_id": "3443", "name": "創意", "divergence_score": 10.8, "direction": "undervalued_gap", "components": {"flow_vs_rating": 80.0, "valuation_vs_growth": -5.8, "estimate_quality": -65.0}, "raw_facts": {"foreign_d20_billion": -13.4, "trust_d20_billion": 119.6, "net20_billion": 106.2, "mcap_billion": 9535, "buy_ratio": 0.6, "analysts": 5, "buy_analysts_est": 3, "pe_fy1": 130.6, "eps_g2": 1.224, "beat_rate": 0.62, "dispersion_fy2": 0.77}, "narrative": "近20日外資-13.4億、投信+119.6億，合計買超約106.2億元（占市值+1.11%）；30日內5家分析師中3家喊買（看多比例60%）。個股今年前瞻本益比130.6倍，同題材中位數62.7倍。明年EPS成長預估122.4%，較同題材中位數82.0%高。近8季財報優於預估比例62%，明年預估分歧度77%。"}, {"stock_id": "6643", "name": "M31", "divergence_score": -43.9, "direction": "overvalued_gap", "components": {"flow_vs_rating": -11.8, "valuation_vs_growth": 2.4, "estimate_quality": -133.0}, "raw_facts": {"foreign_d20_billion": -0.3, "trust_d20_billion": 0.1, "net20_billion": -0.2, "mcap_billion": 169, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 97.6, "eps_g2": 1.225, "beat_rate": 0.12, "dispersion_fy2": 0.95}, "narrative": "近20日外資-0.3億、投信+0.1億，合計賣超約0.2億元（占市值-0.12%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比97.6倍，同題材中位數62.7倍。明年EPS成長預估122.5%，較同題材中位數82.0%高。近8季財報優於預估比例12%，明年預估分歧度95%。"}, {"stock_id": "3529", "name": "力旺", "divergence_score": -50.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -61.6, "valuation_vs_growth": -24.9, "estimate_quality": -60.0}, "raw_facts": {"foreign_d20_billion": 39.7, "trust_d20_billion": -33.5, "net20_billion": 6.2, "mcap_billion": 1613, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 62.7, "eps_g2": 0.322, "beat_rate": 0.25, "dispersion_fy2": 0.35}, "narrative": "近20日外資+39.7億、投信-33.5億，合計買超約6.2億元（占市值+0.38%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比62.7倍，同題材中位數62.7倍。明年EPS成長預估32.2%，較同題材中位數82.0%低。近8季財報優於預估比例25%，明年預估分歧度35%。"}]}, {"industry": "晶圓製造", "industry_pe_median": 61.05, "industry_eps_growth_median": 0.458, "industry_foreign_20d_billion": -4432.8, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "3532", "name": "台勝科", "divergence_score": 31.1, "direction": "undervalued_gap", "components": {"flow_vs_rating": 62.7, "valuation_vs_growth": 70.0, "estimate_quality": -50.0}, "raw_facts": {"foreign_d20_billion": 7.5, "trust_d20_billion": 0.1, "net20_billion": 7.6, "mcap_billion": 1212, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 142.6, "eps_g2": 2.43, "beat_rate": 0.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資+7.5億、投信+0.1億，合計買超約7.6億元（占市值+0.63%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比142.6倍，同題材中位數61.0倍。明年EPS成長預估243.0%，較同題材中位數45.8%高。近8季財報優於預估比例0%，明年預估分歧度0%。"}, {"stock_id": "3105", "name": "穩懋", "divergence_score": -14.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": 28.6, "valuation_vs_growth": -3.6, "estimate_quality": -81.0}, "raw_facts": {"foreign_d20_billion": 157.4, "trust_d20_billion": -53.4, "net20_billion": 104.0, "mcap_billion": 2124, "buy_ratio": 0.8571428571428571, "analysts": 7, "buy_analysts_est": 6, "pe_fy1": 57.3, "eps_g2": 0.32, "beat_rate": 0.62, "dispersion_fy2": 0.93}, "narrative": "近20日外資+157.4億、投信-53.4億，合計買超約104.0億元（占市值+4.9%）；30日內7家分析師中6家喊買（看多比例86%）。個股今年前瞻本益比57.3倍，同題材中位數61.0倍。明年EPS成長預估32.0%，較同題材中位數45.8%低。近8季財報優於預估比例62%，明年預估分歧度93%。"}, {"stock_id": "2330", "name": "台積電", "divergence_score": -14.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -124.2, "valuation_vs_growth": 91.3, "estimate_quality": 25.0}, "raw_facts": {"foreign_d20_billion": -4590.9, "trust_d20_billion": 731.8, "net20_billion": -3859.1, "mcap_billion": 586072, "buy_ratio": 0.7916666666666666, "analysts": 24, "buy_analysts_est": 19, "pe_fy1": 20.7, "eps_g2": 0.335, "beat_rate": 1.0, "dispersion_fy2": 0.25}, "narrative": "近20日外資-4590.9億、投信+731.8億，合計賣超約3859.1億元（占市值-0.66%）；30日內24家分析師中19家喊買（看多比例79%）。個股今年前瞻本益比20.7倍，同題材中位數61.0倍。明年EPS成長預估33.5%，較同題材中位數45.8%低。近8季財報優於預估比例100%，明年預估分歧度25%。"}, {"stock_id": "2455", "name": "全新", "divergence_score": -100, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 3.3, "estimate_quality": -94.0}, "raw_facts": {"foreign_d20_billion": -6.8, "trust_d20_billion": -5.5, "net20_billion": -12.3, "mcap_billion": 710, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 64.8, "eps_g2": 0.581, "beat_rate": 0.25, "dispersion_fy2": 0.69}, "narrative": "近20日外資-6.8億、投信-5.5億，合計賣超約12.3億元（占市值-1.73%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比64.8倍，同題材中位數61.0倍。明年EPS成長預估58.1%，較同題材中位數45.8%高。近8季財報優於預估比例25%，明年預估分歧度69%。"}]}, {"industry": "軍工", "industry_pe_median": 19.8, "industry_eps_growth_median": 0.012, "industry_foreign_20d_billion": 6.0, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "8033", "name": "雷虎", "divergence_score": 13.3, "direction": "undervalued_gap", "components": {"flow_vs_rating": 33.2, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": 1.4, "trust_d20_billion": -0.6, "net20_billion": 0.8, "mcap_billion": 241, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資+1.4億、投信-0.6億，合計買超約0.8億元（占市值+0.33%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。"}, {"stock_id": "2634", "name": "漢翔", "divergence_score": 7.6, "direction": "undervalued_gap", "components": {"flow_vs_rating": 73.3, "valuation_vs_growth": -3.5, "estimate_quality": -69.0}, "raw_facts": {"foreign_d20_billion": 4.1, "trust_d20_billion": -0.2, "net20_billion": 3.9, "mcap_billion": 532, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 24.6, "eps_g2": 0.137, "beat_rate": 0.25, "dispersion_fy2": 0.44}, "narrative": "近20日外資+4.1億、投信-0.2億，合計買超約3.9億元（占市值+0.73%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比24.6倍，同題材中位數19.8倍。明年EPS成長預估13.7%，較同題材中位數1.2%高。近8季財報優於預估比例25%，明年預估分歧度44%。"}, {"stock_id": "6753", "name": "龍德造船", "divergence_score": -0.3, "direction": "overvalued_gap", "components": {"flow_vs_rating": -45.5, "valuation_vs_growth": 9.8, "estimate_quality": 50.0}, "raw_facts": {"foreign_d20_billion": -0.6, "trust_d20_billion": 0.0, "net20_billion": -0.6, "mcap_billion": 132, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 15.0, "eps_g2": -0.113, "beat_rate": 1.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資-0.6億、投信+0.0億，合計賣超約0.6億元（占市值-0.45%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比15.0倍，同題材中位數19.8倍。明年EPS成長預估-11.3%，較同題材中位數1.2%低。近8季財報優於預估比例100%，明年預估分歧度0%。"}, {"stock_id": "3718", "name": "中光電投控", "divergence_score": -0.9, "direction": "overvalued_gap", "components": {"flow_vs_rating": 57.0, "valuation_vs_growth": 0.0, "estimate_quality": -79.0}, "raw_facts": {"foreign_d20_billion": 1.1, "trust_d20_billion": 0.0, "net20_billion": 1.1, "mcap_billion": 193, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": 0.25, "dispersion_fy2": 0.54}, "narrative": "近20日外資+1.1億、投信+0.0億，合計買超約1.1億元（占市值+0.57%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。近8季財報優於預估比例25%，明年預估分歧度54%。"}]}, {"industry": "重電", "industry_pe_median": 21.75, "industry_eps_growth_median": 0.257, "industry_foreign_20d_billion": -18.6, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "1513", "name": "中興電", "divergence_score": 45.8, "direction": "undervalued_gap", "components": {"flow_vs_rating": 120.4, "valuation_vs_growth": 12.2, "estimate_quality": -20.0}, "raw_facts": {"foreign_d20_billion": 2.3, "trust_d20_billion": -0.8, "net20_billion": 1.5, "mcap_billion": 737, "buy_ratio": 0.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 16.4, "eps_g2": 0.175, "beat_rate": 0.5, "dispersion_fy2": 0.2}, "narrative": "近20日外資+2.3億、投信-0.8億，合計買超約1.5億元（占市值+0.2%）；30日內無最新評等，以近180日累計看多比例0%為參考。個股今年前瞻本益比16.4倍，同題材中位數21.8倍。明年EPS成長預估17.5%，較同題材中位數25.7%低。近8季財報優於預估比例50%，明年預估分歧度20%。"}, {"stock_id": "1503", "name": "士電", "divergence_score": -44.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -101.1, "valuation_vs_growth": 15.9, "estimate_quality": -28.0}, "raw_facts": {"foreign_d20_billion": -0.3, "trust_d20_billion": 0.2, "net20_billion": -0.1, "mcap_billion": 904, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 19.8, "eps_g2": 0.476, "beat_rate": 0.33, "dispersion_fy2": 0.11}, "narrative": "近20日外資-0.3億、投信+0.2億，合計賣超約0.1億元（占市值-0.01%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比19.8倍，同題材中位數21.8倍。明年EPS成長預估47.6%，較同題材中位數25.7%高。近8季財報優於預估比例33%，明年預估分歧度11%。"}, {"stock_id": "1514", "name": "亞力", "divergence_score": -67.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -128.9, "valuation_vs_growth": -5.7, "estimate_quality": -46.0}, "raw_facts": {"foreign_d20_billion": -0.6, "trust_d20_billion": -0.1, "net20_billion": -0.7, "mcap_billion": 242, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 23.7, "eps_g2": 0.225, "beat_rate": 0.12, "dispersion_fy2": 0.08}, "narrative": "近20日外資-0.6億、投信-0.1億，合計賣超約0.7億元（占市值-0.29%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比23.7倍，同題材中位數21.8倍。明年EPS成長預估22.5%，較同題材中位數25.7%低。近8季財報優於預估比例12%，明年預估分歧度8%。"}, {"stock_id": "1519", "name": "華城", "divergence_score": -93.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": -8.8, "estimate_quality": -35.0}, "raw_facts": {"foreign_d20_billion": -20.0, "trust_d20_billion": -1.4, "net20_billion": -21.4, "mcap_billion": 1755, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 27.4, "eps_g2": 0.288, "beat_rate": 0.38, "dispersion_fy2": 0.23}, "narrative": "近20日外資-20.0億、投信-1.4億，合計賣超約21.4億元（占市值-1.22%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比27.4倍，同題材中位數21.8倍。明年EPS成長預估28.8%，較同題材中位數25.7%高。近8季財報優於預估比例38%，明年預估分歧度23%。"}]}, {"industry": "記憶體", "industry_pe_median": 4.5, "industry_eps_growth_median": 0.746, "industry_foreign_20d_billion": -139.0, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2451", "name": "創見", "divergence_score": 32.3, "direction": "undervalued_gap", "components": {"flow_vs_rating": 88.2, "valuation_vs_growth": -23.9, "estimate_quality": 14.0}, "raw_facts": {"foreign_d20_billion": 3.3, "trust_d20_billion": 6.7, "net20_billion": 10.0, "mcap_billion": 1134, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 3.0, "eps_g2": -0.232, "beat_rate": 0.75, "dispersion_fy2": 0.11}, "narrative": "近20日外資+3.3億、投信+6.7億，合計買超約10.0億元（占市值+0.88%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比3.0倍，同題材中位數4.5倍。明年EPS成長預估-23.2%，較同題材中位數74.6%低。近8季財報優於預估比例75%，明年預估分歧度11%。"}, {"stock_id": "3006", "name": "晶豪科", "divergence_score": -62.2, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 9.2, "estimate_quality": 50.0}, "raw_facts": {"foreign_d20_billion": -33.8, "trust_d20_billion": -0.1, "net20_billion": -33.9, "mcap_billion": 688, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 3.8, "eps_g2": 0.746, "beat_rate": 1.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資-33.8億、投信-0.1億，合計賣超約33.9億元（占市值-4.93%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比3.8倍，同題材中位數4.5倍。明年EPS成長預估74.6%，較同題材中位數74.6%低。近8季財報優於預估比例100%，明年預估分歧度0%。"}, {"stock_id": "2344", "name": "華邦電", "divergence_score": -72.7, "direction": "overvalued_gap", "components": {"flow_vs_rating": -122.1, "valuation_vs_growth": 5.6, "estimate_quality": -85.0}, "raw_facts": {"foreign_d20_billion": 5.7, "trust_d20_billion": -41.0, "net20_billion": -35.3, "mcap_billion": 6368, "buy_ratio": 0.8333333333333334, "analysts": 6, "buy_analysts_est": 5, "pe_fy1": 5.6, "eps_g2": 1.054, "beat_rate": 0.38, "dispersion_fy2": 0.73}, "narrative": "近20日外資+5.7億、投信-41.0億，合計賣超約35.3億元（占市值-0.55%）；30日內6家分析師中5家喊買（看多比例83%）。個股今年前瞻本益比5.6倍，同題材中位數4.5倍。明年EPS成長預估105.4%，較同題材中位數74.6%高。近8季財報優於預估比例38%，明年預估分歧度73%。"}, {"stock_id": "8299", "name": "群聯", "divergence_score": -95.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -115.6, "valuation_vs_growth": -50.0, "estimate_quality": -115.0}, "raw_facts": {"foreign_d20_billion": -11.3, "trust_d20_billion": 5.4, "net20_billion": -5.9, "mcap_billion": 3781, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": 4.5, "eps_g2": -0.255, "beat_rate": 0.62, "dispersion_fy2": 1.27}, "narrative": "近20日外資-11.3億、投信+5.4億，合計賣超約5.9億元（占市值-0.16%）；30日內1家分析師中1家喊買（看多比例100%）。個股今年前瞻本益比4.5倍，同題材中位數4.5倍。明年EPS成長預估-25.5%，較同題材中位數74.6%低。近8季財報優於預估比例62%，明年預估分歧度127%。"}, {"stock_id": "2337", "name": "旺宏", "divergence_score": -100, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 17.3, "estimate_quality": -122.0}, "raw_facts": {"foreign_d20_billion": -102.9, "trust_d20_billion": 3.0, "net20_billion": -99.9, "mcap_billion": 1728, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 4.8, "eps_g2": 1.155, "beat_rate": 0.5, "dispersion_fy2": 1.22}, "narrative": "近20日外資-102.9億、投信+3.0億，合計賣超約99.9億元（占市值-5.78%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比4.8倍，同題材中位數4.5倍。明年EPS成長預估115.5%，較同題材中位數74.6%高。近8季財報優於預估比例50%，明年預估分歧度122%。"}]}, {"industry": "CCL/PCB/被動元件/機殼/散熱", "industry_pe_median": 27.4, "industry_eps_growth_median": 0.7, "industry_foreign_20d_billion": -953.0, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2354", "name": "鴻準", "divergence_score": -1.7, "direction": "overvalued_gap", "components": {"flow_vs_rating": 0.0, "valuation_vs_growth": 44.5, "estimate_quality": -50.0}, "raw_facts": {"foreign_d20_billion": -0.1, "trust_d20_billion": 0.1, "net20_billion": 0.0, "mcap_billion": 805, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 14.5, "eps_g2": null, "beat_rate": 0.0, "dispersion_fy2": 0.0}, "narrative": "近20日外資-0.1億、投信+0.1億，合計買超約0.0億元（占市值+0.0%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。個股今年前瞻本益比14.5倍，同題材中位數27.4倍。近8季財報優於預估比例0%，明年預估分歧度0%。"}, {"stock_id": "6274", "name": "台燿", "divergence_score": -36.4, "direction": "overvalued_gap", "components": {"flow_vs_rating": -34.5, "valuation_vs_growth": 18.5, "estimate_quality": -94.0}, "raw_facts": {"foreign_d20_billion": -64.5, "trust_d20_billion": 53.4, "net20_billion": -11.1, "mcap_billion": 3220, "buy_ratio": 0.5, "analysts": 4, "buy_analysts_est": 2, "pe_fy1": 28.5, "eps_g2": 1.108, "beat_rate": 0.12, "dispersion_fy2": 0.56}, "narrative": "近20日外資-64.5億、投信+53.4億，合計賣超約11.1億元（占市值-0.34%）；30日內4家分析師中2家喊買（看多比例50%）。個股今年前瞻本益比28.5倍，同題材中位數27.4倍。明年EPS成長預估110.8%，較同題材中位數70.0%高。近8季財報優於預估比例12%，明年預估分歧度56%。"}, {"stock_id": "3037", "name": "欣興", "divergence_score": -63.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -100.0, "valuation_vs_growth": -10.3, "estimate_quality": -69.0}, "raw_facts": {"foreign_d20_billion": -244.5, "trust_d20_billion": 45.7, "net20_billion": -198.8, "mcap_billion": 14575, "buy_ratio": 0.5, "analysts": 10, "buy_analysts_est": 5, "pe_fy1": 39.6, "eps_g2": 0.803, "beat_rate": 0.5, "dispersion_fy2": 0.69}, "narrative": "近20日外資-244.5億、投信+45.7億，合計賣超約198.8億元（占市值-1.36%）；30日內10家分析師中5家喊買（看多比例50%）。個股今年前瞻本益比39.6倍，同題材中位數27.4倍。明年EPS成長預估80.3%，較同題材中位數70.0%高。近8季財報優於預估比例50%，明年預估分歧度69%。"}, {"stock_id": "3017", "name": "奇鋐", "divergence_score": -71.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -166.8, "valuation_vs_growth": -8.6, "estimate_quality": -6.0}, "raw_facts": {"foreign_d20_billion": -237.7, "trust_d20_billion": 163.8, "net20_billion": -73.9, "mcap_billion": 11070, "buy_ratio": 1.0, "analysts": 6, "buy_analysts_est": 6, "pe_fy1": 27.4, "eps_g2": 0.527, "beat_rate": 0.75, "dispersion_fy2": 0.31}, "narrative": "近20日外資-237.7億、投信+163.8億，合計賣超約73.9億元（占市值-0.67%）；30日內6家分析師中6家喊買（看多比例100%）。個股今年前瞻本益比27.4倍，同題材中位數27.4倍。明年EPS成長預估52.7%，較同題材中位數70.0%低。近8季財報優於預估比例75%，明年預估分歧度31%。"}, {"stock_id": "2327", "name": "國巨*", "divergence_score": -86.2, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 5.5, "estimate_quality": -26.0}, "raw_facts": {"foreign_d20_billion": -406.2, "trust_d20_billion": 18.7, "net20_billion": -387.5, "mcap_billion": 9263, "buy_ratio": 1.0, "analysts": 5, "buy_analysts_est": 5, "pe_fy1": 22.6, "eps_g2": 0.597, "beat_rate": 0.62, "dispersion_fy2": 0.38}, "narrative": "近20日外資-406.2億、投信+18.7億，合計賣超約387.5億元（占市值-4.18%）；30日內5家分析師中5家喊買（看多比例100%）。個股今年前瞻本益比22.6倍，同題材中位數27.4倍。明年EPS成長預估59.7%，較同題材中位數70.0%低。近8季財報優於預估比例62%，明年預估分歧度38%。"}]}, {"industry": "營建", "industry_pe_median": null, "industry_eps_growth_median": null, "industry_foreign_20d_billion": 21.2, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "2542", "name": "興富發", "divergence_score": 29.2, "direction": "undervalued_gap", "components": {"flow_vs_rating": 100, "valuation_vs_growth": 0.0, "estimate_quality": -36.0}, "raw_facts": {"foreign_d20_billion": 21.1, "trust_d20_billion": -3.5, "net20_billion": 17.6, "mcap_billion": 824, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 5.6, "eps_g2": 0.004, "beat_rate": 0.5, "dispersion_fy2": 0.36}, "narrative": "近20日外資+21.1億、投信-3.5億，合計買超約17.6億元（占市值+2.14%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。近8季財報優於預估比例50%，明年預估分歧度36%。"}, {"stock_id": "2546", "name": "根基", "divergence_score": 8.2, "direction": "undervalued_gap", "components": {"flow_vs_rating": 20.5, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": 0.3, "trust_d20_billion": 0.0, "net20_billion": 0.3, "mcap_billion": 146, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資+0.3億、投信+0.0億，合計買超約0.3億元（占市值+0.21%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"}, {"stock_id": "2534", "name": "宏盛", "divergence_score": -11.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -27.4, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": -0.2, "trust_d20_billion": 0.0, "net20_billion": -0.2, "mcap_billion": 73, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資-0.2億、投信+0.0億，合計賣超約0.2億元（占市值-0.27%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"}]}, {"industry": "CoWoS概念股", "industry_pe_median": 26.6, "industry_eps_growth_median": 0.369, "industry_foreign_20d_billion": -39.6, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "6147", "name": "頎邦", "divergence_score": -17.7, "direction": "overvalued_gap", "components": {"flow_vs_rating": 13.7, "valuation_vs_growth": -2.1, "estimate_quality": -75.0}, "raw_facts": {"foreign_d20_billion": -37.8, "trust_d20_billion": 46.1, "net20_billion": 8.3, "mcap_billion": 1303, "buy_ratio": 0.75, "analysts": 4, "buy_analysts_est": 3, "pe_fy1": 30.4, "eps_g2": 0.452, "beat_rate": 0.25, "dispersion_fy2": 0.5}, "narrative": "近20日外資-37.8億、投信+46.1億，合計買超約8.3億元（占市值+0.64%）；30日內4家分析師中3家喊買（看多比例75%）。個股今年前瞻本益比30.4倍，同題材中位數26.6倍。明年EPS成長預估45.2%，較同題材中位數36.9%高。近8季財報優於預估比例25%，明年預估分歧度50%。"}, {"stock_id": "3413", "name": "京鼎", "divergence_score": -61.7, "direction": "overvalued_gap", "components": {"flow_vs_rating": -146.1, "valuation_vs_growth": 64.2, "estimate_quality": -75.0}, "raw_facts": {"foreign_d20_billion": -0.5, "trust_d20_billion": -0.8, "net20_billion": -1.3, "mcap_billion": 282, "buy_ratio": 1.0, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 11.1, "eps_g2": 0.257, "beat_rate": 0.0, "dispersion_fy2": 0.25}, "narrative": "近20日外資-0.5億、投信-0.8億，合計賣超約1.3億元（占市值-0.46%）；30日內無最新評等，以近180日累計看多比例100%為參考。個股今年前瞻本益比11.1倍，同題材中位數26.6倍。明年EPS成長預估25.7%，較同題材中位數36.9%低。近8季財報優於預估比例0%，明年預估分歧度25%。"}, {"stock_id": "3680", "name": "家登", "divergence_score": -64.8, "direction": "overvalued_gap", "components": {"flow_vs_rating": -130.6, "valuation_vs_growth": 0.0, "estimate_quality": -42.0}, "raw_facts": {"foreign_d20_billion": -1.3, "trust_d20_billion": 0.0, "net20_billion": -1.3, "mcap_billion": 425, "buy_ratio": 1.0, "analysts": 2, "buy_analysts_est": 2, "pe_fy1": 26.6, "eps_g2": 0.369, "beat_rate": 0.38, "dispersion_fy2": 0.3}, "narrative": "近20日外資-1.3億、投信+0.0億，合計賣超約1.3億元（占市值-0.31%）；30日內2家分析師中2家喊買（看多比例100%）。個股今年前瞻本益比26.6倍，同題材中位數26.6倍。明年EPS成長預估36.9%，較同題材中位數36.9%低。近8季財報優於預估比例38%，明年預估分歧度30%。"}]}, {"industry": "光通訊概念股", "industry_pe_median": null, "industry_eps_growth_median": null, "industry_foreign_20d_billion": -28.3, "sorted_by": "divergence_score_desc", "candidates": [{"stock_id": "3362", "name": "先進光", "divergence_score": 4.0, "direction": "undervalued_gap", "components": {"flow_vs_rating": 10.1, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": 0.2, "trust_d20_billion": 0.0, "net20_billion": 0.2, "mcap_billion": 199, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資+0.2億、投信+0.0億，合計買超約0.2億元（占市值+0.1%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"}, {"stock_id": "3450", "name": "聯鈞", "divergence_score": -45.1, "direction": "overvalued_gap", "components": {"flow_vs_rating": -100, "valuation_vs_growth": 0.0, "estimate_quality": -17.0}, "raw_facts": {"foreign_d20_billion": -17.8, "trust_d20_billion": -7.2, "net20_billion": -25.0, "mcap_billion": 553, "buy_ratio": null, "analysts": 0, "buy_analysts_est": 0, "pe_fy1": 31.7, "eps_g2": null, "beat_rate": 0.33, "dispersion_fy2": 0.0}, "narrative": "近20日外資-17.8億、投信-7.2億，合計賣超約25.0億元（占市值-4.52%）；30日內無分析師覆蓋，看多比例無法判定，以法人籌碼動向為主要訊號。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。近8季財報優於預估比例33%，明年預估分歧度0%。"}, {"stock_id": "3363", "name": "上詮", "divergence_score": -61.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -100.0, "valuation_vs_growth": 0.0, "estimate_quality": -70.0}, "raw_facts": {"foreign_d20_billion": -1.8, "trust_d20_billion": -4.3, "net20_billion": -6.1, "mcap_billion": 478, "buy_ratio": 0.5, "analysts": 2, "buy_analysts_est": 1, "pe_fy1": null, "eps_g2": null, "beat_rate": 0.29, "dispersion_fy2": 0.49}, "narrative": "近20日外資-1.8億、投信-4.3億，合計賣超約6.1億元（占市值-1.28%）；30日內2家分析師中1家喊買（看多比例50%）。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。近8季財報優於預估比例29%，明年預估分歧度49%。"}, {"stock_id": "3234", "name": "光環", "divergence_score": -80.0, "direction": "overvalued_gap", "components": {"flow_vs_rating": -200.0, "valuation_vs_growth": 0.0, "estimate_quality": 0.0}, "raw_facts": {"foreign_d20_billion": -8.9, "trust_d20_billion": 0.0, "net20_billion": -8.9, "mcap_billion": 173, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "pe_fy1": null, "eps_g2": null, "beat_rate": null, "dispersion_fy2": null}, "narrative": "近20日外資-8.9億、投信+0.0億，合計賣超約8.9億元（占市值-5.14%）；30日內1家分析師中1家喊買（看多比例100%）。本題材可比較的本益比/EPS成長預估資料不足兩檔，無法計算有意義的「同題材中位數」，估值vs成長這項因此設為0分，不代表估值合理。"}]}]};
-function divergenceIsLowConfidence(c){
-  if(c.raw_facts && c.raw_facts.pe_fy1 === null) return true;
-  return /覆蓋僅|統計意義有限|置信度偏低|資料不足|沒有分析師覆蓋|排除在落差掃描/.test(c.narrative||'');
-}
-
-function divergenceCodeLink(c){
-  const url = `https://toalpha.tw/stock/${c.stock_id}`;
-  return `<a class="cand-code-link" href="${url}" target="_blank" rel="noopener" title="在ToAlpha查看${c.stock_id}">${c.stock_id} ↗</a>`;
-}
-
-function divergenceReportLink(c){
-  if(!REPORTS[c.stock_id]) return '';
-  return `<a class="cand-report-link" href="?r=${encodeURIComponent(c.stock_id)}" onclick="showReport('${c.stock_id}');return false;">📄 研究報告</a>`;
-}
-
-// 已經有報告的股票給報告連結；還沒有的話直接給「研究並加入」按鈕，複用首頁
-// notFoundGenerate區塊同一套startClaudeCodeResearch／copyResearchPromptToClipboard
-// 機制，進度會顯示在下方的容器，也會同步出現在右下角常駐小視窗。
-function divergenceReportOrResearchBtn(c){
-  if(REPORTS[c.stock_id]) return divergenceReportLink(c);
-  return `<button class="cand-research-btn" onclick="startClaudeCodeResearch('${c.stock_id}','research-scan-${c.stock_id}');copyResearchPromptToClipboard('${c.stock_id}')">🔬 研究並加入到資料庫</button>`;
-}
-
-function divergenceDbarHtml(label, val){
-  const clipped = Math.max(-100, Math.min(100, val));
-  const half = Math.abs(clipped) / 2;
-  const isPos = clipped >= 0;
-  return `<div class="dbar-row">
-    <div class="dbar-label"><span>${label}</span><b class="${isPos?'pos':'neg'}">${val>0?'+':''}${val.toFixed(1)}</b></div>
-    <div class="dbar-track"><div class="dbar-center"></div><div class="dbar-fill ${isPos?'pos':'neg'}" style="width:${half}%"></div></div>
-  </div>`;
-}
-
-const DIVERGENCE_COMP_LABELS = {
-  flow_vs_rating: '法人 vs 評等背離', valuation_vs_growth: '估值 vs 同業成長', execution_vs_expectation: '預估執行力'
-};
-
-function divergenceCandHtml(c){
-  const lowConf = divergenceIsLowConfidence(c);
-  return `<div class="cand-card ${c.direction}">
-    <div class="cand-inner">
-      <div class="cand-head">
-        <div class="cand-name-row">
-          ${divergenceCodeLink(c)}
-          <span class="cand-name">${c.name}</span>
-          ${divergenceReportOrResearchBtn(c)}
-          ${lowConf ? '<span class="low-conf">⚠ 資料有限</span>' : ''}
-        </div>
-        <div class="cand-score-wrap">
-          <span class="cand-score ${c.direction}">${c.divergence_score>0?'+':''}${c.divergence_score.toFixed(1)}</span>
-          <span class="cand-dir ${c.direction}">${c.direction==='undervalued_gap'?'低估機會':'高估風險'}</span>
-        </div>
-      </div>
-      <div class="dbars">${Object.entries(c.components).map(([k,v])=>divergenceDbarHtml(DIVERGENCE_COMP_LABELS[k]||k, v)).join('')}</div>
-      <div class="cand-narrative">${c.narrative}</div>
-      ${!REPORTS[c.stock_id] ? `<div id="research-scan-${c.stock_id}" class="cand-research-progress"></div>` : ''}
-    </div>
-  </div>`;
-}
-
-function toggleIndustryBlock(id){
-  const body = document.getElementById(id);
-  const block = body && body.closest('.industry-block');
-  if(block) block.classList.toggle('collapsed');
-}
-
-function divergenceIndustryHtml(ind, idx){
-  const peMed = (ind.industry_pe_median === null || ind.industry_pe_median === undefined) ? '資料不足' : ind.industry_pe_median;
-  const epsMed = (ind.industry_eps_growth_median === null || ind.industry_eps_growth_median === undefined) ? '資料不足' : `${(ind.industry_eps_growth_median*100).toFixed(1)}%`;
-  const bodyId = `divInd-${idx}`;
-  return `<div class="industry-block">
-    <div class="ind-head ind-head-toggle" onclick="toggleIndustryBlock('${bodyId}')">
-      <span class="ind-name">${ind.industry}</span>
-      <span class="ind-toggle-icon">▾</span>
-    </div>
-    <div id="${bodyId}" class="ind-body">
-      <div class="ind-kv">
-        <span>同組本益比中位數 <b>${peMed}</b></span>
-        <span>同組EPS成長中位數 <b>${epsMed}</b></span>
-        <span>外資近20日合計 <b>${ind.industry_foreign_20d_billion>0?'+':''}${ind.industry_foreign_20d_billion}億</b></span>
-      </div>
-      ${ind.candidates.map(divergenceCandHtml).join('')}
-    </div>
-  </div>`;
-}
-
-function renderDivergenceScan(){
-  const all = [];
-  DIVERGENCE_SCAN.industries.forEach(ind => ind.candidates.forEach(c => all.push(Object.assign({industry:ind.industry}, c))));
-  const under = all.filter(c=>c.direction==='undervalued_gap' && !divergenceIsLowConfidence(c)).sort((a,b)=>b.divergence_score-a.divergence_score).slice(0,3);
-  const over = all.filter(c=>c.direction==='overvalued_gap' && !divergenceIsLowConfidence(c)).sort((a,b)=>a.divergence_score-b.divergence_score).slice(0,3);
-
-  return `
-    <div class="narrative" style="margin:0 0 22px;">
-      <p style="margin:0;font-size:13.5px;">自動掃描官方產業分類（半導體業、金融保險業等）與熱門概念股題材（半導體封測、CoWoS、記憶體、軍工等）的代表個股，比對法人實際買賣的方向、分析師評等的方向、估值跟成長比不比得過同組股票、預估執行力是不是被低估。正分代表可能被低估的機會，負分代表可能被高估的風險——分數本身不是買賣建議，是拿來決定「值不值得深入研究」的候選清單。股票代號可直接連到ToAlpha個股頁面，已收錄研究報告的個股另外附「📄 研究報告」連結，還沒收錄的則可以直接按「🔬 研究並加入到資料庫」。</p>
-    </div>
-
-    <div class="scan-stat-strip">
-      <div class="scan-stat-cell"><div class="sv">${DIVERGENCE_SCAN.industries.length}</div><div class="sl">掃描產業數</div></div>
-      <div class="scan-stat-cell"><div class="sv">${all.length}</div><div class="sl">掃描個股數</div></div>
-      <div class="scan-stat-cell" style="color:var(--red);"><div class="sv">${under.length?('+'+under[0].divergence_score.toFixed(1)):'—'}</div><div class="sl">最高低估分數</div></div>
-      <div class="scan-stat-cell" style="color:var(--green);"><div class="sv">${over.length?over[0].divergence_score.toFixed(1):'—'}</div><div class="sl">最低高估分數</div></div>
-      <div class="scan-stat-cell"><div class="sv" style="font-size:12px;">${DIVERGENCE_SCAN.generated_at}</div><div class="sl">資料日期（收盤後）</div></div>
-    </div>
-
-    <div class="scan-refresh-row">
-      <button class="scan-refresh-btn" onclick="triggerScanRefresh()">🔄 手動更新資料</button>
-      <div class="scan-refresh-status"></div>
-    </div>
-
-    <div class="scan-focus-wrap">
-      <div class="scan-focus-block">
-        <h3>🔴 全市場焦點：最可能被低估</h3>
-        ${under.map(c=>`<div class="scan-focus-item">${divergenceCodeLink(c)}<b>+${c.divergence_score.toFixed(1)}</b>${c.name}（${c.industry}）</div>`).join('') || '<div class="scan-focus-item">目前無高置信度候選</div>'}
-      </div>
-      <div class="scan-focus-block over">
-        <h3>🟢 全市場焦點：最可能被高估</h3>
-        ${over.map(c=>`<div class="scan-focus-item">${divergenceCodeLink(c)}<b>${c.divergence_score.toFixed(1)}</b>${c.name}（${c.industry}）</div>`).join('') || '<div class="scan-focus-item">目前無高置信度候選</div>'}
-      </div>
-    </div>
-
-    ${DIVERGENCE_SCAN.industries.map(divergenceIndustryHtml).join('')}
-
-    <div class="scan-method-box">
-      <b>落差分數怎麼算（-100 ~ +100，正分＝可能低估、負分＝可能高估）</b>
-      三個component加權：法人vs評等背離40%（外資投信20日合計淨買賣力度佔市值比重，減去看多分析師比例的樂觀程度）、估值vs同組成長30%（本益比比同組股票便宜的程度，加上明年EPS成長比同組快的程度）、預估執行力被低估30%（近8季EPS優於預估的比例，減去分析師預估分歧度）。官方產業分類（半導體業等6組）的「同組」比較基準是該產業全市場中位數；概念股題材（半導體封測、CoWoS等13組）則是該題材內候選股自己的中位數。任何一項缺資料就設為0分並在說明裡誠實揭露，不會為了美觀捏造數字；同一組裡有效樣本數不到2檔時（例如某些冷門概念股題材），中位數會顯示「資料不足」而不是硬算出一個沒有意義的數字，估值vs成長這項也一併設為0分。分析師覆蓋家數很少（例如僅1家）的個股，即使分數很極端，統計意義也有限，會標示「資料有限」提醒。
-    </div>
-    <div style="font-size:11.5px;color:var(--amber);background:var(--amber-bg);border:2px solid var(--line);padding:12px 14px;line-height:1.7;">
-      資料整理自ToAlpha（<code style="font-family:var(--px);font-size:9px;background:#fff;border:1.5px solid var(--line);padding:2px 5px;">toalpha</code> / <code style="font-family:var(--px);font-size:9px;background:#fff;border:1.5px solid var(--line);padding:2px 5px;">toalpha-mops</code>，原始來源：公開資訊觀測站、券商公開報導），收盤後更新，非即時報價。以上分數為程式化計算的落差觀察指標，僅反映歷史資料的統計狀態，不構成任何投資建議，投資人應自行查證判斷並自負風險。
-    </div>
-  `;
-}
-
-function showDivergenceScan(){
-  currentReportCode = null;
-  updateUrlForView('scan');
-  root.innerHTML = '';
-  notFound.style.display = 'none';
-  const chainMapBox = document.getElementById('chainMapBox');
-  if(chainMapBox) chainMapBox.style.display = 'none';
-  const conceptGuideBox = document.getElementById('conceptGuideBox');
-  if(conceptGuideBox) conceptGuideBox.style.display = 'none';
-  const marketFilterBar = document.getElementById('marketFilterBar');
-  if(marketFilterBar) marketFilterBar.style.display = 'none';
-  document.getElementById('homeBtnHeader').style.display = 'inline-flex';
-  closeSearchSuggestions();
-  if(compareMode) toggleCompareMode();
-  setActiveViewTab('scan');
-  const crowdingAlertBox = document.getElementById('crowdingAlertBox');
-  if(crowdingAlertBox) crowdingAlertBox.style.display = 'none';
-  const box = document.getElementById('divergenceScanBox');
-  box.style.display = 'block';
-  box.innerHTML = renderDivergenceScan();
-  pollScanRefreshStatus(true);
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ===== 持股擁擠度警報：資料同樣是 2026-09-17 收盤後從 toalpha 查詢並程式化計算。=====
-const CROWDING_ALERT = {"generated_at": "2026-11-04", "watchlist": [{"stock_id": "2454", "name": "聯發科", "score": 83.0, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 61.2, "fund_holding": 100, "rating_consensus": 92.3, "margin_heat": 100.0, "momentum": 62.0}, "raw_facts": {"foreign_streak": "連賣 19 天", "trust_streak": "連買 16 天", "foreign_d20_amount_billion": -1874.5, "trust_d20_amount_billion": 212.1, "net20_amount_billion": -1662.4, "buy_ratio": 0.9230769230769231, "analysts": 13, "buy_analysts_est": 12, "target_range_ratio": 1.238, "active_fund_count": 94, "active_fund_count_chg": 34, "margin_pct_rank_1y": 1.0, "margin_usage": 0.031, "pos_52w": 0.62, "foreign_held_pct": 52.93, "short_ratio": 0.001}, "narrative": "外資連賣 19 天、投信連買 16 天，近20日合計賣超約1662.4億元（外資-1874.5億、投信+212.1億），30日內13家分析師中12家喊買（看多比例92%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年100%分位、現價在52週區間62%位置。"}, {"stock_id": "2330", "name": "台積電", "score": 82.3, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 64.8, "fund_holding": 100, "rating_consensus": 79.2, "margin_heat": 98.0, "momentum": 73.0}, "raw_facts": {"foreign_streak": "連賣 19 天", "trust_streak": "連買 18 天", "foreign_d20_amount_billion": -4590.9, "trust_d20_amount_billion": 731.8, "net20_amount_billion": -3859.1, "buy_ratio": 0.7916666666666666, "analysts": 24, "buy_analysts_est": 19, "target_range_ratio": 2.009, "active_fund_count": 105, "active_fund_count_chg": 1, "margin_pct_rank_1y": 0.98, "margin_usage": 0.005, "pos_52w": 0.73, "foreign_held_pct": 68.31, "short_ratio": 0.0}, "narrative": "外資連賣 19 天、投信連買 18 天，近20日合計賣超約3859.1億元（外資-4590.9億、投信+731.8億），30日內24家分析師中19家喊買（看多比例79%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年98%分位、現價在52週區間73%位置。"}, {"stock_id": "3711", "name": "日月光投控", "score": 72.0, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 28.0, "fund_holding": 100, "rating_consensus": 88.9, "margin_heat": 88.0, "momentum": 76.0}, "raw_facts": {"foreign_streak": "連賣 5 天", "trust_streak": "連買 11 天", "foreign_d20_amount_billion": -466.7, "trust_d20_amount_billion": 211.9, "net20_amount_billion": -254.8, "buy_ratio": 0.8888888888888888, "analysts": 9, "buy_analysts_est": 8, "target_range_ratio": 0.459, "active_fund_count": 27, "active_fund_count_chg": 4, "margin_pct_rank_1y": 0.88, "margin_usage": 0.01, "pos_52w": 0.76, "foreign_held_pct": 76.41, "short_ratio": 0.016}, "narrative": "外資連賣 5 天、投信連買 11 天，近20日合計賣超約254.8億元（外資-466.7億、投信+211.9億），30日內9家分析師中8家喊買（看多比例89%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年88%分位、現價在52週區間76%位置。"}, {"stock_id": "2308", "name": "台達電", "score": 62.2, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 17.5, "fund_holding": 100, "rating_consensus": 80.0, "margin_heat": 93.0, "momentum": 20.0}, "raw_facts": {"foreign_streak": "連賣 5 天", "trust_streak": "連賣 2 天", "foreign_d20_amount_billion": -608.1, "trust_d20_amount_billion": -7.4, "net20_amount_billion": -615.5, "buy_ratio": 0.8, "analysts": 10, "buy_analysts_est": 8, "target_range_ratio": 1.971, "active_fund_count": 60, "active_fund_count_chg": 3, "margin_pct_rank_1y": 0.93, "margin_usage": 0.016, "pos_52w": 0.2, "foreign_held_pct": 59.5, "short_ratio": 0.003}, "narrative": "外資連賣 5 天、投信連賣 2 天，近20日合計賣超約615.5億元（外資-608.1億、投信-7.4億），30日內10家分析師中8家喊買（看多比例80%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年93%分位、現價在52週區間20%位置。"}, {"stock_id": "3037", "name": "欣興", "score": 50.4, "light": "yellow", "divergence": null, "components": {"institutional": 14.0, "fund_holding": 90, "rating_consensus": 50.0, "margin_heat": 50.0, "momentum": 62.0}, "raw_facts": {"foreign_streak": "連賣 7 天", "trust_streak": "連買 1 天", "foreign_d20_amount_billion": -244.5, "trust_d20_amount_billion": 45.7, "net20_amount_billion": -198.8, "buy_ratio": 0.5, "analysts": 10, "buy_analysts_est": 5, "target_range_ratio": 0.76, "active_fund_count": 98, "active_fund_count_chg": -2, "margin_pct_rank_1y": 0.5, "margin_usage": 0.086, "pos_52w": 0.62, "foreign_held_pct": 40.5, "short_ratio": 0.005}, "narrative": "外資連賣 7 天、投信連買 1 天，近20日合計賣超約198.8億元（外資-244.5億、投信+45.7億），30日內10家分析師中5家喊買（看多比例50%）；融資餘額站在近一年50%分位、現價在52週區間62%位置。"}, {"stock_id": "6770", "name": "力積電", "score": 42.6, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 28.0, "fund_holding": 6.7, "rating_consensus": 100, "margin_heat": 50.0, "momentum": 50.0}, "raw_facts": {"foreign_streak": "連賣 5 天", "trust_streak": "連買 11 天", "foreign_d20_amount_billion": -219.5, "trust_d20_amount_billion": 16.5, "net20_amount_billion": -203.0, "buy_ratio": 1.0, "analysts": 5, "buy_analysts_est": 5, "target_range_ratio": 2.02, "active_fund_count": 2, "active_fund_count_chg": 0, "margin_pct_rank_1y": 0.5, "margin_usage": 0.11, "pos_52w": 0.5, "foreign_held_pct": 11.22, "short_ratio": 0.006}, "narrative": "外資連賣 5 天、投信連買 11 天，近20日合計賣超約203.0億元（外資-219.5億、投信+16.5億），30日內5家分析師中5家喊買（看多比例100%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年50%分位、現價在52週區間50%位置。"}, {"stock_id": "2882", "name": "國泰金", "score": 41.8, "light": "yellow", "divergence": null, "components": {"institutional": 14.0, "fund_holding": 0, "rating_consensus": 100, "margin_heat": 57.0, "momentum": 90.0}, "raw_facts": {"foreign_streak": "連賣 4 天", "trust_streak": "連買 4 天", "foreign_d20_amount_billion": 18.7, "trust_d20_amount_billion": 29.1, "net20_amount_billion": 47.8, "buy_ratio": 1.0, "analysts": 1, "buy_analysts_est": 1, "target_range_ratio": 0.414, "active_fund_count": 1, "active_fund_count_chg": -1, "margin_pct_rank_1y": 0.57, "margin_usage": 0.001, "pos_52w": 0.9, "foreign_held_pct": 23.19, "short_ratio": 0.325}, "narrative": "外資連賣 4 天、投信連買 4 天，近20日合計買超約47.8億元（外資+18.7億、投信+29.1億），30日內1家分析師中1家喊買（看多比例100%）；融資餘額站在近一年57%分位、現價在52週區間90%位置。"}, {"stock_id": "3008", "name": "大立光", "score": 39.6, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 7.0, "fund_holding": 30.0, "rating_consensus": 62.5, "margin_heat": 82.0, "momentum": 52.0}, "raw_facts": {"foreign_streak": "連賣 3 天", "trust_streak": "連買 1 天", "foreign_d20_amount_billion": -175.7, "trust_d20_amount_billion": 106.7, "net20_amount_billion": -69.0, "buy_ratio": 0.625, "analysts": 8, "buy_analysts_est": 5, "target_range_ratio": 1.477, "active_fund_count": 12, "active_fund_count_chg": -18, "margin_pct_rank_1y": 0.82, "margin_usage": 0.11, "pos_52w": 0.52, "foreign_held_pct": 22.85, "short_ratio": 0.012}, "narrative": "外資連賣 3 天、投信連買 1 天，近20日合計賣超約69.0億元（外資-175.7億、投信+106.7億），30日內8家分析師中5家喊買（看多比例62%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年82%分位、現價在52週區間52%位置。"}, {"stock_id": "2344", "name": "華邦電", "score": 25.2, "light": "red", "divergence": "bearish_gap", "components": {"institutional": 8.8, "fund_holding": 0, "rating_consensus": 83.3, "margin_heat": 4.0, "momentum": 53.0}, "raw_facts": {"foreign_streak": "連賣 4 天", "trust_streak": "連買 1 天", "foreign_d20_amount_billion": 5.7, "trust_d20_amount_billion": -41.0, "net20_amount_billion": -35.3, "buy_ratio": 0.8333333333333334, "analysts": 6, "buy_analysts_est": 5, "target_range_ratio": 1.399, "active_fund_count": 1, "active_fund_count_chg": -2, "margin_pct_rank_1y": 0.04, "margin_usage": 0.094, "pos_52w": 0.53, "foreign_held_pct": 19.75, "short_ratio": 0.016}, "narrative": "外資連賣 4 天、投信連買 1 天，近20日合計賣超約35.3億元（外資+5.7億、投信-41.0億），30日內6家分析師中5家喊買（看多比例83%）；法人賣、評等仍偏多，出現背離，燈號因此強制轉紅；融資餘額站在近一年4%分位、現價在52週區間53%位置。"}, {"stock_id": "2409", "name": "友達", "score": 25.0, "light": "green", "divergence": null, "components": {"institutional": 7.0, "fund_holding": 13.3, "rating_consensus": 0, "margin_heat": 89.0, "momentum": 62.0}, "raw_facts": {"foreign_streak": "連賣 2 天", "trust_streak": "連買 2 天", "foreign_d20_amount_billion": -177.5, "trust_d20_amount_billion": 4.5, "net20_amount_billion": -173.0, "buy_ratio": 0.0, "analysts": 2, "buy_analysts_est": 0, "target_range_ratio": 0.402, "active_fund_count": 1, "active_fund_count_chg": 1, "margin_pct_rank_1y": 0.89, "margin_usage": 0.139, "pos_52w": 0.62, "foreign_held_pct": 10.85, "short_ratio": 0.077}, "narrative": "外資連賣 2 天、投信連買 2 天，近20日合計賣超約173.0億元（外資-177.5億、投信+4.5億），30日內2家分析師中0家喊買（看多比例0%）；融資餘額站在近一年89%分位、現價在52週區間62%位置。"}]};
-function crowdingLightLabel(l){
-  return l==='red' ? '🔴 擁擠警報' : l==='yellow' ? '🟡 觀察' : '🟢 安全';
-}
-function crowdingDivergenceText(d){
-  if(d==='bearish_gap') return {cls:'bearish_gap', label:'⚠️ 說做不一致：法人賣、評等買'};
-  if(d==='bullish_gap') return {cls:'bullish_gap', label:'⚠️ 說做不一致：評等保守、法人卻買'};
-  return null;
-}
-const CROWDING_COMP_LABELS = {
-  institutional:'法人集中度', fund_holding:'機構持股集中度', rating_consensus:'評等一致度',
-  margin_heat:'散戶熱度', momentum:'動能過熱'
-};
-
-function crowdingCodeLink(item){
-  const url = `https://toalpha.tw/stock/${item.stock_id}`;
-  return `<a class="cand-code-link" href="${url}" target="_blank" rel="noopener" title="在ToAlpha查看${item.stock_id}">${item.stock_id} ↗</a>`;
-}
-function crowdingReportOrResearchBtn(item){
-  if(REPORTS[item.stock_id]) return `<a class="cand-report-link" href="?r=${encodeURIComponent(item.stock_id)}" onclick="showReport('${item.stock_id}');return false;">📄 研究報告</a>`;
-  return `<button class="cand-research-btn" onclick="startClaudeCodeResearch('${item.stock_id}','research-crowd-${item.stock_id}');copyResearchPromptToClipboard('${item.stock_id}')">🔬 研究並加入到資料庫</button>`;
-}
-
-function crowdingBarsHtml(components){
-  return '<div class="bars">' + Object.entries(components).map(([k,v])=>{
-    const pct = Math.max(0, Math.min(100, v));
-    return `<div class="bar-row">
-      <div class="bar-label"><span>${CROWDING_COMP_LABELS[k]||k}</span><b>${v.toFixed ? v.toFixed(1) : v}</b></div>
-      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-    </div>`;
-  }).join('') + '</div>';
-}
-
-function crowdingCardHtml(item){
-  const dv = crowdingDivergenceText(item.divergence);
-  return `<div class="stock-card ${item.light}">
-    <div class="sc-inner">
-      <div class="sc-head">
-        <div class="sc-name-row">
-          ${crowdingCodeLink(item)}
-          <span class="sc-name">${item.name}</span>
-          ${crowdingReportOrResearchBtn(item)}
-        </div>
-        <div class="sc-score-wrap">
-          <span class="sc-score">${item.score.toFixed(1)}</span>
-          <span class="sc-light ${item.light}">${crowdingLightLabel(item.light)}</span>
-        </div>
-      </div>
-      ${dv ? `<div class="divergence-flag ${dv.cls}"><b>${dv.label}</b></div>` : ''}
-      ${crowdingBarsHtml(item.components)}
-      <div class="narrative-box">${item.narrative}</div>
-      ${!REPORTS[item.stock_id] ? `<div id="research-crowd-${item.stock_id}" class="cand-research-progress"></div>` : ''}
-    </div>
-  </div>`;
-}
-
-function renderCrowdingAlert(){
-  const wl = CROWDING_ALERT.watchlist;
-  const redCount = wl.filter(x=>x.light==='red').length;
-  const divCount = wl.filter(x=>x.divergence).length;
-  const flagged = wl.filter(x=>x.divergence);
-
-  return `
-    <div class="narrative" style="margin:0 0 22px;">
-      <p style="margin:0;font-size:13.5px;">追蹤觀察名單裡每一檔的籌碼集中程度：法人是不是都擠在同一邊、評等是不是全數一致、融資有沒有過熱。分數越高代表越擁擠，一旦反轉風險越大——特別留意「說跟做不一致」的背離警報。股票代號可直接連到ToAlpha個股頁面，已收錄研究報告的個股另外附「📄 研究報告」連結，還沒收錄的則可以直接按「🔬 研究並加入到資料庫」。</p>
-    </div>
-
-    <div class="crowd-stat-strip">
-      <div class="crowd-stat-cell"><div class="sv">${wl.length}</div><div class="sl">觀察檔數</div></div>
-      <div class="crowd-stat-cell"><div class="sv warn">${redCount}</div><div class="sl">🔴 擁擠警報</div></div>
-      <div class="crowd-stat-cell"><div class="sv warn">${divCount}</div><div class="sl">⚠️ 背離警報</div></div>
-      <div class="crowd-stat-cell"><div class="sv" style="font-size:12px;">${CROWDING_ALERT.generated_at}</div><div class="sl">資料日期（收盤後）</div></div>
-    </div>
-
-    <div class="scan-refresh-row">
-      <button class="scan-refresh-btn" onclick="triggerScanRefresh()">🔄 手動更新資料</button>
-      <div class="scan-refresh-status"></div>
-    </div>
-
-    ${flagged.length ? `
-    <div class="crowd-focus-block">
-      <h3>⚠️ 背離警報：法人行動與分析師評等方向不一致</h3>
-      ${flagged.map(x=>{
-        const dv = crowdingDivergenceText(x.divergence);
-        return `<div class="crowd-focus-item">${crowdingCodeLink(x)}<b>${x.name}</b>— ${dv.label}（分數 ${x.score.toFixed(1)}）</div>`;
-      }).join('')}
-    </div>` : ''}
-
-    ${wl.map(crowdingCardHtml).join('')}
-
-    <div class="scan-method-box">
-      <b>擁擠度分數怎麼算</b>
-      綜合5個子分數加權而成（各0–100分）：法人集中度30%（外資／投信同向操作的連續天數）、機構持股集中度25%（主動基金＋主動式ETF持有檔數與月變化）、評等一致度20%（看多分析師比例、目標價分歧度）、散戶熱度15%（融資餘額近一年分位）、動能過熱10%（現價在52週區間的位置）。<br><br>
-      <b>燈號規則</b>
-      分數＜40為🟢安全、40–70為🟡觀察、＞70為🔴擁擠警報；只要出現「法人賣、評等買」（bearish_gap）就直接升級為🔴，「法人買、評等保守」（bullish_gap）則至少升級為🟡。
-    </div>
-    <div style="font-size:11.5px;color:var(--amber);background:var(--amber-bg);border:2px solid var(--line);padding:12px 14px;line-height:1.7;">
-      資料整理自ToAlpha（<code style="font-family:var(--px);font-size:9px;background:#fff;border:1.5px solid var(--line);padding:2px 5px;">toalpha</code> / <code style="font-family:var(--px);font-size:9px;background:#fff;border:1.5px solid var(--line);padding:2px 5px;">toalpha-mops</code>，原始來源：公開資訊觀測站、券商公開報導），收盤後更新，非即時報價。以上分數與燈號為程式化計算的籌碼觀察指標，僅反映歷史資料的統計狀態，不構成任何投資建議，投資人應自行查證判斷並自負風險。
-    </div>
-  `;
-}
-
-function showCrowdingAlert(){
-  currentReportCode = null;
-  updateUrlForView('crowding');
-  root.innerHTML = '';
-  notFound.style.display = 'none';
-  const chainMapBox = document.getElementById('chainMapBox');
-  if(chainMapBox) chainMapBox.style.display = 'none';
-  const conceptGuideBox = document.getElementById('conceptGuideBox');
-  if(conceptGuideBox) conceptGuideBox.style.display = 'none';
-  const marketFilterBar = document.getElementById('marketFilterBar');
-  if(marketFilterBar) marketFilterBar.style.display = 'none';
-  document.getElementById('homeBtnHeader').style.display = 'inline-flex';
-  closeSearchSuggestions();
-  if(compareMode) toggleCompareMode();
-  setActiveViewTab('crowding');
-  const divergenceScanBox = document.getElementById('divergenceScanBox');
-  if(divergenceScanBox) divergenceScanBox.style.display = 'none';
-  const box = document.getElementById('crowdingAlertBox');
-  box.style.display = 'block';
-  box.innerHTML = renderCrowdingAlert();
-  pollScanRefreshStatus(true);
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -3526,10 +3118,6 @@ function showReport(codeOrQuery){
   const marketFilterBar = document.getElementById('marketFilterBar');
   if(marketFilterBar) marketFilterBar.style.display = 'none';
   document.getElementById('homeBtnHeader').style.display = 'inline-flex';
-  const divergenceScanBox = document.getElementById('divergenceScanBox');
-  if(divergenceScanBox) divergenceScanBox.style.display = 'none';
-  const crowdingAlertBox = document.getElementById('crowdingAlertBox');
-  if(crowdingAlertBox) crowdingAlertBox.style.display = 'none';
   setActiveViewTab('home');
   if(match){
     currentReportCode = match.code;
@@ -4072,10 +3660,14 @@ function fmtCompareView(codes){
   const quarterCells = reports.map(r => `<td>${latestQuarterLabel(r)}</td>`).join('');
   const finRowsHtml = finRows.map(row => `<tr><td>${row.metric}</td>${row.values.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('');
   const priceCells = reports.map(r=>{
+    const sc = SCENARIOS[r.code];
+    if(sc) return `<td>${sc.price.toLocaleString()} ${currencyUnit(r.market)}</td>`;
     const v = VALUATIONS[r.code];
     return v ? `<td>${v.currentPrice.toLocaleString()} ${currencyUnit(r.market)}</td>` : '<td>—</td>';
   }).join('');
   const valRangeCells = reports.map(r=>{
+    const sc = SCENARIOS[r.code];
+    if(sc && sc.eps) return `<td>三情境 ${sc.eps.label}<br>${sc.eps.values.join('／')}</td>`;
     const v = VALUATIONS[r.code];
     return v ? `<td>${v.range[0].toLocaleString()} ~ ${v.range[1].toLocaleString()} ${currencyUnit(r.market)}<br>平均 ${v.avg.toLocaleString()} ${currencyUnit(r.market)}</td>` : '<td>—</td>';
   }).join('');
@@ -4097,7 +3689,7 @@ function fmtCompareView(codes){
           <tr><td>最新揭露季度</td>${quarterCells}</tr>
           ${finRowsHtml}
           <tr><td>目前市價</td>${priceCells}</tr>
-          <tr><td>估值範圍（各模型）</td>${valRangeCells}</tr>
+          <tr><td>估值範圍／三情境 EPS</td>${valRangeCells}</tr>
         </tbody>
       </table>
     </section>
@@ -4114,10 +3706,6 @@ function runCompare(){
   const marketFilterBar = document.getElementById('marketFilterBar');
   if(marketFilterBar) marketFilterBar.style.display = 'none';
   document.getElementById('homeBtnHeader').style.display = 'inline-flex';
-  const divergenceScanBox = document.getElementById('divergenceScanBox');
-  if(divergenceScanBox) divergenceScanBox.style.display = 'none';
-  const crowdingAlertBox = document.getElementById('crowdingAlertBox');
-  if(crowdingAlertBox) crowdingAlertBox.style.display = 'none';
   setActiveViewTab('home');
   notFound.style.display = 'none';
   root.innerHTML = fmtCompareView(compareSelection);
@@ -4407,30 +3995,25 @@ document.addEventListener('touchstart', dismissPopupsOnOutsideTap, {passive:true
 // 上次是在看某份報告——直接把那份報告叫出來，不要預設顯示主頁。放在整個
 // script的最後執行，確保這時候REPORTS、showReport等都已經定義好。
 //
-// 如果這個分頁是直接從網址列或連結進站（例如在產業共識落差掃描頁對某檔
+// 如果這個分頁是直接從網址列或連結進站（例如對某份報告按右鍵「在新分頁開啟連結」），
 // 個股按右鍵「在新分頁開啟連結」），這個分頁的瀏覽紀錄從頭到尾只有這一筆，
 // updateUrlForReport/updateUrlForView發現網址本來就對得上、不會觸發
 // pushState，導致markAppNavigated()沒被呼叫、「回前頁」按鈕永遠不會出現。
 // 這裡先用replaceState把「首頁」墊在這筆紀錄下面，讓後續showReport／
-// showDivergenceScan／showCrowdingAlert自己呼叫的updateUrl*偵測到網址
+// showReport自己呼叫的updateUrlForReport偵測到網址
 // 對不上、正常pushState一次，「回前頁」按鈕才會出現，按下去也會回到首頁
 // （而不是沒有上一頁可回、或直接跳出這個分頁）。
 (function bootstrapFromUrl(){
   const view = getViewFromUrl();
   const code = getReportCodeFromUrl();
-  if(view === 'scan' || view === 'crowding' || code){
+  if(code){
     history.replaceState({ reportCode: null }, '', window.location.pathname);
   }
-  if(view === 'scan'){ showDivergenceScan(); return; }
-  if(view === 'crowding'){ showCrowdingAlert(); return; }
   if(code) showReport(code);
 })();
 
-// 瀏覽器上一頁／下一頁按鈕：依網址目前的?r=代碼或?view=scan／crowding狀態重新渲染對應畫面。
+// 瀏覽器上一頁／下一頁按鈕：依網址目前的?r=代碼重新渲染對應畫面（舊的?view=scan／crowding連結一律回首頁）。
 window.addEventListener('popstate', () => {
-  const view = getViewFromUrl();
-  if(view === 'scan'){ showDivergenceScan(); return; }
-  if(view === 'crowding'){ showCrowdingAlert(); return; }
   const code = getReportCodeFromUrl();
   if(code) showReport(code); else goHome();
 });
